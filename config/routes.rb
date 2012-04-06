@@ -1,5 +1,7 @@
 IUPB::Application.routes.draw do
   
+  get "transportation/index"
+
   root :to => 'high_voltage/pages#show', :id => 'index'
   
   # The priority is based upon order of creation:

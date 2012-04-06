@@ -1,0 +1,14 @@
+<div data-role="header">
+	<h1><%= t ".list_header "%></h1>
+</div>	
+
+<ul data-role="listview">
+	<% @trips.each do |trip| %>
+		<li>
+			<h3><%= trip["s"] %> <%= t ".at" %> <%= l trip["da"], format: :short %>
+			</h3>
+			<p><%= t ".line" %> <%= trip["l"] %>, <%= t ".to" %> <%= trip["d"] %>
+			</p>
+		</li>
+	<% end %>
+</ul>
