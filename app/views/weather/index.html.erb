@@ -1,0 +1,11 @@
+<div data-role="header">
+	<h1><%= t ".list_header "%></h1>
+</div>	
+
+<ul data-role="listview">
+	<li><%= t "Temperature" %> <%= @weatherData['temp'] %></li>
+	<li><%= t "Min. Temperature" %> <%= @weatherData['tempmin'] %></li>
+	<li><%= t "Max. Temperature" %> <%= @weatherData['tempmax'] %></li>
+	<li><%= t "Sunrise" %> <%= @weatherData['sonnenaufgang'] %></li>
+	<li><%= t "Sunset" %> <%= @weatherData['sonnenuntergang'] %></li>
+</ul>
