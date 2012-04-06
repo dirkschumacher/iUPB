@@ -26,7 +26,7 @@ class RestaurantsController < ApplicationController
         data = {}
         data["name"] = current_menu.search("menu").first.text
         data["typ"] = ""
-        data["typ"] = current_menu.search("speisentyp").first.text unless current_menu.search("speisentyp")
+        data["typ"] = current_menu.search("speisentyp").first.text if current_menu.search("speisentyp").first
         data["text"] = current_menu.search("text").first.text unless current_menu.search("text")
         data["beilage"] = current_menu.search("beilage").map do |beilage| beilage.text  end
         menu_hash[datum]["menus"] << data
