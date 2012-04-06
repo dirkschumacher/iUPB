@@ -1,0 +1,19 @@
+
+<div data-role="header">
+	<h1><%= @restaurant.humanize %>, <%= @menu["wochentag"] %></h1>
+</div>	
+
+<ul data-role="listview">
+	<% @menu["menus"].each do |menu| %>
+		<li>
+			<h3><%= menu["name"] %>
+			</h3>
+			<p><%= menu["typ"] %>
+			</p>
+			<% menu["beilage"].each do |beilage| %>
+				<p><%= beilage %></p>
+			<% end%>
+		</li>
+	<% end %>
+</ul>
+
