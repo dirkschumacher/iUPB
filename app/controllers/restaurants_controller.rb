@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   def index
     @restaurant = params[:restaurant]||"mensa"
     menu = get_menu_data(@restaurant)
-    today = Date.today + 5.days
+    today = Date.today
     today = Date.commercial(Date.today.year, 1+Date.today.cweek, 1) unless menu[today.strftime("%d.%m.%Y")]
     @menu = menu[today.strftime("%d.%m.%Y")]
   end
