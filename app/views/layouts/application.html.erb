@@ -12,8 +12,7 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width">
   <%= stylesheet_link_tag    "iUPB"%>
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile.structure-1.0.1.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.2/jquery.mobile.structure-1.1.0-rc.2.min.css" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
   <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
@@ -26,25 +25,16 @@
   <!-- <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script> -->
   
   <meta http-equiv="cleartype" content="on">
-  <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script src="http://code.jquery.com/mobile/1.1.0-rc.2/jquery.mobile-1.1.0-rc.2.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
   <%= yield(:head) -%>
-  <script>
-      $(document).bind("mobileinit", function(){
-            $.extend(  $.mobile , { 
-				//ajaxEnabled : false 
-			});
-      });
-  </script>
 </head>
 <body>
-  <div data-role="page">
+  <div data-role="page" data-theme="a">
     <header>
-    	<div id="logo" style="float:left;">
-    		<%= link_to image_tag("logo_small.png", :title => "eClickr Logo"), root_path %>
-    	</div>
     </header>
         <%- flash.each do |name, msg| -%>
           <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
@@ -53,21 +43,28 @@
 
 
     <footer>
-
+        <div data-role="footer">
+        	<div data-role="navbar">
+            		<ul>
+            			<li><a href="#">One</a></li>
+            			<li><a href="#">Two</a></li>
+            			<li><a href="#">Three</a></li>
+            		</ul>
+            	</div><!-- /navbar -->
+        </div><!-- /footer -->
     </footer>
   </div> <!--! end of #container -->
 
-  <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 
 
   <!-- <script src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script> // Change UA-XXXXX-X to be your site's ID
+  <!--script> // Change UA-XXXXX-X to be your site's ID
     var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
-  </script>
+  </script-->
 
 </body>
 </html>
