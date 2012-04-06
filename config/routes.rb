@@ -3,6 +3,7 @@ IUPB::Application.routes.draw do
   get "restaurants/index"
 
   get "transportation/index"
+  get "weather/index"
 
   root :to => 'high_voltage/pages#show', :id => 'index'
   
