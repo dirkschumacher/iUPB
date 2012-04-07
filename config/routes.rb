@@ -1,9 +1,9 @@
 IUPB::Application.routes.draw do
   
-  get "restaurants/index"
+  get "restaurants/index", :as => :restaurants
 
-  get "transportation/index"
-  get "weather/index"
+  get "transportation/index", :as => :transportation
+  get "weather/index", :as => :weather
 
   root :to => 'high_voltage/pages#show', :id => 'index'
   

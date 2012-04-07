@@ -3,9 +3,9 @@
 </div>	
 
 <ul data-role="listview">
-	<li><%= t "Temperature" %> <%= @weatherData['temp'] %></li>
-	<li><%= t "Min. Temperature" %> <%= @weatherData['tempmin'] %></li>
-	<li><%= t "Max. Temperature" %> <%= @weatherData['tempmax'] %></li>
-	<li><%= t "Sunrise" %> <%= @weatherData['sonnenaufgang'] %></li>
-	<li><%= t "Sunset" %> <%= @weatherData['sonnenuntergang'] %></li>
+	<li><%= t ".temperature" %> <%= @weatherData['temp'] %></li>
+	<li><%= t ".min" %>.  <%= t ".temperature" %> <%= @weatherData['tempmin'] %></li>
+	<li><%= t ".max" %>. <%= t ".temperature" %> <%= @weatherData['tempmax'] %></li>
+	<li><%= t ".sunrise" %> <%= @weatherData['sonnenaufgang'] %></li>
+	<li><%= t ".sunset" %> <%= @weatherData['sonnenuntergang'] %></li>
 </ul>
