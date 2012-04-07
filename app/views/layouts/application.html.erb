@@ -11,7 +11,7 @@
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width">
-  <%= stylesheet_link_tag    "iUPB"%>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.2/jquery.mobile.structure-1.1.0-rc.2.min.css" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
@@ -25,7 +25,7 @@
   <!-- <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script> -->
   
   <meta http-equiv="cleartype" content="on">
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script src="http://code.jquery.com/mobile/1.1.0-rc.2/jquery.mobile-1.1.0-rc.2.min.js"></script>
