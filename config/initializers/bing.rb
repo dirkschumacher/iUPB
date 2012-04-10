@@ -1,0 +1,3 @@
+def translator
+  BingTranslator.new 'AEC6151C2EB48DDD5173DE2D5F93E351067AC204'
+end
