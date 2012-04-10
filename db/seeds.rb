@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Restaurant.destory_all
+Restaurant.delete_all
 Restaurant.create([
   { name: 'Mensa', feed_url:'http://www.studentenwerk-pb.de/fileadmin/xml/mensa.xml' }, 
   { name: 'Gownsmen Pub', feed_url:'http://www.studentenwerk-pb.de/fileadmin/xml/gownsmenspub.xml'  }, 
