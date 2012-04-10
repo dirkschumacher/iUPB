@@ -1,17 +1,19 @@
 class RestaurantHelper
-  def update_database
+  def self.update_database
     Restaurant.all.each do |restaurant|
-      restaurant.menus.all(:date.lt => Date.now).destroy_all
+      restaurant.menus.where(:date.lt => Date.today.to_time.midnight.utc).destroy_all
       get_menu_data(restaurant).each do |menu|
         restaurant.menus.create!(menu)
       end
     end
   end
-  def get_menu_data(restaurant)
-    if restaurant.is_a(String)
+  
+  protected
+  def self.get_menu_data(restaurant)
+    if restaurant.is_a?(String)
       restaurant = Restaurant.where(name: restaurant).first
     end
-    unless restaurant.responds_to?(:feed_url)
+    unless restaurant.respond_to?(:feed_url)
       raise "Supplied restaurant does not exist"
     end
     url = restaurant.feed_url

@@ -33,6 +33,8 @@ GEM
     bing_translator (0.0.3)
       nokogiri (~> 1.5.0)
     bson (1.6.2)
+    bson_ext (1.6.2)
+      bson (~> 1.6.2)
     builder (3.0.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -77,6 +79,8 @@ GEM
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.1)
@@ -126,12 +130,14 @@ PLATFORMS
 
 DEPENDENCIES
   bing_translator (~> 0.0.2)
+  bson_ext
   coffee-rails (~> 3.2.1)
   heroku
   high_voltage
   jquery-rails
   mongoid
   nokogiri
+  rack-contrib
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
