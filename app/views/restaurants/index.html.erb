@@ -1,18 +1,20 @@
 
 <div data-role="header">
-	<h1><%= @restaurant.humanize %>, <%= @menu["wochentag"] %></h1>
+	<h1><%= @restaurant.name %>, <%= Date::DAYNAMES[@today.wday] %></h1>
 </div>	
 
 <ul data-role="listview">
-	<% @menu["menus"].each do |menu| %>
+	<% @menus.each do |menu| %>
 		<li>
-			<h3><%= menu["name"] %>
+			<h3><%= menu.name %>
 			</h3>
-			<p><i><%= menu["typ"] %></i>
-			</p>
-			<% menu["beilage"].each do |beilage| %>
-				<p><%= beilage %></p>
+			<p><i><%= menu.type %></i></p>
+			<p><%= menu.description %></p>
+			<% menu["side_dishes"].each do |beilage| %>
+				<p><%= translator.translate beilage[1], :from => 'de', :to => I18n.locale.to_s %></p>
 			<% end%>
+			<p><%= menu.price %></p>
+			<p><%= menu.counter %></p>
 		</li>
 	<% end %>
 </ul>

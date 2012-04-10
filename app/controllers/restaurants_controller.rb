@@ -1,11 +1,22 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurant = params[:restaurant]||"mensa" #check for valid parameter
-    menu = get_menu_data(@restaurant)
-    today = Date.today
-    # the following line sets the date to next monday if no menu for today exists:
-    today = Date.commercial(Date.today.year, 1+Date.today.cweek, 1) unless menu[today.strftime("%d.%m.%Y")]
-    @menu = menu[today.strftime("%d.%m.%Y")]
+    restaurant = "Mensa"
+    @restaurant = Restaurant.where(name: restaurant).first
+  
+    @today = Date.today
+        
+    unless @restaurant.menus.where(:date.gt => @today).first
+      RestaurantHelper::update_database
+      @restaurant.reload
+    end
+
+    @menus = @restaurant.menus.where(date: @today.to_time.midnight.utc )
+      
+    unless @menus.any?
+      @today = Date.commercial(Date.today.year, 1+Date.today.cweek, 1)
+      @menus = @restaurant.menus.where(date: @today.to_time.midnight.utc)
+    end
+    
   end
   
   protected
