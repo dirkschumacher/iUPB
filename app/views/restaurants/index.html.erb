@@ -1,20 +1,21 @@
 
 <div data-role="header">
-	<h1><%= @restaurant.name %>, <%= Date::DAYNAMES[@today.wday] %></h1>
+	<h1><%= @restaurant.name %> &ndash; <%= l(@today, format: "%a, %d. %b") %></h1>
 </div>	
 
 <ul data-role="listview">
 	<% @menus.each do |menu| %>
 		<li>
-			<h3><%= menu.name %>
-			</h3>
+			<h3><%= menu.description %></h3>
+			<p><strong><%= menu.name %></strong></p>
 			<p><i><%= menu.type %></i></p>
-			<p><%= menu.description %></p>
-			<% menu["side_dishes"].each do |beilage| %>
-				<p><%= beilage[1] %></p>
-			<% end%>
+			<p id="side_dishes">
+			<% side_dishes_for(menu).each do |side_dish| %>
+				&#8226; <%= side_dish %><br/>
+			<% end %>
+			</p>
 			<p><%= menu.price %></p>
-			<p><%= menu.counter %></p>
+			<% if menu.counter %><p>(<%= menu.counter %>)</p><% end %>
 		</li>
 	<% end %>
 </ul>

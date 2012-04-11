@@ -39,10 +39,10 @@ class RestaurantHelper
         data = {}
         data["name"] = current_menu.search("menu").first.text
         data["date"] = DateTime::strptime(datum, "%d.%m.%Y").to_date
-        data["type"] = current_menu.search("speisentyp").first.text unless current_menu.search("speisentyp")
-        data["description"] = current_menu.search("text").first.text unless current_menu.search("text")
-        data["price"] = current_menu.search("preis").first.text unless current_menu.search("preis")
-        data["counter"] = current_menu.search("ausgabe").first.text unless current_menu.search("ausgabe")
+        data["type"] = current_menu.search("speisentyp").first.text if current_menu.search("speisentyp").first
+        data["description"] = current_menu.search("text").first.text if current_menu.search("text").first
+        data["price"] = current_menu.search("preis").first.text if current_menu.search("preis").first
+        data["counter"] = current_menu.search("ausgabe").first.text if current_menu.search("ausgabe").first
         data["side_dishes"] = current_menu.search("beilage").map do |beilage| beilage.text  end
         menus << data
       end
