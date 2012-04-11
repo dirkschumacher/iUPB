@@ -11,7 +11,7 @@
 			<p><i><%= menu.type %></i></p>
 			<p><%= menu.description %></p>
 			<% menu["side_dishes"].each do |beilage| %>
-				<p><%= translator.translate beilage[1], :from => 'de', :to => I18n.locale.to_s %></p>
+				<p><%= beilage[1] %></p>
 			<% end%>
 			<p><%= menu.price %></p>
 			<p><%= menu.counter %></p>
