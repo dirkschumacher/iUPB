@@ -6,10 +6,10 @@ class WeatherController < ApplicationController
   protected
   def get_weather_data
     # needs also a change in the api - horrible :)
-    data = Rails.cache.fetch('weather_json_data', :expires_in => 15.minute) do
+    data = Rails.cache.fetch('weather_json_data', :expires_in => 10.minute) do
       result = JSON.parse(open("http://upbapi.cloudcontrolled.com/wetter.php").read)
       #result["time"] = DateTime::strptime(result["time"], "%d.%m.%Y, %H:%M Uhr")
     end
-    data.first
+    data
   end
 end
