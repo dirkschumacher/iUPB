@@ -1,4 +1,15 @@
 de:
+  transportation:
+    index:
+      trip_at: "%{station} am %{date}"
+      to: "nach"
+      line: "Linie"
+      buses_leaving: "Bus Abfahrt"
+  layouts:
+    application:
+      menu: "Speisepläne"
+      weather: "Wetter"
+      buses: "Abfahrt"
   date:
     abbr_day_names:
     - So

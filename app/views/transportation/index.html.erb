@@ -5,7 +5,8 @@
 <ul data-role="listview">
 	<% @trips.each do |trip| %>
 		<li>
-			<h3><%= trip["s"] %> <%= t ".at" %> <%= l trip["da"], format: :short %>
+			<h3>
+			<%= t '.trip_at', :station => trip["s"], :date => l(trip["da"], format: :short) %>
 			</h3>
 			<p><%= t ".line" %> <%= trip["l"] %>, <%= t ".to" %> <%= trip["d"] %>
 			</p>
