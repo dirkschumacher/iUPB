@@ -4,7 +4,11 @@ IUPB::Application.routes.draw do
 
   get "transportation/index", :as => :transportation
   get "weather/index", :as => :weather
-
+  get "twitter/index", :as => :twitter
+  get "twitter/data", :as => :twitter_data
+  
+  #match 'twitter' => 'high_voltage/pages#show', :id => 'twitter'
+  
   root :to => 'high_voltage/pages#show', :id => 'index'
   
   # The priority is based upon order of creation:
