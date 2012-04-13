@@ -15,10 +15,10 @@ class RestaurantsController < ApplicationController
       @today = Date.commercial(Date.today.year, 1+Date.today.cweek, 1)
       @menus = @restaurant.menus.where(date: @today.to_time.midnight.utc)
     end
-    @menus.each do |menu|
-      RestaurantHelper::update_translations(menu, "de", "en")
-      RestaurantHelper::update_translations(menu, "de", "es")
-      RestaurantHelper::update_translations(menu, "de", "fr")
-    end
+    #@menus.each do |menu|
+    #  RestaurantHelper::update_translations(menu, "de", "en")
+    #  RestaurantHelper::update_translations(menu, "de", "es")
+    #  RestaurantHelper::update_translations(menu, "de", "fr")
+    #end
   end
 end
