@@ -6,7 +6,7 @@
 	<% @trips.each do |trip| %>
 		<li>
 			<h3>
-			<%= t '.trip_at', :station => trip["s"], :date => l(trip["da"], format: :short) %>
+			<%= t '.trip_at', :station => trip["s"], :date => l(trip["da"], format: "%H:%M") %>
 			</h3>
 			<p><%= t ".line" %> <%= trip["l"] %>, <%= t ".to" %> <%= trip["d"] %>
 			</p>
