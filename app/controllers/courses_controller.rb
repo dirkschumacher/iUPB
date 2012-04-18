@@ -26,7 +26,7 @@ class CoursesController < ApplicationController
     @courses = Course.where(title: /.*#{query}.*/).all
     # If the request is stale according to the given timestamp and etag value
     # (i.e. it needs to be processed again) then execute this block
-    if stale?(:last_modified => Time.now - 1.days, :etag => @courses)
+    if stale?(:last_modified => Time.now - 7.days, :etag => @courses)
       render "search"
     end
   end
