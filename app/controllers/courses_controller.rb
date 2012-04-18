@@ -22,8 +22,8 @@ class CoursesController < ApplicationController
   end
   
   def search
-    query = params[:query]
-    @courses = Course.where(title: /.*#{query}.*/).all
+    query = params[:query].downcase
+    @courses = Course.where(title_downcase: /.*#{query}.*/).all
     # If the request is stale according to the given timestamp and etag value
     # (i.e. it needs to be processed again) then execute this block
     if stale?(:last_modified => Time.now - 7.days, :etag => @courses)
