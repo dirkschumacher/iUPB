@@ -7,6 +7,10 @@ IUPB::Application.routes.draw do
   get "twitter/index", :as => :twitter
   get "twitter/data", :as => :twitter_data
   
+  get "courses/index", :as => :courses
+  match "courses/search/:query" => "courses#search"
+  
+  #resource :courses
   #match 'twitter' => 'high_voltage/pages#show', :id => 'twitter'
   
   root :to => 'high_voltage/pages#show', :id => 'index'
