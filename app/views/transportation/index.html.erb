@@ -1,7 +1,7 @@
-<div data-role="header">
-	<h1><%= t ".buses_leaving "%></h1>
-</div>	
 
+<% content_for :header do %>
+<h1><%= t ".buses_leaving "%></h1>
+<% end %>
 <ul data-role="listview">
 	<% @trips.each do |trip| %>
 		<li>

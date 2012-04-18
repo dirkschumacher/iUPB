@@ -33,18 +33,20 @@
   <%= yield(:head) -%>
 </head>
 <body>
-  <div data-role="page" data-theme="a">
+  <div data-role="page">
     <header>
-    </header>
-        <%- flash.each do |name, msg| -%>
-          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-        <%- end -%>
+<div data-role="header"  data-position="fixed">
+	<%= yield(:header) -%>
+</div>  
+  </header>
+  
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+      <%- end -%>
 <%= yield %>
-
-
     <footer>
         <div data-role="footer">
-        	<div data-role="navbar" data-position="fixed">
+        	<div data-role="navbar" data-iconpos="top" data-position="fixed">
             		<ul>
             			<li><%= link_to t(".menu"), restaurants_path %></li>
             			<li><%= link_to t(".weather"), weather_path %></li>

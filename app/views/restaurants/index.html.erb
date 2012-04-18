@@ -1,8 +1,7 @@
 
-<div data-role="header">
-	<h1><%= @restaurant.name %> &ndash; <%= l(@today, format: "%a, %d. %b") %></h1>
-</div>	
-
+<% content_for :header do %>
+<h1><%= @restaurant.name %> &ndash; <%= l(@today, format: "%a, %d. %b") %></h1>
+<% end %>
 <ul data-role="listview">
 	<% @menus.each do |menu| %>
 		<li>
