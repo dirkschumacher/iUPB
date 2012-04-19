@@ -8,19 +8,30 @@ var narf;
 $(document).ready(function() {
   var search_field = $("#search_id");
   var result_list = $("#courses_result_list");
-  search_field.keyup(function() {
-    if(search_field.val() === "")
-      return;
-    $.getJSON("/courses/search/" + search_field.val(), function(data)
-    {
+  search_field.bind( "change", function(event, ui) {
+    if(search_field.val().length == 0)
       result_list.empty();
-      $.each(data, function() { 
-        var li = $("<li>");
-        li.text(this.course.title);
-        result_list.append(li);
-      });
-      result_list.listview('refresh');
-    });
+  });
+  var search_timer = null;
+  search_field.keyup(function() {
+    if(search_field.val().length < 3)
+      return;
+    if (search_timer)
+      clearTimeout(search_timer);
+    search_timer = setTimeout(function() 
+    {
+      $.getJSON("/courses/search/" + search_field.val(), function(data)
+      {
+        result_list.empty();
+        $.each(data, function() { 
+          var li = $("<li>");
+          li.text(this.course.title);
+          result_list.append(li);
+        });
+        result_list.listview('refresh');
+      }); 
+    }, 
+    500);
   });
 });
 </script>

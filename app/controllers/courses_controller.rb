@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
     # If the request is stale according to the given timestamp and etag value
     # (i.e. it needs to be processed again) then execute this block
     if stale?(:last_modified => Time.now - 7.days, :etag => @courses)
-      render "search"
+      expires_in 7.days, :public => true, 'max-stale' => 0
     end
   end
 end
