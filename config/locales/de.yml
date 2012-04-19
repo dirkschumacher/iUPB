@@ -1,7 +1,7 @@
 de:
   transportation:
     index:
-      trip_at: "%{station} am %{date}"
+      trip_at: "%{station} um %{date}"
       to: "nach"
       line: "Linie"
       buses_leaving: "Bus Abfahrt"
