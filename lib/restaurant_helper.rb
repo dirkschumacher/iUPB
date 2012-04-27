@@ -14,7 +14,7 @@ class RestaurantHelper
       raise "Supplied menu does not have a name property"
     end
     if menu.name_translations[from_locale] and not menu.name_translations[to_locale]  
-      menu_name = translator.translate menu.name_translations[from_locale], :from => from_locale, :to => to_locale
+      menu_name = translator.translate(menu.name_translations[from_locale], :from => from_locale, :to => to_locale)
       menu.name_translations = menu.name_translations.merge({to_locale => menu_name})
       menu.save
     end    
