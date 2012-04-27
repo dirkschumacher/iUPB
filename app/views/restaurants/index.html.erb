@@ -2,20 +2,12 @@
 <% content_for :header do %>
 <h1><%= @restaurant.name %> &ndash; <%= l(@today, format: "%a, %d. %b") %></h1>
 <% end %>
-<ul data-role="listview">
-	<% @menus.each do |menu| %>
-		<li>
-			<h3><%= menu.description %></h3>
-			<p><strong><%= menu.name %></strong></p>
-			<p><i><%= menu.type %></i></p>
-			<p id="side_dishes">
-			<% side_dishes_for(menu).each do |side_dish| %>
-				&#8226; <%= side_dish %><br/>
-			<% end %>
-			</p>
-			<p><%= menu.price %></p>
-			<% if menu.counter %><p>(<%= menu.counter %>)</p><% end %>
-		</li>
-	<% end %>
+<ul id="menus" data-role="listview">
+	<li><%= t "please_wait" %></li>
 </ul>
 
+<script>
+jQuery(document).ready(function() {
+	window.Restaurant.updateMenus();
+});
+</script>
