@@ -10,8 +10,11 @@ $("#loading").ajaxStart ->
 
 window.Restaurant = {};
 
-window.Restaurant.updateMenus = ->
-	$.retrieveJSON("/restaurants/index.json", (json, status) ->
+window.Restaurant.updateMenus = (date)->
+	url = "/restaurants/index.json"
+	if(date)
+		url += "?date="+date
+	$.retrieveJSON(url, (json, status) ->
 		$("#menus").empty()
 		$.each(json, ->
 			menu = $(this)[0].menu
@@ -36,5 +39,7 @@ window.Restaurant.updateMenus = ->
 			$("#menus").listview('refresh')
 			return
 		)
+		$("#day_title").text(today.format("ddd, dd.mm."))
 		return
 	)
+	

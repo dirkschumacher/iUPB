@@ -3,7 +3,11 @@ class RestaurantsController < ApplicationController
     restaurant = "Mensa"
     @restaurant = Restaurant.where(name: restaurant).first
   
-    @today = Date.today
+    if params[:date]
+      @today = Date.parse(params[:date]) 
+    else
+      @today = Date.today
+    end
     unless @restaurant.menus.where(:date.gt => @today).first
       RestaurantHelper::update_database
       @restaurant.reload
@@ -17,7 +21,9 @@ class RestaurantsController < ApplicationController
     end
     
     respond_to do |format|
-      format.html
+      format.html {
+        @today_js = @today.to_time.utc.to_i*1000
+      }
       format.xml
       format.json
     end
