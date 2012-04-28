@@ -9,7 +9,7 @@ IUPB::Application.routes.draw do
   
   get "courses/index", :as => :courses
   match "courses/search/:query" => "courses#search"
-  match "courses/:id" => "courses#show"
+  match "courses/:id" => "courses#show", :as => :course
   
   #resource :courses
   #match 'twitter' => 'high_voltage/pages#show', :id => 'twitter'

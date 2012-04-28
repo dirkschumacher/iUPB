@@ -30,11 +30,11 @@
   <%= yield(:head) -%>
 </head>
 <body>
-  <div data-role="page">
+  <div id="page" data-role="page">
     <header>
 <div data-role="header"  data-position="fixed">
 	<%= yield(:header) -%>
-  <%= link_to t(".home"), root_path, 'data-icon' => 'home', 'data-iconpos' => 'home', 'data-direction' => 'reverse' %>
+  <%= link_to t(".home"), root_path, 'data-icon' => 'home', 'data-iconpos' => 'notext', 'data-direction' => 'reverse' %>
 </div>  
   </header>
   

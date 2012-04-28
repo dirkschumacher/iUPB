@@ -1,9 +1,10 @@
 
 <% content_for :header do %>
-<h1><%= @course.title %></h1>
+<h1><%= @course.course_type == 'course' ? @course.title : @course.group_title %></h1>
 <!--<%= link_to t('nav.back'), courses_path %>-->
 <a data-role="button" data-rel="back"><%= t 'nav.back' %></a>
 <% end %>
+<div data-role="collapsible">
 <h2><%= t 'Zeiten und Räume' %></h2>
 <ul data-role="listview" id="infos">
   <% @course.course_data.each do |data| %>
@@ -14,10 +15,18 @@
         <p><%= data["instructor"] %></p></li>
     <% end %>
   <% end %>
-</ul>
-<% if @course.course_type == 'course' %>
+</ul>  
+</div>
+<div data-role="collapsible">
+<% if @groups and @groups.length > 0 %>
 <h2><%= t 'Übungsgruppen' %><h2>
 <ul data-role="listview" id="groups">
-  
+  <% @groups.each do |group| %>
+    <li><%= link_to  group.group_title, group %>
+    </li>
+  <% end %>
 </ul>
 <% end %>
+</div>
+
+<a href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t 'view_in_paul'%></a>

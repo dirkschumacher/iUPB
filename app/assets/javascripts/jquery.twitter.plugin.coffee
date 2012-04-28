@@ -1,36 +1,32 @@
 $ = jQuery
 
-$.fn.twitterFeed = ->
+parseUsername = (text) ->
+  text.replace /[@]+[A-Za-z0-9-_]+/g, (u) ->
+    u.link 'http://twitter.com/' + user.replace('@','')
+
+parseHashtag = (text) ->
+  text.replace /[#]+[A-Za-z0-9-_]+/g, (t) ->
+    tag = t.replace '#','%23'
+    t.link 'http://search.twitter.com/search?q=' + tag
+    
+$.fn.twitterFeed = (post_event) ->
     self = this
     url = "/twitter/data"
     $.getJSON url, (data) ->
+      self.empty()
       tweets = data.results
       for tweet in tweets
-        item = $ "<li>"
-        authorWrap = $ '<div class="tweet_author_wrap">'
-        divAuthor = $ '<div class="tweet_author">'
-        imgAvatar = $ '<img>'
-        imgAvatar.attr 'src', tweet.profile_image_url_https
-        authorLink = $ '<a>'
-        authorLink.attr 'href', 'https://twitter.com/#!/' + tweet.from_user
-        authorLink.attr 'rel', 'external nofollow'
-        authorLink.attr 'target', 'top'
-        authorLink.append imgAvatar
-        authorLinkText = $ '<a>'
-        authorLinkText.attr 'href', 'https://twitter.com/#!/' + tweet.from_user
-        authorLinkText.attr 'rel', 'external nofollow'
-        authorLinkText.attr 'target', 'top'
-        authorLinkText.text tweet.from_user
-        divAuthor.append authorLink
-        divTime = $ '<div class="tweet_time"></div>'
-        divTime.append $('<time>').text tweet.created_at
-        authorWrap.append divTime
-        authorWrap.append divAuthor
-        divTweet = $ '<div class="tweet_text">'
-        divTweet.text tweet.text
-        divTweet.prepend $('<span class="tweet_author_name_link">').append authorLinkText
-        item.append authorWrap
-        item.append divTweet
+        item = $ '<li>'
+        textWrap = $ '<h3 style="white-space: normal;">'
+        detailsWrap = $ '<p>'
+        textWrap.html parseUsername(parseHashtag(parseURL(tweet.text)))
+        date = Date.parse tweet.created_at
+        detailsWrap.html 'Posted ' + $.timeago(tweet.created_at) + ' by <a href="https://twitter.com/#!/' + tweet.from_user + '" target="_blank">' + tweet.from_user + '</a>'
+        item.append textWrap
+        item.append detailsWrap
         self.append item
-    true
+      post_event()
     
+parseURL = (text)->
+  text.replace /[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/g, (url) ->
+    url.link url;

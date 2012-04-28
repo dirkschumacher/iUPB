@@ -6,7 +6,9 @@ class CoursesController < ApplicationController
   
   def show
     @course = Course.find(params[:id])
-    
+    if @course.course_type == 'course'
+      @groups = Course.where(paul_id: @course.paul_id).where(course_type: 'group').excludes(id: @course.id)
+    end
     # If the request is stale according to the given timestamp and etag value
     # (i.e. it needs to be processed again) then execute this block
     #if stale?(:last_modified => Time.now - 7.days, :etag => @course)
