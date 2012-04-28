@@ -5,6 +5,9 @@
 <input type="search" name="search" autocomplete="off" placeholder="Search..." id="search_id" value="" />
 <script>
 $(document).ready(function() {
+  //TODO: port this to coffee script :)
+
+  
   var search_field = $("#search_id");
   var result_list = $("#courses_result_list");
   search_field.bind( "change", function(event, ui) {
@@ -21,12 +24,26 @@ $(document).ready(function() {
       clearTimeout(search_timer);
     search_timer = setTimeout(function() 
     {
-      $.getJSON("/courses/search/" + search_field.val(), function(data)
+      $.getJSON('/courses/search/' + encodeURIComponent(search_field.val()), function(data)
       {
         result_list.empty();
         $.each(data, function() { 
-          var li = $("<li>");
-          li.text(this.course.title);
+          var li = $('<li>');
+          var link = $('<a data-icon="arrow-r">');
+          link.append($('<h3>' + this.course.title + '</h3>'));
+          var id = this.course.id;
+          link.attr('href', '/courses/' + encodeURIComponent(id));
+          var next_class = this.course.next_class;
+          if(next_class)
+          {
+            var infos = $('<p>');
+            infos.html('Next class: ' + next_class.date + 
+             ' from ' + next_class.time_from + 
+             ' to ' + next_class.time_to + 
+             ' at ' + next_class.room );
+            link.append(infos);
+          }
+          li.append(link);
           result_list.append(li);
         });
         result_list.listview('refresh');

@@ -1,0 +1,23 @@
+
+<% content_for :header do %>
+<h1><%= @course.title %></h1>
+<!--<%= link_to t('nav.back'), courses_path %>-->
+<a data-role="button" data-rel="back"><%= t 'nav.back' %></a>
+<% end %>
+<h2><%= t 'Zeiten und Räume' %></h2>
+<ul data-role="listview" id="infos">
+  <% @course.course_data.each do |data| %>
+    <% if data["date"] >= DateTime.now %>
+      <li>
+        <p>
+        <strong><%= l(data["date"], format: "%a, %d. %b") %> <%= t 'from' %> <%= l(data["time_from"], format: "%H:%M") %> <%= t 'to' %> <%= l(data["time_to"], format: "%H:%M") %> <%= t 'at' %> <%= data["room"] %></strong></p>
+        <p><%= data["instructor"] %></p></li>
+    <% end %>
+  <% end %>
+</ul>
+<% if @course.course_type == 'course' %>
+<h2><%= t 'Übungsgruppen' %><h2>
+<ul data-role="listview" id="groups">
+  
+</ul>
+<% end %>
