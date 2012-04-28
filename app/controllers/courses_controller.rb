@@ -49,7 +49,6 @@ class CoursesController < ApplicationController
           min_interval = interval
         end
       end
-      pp @courses
     end  
     # If the request is stale according to the given timestamp and etag value
     # (i.e. it needs to be processed again) then execute this block
