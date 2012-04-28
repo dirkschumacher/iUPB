@@ -12,7 +12,6 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width">
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.2/jquery.mobile.structure-1.1.0-rc.2.min.css" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
   <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
@@ -28,8 +27,6 @@
   
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <script src="http://code.jquery.com/mobile/1.1.0-rc.2/jquery.mobile-1.1.0-rc.2.min.js"></script>
-  <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
   <%= yield(:head) -%>
 </head>
 <body>
@@ -37,6 +34,7 @@
     <header>
 <div data-role="header"  data-position="fixed">
 	<%= yield(:header) -%>
+  <%= link_to t(".home"), root_path, 'data-icon' => 'home', 'data-iconpos' => 'home', 'data-direction' => 'reverse' %>
 </div>  
   </header>
   
@@ -46,7 +44,7 @@
 	<div id="loading"><%= t "loading" %></div>
 	<div id="offline"><%= t "you_are_offline" %></div>
 <%= yield %>
-    <footer>
+    <!--footer>
         <div data-role="footer" data-position="fixed">
         	<div data-role="navbar" data-iconpos="top">
             		<ul>
@@ -57,7 +55,7 @@
             		</ul>
             	</div><!-- /navbar -->
         </div><!-- /footer -->
-    </footer>
+    <!--/footer-->
   </div> <!--! end of #container -->
 
 

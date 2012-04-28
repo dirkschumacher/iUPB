@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  caches_page :show, :index
   def index
     #@networks = Network.all
   end
