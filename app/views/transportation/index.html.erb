@@ -6,9 +6,9 @@
 	<% @trips.each do |trip| %>
 		<li>
 			<h3>
-			<%= t '.trip_at', :station => trip["s"], :date => l(trip["da"], format: "%H:%M") %>
+			<%= t '.trip_at', :station => trip["station"], :date => l(trip["date"], format: "%H:%M") %>
 			</h3>
-			<p><%= t ".line" %> <%= trip["l"] %>, <%= t ".to" %> <%= trip["d"] %>
+			<p><%= t ".line" %> <%= trip["line"] %>, <%= t ".to" %> <%= trip["direction"] %>
 			</p>
 		</li>
 	<% end %>
