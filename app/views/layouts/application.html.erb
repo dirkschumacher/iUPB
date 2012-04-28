@@ -47,13 +47,13 @@
 	<div id="offline"><%= t "you_are_offline" %></div>
 <%= yield %>
     <footer>
-        <div data-role="footer">
-        	<div data-role="navbar" data-iconpos="top" data-position="fixed">
+        <div data-role="footer" data-position="fixed">
+        	<div data-role="navbar" data-iconpos="top">
             		<ul>
             			<li><%= link_to t(".menu"), restaurants_path %></li>
             			<li><%= link_to t(".weather"), weather_path %></li>
             			<li><%= link_to t(".buses"), transportation_path %></li>
-            			<li><%= link_to t(".twitter"), twitter_path%></li>
+            			<li><%= link_to t(".paul"), courses_path%></li>
             		</ul>
             	</div><!-- /navbar -->
         </div><!-- /footer -->
