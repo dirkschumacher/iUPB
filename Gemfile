@@ -11,6 +11,7 @@ gem 'bson_ext' # MongoDB performance
 gem 'mongoid'
 gem "bing_translator", "~> 0.0.2"
 gem 'rack-contrib'
+gem 'i18n-js'
 
 # Gemfile
 gem 'rabl'

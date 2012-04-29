@@ -2,6 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  courses:
+    index:
+      next_class: "Next class: %{date}, %{time_from} to %{time_to} at %{place}"
   transportation:
     index:
       trip_at: "%{station} at %{date}"

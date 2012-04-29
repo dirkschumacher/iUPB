@@ -37,10 +37,13 @@ $('#page').live( 'pageinit', function(event) {
           if(next_class)
           {
             var infos = $('<p>');
-            infos.html('Next class: ' + next_class.date + 
-             ' from ' + next_class.time_from + 
-             ' to ' + next_class.time_to + 
-             ' at ' + next_class.room );
+            var text = I18n.t("courses.index.next_class", {
+              date: I18n.l("date.formats.short", next_class.date),
+              time_from: I18n.l("time.formats.very_short", next_class.time_from), 
+              time_to:I18n.l("time.formats.very_short", next_class.time_to),
+              place: next_class.room
+            });
+            infos.text(text);
             link.append(infos);
           }
           li.append(link);
