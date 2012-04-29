@@ -2,31 +2,40 @@
 <% content_for :header do %>
 <h1><%= @course.course_type == 'course' ? @course.title : @course.group_title %></h1>
 <!--<%= link_to t('nav.back'), courses_path %>-->
-<a data-role="button" data-rel="back"><%= t 'nav.back' %></a>
+<a data-role="button" data-iconpos="notext" data-icon="back" data-rel="back"><%= t 'nav.back' %></a>
 <% end %>
 <div data-role="collapsible">
-<h2><%= t 'Zeiten und Räume' %></h2>
+<h2><%= t '.dates_and_rooms' %></h2>
 <ul data-role="listview" id="infos">
   <% @course.course_data.each do |data| %>
-    <% if data["date"] >= DateTime.now %>
       <li>
-        <p>
-        <strong><%= l(data["date"], format: "%a, %d. %b") %> <%= t 'from' %> <%= l(data["time_from"], format: "%H:%M") %> <%= t 'to' %> <%= l(data["time_to"], format: "%H:%M") %> <%= t 'at' %> <%= data["room"] %></strong></p>
-        <p><%= data["instructor"] %></p></li>
-    <% end %>
+        
+        <h3>
+          <%= t('.time_place', {date: l(data["date"].to_date, format: :short), time_from: l(data["time_from"], format: :very_short), time_to: l(data["time_to"], format: :very_short), place: data["room"] })%>
+          </h3>
+        <p><%= data["instructor"] %></p>
+        </li>
   <% end %>
 </ul>  
 </div>
 <div data-role="collapsible">
 <% if @groups and @groups.length > 0 %>
-<h2><%= t 'Übungsgruppen' %><h2>
+<h2><%= t '.tutorials' %><h2>
 <ul data-role="listview" id="groups">
   <% @groups.each do |group| %>
-    <li><%= link_to  group.group_title, group %>
+    <li>
+    <%= link_to group do  %>
+      <h3><%= group.group_title %></h3>
+      <% if group.next_class %>
+      <p><%= t('courses.next_class', {date: l(group.next_class[:date], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
+      </p>
+      
+      <% end %>
+    <% end %>
     </li>
   <% end %>
 </ul>
 <% end %>
 </div>
 
-<a href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t 'view_in_paul'%></a>
+<a href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t '.view_in_paul'%></a>

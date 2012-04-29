@@ -1,7 +1,12 @@
 de:
   courses:
-    index:
-      next_class: "Nächster Termin: %{date}, %{time_from} bis %{time_to} in %{place}"
+    next_class: "Nächster Termin: %{date}, %{time_from} bis %{time_to} in %{place}"
+    show:
+      time_place: "%{date}, %{time_from} bis %{time_to} in %{place}"
+      tutorials: 'Übungsgruppen'
+      dates_and_rooms: 'Zeiten und Räume'
+      view_in_paul: 'Kurs in PAUL ansehen'
+    room_na: 'N.N.'
   transportation:
     index:
       trip_at: "%{station} um %{date}"

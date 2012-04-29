@@ -7,7 +7,8 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     if @course.course_type == 'course'
-      @groups = Course.where(paul_id: @course.paul_id).where(course_type: 'group').excludes(id: @course.id)
+      @groups = Course.where(paul_id: @course.paul_id).where(course_type: 'group').excludes(id: @course.id).order_by([[:title_downcase, :asc]]).entries
+      attach_next_class @groups
     end
     # If the request is stale according to the given timestamp and etag value
     # (i.e. it needs to be processed again) then execute this block
@@ -30,13 +31,21 @@ class CoursesController < ApplicationController
 
   def destroy
   end
-  
   def search
     query = params[:query].downcase
     @courses = []
     @courses = Course.where(course_type: 'course').where(title_downcase: /.*#{query}.*/).limit(10).entries if query.length > 2
     
-    @courses.each do |course|
+    attach_next_class @courses
+    
+    # If the request is stale according to the given timestamp and etag value
+    # (i.e. it needs to be processed again) then execute this block
+    #if stale?(:last_modified => Time.now + 7.days, :etag => @courses)
+    #  expires_in 7.days, :public => true, 'max-stale' => 0
+    #end
+  end
+  def attach_next_class(courses)
+    courses.each do |course|
       min_interval = 100.days
       course.course_data.each do |data|
         next_class = data['date'].to_date
@@ -44,7 +53,7 @@ class CoursesController < ApplicationController
         if next_class >= Date.today and interval < min_interval
           course['next_class'] = {
             date: next_class,
-            room: data['room'],
+            room: data['room'].length == 0 ? t('courses.room_na') : data['room'],
             time_from: data['time_from'],
             time_to: data['time_to']
             #instructor: data['instructor']
@@ -52,11 +61,6 @@ class CoursesController < ApplicationController
           min_interval = interval
         end
       end
-    end  
-    # If the request is stale according to the given timestamp and etag value
-    # (i.e. it needs to be processed again) then execute this block
-    #if stale?(:last_modified => Time.now + 7.days, :etag => @courses)
-    #  expires_in 7.days, :public => true, 'max-stale' => 0
-    #end
+    end
   end
 end

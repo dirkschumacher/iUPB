@@ -37,7 +37,7 @@ $('#page').live( 'pageinit', function(event) {
           if(next_class)
           {
             var infos = $('<p>');
-            var text = I18n.t("courses.index.next_class", {
+            var text = I18n.t("courses.next_class", {
               date: I18n.l("date.formats.short", next_class.date),
               time_from: I18n.l("time.formats.very_short", next_class.time_from), 
               time_to:I18n.l("time.formats.very_short", next_class.time_to),
@@ -57,5 +57,6 @@ $('#page').live( 'pageinit', function(event) {
 });
 </script>
 <ul data-role="listview" id="courses_result_list">
+  <li><h3><%= t '.type_and_find' %></h3></li>
 </ul>
 
