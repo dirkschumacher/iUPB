@@ -13,7 +13,7 @@
 
 <script>
 var today = new Date(<%= @today_js %>);
-jQuery(document).bind('pageinit', function() {
+jQuery(document).bind('pageshow', function() {
 	window.Restaurant.updateMenus(today);
 	
 	$("#page").swiperight(function() {

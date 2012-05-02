@@ -14,4 +14,5 @@
 //= require i18n/translations
 //= require jquery
 //= require jquery_ujs
+//= require libs
 //= require_tree .
