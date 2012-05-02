@@ -1,13 +1,10 @@
 
 <% content_for :header do %>
 <h1><%= @restaurant.name %> &ndash; <span id="day_title"><%= l(@today, format: "%a, %d. %b") %></span></h1>
-<div data-role="controlgroup" class="ui-btn-left">
-	<a id="prev_day_button" href="<%= restaurants_path %>" data-role="button" data-icon="arrow-l">&nbsp;</a>
-</div>
-
-<div data-role="controlgroup" class="ui-btn-right">
-	<a id="next_day_button" href="<%= restaurants_path %>" data-role="button" data-icon="arrow-r">&nbsp;</a>
-</div>
+	<% 
+	#< %= link_to t(".prev_day"), restaurants_path, 'data-icon' => 'arrow-l', 'id' => "prev_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
+	#< %= link_to t(".next_day"), restaurants_path, 'data-icon' => 'arrow-r', 'id' => "next_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
+	%>
 <% end %>
 
 <ul id="menus" data-role="listview">
@@ -16,17 +13,24 @@
 
 <script>
 var today = new Date(<%= @today_js %>);
-jQuery(document).ready(function() {
-	window.Restaurant.updateMenus();
+jQuery(document).bind('pageinit', function() {
+	window.Restaurant.updateMenus(today);
+	
+	$("#page").swiperight(function() {
+	   today = window.Restaurant.loadPrevDay(today);
+	});
+	$("#page").swipeleft(function() {
+	   today = window.Restaurant.loadNextDay(today);
+	});
+	/*
 	$("#prev_day_button").click(function(){
-		today = new Date(today.getTime() - (24 * 60 * 60 * 1000));
-		window.Restaurant.updateMenus(today.format("dd-mm-yyyy"));
+		today = window.Restaurant.loadPrevDay(today);
 		return false;
 	});
 	$("#next_day_button").click(function(){
-		today = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-		window.Restaurant.updateMenus(today.format("dd-mm-yyyy"));
+	 	today = window.Restaurant.loadNextDay(today);
 		return false;
 	});
+	*/
 });
 </script>

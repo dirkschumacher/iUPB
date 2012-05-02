@@ -13,9 +13,7 @@ gem "bing_translator", "~> 0.0.2"
 gem 'rack-contrib'
 gem 'i18n-js'
 
-# Gemfile
 gem 'rabl'
-# Also add either `json` or `yajl-ruby` as the JSON parser
 gem 'yajl-ruby'
 
 # Gems used only for assets and not required

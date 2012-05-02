@@ -8,15 +8,18 @@ $("#loading").ajaxStart ->
 $("#loading").ajaxStart ->
 	$(this).hide()
 
-window.Restaurant = {};
+@Restaurant = {}
 
-window.Restaurant.updateMenus = (date)->
+@Restaurant.updateMenus = (date)->
 	url = "/restaurants/index.json"
 	if(date)
-		url += "?date="+date
+		url += "?date="+date.format("dd-mm-yyyy")
+	$.xhrPool.abortAll() # we don't care about old pending requests when a new menu is requested
 	$.retrieveJSON(url, (json, status) ->
 		$("#menus").empty()
+		got_any = false;
 		$.each(json, ->
+			got_any = true;
 			menu = $(this)[0].menu
 			item = $("<li>")
 			item.append($("<h3>").text(menu.description))
@@ -36,10 +39,24 @@ window.Restaurant.updateMenus = (date)->
 				item.append($("<p>").text(menu.counter))
 				
 			$("#menus").append(item)
-			$("#menus").listview('refresh')
 			return
 		)
-		$("#day_title").text(today.format("ddd, dd.mm."))
+		$("#day_title").text(date.format("ddd, dd.mm."))
+		if(!got_any)
+			item = $("<li>")
+			item.append($("<h3>").text("---"));
+			$("#menus").append(item)
+		
+		$("#menus").listview('refresh')
 		return
 	)
-	
+
+@Restaurant.loadNextDay = (today) ->
+		day = new Date(today.getTime() + (24 * 60 * 60 * 1000));
+		window.Restaurant.updateMenus(day);
+		return day
+
+@Restaurant.loadPrevDay = (today) ->
+		day = new Date(today.getTime() - (24 * 60 * 60 * 1000));
+		window.Restaurant.updateMenus(day);
+		return day
