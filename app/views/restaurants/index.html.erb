@@ -16,23 +16,23 @@ var today = new Date(<%= @today_js %>);
 
 // #TODO: put the following code in the Restaurant class (Restaurant.initMenuView(Date day) or so)
 jQuery(document).bind('pageshow', function() {
-	window.Restaurant.updateMenus(today);
+	window.iUPB.Restaurant.updateMenus(today);
 	
 	$("#page").swiperight(function() { // swipe from right to left
-	   today = window.Restaurant.loadPrevDay(today);
+	   today = window.iUPB.Restaurant.loadPrevDay(today);
 	});
 	$("#page").swipeleft(function() { // swipe from left to right
-	   today = window.Restaurant.loadNextDay(today);
+	   today = window.iUPB.Restaurant.loadNextDay(today);
 	});
 	$(document).keydown(function(e){
 	    if (e.keyCode == 37) { // left key
-	       today = window.Restaurant.loadPrevDay(today);
+	       today = window.iUPB.Restaurant.loadPrevDay(today);
 	       return false;
 	    }
 	});
 	$(document).keydown(function(e){
 	    if (e.keyCode == 39) { // right key
-	       today = window.Restaurant.loadNextDay(today);
+	       today = window.iUPB.Restaurant.loadNextDay(today);
 	       return false;
 	    }
 	});

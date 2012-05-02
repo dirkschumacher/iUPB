@@ -1,16 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+@iUPB.Restaurant = {}
 
-$("#loading").ajaxStart ->
-	$(this).show()
-
-$("#loading").ajaxStart ->
-	$(this).hide()
-
-@Restaurant = {}
-
-@Restaurant.updateMenus = (date)->
+@iUPB.Restaurant.updateMenus = (date)->
 	url = "/restaurants/index.json"
 	if(date)
 		url += "?date="+date.format("dd-mm-yyyy")
@@ -51,12 +41,16 @@ $("#loading").ajaxStart ->
 		return
 	)
 
-@Restaurant.loadNextDay = (today) ->
+@iUPB.Restaurant.loadNextDay = (today) ->
 		day = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-		window.Restaurant.updateMenus(day);
+		window.iUPB.Restaurant.updateMenus(day);
 		return day
 
-@Restaurant.loadPrevDay = (today) ->
-		day = new Date(today.getTime() - (24 * 60 * 60 * 1000));
-		window.Restaurant.updateMenus(day);
-		return day
+@iUPB.Restaurant.loadPrevDay = (today) ->
+	day = new Date(today.getTime() - (24 * 60 * 60 * 1000));
+	window.iUPB.Restaurant.updateMenus(day);
+	return day
+
+
+
+@iUPB.enableLoadingIndicator()

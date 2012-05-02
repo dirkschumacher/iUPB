@@ -2,6 +2,13 @@
 	display:none;
 }
 
+#spinner {
+	float:right;
+	display:inline;
+	margin-right: 15px;
+	margin-top: 19px;
+}
+
 #offline {
 	display:none;
 }
