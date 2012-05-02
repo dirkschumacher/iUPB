@@ -36,6 +36,7 @@
   <div id="page" data-role="page">
     <header>
 <div data-role="header"  data-position="fixed">
+	<span id="spinner"></span>
 	<%= yield(:header) -%>
   <%= link_to t(".home"), root_path, 'data-icon' => 'home', 'data-iconpos' => 'notext', 'data-direction' => 'reverse' %>
 </div>  
@@ -44,7 +45,6 @@
       <%- flash.each do |name, msg| -%>
         <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
       <%- end -%>
-	<div id="loading"><%= t "loading" %></div>
 	<div id="offline"><%= t "you_are_offline" %></div>
 <%= yield %>
     <!--footer>

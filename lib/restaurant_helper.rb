@@ -35,6 +35,10 @@ class RestaurantHelper
     
     menu.xpath("//tag").each do |tag|
       datum = tag.search("datum").first.text
+
+      # following line returns empty array so we do not load menus multiple times if we already have the data
+      return [] if restaurant.menus.where(date: DateTime::strptime(datum, "%d.%m.%Y").to_date.to_time.midnight).first
+      
       tag.search("menue").each do |current_menu|
         data = {}
         data["name"] = current_menu.search("menu").first.text
