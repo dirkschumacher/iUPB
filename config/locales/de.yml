@@ -1,6 +1,7 @@
 de:
+    please_wait: "Bitte warten..."
     courses:
-      next_class: "Nächster Termin: %{date}, %{time_from} bis %{time_to} in %{place}"
+      next_class: "Nächste: %{date}, %{time_from} bis %{time_to} in %{place}"
       show:
         time_place: "%{date}, %{time_from} bis %{time_to} in %{place}"
         tutorials: 'Übungsgruppen'
@@ -23,3 +24,4 @@ de:
         weather: "Wetter"
         buses: "Abfahrt"
         home: "Startseite"
+        paul: "PAUL"
