@@ -12,7 +12,7 @@ gem 'mongoid'
 gem "bing_translator", "~> 0.0.2"
 gem 'rack-contrib'
 gem 'i18n-js'
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', :group => "production"
 
 gem 'rabl'
 gem 'yajl-ruby'
