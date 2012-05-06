@@ -32,7 +32,7 @@
   <%= yield(:head) -%>
 </head>
 <body>
-  <div id="page" data-role="page" <%= yield("page-attributes") %>>
+  <div data-role="page" <%= yield("page-attributes") %>>
     <header>
 <div data-role="header"  data-position="fixed">
 	<span id="spinner"></span>
@@ -67,6 +67,14 @@
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
   </script-->
+<script>
+jQuery('div').live('pagehide', function(event, ui){
+      var page = jQuery(event.target);
 
+      if(page.attr('data-cache') == 'never'){
+        page.remove();
+      };
+    });
+</script>
 </body>
 </html>

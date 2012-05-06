@@ -1,5 +1,6 @@
+<%= content_for "page-attributes" do %>id="twitterPage"<% end %>
 <script>
-$('#page').live( 'pageinit', function(event) {
+$('#twitterPage').live( 'pageinit', function(event) {
   reload = function(){
     $("#twitter_list").twitterFeed(function()
     {

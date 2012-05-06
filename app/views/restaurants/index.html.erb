@@ -1,4 +1,4 @@
-<%= content_for "page-attributes" do %>data-dom-cache="false"<% end %>
+<%= content_for "page-attributes" do %>id="restaurantPage" data-cache="never"<% end %>
 <% content_for :header do %>
 <h1><%= @restaurant.name %> &ndash; <span id="day_title"><%= l(@today, format: "%a, %d. %b") %></span></h1>
 	<% 
@@ -14,26 +14,27 @@
 <script>
 var today = new Date(<%= @today_js %>);
 // #TODO: put the following code in the Restaurant class (Restaurant.initMenuView(Date day) or so)
-$(document).bind('pageshow', function() {
+$(document).delegate('#restaurantPage', 'pageshow', function() {
 	window.iUPB.enableLoadingIndicator();
 	window.iUPB.Restaurant.updateMenus(today);
-	$("#page").swiperight(function() { // swipe from right to left
+	$("#restaurantPage").swiperight(function() { // swipe from right to left
 	   today = window.iUPB.Restaurant.loadPrevDay(today);
 	});
-	$("#page").swipeleft(function() { // swipe from left to right
+	$("#restaurantPage").swipeleft(function() { // swipe from left to right
 	   today = window.iUPB.Restaurant.loadNextDay(today);
 	});
-	$(document).keydown(function(e){
+	$("#restaurantPage").keydown(function(e){
 	    if (e.keyCode == 37) { // left key
 	       today = window.iUPB.Restaurant.loadPrevDay(today);
 	       return false;
 	    }
 	});
-	$(document).keydown(function(e){
+	$("#restaurantPage").keydown(function(e){
 	    if (e.keyCode == 39) { // right key
 	       today = window.iUPB.Restaurant.loadNextDay(today);
 	       return false;
 	    }
 	});
 });
+$('body').delegate('#restaurantPage', 'pagehide', function () { $(this).remove(); });
 </script>
