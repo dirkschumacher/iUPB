@@ -23,13 +23,13 @@ $(document).delegate('#restaurantPage', 'pageshow', function() {
 	$("#restaurantPage").swipeleft(function() { // swipe from left to right
 	   today = window.iUPB.Restaurant.loadNextDay(today);
 	});
-	$("#restaurantPage").keydown(function(e){
+	$(document).keydown(function(e){
 	    if (e.keyCode == 37) { // left key
 	       today = window.iUPB.Restaurant.loadPrevDay(today);
 	       return false;
 	    }
 	});
-	$("#restaurantPage").keydown(function(e){
+	$(document).keydown(function(e){
 	    if (e.keyCode == 39) { // right key
 	       today = window.iUPB.Restaurant.loadNextDay(today);
 	       return false;
