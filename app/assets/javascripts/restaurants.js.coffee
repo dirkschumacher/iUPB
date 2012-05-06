@@ -18,10 +18,12 @@
 			if(menu.type)
 				item.append($("<p>").html("<i>" + menu.type + "</i>"))
 			sd = $('<p id="side_dishes">')
-			$.each(menu.side_dishes, (index, value) ->
-				sd.html(sd.html() + "&#8226; " + value +  "<br/>")
-				return
-			)
+			if(menu.side_dishes)
+				$.each(menu.side_dishes, (index, value) ->
+					sd.html(sd.html() + "&#8226; " + value +  "<br/>")
+					return
+				)
+			
 			item.append(sd)
 			if(menu.price)
 				item.append($("<p>").text(menu.price))

@@ -22,6 +22,7 @@ class RestaurantHelper
   
   protected
   def self.get_menu_data(restaurant)
+    I18n.locale = :de
     if restaurant.is_a?(String)
       restaurant = Restaurant.where(name: restaurant).first
     end
