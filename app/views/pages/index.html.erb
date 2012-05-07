@@ -1,6 +1,6 @@
-
+<%= content_for "page-attributes" do %>id="homePage"<% end %>
 <% content_for :header do %>
-<h1><%= t ".dashboard"%></h1>
+<h1>iUPB</h1>
 <% end %>
 <div class="ui-grid-a">
 	<div class="ui-block-a">
@@ -18,3 +18,8 @@
 	<div class="ui-block-a"><%= link_to t("layouts.application.twitter"), twitter_path, 'data-role' => 'button' %></div>
 	<div class="ui-block-b"></div>
 </div>
+<script>
+$('#homePage').live( 'pageinit', function(event) {
+	$("#home-button").hide();
+});
+</script>

@@ -35,7 +35,7 @@
   <div data-role="page" <%= yield("page-attributes") %>>
     <header>
 <div data-role="header"  data-position="fixed">
-	<%= link_to t(".home"), root_path, 'data-icon' => 'home', 'data-iconpos' => 'notext', 'data-direction' => 'reverse' %>
+	<%= link_to t(".home"), root_path, 'id' => 'home-button', 'data-icon' => 'home', 'data-iconpos' => 'notext', 'data-direction' => 'reverse' %>
 	<span id="spinner"></span>
 	<%= yield(:header) -%>
   
@@ -61,13 +61,14 @@
     <!--/footer-->
   </div> <!--! end of #container -->
 
-
-  <!--script> // Change UA-XXXXX-X to be your site's ID
-    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+<% unless Rails.env.development? %>
+  <script> // Change UA-XXXXX-X to be your site's ID
+    var _gaq=[["_setAccount","UA-31507722-1"],["_trackPageview"]];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
-  </script-->
+  </script>
+<% end %>
 <script>
 jQuery('div').live('pagehide', function(event, ui){
       var page = jQuery(event.target);
