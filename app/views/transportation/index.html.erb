@@ -41,6 +41,7 @@ $('#transportPage').live( 'pageinit', function(event) {
   load_buses();
   $("#reload-button").bind("click", function(e){
     load_buses();
+    return false;
   })
 });
 </script>
