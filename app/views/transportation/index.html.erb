@@ -11,7 +11,6 @@ $('#transportPage').live( 'pageinit', function(event) {
       list.empty();
       for(var i = 0; i < data.length; i++)
       {
-        console.log(data[i].station);
         var list_item = $('<li><h3>'
          + I18n.t("transportation.index.trip_at", {
             "station" : data[i].station, 
