@@ -4,7 +4,7 @@
 <a href="#" id="reload-button" class="ui-btn-right" data-role="button" data-icon="refresh" data-iconpos="notext">refresh</a>
 <% end %>
 <script>
-$('#transportPage').live( 'pageinit', function(event) {
+$('#transportPage').live( 'pageshow', function(event) {
   var load_buses = function()
   {
     $.ajax({ 
@@ -41,6 +41,7 @@ $('#transportPage').live( 'pageinit', function(event) {
   load_buses();
   $("#reload-button").bind("click", function(e){
     load_buses();
+	e.preventDefault();
   })
 });
 </script>

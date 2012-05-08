@@ -21,3 +21,6 @@ jQuery(document).bind('pageshow', ->
 		return
 	)
 )
+jQuery(document).delegate('#homePage', 'pageshow', (event) ->
+	$("#home-button").hide()
+)
