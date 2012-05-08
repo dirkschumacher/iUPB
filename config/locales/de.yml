@@ -25,3 +25,6 @@ de:
         buses: "Abfahrt"
         home: "Startseite"
         paul: "PAUL"
+    time:
+      formats:
+        very_short: ! '%H:%M Uhr'
