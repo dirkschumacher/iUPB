@@ -6,7 +6,14 @@
 $('#transportPage').live( 'pageinit', function(event) {
   load_buses = function()
   {
-    $.getJSON("https://upbapi.cloudcontrolled.com/busplan.php?callback=?", function(data){
+    $.ajax({ 
+      url: "https://upbapi.cloudcontrolled.com/busplan.php?callback=?",
+      dataType: "jsonp",
+      type: "GET",
+      jsonp: true,
+      cache: true,
+      jsonpCallback: "success", 
+      success: function(data){
       var list = $("#bus_data_list");
       list.empty();
       for(var i = 0; i < data.length; i++)
@@ -28,7 +35,7 @@ $('#transportPage').live( 'pageinit', function(event) {
   			list.append(list_item);
       }
       list.listview('refresh');
-    });
+    }});
   };
   load_buses();
 });
