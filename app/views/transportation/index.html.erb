@@ -1,10 +1,11 @@
 <%= content_for "page-attributes" do %>id="transportPage"<% end %>
 <% content_for :header do %>
 <h1><%= t "layouts.application.buses"%></h1>
+<a href="#" id="reload-button" class="ui-btn-right" data-role="button" data-icon="refresh" data-iconpos="notext">refresh</a>
 <% end %>
 <script>
 $('#transportPage').live( 'pageinit', function(event) {
-  load_buses = function()
+  var load_buses = function()
   {
     $.ajax({ 
       url: "https://upbapi.cloudcontrolled.com/busplan.php?callback=?",
@@ -38,6 +39,9 @@ $('#transportPage').live( 'pageinit', function(event) {
     }});
   };
   load_buses();
+  $("#reload-button").bind("click", function(e){
+    load_buses();
+  })
 });
 </script>
 <ul id="bus_data_list" data-role="listview">
