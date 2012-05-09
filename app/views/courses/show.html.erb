@@ -10,7 +10,7 @@
   <% @course.course_data.each do |data| %>
       <li>
         
-        <h3>
+        <h3 style="white-space: normal;">
           <%= t('.time_place', {date: l(data["date"].to_date, format: :short), time_from: l(data["time_from"], format: :very_short), time_to: l(data["time_to"], format: :very_short), place: data["room"] })%>
           </h3>
         <p><%= data["instructor"] %></p>
@@ -25,7 +25,7 @@
   <% @groups.each do |group| %>
     <li>
     <%= link_to group do  %>
-      <h3><%= group.group_title %></h3>
+      <h3 style="white-space: normal;"><%= group.group_title %></h3>
       <% if group.next_class %>
       <p><%= t('courses.next_class', {date: l(group.next_class[:date], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
       </p>

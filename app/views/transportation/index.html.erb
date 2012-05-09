@@ -19,7 +19,7 @@ $('#transportPage').live( 'pageshow', function(event) {
       list.empty();
       for(var i = 0; i < data.length; i++)
       {
-        var list_item = $('<li><h3>'
+        var list_item = $('<li><h3 style="white-space: normal;">'
          + I18n.t("transportation.index.trip_at", {
             "station" : data[i].station, 
             "date" : I18n.l("time.formats.very_short", data[i].date)
