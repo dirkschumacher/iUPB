@@ -2,7 +2,7 @@
 <% content_for :header do %>
 <h1><%= t ".Paul"%></h1>
 <% end %>
-<input type="search" name="search" autocomplete="off" placeholder="Search..." id="search_id" value="" />
+<input type="search" name="search" autocomplete="off" placeholder="<%= t '.search' %>" id="search_id" value="" />
 <script>
 $('#paulPage').live( 'pageshow', function(event) {
   //TODO: port this to coffee script :)
