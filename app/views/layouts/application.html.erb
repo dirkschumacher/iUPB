@@ -32,9 +32,9 @@
   <%= yield(:head) -%>
 </head>
 <body>
-  <div data-role="page" <%= yield("page-attributes") %>>
+  <div data-role="page" data-theme="b" <%= yield("page-attributes") %>>
     <header>
-<div data-role="header"  data-position="fixed">
+<div data-role="header"  data-theme="b" data-position="fixed">
 	<%= link_to t(".home"), root_path, 'id' => 'home-button', 'data-icon' => 'home', 'data-iconpos' => 'notext', 'data-direction' => 'reverse' %>
 	<span id="spinner"></span>
 	<%= yield(:header) -%>
