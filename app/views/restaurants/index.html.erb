@@ -1,4 +1,4 @@
-<%= content_for "page-attributes" do %>id="restaurantPage" data-cache="never"<% end %>
+<%= content_for "page-attributes" do %>id="restaurantPage"<% end %>
 <% content_for :header do %>
 <h1><span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span></h1>
 	<% 
@@ -7,38 +7,33 @@
 	%>
 	<!-- TODO: <%= @restaurant.name %>  Hier kommt die Restaurant auswahl hin-->
 <% end %>
-<ul id="menus" data-role="listview">
+<ul id="menus">
 	<li><%= t "please_wait" %></li>
 </ul>
 
 <script>
 var today = new Date(<%= @today_js %>);
-var already_setup = false;
 // #TODO: put the following code in the Restaurant class (Restaurant.initMenuView(Date day) or so)
-$(document).delegate('#restaurantPage', 'pageshow', function() {
-	if(!already_setup){
-		window.iUPB.enableLoadingIndicator();
-		window.iUPB.Restaurant.updateMenus(today);
-		$("#restaurantPage").swiperight(function() { // swipe from right to left
-		   today = window.iUPB.Restaurant.loadPrevDay(today);
-		});
-		$("#restaurantPage").swipeleft(function() { // swipe from left to right
-		   today = window.iUPB.Restaurant.loadNextDay(today);
-		});
-		$(document).keydown(function(e){
-		    if (e.keyCode == 37) { // left key
-		       today = window.iUPB.Restaurant.loadPrevDay(today);
-		       return false;
-		    }
-		});
-		$(document).keydown(function(e){
-		    if (e.keyCode == 39) { // right key
-		       today = window.iUPB.Restaurant.loadNextDay(today);
-		       return false;
-		    }
-		});
-		already_setup = true;
-	}
+$(document).ready(function() {
+  window.iUPB.enableLoadingIndicator();
+  window.iUPB.Restaurant.updateMenus(today);
+  /*$("#restaurantPage").swiperight(function() { // swipe from right to left
+  today = window.iUPB.Restaurant.loadPrevDay(today);
+  });
+  $("#restaurantPage").swipeleft(function() { // swipe from left to right
+  today = window.iUPB.Restaurant.loadNextDay(today);
+  });*/
+  $(document).keydown(function(e){
+    if (e.keyCode == 37) { // left key
+      today = window.iUPB.Restaurant.loadPrevDay(today);
+      return false;
+    }
+  });
+  $(document).keydown(function(e){
+    if (e.keyCode == 39) { // right key
+      today = window.iUPB.Restaurant.loadNextDay(today);
+      return false;
+    }
+  });
 });
-$('body').delegate('#restaurantPage', 'pagehide', function () { $(this).remove(); });
 </script>

@@ -2,12 +2,12 @@
 <% content_for :header do %>
 <h1><%= t ".course_details" %></h1>
 <!--<%= link_to t('nav.back'), courses_path %>-->
-<a data-role="button" data-iconpos="notext" data-icon="back" data-rel="back"><%= t 'nav.back' %></a>
+<a><%= t 'nav.back' %></a>
 <% end %>
 <h2><%= @course.course_type == 'course' ? @course.title : @course.group_title %></h2>
-<div data-role="collapsible">
+<div>
 <h2><%= t '.dates_and_rooms' %></h2>
-<ul data-role="listview" id="infos">
+<ul id="infos">
   <% @course.course_data.each do |data| %>
       <li>
         
@@ -19,10 +19,10 @@
   <% end %>
 </ul>  
 </div>
-<div data-role="collapsible">
+<div>
 <% if @groups and @groups.length > 0 %>
 <h2><%= t '.tutorials' %><h2>
-<ul data-role="listview" id="groups">
+<ul id="groups">
   <% @groups.each do |group| %>
     <li>
     <%= link_to group do  %>

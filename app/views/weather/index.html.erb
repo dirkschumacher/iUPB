@@ -2,7 +2,7 @@
 <% content_for :header do %>
 <h1><%= t ".current_wheater "%></h1>
 <% end %>
-<ul data-role="listview">
+<ul>
 	<li><%= t ".temperature" %> <%= @weatherData['temp'] %></li>
 	<li><%= t ".min" %>.  <%= t ".temperature" %> <%= @weatherData['tempmin'] %></li>
 	<li><%= t ".max" %>. <%= t ".temperature" %> <%= @weatherData['tempmax'] %></li>

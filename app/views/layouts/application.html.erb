@@ -32,10 +32,24 @@
   <%= yield(:head) -%>
 </head>
 <body>
-  <div data-role="page" data-theme="b" <%= yield("page-attributes") %>>
+  <div <%= yield("page-attributes") %>>
+    <header class="navbar navbar-fixed-top">
+      <nav class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          	<%= link_to t(".home"), root_path, :class => 'brand','id' => 'home-button'%>
+          <div class="nav-collapse">
+              <%= render 'layouts/navigation' %>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
     <header>
-<div data-role="header"  data-theme="b" data-position="fixed">
-	<%= link_to t(".home"), root_path, 'id' => 'home-button', 'data-icon' => 'home', 'data-iconpos' => 'notext', 'data-direction' => 'reverse' %>
+<div>
 	<span id="spinner"></span>
 	<%= yield(:header) -%>
   
@@ -69,14 +83,5 @@
     s.parentNode.insertBefore(g,s)}(document,"script"));
   </script>
 <% end %>
-<script>
-jQuery('div').live('pagehide', function(event, ui){
-      var page = jQuery(event.target);
-
-      if(page.attr('data-cache') == 'never'){
-        page.remove();
-      };
-    });
-</script>
 </body>
 </html>

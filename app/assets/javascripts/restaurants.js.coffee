@@ -36,10 +36,8 @@
 		$("#day_title").text(I18n.l("date.formats.weekday_date", date))
 		if(!got_any)
 			item = $("<li>")
-			item.append($("<h3>").text("---"));
+			item.append($("<h3>").text("---"))
 			$("#menus").append(item)
-		
-		$("#menus").listview('refresh')
 		return
 	)
 

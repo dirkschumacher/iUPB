@@ -4,7 +4,7 @@
 <% end %>
 <input type="search" name="search" autocomplete="off" placeholder="<%= t '.search' %>" id="search_id" value="" />
 <script>
-$('#paulPage').live( 'pageshow', function(event) {
+$(document).ready(function(event) {
   //TODO: port this to coffee script :)
 
   
@@ -49,7 +49,6 @@ $('#paulPage').live( 'pageshow', function(event) {
           li.append(link);
           result_list.append(li);
         });
-        result_list.listview('refresh');
       }); 
     }, 
     500);
