@@ -50,7 +50,7 @@ class CoursesController < ApplicationController
       course.course_data.each do |data|
         next_class = data['date'].to_date
         interval = next_class - Date.today
-        if next_class >= Date.today and interval < min_interval
+        if next_class >= DateTime.now and interval < min_interval
           course['next_class'] = {
             date: next_class,
             room: data['room'].length == 0 ? t('courses.room_na') : data['room'],

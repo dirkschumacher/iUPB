@@ -1,9 +1,9 @@
 en:
     please_wait: "Please wait..."
     courses:
-      next_class: "Next: %{date}, %{time_from} til %{time_to} in %{place}"
+      next_class: "Next: %{date}, %{time_from} until %{time_to} in %{place}"
       show:
-        time_place: "%{date}, %{time_from} til %{time_to} in %{place}"
+        time_place: "%{date}, %{time_from} until %{time_to} in %{place}"
         tutorials: 'Tutorials'
         dates_and_rooms: 'Schedule with Rooms'
         view_in_paul: 'View course at PAUL'
