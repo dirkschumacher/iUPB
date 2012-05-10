@@ -1,9 +1,10 @@
 
 <% content_for :header do %>
-<h1><%= @course.course_type == 'course' ? @course.title : @course.group_title %></h1>
+<h1><%= t ".course_details" %></h1>
 <!--<%= link_to t('nav.back'), courses_path %>-->
 <a data-role="button" data-iconpos="notext" data-icon="back" data-rel="back"><%= t 'nav.back' %></a>
 <% end %>
+<h2><%= @course.course_type == 'course' ? @course.title : @course.group_title %></h2>
 <div data-role="collapsible">
 <h2><%= t '.dates_and_rooms' %></h2>
 <ul data-role="listview" id="infos">
@@ -26,7 +27,7 @@
     <li>
     <%= link_to group do  %>
       <h3 style="white-space: normal;"><%= group.group_title %></h3>
-      <% if group.next_class %>
+      <% if group['next_class'] %>
       <p><%= t('courses.next_class', {date: l(group.next_class[:date], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
       </p>
       
