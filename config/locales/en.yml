@@ -31,3 +31,6 @@ en:
     time:
       formats:
         very_short: ! '%H:%M'
+    date:
+      formats:
+        weekday_date: ! '%a, %d. %b'

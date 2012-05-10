@@ -7,9 +7,9 @@
 	$.xhrPool.abortAll() # we don't care about old pending requests when a new menu is requested
 	$.retrieveJSON(url, (json, status) ->
 		$("#menus").empty()
-		got_any = false;
+		got_any = false
 		$.each(json, ->
-			got_any = true;
+			got_any = true
 			menu = $(this)[0].menu
 			item = $("<li>")
 			item.append($("<h3>").text(menu.description))
@@ -33,7 +33,7 @@
 			$("#menus").append(item)
 			return
 		)
-		$("#day_title").text(date.format("ddd, dd.mm."))
+		$("#day_title").text(I18n.l("date.formats.weekday_date", date))
 		if(!got_any)
 			item = $("<li>")
 			item.append($("<h3>").text("---"));
@@ -44,11 +44,11 @@
 	)
 
 @iUPB.Restaurant.loadNextDay = (today) ->
-		day = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-		window.iUPB.Restaurant.updateMenus(day);
+		day = new Date(today.getTime() + (24 * 60 * 60 * 1000))
+		window.iUPB.Restaurant.updateMenus(day)
 		return day
 
 @iUPB.Restaurant.loadPrevDay = (today) ->
-	day = new Date(today.getTime() - (24 * 60 * 60 * 1000));
-	window.iUPB.Restaurant.updateMenus(day);
+	day = new Date(today.getTime() - (24 * 60 * 60 * 1000))
+	window.iUPB.Restaurant.updateMenus(day)
 	return day

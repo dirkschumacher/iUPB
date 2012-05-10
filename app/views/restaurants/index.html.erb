@@ -1,12 +1,12 @@
 <%= content_for "page-attributes" do %>id="restaurantPage" data-cache="never"<% end %>
 <% content_for :header do %>
-<h1><%= @restaurant.name %> &ndash; <span id="day_title"><%= l(@today, format: "%a, %d. %b") %></span></h1>
+<h1><span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span></h1>
 	<% 
 	#< %= link_to t(".prev_day"), restaurants_path, 'data-icon' => 'arrow-l', 'id' => "prev_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
 	#< %= link_to t(".next_day"), restaurants_path, 'data-icon' => 'arrow-r', 'id' => "next_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
 	%>
+	<!-- TODO: <%= @restaurant.name %>  Hier kommt die Restaurant auswahl hin-->
 <% end %>
-
 <ul id="menus" data-role="listview">
 	<li><%= t "please_wait" %></li>
 </ul>
