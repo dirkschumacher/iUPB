@@ -43,7 +43,7 @@ class RestaurantHelper
       tag.search("menue").each do |current_menu|
         begin # lets be paranoid with the XML
           data = {}
-          data["name"] = current_menu.search("menu").first.text
+          data["name"] = current_menu.search("menu").first.text if current_menu.search("menu").first
           data["date"] = DateTime::strptime(datum, "%d.%m.%Y").to_date
           data["type"] = current_menu.search("speisentyp").first.text if current_menu.search("speisentyp").first
           data["description"] = current_menu.search("text").first.text if current_menu.search("text").first
