@@ -41,15 +41,17 @@ class RestaurantHelper
       return [] if restaurant.menus.where(date: DateTime::strptime(datum, "%d.%m.%Y").to_date.to_time.midnight).first
       
       tag.search("menue").each do |current_menu|
-        data = {}
-        data["name"] = current_menu.search("menu").first.text
-        data["date"] = DateTime::strptime(datum, "%d.%m.%Y").to_date
-        data["type"] = current_menu.search("speisentyp").first.text if current_menu.search("speisentyp").first
-        data["description"] = current_menu.search("text").first.text if current_menu.search("text").first
-        data["price"] = current_menu.search("preis").first.text if current_menu.search("preis").first
-        data["counter"] = current_menu.search("ausgabe").first.text if current_menu.search("ausgabe").first
-        data["side_dishes"] = current_menu.search("beilage").map do |beilage| beilage.text  end
-        menus << data
+        begin # lets be paranoid with the XML
+          data = {}
+          data["name"] = current_menu.search("menu").first.text
+          data["date"] = DateTime::strptime(datum, "%d.%m.%Y").to_date
+          data["type"] = current_menu.search("speisentyp").first.text if current_menu.search("speisentyp").first
+          data["description"] = current_menu.search("text").first.text if current_menu.search("text").first
+          data["price"] = current_menu.search("preis").first.text if current_menu.search("preis").first
+          data["counter"] = current_menu.search("ausgabe").first.text if current_menu.search("ausgabe").first
+          data["side_dishes"] = current_menu.search("beilage").map do |beilage| beilage.text  end
+          menus << data
+        end
       end
     end
     menus
