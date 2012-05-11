@@ -26,7 +26,7 @@ de:
       application:
         menu: "Speisepläne"
         weather: "Wetter"
-        buses: "Abfahrt"
+        buses: "Bus-Zeiten"
         home: "Startseite"
         paul: "PAUL"
     date:

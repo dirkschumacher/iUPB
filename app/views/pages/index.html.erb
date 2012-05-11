@@ -3,18 +3,17 @@
 <h1>iUPB</h1>
 <% end %>
 <div>
-	<div>
-<%= link_to t("layouts.application.menu"), restaurants_path %></div>
-  	<div><%= link_to t("layouts.application.buses"), transportation_path %></div>
+	<li>
+<%= link_to t("layouts.application.menu"), restaurants_path %></li>
+  	<li><%= link_to t("layouts.application.buses"), transportation_path %></li>
 </div>
 
 <div>
-	<div><%= link_to t("layouts.application.paul"), courses_path  %></div>
-	<div><%= link_to t("layouts.application.twitter"), twitter_path  %></div>
+	<li><%= link_to t("layouts.application.paul"), courses_path  %></li>
+	<li><%= link_to t("layouts.application.twitter"), twitter_path  %></li>
 </div>
 
 
 <div>
-	<div><%= link_to t("layouts.application.weather"), weather_path  %></div>
-	<div></div>
+	<li><%= link_to t("layouts.application.weather"), weather_path  %></li>
 </div>
