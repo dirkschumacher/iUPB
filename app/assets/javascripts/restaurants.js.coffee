@@ -12,7 +12,7 @@
 		$.each(json, ->
 			got_any = true
 			menu = $(this)[0].menu
-			item = $("<li>")
+			item = $("<li class='well'>")
 			item.append($("<h3>").text(menu.description))
 			if(menu.name)
 				item.append($("<p>").html("<strong>" + menu.name + "</strong>"))

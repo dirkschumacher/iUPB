@@ -16,6 +16,8 @@ en:
         index:
             prev_day: "prev. day"
             next_day: "next day"
+            additives: "additives"
+            hours: "hours"
     transportation:
       index:
         trip_at: "%{station} at %{date}"
