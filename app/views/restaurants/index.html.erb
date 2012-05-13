@@ -1,6 +1,6 @@
 <%= content_for "page-attributes" do %>id="restaurantPage"<% end %>
 <% content_for :header do %>
-<h1><span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span></h1>
+<h1 class="center"><a href="#" id="prev_link"><i class="icon-chevron-left" style="float:left;"></i></a> <span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span> <a href="#" id="next_link"><i class="icon-chevron-right" style="float:right;"></i></a></h1>
 	<% 
 	#< %= link_to t(".prev_day"), restaurants_path, 'data-icon' => 'arrow-l', 'id' => "prev_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
 	#< %= link_to t(".next_day"), restaurants_path, 'data-icon' => 'arrow-r', 'id' => "next_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
@@ -25,6 +25,14 @@ $(document).ready(function() {
      },
   });
   */
+ $("#prev_link").click(function(e){
+ 	window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadPrevDay(window.iUPB.Restaurant.vars.today);
+     e.preventDefault();
+ });
+  $("#next_link").click(function(e){
+ 	window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadNextDay(window.iUPB.Restaurant.vars.today);
+      e.preventDefault();
+ });
   $(document).keydown(function(e){
     if (e.keyCode == 37) { // left key
       window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadPrevDay(window.iUPB.Restaurant.vars.today);
