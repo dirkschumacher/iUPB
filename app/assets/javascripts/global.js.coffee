@@ -11,7 +11,7 @@ jQuery(document).bind('pageshow', ->
 
 
 @iUPB.enableLoadingIndicator = ->
-	jQuery(document).bind('pageshow', ->
+	jQuery(document).ready ->
 		$("#spinner").ajaxStart ->
 			$(this).spin(window.iUPB.default_spinner_opts)
 			return
@@ -19,8 +19,4 @@ jQuery(document).bind('pageshow', ->
 			$(this).spin(false)
 			return
 		return
-	)
-)
-jQuery(document).delegate('#homePage', 'pageshow', (event) ->
-	$("#home-button").hide()
 )

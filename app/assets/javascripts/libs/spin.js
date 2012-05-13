@@ -327,7 +327,7 @@ window.iUPB.default_spinner_opts = {
   width: 2, // The line thickness
   radius: 3, // The radius of the inner circle
   rotate: 0, // The rotation offset
-  color: '#000', // #rgb or #rrggbb
+  color: '#999', // #rgb or #rrggbb
   speed: 1, // Rounds per second
   trail: 51, // Afterglow percentage
   shadow: false, // Whether to render a shadow

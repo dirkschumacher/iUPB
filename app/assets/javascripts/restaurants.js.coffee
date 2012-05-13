@@ -1,4 +1,5 @@
 @iUPB.Restaurant = {}
+@iUPB.Restaurant.vars = {}
 
 @iUPB.Restaurant.updateMenus = (date)->
 	url = "/restaurants/index.json"

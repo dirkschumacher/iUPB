@@ -12,11 +12,18 @@
 </ul>
 
 <script>
-var today = new Date(<%= @today_js %>);
+window.iUPB.Restaurant.vars.today = new Date(<%= @today_js %>);
 // #TODO: put the following code in the Restaurant class (Restaurant.initMenuView(Date day) or so)
 $(document).ready(function() {
-  window.iUPB.enableLoadingIndicator();
-  window.iUPB.Restaurant.updateMenus(today);
+  window.iUPB.Restaurant.updateMenus(window.iUPB.Restaurant.vars.today);
+  $('#restaurantPage').swipe({
+     swipeLeft: function() { 
+     	window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadNextDay(window.iUPB.Restaurant.vars.today); 
+     },
+     swipeRight: function() { 
+     	window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadPrevDay(window.iUPB.Restaurant.vars.today);
+     },
+  })
   /*$("#restaurantPage").swiperight(function() { // swipe from right to left
   today = window.iUPB.Restaurant.loadPrevDay(today);
   });
@@ -25,13 +32,13 @@ $(document).ready(function() {
   });*/
   $(document).keydown(function(e){
     if (e.keyCode == 37) { // left key
-      today = window.iUPB.Restaurant.loadPrevDay(today);
+      window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadPrevDay(window.iUPB.Restaurant.vars.today);
       return false;
     }
   });
   $(document).keydown(function(e){
     if (e.keyCode == 39) { // right key
-      today = window.iUPB.Restaurant.loadNextDay(today);
+      window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadNextDay(window.iUPB.Restaurant.vars.today);
       return false;
     }
   });
