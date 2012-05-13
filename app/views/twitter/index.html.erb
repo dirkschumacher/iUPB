@@ -1,7 +1,7 @@
 <%= content_for "page-attributes" do %>id="twitterPage"<% end %>
 <script>
 $(document).ready(function() {
-  reload = function(){
+  var reload = function(){
     $("#twitter_list").twitterFeed(function()
     {
     });
@@ -13,8 +13,7 @@ $(document).ready(function() {
 });
 </script>
 <% content_for :header do %>
-<h1><%= t ".UPB_on_twitter"%></h1>
-<a href="#" id="reload-button">refresh</a>
+<h1><%= t ".UPB_on_twitter"%> <a href="#" id="reload-button"><i class="icon-refresh"></i></a></h1>
 <% end %>
 
 <ul id="twitter_list">

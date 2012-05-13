@@ -1,7 +1,6 @@
 <%= content_for "page-attributes" do %>id="transportPage"<% end %>
 <% content_for :header do %>
-<h1><%= t "layouts.application.buses"%></h1>
-<a href="#" id="reload-button"><i class="icon-refresh"></i></a>
+<h1><%= t "layouts.application.buses"%> <a href="#" id="reload-button"><i class="icon-refresh"></i></a></h1>
 <% end %>
 <script>
 $(document).ready(function(event) {

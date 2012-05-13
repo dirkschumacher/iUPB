@@ -1,19 +1,13 @@
-<%= content_for "page-attributes" do %>id="homePage"<% end %>
-<% content_for :header do %>
-<h1>iUPB</h1>
-<% end %>
-<div>
-	<li>
-<%= link_to t("layouts.application.menu"), restaurants_path %></li>
-  	<li><%= link_to t("layouts.application.buses"), transportation_path %></li>
-</div>
-
-<div>
-	<li><%= link_to t("layouts.application.paul"), courses_path  %></li>
-	<li><%= link_to t("layouts.application.twitter"), twitter_path  %></li>
-</div>
-
-
-<div>
-	<li><%= link_to t("layouts.application.weather"), weather_path  %></li>
+<% content_for "page-attributes" do %>id="homePage"<% end %>
+<div class="two-column dashboard-list">
+	<div><%= link_to image_tag("icon_restaurant.png", :class => "round-corners")+ " " +t("layouts.application.menu"), restaurants_path %> 
+	</div>
+  	<div><%= link_to image_tag("icon_transportation.png", :class => "round-corners")+ " " +t("layouts.application.buses"), transportation_path %> 
+  	</div>
+	<div><%= link_to image_tag("icon_paul.png", :class => "round-corners")+ " " +t("layouts.application.paul"), courses_path  %> 
+	</div>
+	<div><%= link_to image_tag("icon_twitter.png", :class => "round-corners")+ " " +t("layouts.application.twitter"), twitter_path  %> 
+	</div>
+	<div><%= link_to image_tag("icon_weather.png", :class => "round-corners")+ " " +t("layouts.application.weather"), weather_path  %> 
+	</div>
 </div>

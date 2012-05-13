@@ -33,8 +33,7 @@
   <%= yield(:head) -%>
 </head>
 <body>
-  <div <%= yield("page-attributes") %>>
-    <header class="navbar navbar-fixed-top">
+	<header class="navbar navbar-fixed-top">
      <span id="spinner"></span>
       <nav class="navbar-inner">
         <div class="container">
@@ -50,6 +49,7 @@
         </div>
       </nav>
     </header>
+  <div <%= yield("page-attributes") %>>
 <div>
 	<%= yield(:header) -%>
 </div>  

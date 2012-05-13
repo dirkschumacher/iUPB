@@ -3,9 +3,13 @@
 <h1><%= t ".current_wheater "%></h1>
 <% end %>
 <ul>
-	<li><%= t ".temperature" %> <%= @weatherData['temp'] %></li>
-	<li><%= t ".min" %>.  <%= t ".temperature" %> <%= @weatherData['tempmin'] %></li>
-	<li><%= t ".max" %>. <%= t ".temperature" %> <%= @weatherData['tempmax'] %></li>
+	<li><%= t ".temperature" %> <%= @weatherData['temp'] %>° C</li>
+	<li><%= t ".min" %>.  <%= t ".temperature" %> <%= @weatherData['tempmin'] %>° C</li>
+	<li><%= t ".max" %>. <%= t ".temperature" %> <%= @weatherData['tempmax'] %>° C</li>
 	<li><%= t ".sunrise" %> <%= @weatherData['sonnenaufgang'] %></li>
 	<li><%= t ".sunset" %> <%= @weatherData['sonnenuntergang'] %></li>
+	<li><%= t ".forecast" %> <%= @forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['tx'] %>° C / <%= @forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['w_txt'] %></li>
 </ul>
+<footer>
+	Aktuelle Daten: Wetterstation Uni Paderborn. Vorhersage: <a href="http://www.wetter.com/">wetter.com</a>.
+</footer>

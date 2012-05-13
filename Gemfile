@@ -15,7 +15,7 @@ gem 'i18n-js'
 gem 'newrelic_rpm', :group => "production"
 
 gem 'rabl'
-gem 'yajl-ruby'
+gem 'yajl-ruby', :require => "yajl"
 
 # Gems used only for assets and not required
 # in production environments by default.

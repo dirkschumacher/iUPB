@@ -13,3 +13,20 @@
 #offline {
 	display:none;
 }
+.two-column {
+	-moz-column-count: 2;
+	-webkit-column-count: 2;
+	column-count: 2;
+}
+.round-corners {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+}
+.dashboard-list > div {
+	margin-bottom: 5px;
+}
+footer {
+	font-size: 8px;
+}
