@@ -1,78 +1,112 @@
 <%= content_for "page-attributes" do %>id="restaurantPage"<% end %>
 <% content_for :header do %>
-<h1 class="center"><a href="#" title="<%= t ".prev_day" %>" id="prev_link"><i class="icon-chevron-left" style="float:left;"></i></a> <span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span> <a href="#" title="<%= t ".next_day" %>" id="next_link"><i class="icon-chevron-right" style="float:right;"></i></a></h1>
-	<% 
-	#< %= link_to t(".prev_day"), restaurants_path, 'data-icon' => 'arrow-l', 'id' => "prev_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
-	#< %= link_to t(".next_day"), restaurants_path, 'data-icon' => 'arrow-r', 'id' => "next_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
-	%>
-	<!-- TODO: <%= @restaurant.name %>  Hier kommt die Restaurant auswahl hin-->
+<h1 class="center"><a href="#" title="<%= t ".prev_day" %>" id="prev_link"><i class="icon-chevron-left" style="float:left;"></i></a><span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span><a href="#" title="<%= t ".next_day" %>" id="next_link"><i class="icon-chevron-right" style="float:right;"></i></a></h1>
+<%
+ #< %= link_to t(".prev_day"), restaurants_path, 'data-icon' => 'arrow-l', 'id' => "prev_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
+  #< %= link_to t(".next_day"), restaurants_path, 'data-icon' => 'arrow-r', 'id' => "next_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
+%>
+<!-- TODO: <%= @restaurant.name %>  Hier kommt die Restaurant auswahl hin-->
 <% end %>
 <ul id="menus">
-	<li><%= t "please_wait" %></li>
+	<li>
+		<%= t "please_wait" %>
+	</li>
 </ul>
-<p class="center"><a data-toggle="modal" title="<%= t ".hours" %> / <%= t ".additives" %>" class="btn btn-info" href="#infoText">i</a></p>
-<div class="modal fade" id="infoText">
+<p class="center">
+	<a data-toggle="modal" title="<%= t ".hours" %> / <%= t ".additives" %>" class="btn btn-info" href="#infoText">i</a>
+</p>
+<div class="modal" style="display: none;" id="infoText">
 	<div class="modal-header">
-    <button class="close" data-dismiss="modal">×</button>
-    <h3><%= @restaurant.name %> – Info</h3>
-  </div>
-  <div class="modal-body">
-	<h3><%= t ".hours" %></h3>
-<ul>
-	<li>Montag bis Donnerstag: 11:15 Uhr bis 14:00 Uhr</li>
-	<li>Freitag: 11:15 Uhr bis 13:30 Uhr</li>
-</ul>
-<h3><%= t ".additives" %></h3>
-<ul>
-	<li>1 - mit Farbstoff</li>
-	<li>2 - mit Konservierungsstoff</li>
-	<li>3 - mit Antioxidationsmittel</li>
-	<li>4 - mit Geschmacksverstärker</li>
-	<li>5 - mit Phosphat</li>
-	<li>6 - geschwefelt</li>
-	<li>7 - eventuell gewachst oder mit Thiabendazol behandelt</li>
-	<li>8 - geschwärzt</li>
-	<li>9 - mit Süßungsmittel</li>
-	<li>10 - enthält eine Phenylalaninquelle</li>
-	<li>In allen angebotenen Speisen können Geschmacksverstärker enthalten sein.</li>
-	<li>Speisen werden mit jodiertem Salz zubereitet.</li>
-</ul>
-</div>
-
+		<button class="close" data-dismiss="modal">
+			×
+		</button>
+		<h3><%= @restaurant.name %> – Info</h3>
+	</div>
+	<div class="modal-body">
+		<h3><%= t ".hours" %></h3>
+		<ul>
+			<li>
+				Montag bis Donnerstag: 11:15 Uhr bis 14:00 Uhr
+			</li>
+			<li>
+				Freitag: 11:15 Uhr bis 13:30 Uhr
+			</li>
+		</ul>
+		<h3><%= t ".additives" %></h3>
+		<ul>
+			<li>
+				1 - mit Farbstoff
+			</li>
+			<li>
+				2 - mit Konservierungsstoff
+			</li>
+			<li>
+				3 - mit Antioxidationsmittel
+			</li>
+			<li>
+				4 - mit Geschmacksverstärker
+			</li>
+			<li>
+				5 - mit Phosphat
+			</li>
+			<li>
+				6 - geschwefelt
+			</li>
+			<li>
+				7 - eventuell gewachst oder mit Thiabendazol behandelt
+			</li>
+			<li>
+				8 - geschwärzt
+			</li>
+			<li>
+				9 - mit Süßungsmittel
+			</li>
+			<li>
+				10 - enthält eine Phenylalaninquelle
+			</li>
+			<li>
+				In allen angebotenen Speisen können Geschmacksverstärker enthalten sein.
+			</li>
+			<li>
+				Speisen werden mit jodiertem Salz zubereitet.
+			</li>
+		</ul>
+	</div>
 </div>
 <script>
 window.iUPB.Restaurant.vars.today = new Date(<%= @today_js %>);
-// #TODO: put the following code in the Restaurant class (Restaurant.initMenuView(Date day) or so)
-$(document).ready(function() {
-  window.iUPB.Restaurant.updateMenus(window.iUPB.Restaurant.vars.today);
-  /*$('#restaurantPage').swipe({
-     swipeLeft: function() { 
-     	window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadNextDay(window.iUPB.Restaurant.vars.today); 
-     },
-     swipeRight: function() { 
-     	window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadPrevDay(window.iUPB.Restaurant.vars.today);
-     },
-  });
-  */
- $("#prev_link").click(function(e){
- 	window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadPrevDay(window.iUPB.Restaurant.vars.today);
-     e.preventDefault();
- });
-  $("#next_link").click(function(e){
- 	window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadNextDay(window.iUPB.Restaurant.vars.today);
-      e.preventDefault();
- });
-  $(document).keydown(function(e){
-    if (e.keyCode == 37) { // left key
-      window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadPrevDay(window.iUPB.Restaurant.vars.today);
-      return false;
-    }
-  });
-  $(document).keydown(function(e){
-    if (e.keyCode == 39) { // right key
-      window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadNextDay(window.iUPB.Restaurant.vars.today);
-      return false;
-    }
-  });
-});
+	// #TODO: put the following code in the Restaurant class (Restaurant.initMenuView(Date day) or so)
+	$(document).ready(function() {
+		var iUPB = window.iUPB;
+		iUPB.Restaurant.updateMenus(iUPB.Restaurant.vars.today);
+		/*$('#restaurantPage').swipe({
+		 swipeLeft: function() {
+		 window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadNextDay(window.iUPB.Restaurant.vars.today);
+		 },
+		 swipeRight: function() {
+		 window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadPrevDay(window.iUPB.Restaurant.vars.today);
+		 },
+		 });
+		 */
+		$("#prev_link").click(function(e) {
+			iUPB.Restaurant.vars.today = iUPB.Restaurant.loadPrevDay(iUPB.Restaurant.vars.today);
+			e.preventDefault();
+		});
+		$("#next_link").click(function(e) {
+			iUPB.Restaurant.vars.today = iUPB.Restaurant.loadNextDay(iUPB.Restaurant.vars.today);
+			e.preventDefault();
+		});
+		$(document).keydown(function(e) {
+			if(e.keyCode == 37) {// left key
+				iUPB.Restaurant.vars.today = iUPB.Restaurant.loadPrevDay(iUPB.Restaurant.vars.today);
+				return false;
+			}
+		});
+		$(document).keydown(function(e) {
+			if(e.keyCode == 39) {// right key
+				iUPB.Restaurant.vars.today = iUPB.Restaurant.loadNextDay(iUPB.Restaurant.vars.today);
+				return false;
+			}
+		});
+	}); 
 </script>
