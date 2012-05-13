@@ -1,3 +1,4 @@
+// https://gist.github.com/1042167
 (function(document,navigator,standalone) {
 			// prevents links from apps from oppening in mobile safari
 			// this javascript must be the first script in your <head>
