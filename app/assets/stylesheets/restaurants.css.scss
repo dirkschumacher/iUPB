@@ -8,3 +8,23 @@
   list-style-type: none;
   margin-top: 10px;
 }
+#restaurantSelector {
+  float:right;
+  margin-right: 10px;
+}
+@media screen and (max-width: 500px) {
+  .long-text {
+    display:none;
+  }
+  #restaurantSelector {
+    margin-right: 0px;
+  }
+}
+@media screen and (max-width: 300px) {   // untested.
+  #restaurantSelector {
+    float:none;
+  }
+  .long-text {
+    display:inline;
+  }
+}

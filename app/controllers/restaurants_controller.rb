@@ -1,7 +1,8 @@
 class RestaurantsController < ApplicationController
   def index
-    restaurant = "Mensa"
+    restaurant = params[:restaurant]||"Mensa"
     @restaurant = Restaurant.where(name: restaurant).first
+    @restaurants = Restaurant.all(sort: [[ :name, :asc ]])
   
     if params[:date]
       @today = Date.parse(params[:date]) 

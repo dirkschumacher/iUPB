@@ -1,8 +1,8 @@
 @iUPB.Restaurant = {}
 @iUPB.Restaurant.vars = {}
 
-@iUPB.Restaurant.updateMenus = (date)->
-	url = "/restaurants/index.json"
+@iUPB.Restaurant.updateMenus = (date, restaurant)->
+	url = "/restaurants/"+restaurant+".json"
 	if(date)
 		url += "?date="+date.format("dd-mm-yyyy")
 	$.xhrPool.abortAll() # we don't care about old pending requests when a new menu is requested
@@ -13,9 +13,9 @@
 			got_any = true
 			menu = $(this)[0].menu
 			item = $("<li class='well'>")
-			item.append($("<h3>").text(menu.description))
+			item.append($("<h4>").text(menu.description))
 			if(menu.name)
-				item.append($("<p>").html("<strong>" + menu.name + "</strong>"))
+				item.append($("<h6>").text(menu.name))
 			if(menu.type)
 				item.append($("<p>").html("<i>" + menu.type + "</i>"))
 			sd = $('<p id="side_dishes">')
@@ -42,12 +42,12 @@
 		return
 	)
 
-@iUPB.Restaurant.loadNextDay = (today) ->
+@iUPB.Restaurant.loadNextDay = (today, restaurant) ->
 		day = new Date(today.getTime() + (24 * 60 * 60 * 1000))
-		window.iUPB.Restaurant.updateMenus(day)
+		window.iUPB.Restaurant.updateMenus(day, restaurant)
 		return day
 
-@iUPB.Restaurant.loadPrevDay = (today) ->
+@iUPB.Restaurant.loadPrevDay = (today, restaurant) ->
 	day = new Date(today.getTime() - (24 * 60 * 60 * 1000))
-	window.iUPB.Restaurant.updateMenus(day)
+	window.iUPB.Restaurant.updateMenus(day, restaurant)
 	return day
