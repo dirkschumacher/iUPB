@@ -5,7 +5,7 @@ IUPB::Application.routes.draw do
   match "restaurants" => 'restaurants#index', :as => :restaurants
   match "restaurants/:restaurant" => 'restaurants#index', :as => :restaurant
   match 'transportation' => 'transportation#index', :as => :transportation
-  match 'weather' => ':weather#index', :as => :weather
+  match 'weather' => 'weather#index', :as => :weather
   match 'twitter' => 'twitter#index', :as => :twitter
   match 'courses' => 'courses#index', :as => :courses
     
