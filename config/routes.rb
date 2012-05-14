@@ -1,13 +1,14 @@
 IUPB::Application.routes.draw do
   
-  get "restaurants/index", :as => :restaurants
-
-  get "transportation/index", :as => :transportation
-  get "weather/index", :as => :weather
-  get "twitter/index", :as => :twitter
+  match "restaurants" => 'restaurants#index', :as => :restaurants
+  match "restaurants/:restaurant" => 'restaurants#index', :as => :restaurant
+  match 'transportation' => 'transportation#index', :as => :transportation
+  match 'weather' => ':weather#index', :as => :weather
+  match 'twitter' => 'twitter#index', :as => :twitter
+  match 'courses' => 'courses#index', :as => :courses
+    
   get "twitter/data", :as => :twitter_data
-  
-  get "courses/index", :as => :courses
+
   match "courses/search/:query" => "courses#search"
   match "courses/:id" => "courses#show", :as => :course
   

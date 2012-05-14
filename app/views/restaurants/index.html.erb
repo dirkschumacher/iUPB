@@ -1,11 +1,21 @@
 <%= content_for "page-attributes" do %>id="restaurantPage"<% end %>
 <% content_for :header do %>
-<h1 class="center"><a href="#" title="<%= t ".prev_day" %>" id="prev_link"><i class="icon-chevron-left" style="float:left;"></i></a><span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span><a href="#" title="<%= t ".next_day" %>" id="next_link"><i class="icon-chevron-right" style="float:right;"></i></a></h1>
-<%
- #< %= link_to t(".prev_day"), restaurants_path, 'data-icon' => 'arrow-l', 'id' => "prev_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
-  #< %= link_to t(".next_day"), restaurants_path, 'data-icon' => 'arrow-r', 'id' => "next_day_button", 'data-iconpos' => 'notext', 'data-direction' => 'reverse' % >
-%>
-<!-- TODO: <%= @restaurant.name %>  Hier kommt die Restaurant auswahl hin-->
+<ul class="nav nav-pills" id="restaurantSelector">
+        <li class="dropdown active pull-right">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-list"></i><span class="long-text"><%= @restaurant.name %></span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% @restaurants.each do |restaurant| %>
+				<li><a href="<%= restaurant_path(restaurant: restaurant.name) %>"><%= restaurant == @restaurant ? "<em>".html_safe : "" %><%= restaurant.name %><%= restaurant == @restaurant ? "</em>".html_safe : "" %></a></li>
+			<% end %>
+          </ul>
+       </li>
+</ul>
+
+<h2 class="center">
+	<a href="#" title="<%= t ".prev_day" %>" id="prev_link" style="left;"><i class="icon-chevron-left"></i></a> 
+	<span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span> 
+	<a href="#" title="<%= t ".next_day" %>" id="next_link" style="right;"><i class="icon-chevron-right"></i></a>
+</h2>
 <% end %>
 <ul id="menus">
 	<li>
@@ -75,10 +85,11 @@
 </div>
 <script>
 window.iUPB.Restaurant.vars.today = new Date(<%= @today_js %>);
+window.iUPB.Restaurant.vars.restaurant = "<%= @restaurant.name %>";
 	// #TODO: put the following code in the Restaurant class (Restaurant.initMenuView(Date day) or so)
 	$(document).ready(function() {
 		var iUPB = window.iUPB;
-		iUPB.Restaurant.updateMenus(iUPB.Restaurant.vars.today);
+		iUPB.Restaurant.updateMenus(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
 		/*$('#restaurantPage').swipe({
 		 swipeLeft: function() {
 		 window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadNextDay(window.iUPB.Restaurant.vars.today);
@@ -89,22 +100,22 @@ window.iUPB.Restaurant.vars.today = new Date(<%= @today_js %>);
 		 });
 		 */
 		$("#prev_link").click(function(e) {
-			iUPB.Restaurant.vars.today = iUPB.Restaurant.loadPrevDay(iUPB.Restaurant.vars.today);
+			iUPB.Restaurant.vars.today = iUPB.Restaurant.loadPrevDay(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
 			e.preventDefault();
 		});
 		$("#next_link").click(function(e) {
-			iUPB.Restaurant.vars.today = iUPB.Restaurant.loadNextDay(iUPB.Restaurant.vars.today);
+			iUPB.Restaurant.vars.today = iUPB.Restaurant.loadNextDay(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
 			e.preventDefault();
 		});
 		$(document).keydown(function(e) {
 			if(e.keyCode == 37) {// left key
-				iUPB.Restaurant.vars.today = iUPB.Restaurant.loadPrevDay(iUPB.Restaurant.vars.today);
+				iUPB.Restaurant.vars.today = iUPB.Restaurant.loadPrevDay(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
 				return false;
 			}
 		});
 		$(document).keydown(function(e) {
 			if(e.keyCode == 39) {// right key
-				iUPB.Restaurant.vars.today = iUPB.Restaurant.loadNextDay(iUPB.Restaurant.vars.today);
+				iUPB.Restaurant.vars.today = iUPB.Restaurant.loadNextDay(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
 				return false;
 			}
 		});
