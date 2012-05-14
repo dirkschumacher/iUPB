@@ -6,14 +6,14 @@
 <% end %>
 <h2><%= @course.course_type == 'course' ? @course.title : @course.group_title %></h2>
 <div>
-<h2><%= t '.dates_and_rooms' %></h2>
-<ul id="infos">
+<h3><%= t '.dates_and_rooms' %></h3>
+<ul id="infos" class="nav nav-tabs nav-stacked">
   <% @course.course_data.each do |data| %>
       <li>
         
-        <h3 style="white-space: normal;">
+        <h4 style="white-space: normal;">
           <%= t('.time_place', {date: l(data["date"].to_date, format: :short), time_from: l(data["time_from"], format: :very_short), time_to: l(data["time_to"], format: :very_short), place: data["room"] })%>
-          </h3>
+          </h4>
         <p><%= data["instructor"] %></p>
         </li>
   <% end %>
@@ -21,12 +21,12 @@
 </div>
 <div>
 <% if @groups and @groups.length > 0 %>
-<h2><%= t '.tutorials' %><h2>
-<ul id="groups">
+<h3><%= t '.tutorials' %><h3>
+<ul id="groups" class="nav nav-tabs nav-stacked">
   <% @groups.each do |group| %>
     <li>
     <%= link_to group do  %>
-      <h3 style="white-space: normal;"><%= group.group_title %></h3>
+      <h4 style="white-space: normal;"><%= group.group_title %></h4>
       <% if group['next_class'] %>
       <p><%= t('courses.next_class', {date: l(group.next_class[:date], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
       </p>
