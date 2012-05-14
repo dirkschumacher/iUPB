@@ -16,7 +16,7 @@ en:
       room_na: 'N.A.'
       index:
         search: "Search..."
-        type_and_find: "Simply type in the course name..."
+        type_and_find: "Just type in the course name..."
     restaurants:
         index:
             prev_day: "prev. day"

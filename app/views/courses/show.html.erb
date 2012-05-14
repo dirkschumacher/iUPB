@@ -1,19 +1,23 @@
 
-<% content_for :header do %>
-<h1><%= t ".course_details" %> <a href="#" id="back-button"><i class="icon-arrow-left"></i></a></h1>
-
-<% end %>
-<h2><%= @course.course_type == 'course' ? @course.title : @course.group_title %></h2>
+<h2><%= link_to '<i class="icon-arrow-left"></i>'.html_safe, courses_path, id: "back-button"  %><br /><%= @course.course_type == 'course' ? @course.title : @course.group_title %> </h2>
+<script>
+$(document).ready(function(){
+  $("#back-button").click(function(e){
+    e.preventDefault();
+    return window.history.back();
+  });
+});
+</script>
 
 <% if @course.course_data.length > 0 || @groups and @groups.length > 0  %>
-<div class="accordion" id="accordion2">
+<div class="accordion" id="accordion">
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-        <%= t '.dates_and_rooms' %>
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <h3><%= t '.dates_and_rooms' %></h3>
       </a>
     </div>
-    <div id="collapseOne" class="accordion-body collapse in">
+    <div id="collapseOne" class="accordion-body collapse">
       <div class="accordion-inner">
         <ul id="infos" class="nav nav-tabs nav-stacked">
           <% @course.course_data.each do |data| %>
@@ -27,29 +31,28 @@
           <% end %>
         </ul>   
       </div>
-    </div>
-  </div>
+    </div></div>
   <% if @groups and @groups.length > 0 %>
-  <div class="accordion-group">
+    <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        <%= t '.tutorials' %>
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <h3><%= t '.tutorials' %></h3>
       </a>
     </div>
-    <div id="collapseOne" class="accordion-body collapse in">
+    <div id="collapseTwo" class="accordion-body collapse">
       <div class="accordion-inner">
         <ul id="groups" class="nav nav-tabs nav-stacked">
           <% @groups.each do |group| %>
-            <li>
+          <li>
             <%= link_to group do  %>
-              <h4 style="white-space: normal;"><%= group.group_title %></h4>
-              <% if group['next_class'] %>
-              <p><%= t('courses.next_class', {date: l(group.next_class[:date], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
-              </p>
+            <h4 style="white-space: normal;"><%= group.group_title %></h4>
+            <% if group['next_class'] %>
+            <p><%= t('courses.next_class', {date: l(group.next_class[:date], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
+            </p>
 
-              <% end %>
             <% end %>
-            </li>
+            <% end %>
+          </li>
           <% end %>
         </ul>  
       </div>
