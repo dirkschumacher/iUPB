@@ -1,42 +1,62 @@
 
 <% content_for :header do %>
-<h1><%= t ".course_details" %></h1>
-<!--<%= link_to t('nav.back'), courses_path %>-->
-<a><%= t 'nav.back' %></a>
+<h1><%= t ".course_details" %> <a href="#" id="back-button"><i class="icon-arrow-left"></i></a></h1>
+
 <% end %>
 <h2><%= @course.course_type == 'course' ? @course.title : @course.group_title %></h2>
-<div>
-<h3><%= t '.dates_and_rooms' %></h3>
-<ul id="infos" class="nav nav-tabs nav-stacked">
-  <% @course.course_data.each do |data| %>
-      <li>
-        
-        <h4 style="white-space: normal;">
-          <%= t('.time_place', {date: l(data["date"].to_date, format: :short), time_from: l(data["time_from"], format: :very_short), time_to: l(data["time_to"], format: :very_short), place: data["room"] })%>
-          </h4>
-        <p><%= data["instructor"] %></p>
-        </li>
-  <% end %>
-</ul>  
-</div>
-<div>
-<% if @groups and @groups.length > 0 %>
-<h3><%= t '.tutorials' %><h3>
-<ul id="groups" class="nav nav-tabs nav-stacked">
-  <% @groups.each do |group| %>
-    <li>
-    <%= link_to group do  %>
-      <h4 style="white-space: normal;"><%= group.group_title %></h4>
-      <% if group['next_class'] %>
-      <p><%= t('courses.next_class', {date: l(group.next_class[:date], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
-      </p>
-      
-      <% end %>
-    <% end %>
-    </li>
-  <% end %>
-</ul>
-<% end %>
-</div>
 
-<a href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t '.view_in_paul'%></a>
+<% if @course.course_data.length > 0 || @groups and @groups.length > 0  %>
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        <%= t '.dates_and_rooms' %>
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <ul id="infos" class="nav nav-tabs nav-stacked">
+          <% @course.course_data.each do |data| %>
+          <li>
+
+            <h4 style="white-space: normal;">
+              <%= t('.time_place', {date: l(data["date"].to_date, format: :short), time_from: l(data["time_from"], format: :very_short), time_to: l(data["time_to"], format: :very_short), place: data["room"] })%>
+            </h4>
+            <p><%= data["instructor"] %></p>
+          </li>
+          <% end %>
+        </ul>   
+      </div>
+    </div>
+  </div>
+  <% if @groups and @groups.length > 0 %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        <%= t '.tutorials' %>
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <ul id="groups" class="nav nav-tabs nav-stacked">
+          <% @groups.each do |group| %>
+            <li>
+            <%= link_to group do  %>
+              <h4 style="white-space: normal;"><%= group.group_title %></h4>
+              <% if group['next_class'] %>
+              <p><%= t('courses.next_class', {date: l(group.next_class[:date], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
+              </p>
+
+              <% end %>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>  
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
+
+<a class="btn btn-info" href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t '.view_in_paul'%></a>

@@ -1,4 +1,11 @@
 de:
+    weather:
+      index:
+        temperature: "Temperatur"
+        sunrise: "Sonnenaufgang"
+        sunset: "Sonnenuntergang"
+        forecast: "Vorhersage"
+        current_weather: "Aktuelles Wetter"
     please_wait: "Bitte warten..."
     courses:
       next_class: "Nächste: %{date}, %{time_from} bis %{time_to} in %{place}"
