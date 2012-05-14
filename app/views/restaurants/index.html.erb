@@ -119,5 +119,10 @@ window.iUPB.Restaurant.vars.restaurant = "<%= @restaurant.name %>";
 				return false;
 			}
 		});
+		$(".btn-info").click(function(){
+			if(window.innerWidth && window.innerWidth < 600)
+				window.setTimeout(function(){$(window).scrollTop(0)}, 300);
+		});
+		
 	}); 
 </script>
