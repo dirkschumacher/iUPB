@@ -1,5 +1,7 @@
 IUPB::Application.routes.draw do
   
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   get "restaurants/index", :as => :restaurants
 
   get "transportation/index", :as => :transportation
@@ -10,7 +12,10 @@ IUPB::Application.routes.draw do
   get "courses/index", :as => :courses
   match "courses/search/:query" => "courses#search"
   match "courses/:id" => "courses#show", :as => :course
-  
+  devise_scope :user do
+    get 'sign_in', :to => 'users/sessions#new', :as => :new_user_session
+    get 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
+  end
   #resource :courses
   #match 'twitter' => 'high_voltage/pages#show', :id => 'twitter'
   

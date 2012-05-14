@@ -1,0 +1,2 @@
+class FindMeController < ApplicationController
+end
