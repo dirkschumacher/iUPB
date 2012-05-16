@@ -16,9 +16,9 @@ $.fn.twitterFeed = (post_event) ->
       self.empty()
       tweets = data.results
       for tweet in tweets
-        item = $ '<li>'
-        textWrap = $ '<h3 style="white-space: normal;">'
-        detailsWrap = $ '<p>'
+        item = $ '<li class="well">'
+        textWrap = $ '<h4>'
+        detailsWrap = $ '<h6>'
         textWrap.html parseUsername(parseHashtag(parseURL(tweet.text)))
         date = Date.parse tweet.created_at
         detailsWrap.html 'Posted ' + $.timeago(tweet.created_at) + ' by <a href="https://twitter.com/#!/' + tweet.from_user + '" target="_blank">' + tweet.from_user + '</a>'

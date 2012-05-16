@@ -11,5 +11,5 @@
 	<li><h3><%= t ".forecast" %>: <%= number_with_delimiter @forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['tx'] %>° C / <%= @forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['w_txt'] %></h3></li>
 </ul>
 <footer>
-	Aktuelle Daten: Wetterstation Uni Paderborn. Vorhersage: <a href="http://www.wetter.com/">wetter.com</a>.
+	Aktuelle Daten: <a href="http://wetter.uni-paderborn.de/">Wetterstation Uni Paderborn</a>. Vorhersage: <a href="http://www.wetter.com/">wetter.com</a>.
 </footer>
