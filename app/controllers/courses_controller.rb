@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
-  caches_page :show, :index
+  before_filter :set_cache_header
+
   def index
-    #@networks = Network.all
   end
   
   def show
@@ -16,33 +16,13 @@ class CoursesController < ApplicationController
     #  expires_in 7.days, :public => true, 'max-stale' => 0
     #end
   end
-  
-  def new
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def create
-  end
-
-  def destroy
-  end
+ 
   def search
     query = params[:query].downcase
     @courses = []
     @courses = Course.where(course_type: 'course').where(title_downcase: /.*#{query}.*/).limit(10).entries if query.length > 2
     
     attach_next_class @courses
-    
-    # If the request is stale according to the given timestamp and etag value
-    # (i.e. it needs to be processed again) then execute this block
-    #if stale?(:last_modified => Time.now + 7.days, :etag => @courses)
-    #  expires_in 7.days, :public => true, 'max-stale' => 0
-    #end
   end
   def attach_next_class(courses)
     courses.each do |course|

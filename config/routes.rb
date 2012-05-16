@@ -4,15 +4,16 @@ IUPB::Application.routes.draw do
 
   match "restaurants" => 'restaurants#index', :as => :restaurants
   match "restaurants/:restaurant" => 'restaurants#index', :as => :restaurant
-  match 'transportation' => 'transportation#index', :as => :transportation
+  match 'transportation' => 'pages#show', :id => 'transportation', :as => :transportation
   match 'weather' => 'weather#index', :as => :weather
-  match 'twitter' => 'twitter#index', :as => :twitter
+  match 'twitter' => 'pages#show', :id => 'twitter', :as => :twitter
   match 'courses' => 'courses#index', :as => :courses
     
   get "twitter/data", :as => :twitter_data
 
   match "courses/search/:query" => "courses#search"
   match "courses/:id" => "courses#show", :as => :course
+  
   devise_scope :user do
     get 'sign_in', :to => 'users/sessions#new', :as => :new_user_session
     get 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
