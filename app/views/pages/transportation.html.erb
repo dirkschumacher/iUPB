@@ -18,20 +18,20 @@ $(document).ready(function(event) {
       list.empty();
       for(var i = 0; i < data.length; i++)
       {
-        var list_item = $('<li><h3 style="white-space: normal;">'
+        var list_item = $('<li class="well"><h4>'
          + I18n.t("transportation.index.trip_at", {
             "station" : data[i].station, 
             "date" : I18n.l("time.formats.very_short", data[i].date)
            }) 
-         + '</h3><p>'
+         + '</h4><h5>'
          + I18n.t("transportation.index.line") 
-         + ' ' 
+         + ' <span class="badge badge-info">' 
          + data[i].line 
-         + ', ' 
+         + '</span>  ' 
          + I18n.t("transportation.index.to") 
-         + ' ' 
+         + ' <span class="label label-info">' 
          + data[i].direction 
-         + '</p></li>');
+         + '</span></h5></li>');
   			list.append(list_item);
       }
     }});
@@ -43,7 +43,7 @@ $(document).ready(function(event) {
   });
 });
 </script>
-<ul id="bus_data_list" class="nav nav-tabs nav-stacked">
+<ul id="bus_data_list" class="no-bullets no-left-margin">
   <li>
     <h3><%= t "please_wait" %></h3>
     </li>

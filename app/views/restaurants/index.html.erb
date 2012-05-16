@@ -1,23 +1,29 @@
+<script>
+	window.iUPB.Restaurant.vars.today = new Date(<%= @today_js %>);
+	window.iUPB.Restaurant.vars.restaurant = "<%= @restaurant.name %>";
+</script>
 <%= content_for "page-attributes" do %>id="restaurantPage"<% end %>
 <% content_for :header do %>
-<ul class="nav nav-pills" id="restaurantSelector">
-        <li class="dropdown active pull-right">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-list"></i><span class="long-text"><%= @restaurant.name %></span><b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <% @restaurants.each do |restaurant| %>
-				<li><a href="<%= restaurant_path(restaurant: restaurant.name) %>"><%= restaurant == @restaurant ? "<em>".html_safe : "" %><%= restaurant.name %><%= restaurant == @restaurant ? "</em>".html_safe : "" %></a></li>
+  <ul class="nav nav-pills" id="restaurantSelector">
+	<li class="dropdown active pull-right">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-list"></i><span class="long-text"><%= @restaurant.name %></span><b class="caret"></b></a>
+		<ul class="dropdown-menu" id="restaurantList">
+			<% @restaurants.each do |restaurant| %>
+			<li>
+				<a data-restaurant-name="<%= restaurant.name %>" class="restaurant-link" href="<%= restaurant_path(restaurant: restaurant.name) %>"><%= restaurant.name %></a>
+			</li>
 			<% end %>
-          </ul>
-       </li>
-</ul>
+		</ul>
+	</li>
+  </ul>
 
-<h2 class="center">
-	<a href="#" title="<%= t ".prev_day" %>" id="prev_link" style="left;"><i class="icon-chevron-left"></i></a> 
-	<span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span> 
-	<a href="#" title="<%= t ".next_day" %>" id="next_link" style="right;"><i class="icon-chevron-right"></i></a>
-</h2>
+  <h2 class="center">
+  	<a href="#" title="<%= t ".prev_day" %>" id="prev_link" style="left;"><i class="icon-chevron-left"></i></a> 
+  	<span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span> 
+  	<a href="#" title="<%= t ".next_day" %>" id="next_link" style="right;"><i class="icon-chevron-right"></i></a>
+  </h2>
 <% end %>
-<ul id="menus">
+<ul id="menus" class="no-left-margin">
 	<li>
 		<%= t "please_wait" %>
 	</li>
@@ -84,8 +90,6 @@
 	</div>
 </div>
 <script>
-window.iUPB.Restaurant.vars.today = new Date(<%= @today_js %>);
-window.iUPB.Restaurant.vars.restaurant = "<%= @restaurant.name %>";
 	// #TODO: put the following code in the Restaurant class (Restaurant.initMenuView(Date day) or so)
 	$(document).ready(function() {
 		var iUPB = window.iUPB;
@@ -123,6 +127,13 @@ window.iUPB.Restaurant.vars.restaurant = "<%= @restaurant.name %>";
 			if(window.innerWidth && window.innerWidth < 600)
 				window.setTimeout(function(){$(window).scrollTop(0)}, 300);
 		});
-		
+		$(".restaurant-link").click(function(e){
+			var restaurant = $(this).data("restaurant-name");
+			var href = $(this).attr("href");
+			History.pushState({restaurant_name:restaurant}, restaurant, href);
+			iUPB.Restaurant.vars.restaurant = restaurant;
+			iUPB.Restaurant.updateMenus(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
+			e.preventDefault();
+		});
 	}); 
 </script>

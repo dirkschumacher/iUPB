@@ -1,6 +1,13 @@
 @iUPB.Restaurant = {}
 @iUPB.Restaurant.vars = {}
 
+
+@iUPB.Restaurant.indicateCurrentRestaurant = (restaurant) ->
+  $("#restaurantSelector .long-text").text(restaurant);
+  $("#restaurantList li a.active").removeClass("active");
+  $("a[data-restaurant-name='" + restaurant + "']").addClass("active");
+  return
+
 @iUPB.Restaurant.updateMenus = (date, restaurant)->
 	url = "/restaurants/"+restaurant+".json"
 	if(date)
@@ -39,6 +46,7 @@
 			item = $("<li>")
 			item.append($("<h3>").text("---"))
 			$("#menus").append(item)
+		window.iUPB.Restaurant.indicateCurrentRestaurant(restaurant)
 		return
 	)
 

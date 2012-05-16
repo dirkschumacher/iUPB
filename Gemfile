@@ -13,6 +13,7 @@ gem "bing_translator", "~> 0.0.2"
 gem 'rack-contrib'
 gem 'i18n-js'
 gem 'newrelic_rpm', :group => "production"
+gem 'dalli', :group => "production"
 gem 'devise'
 gem "omniauth-facebook"
 gem 'rabl'
