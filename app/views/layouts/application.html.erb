@@ -19,66 +19,59 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <!-- <script>(function(){var a;if(navigator.platform==="iPad"){a=window.orientation!==90||window.orientation===-90?"img/startup-tablet-landscape.png":"img/startup-tablet-portrait.png"}else{a=window.devicePixelRatio===2?"img/startup-retina.png":"img/startup.png"}document.write('<link rel="apple-touch-startup-image" href="'+a+'"/>')})()</script> -->
-  
-  
+
+
   <meta http-equiv="cleartype" content="on">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script>
-    I18n.defaultLocale = "<%= I18n.default_locale %>";
-    I18n.locale = "<%= I18n.locale %>";
-	window.iUPB.enableLoadingIndicator();
-</script>
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+  I18n.locale = "<%= I18n.locale %>";
+  window.iUPB.enableLoadingIndicator();
+  </script>
   <%= yield(:head) -%>
 </head>
 <body>
-	<header class="navbar navbar-fixed-top">
-     <span id="spinner"></span>
-      <nav class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          	<%= link_to "iUPB", root_path, :class => 'brand', :id => 'home-button', :title => t(".home") %>
-          <div class="nav-collapse">
-              <%= render 'layouts/navigation' %>
-          </div><!--/.nav-collapse -->
-        </div>
-      </nav>
-    </header>
+  <header class="navbar navbar-fixed-top">
+    <span id="spinner"></span>
+    <nav class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <%= link_to "iUPB", root_path, :class => 'brand', :id => 'home-button', :title => t(".home") %>
+        <div class="nav-collapse">
+          <%= render 'layouts/navigation' %>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  </header>
   <div <%= yield("page-attributes") %>>
-<div>
-	<%= yield(:header) -%>
-</div>  
-  
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-      <%- end -%>
-	<div id="offline"><%= t "you_are_offline" %></div>
-<%= yield %>
-    <!--footer>
-        <div data-role="footer" data-position="fixed">
-        	<div data-role="navbar" data-iconpos="top">
-            		<ul>
-            			<li><%= link_to t(".menu"), restaurants_path %></li>
-            			<li><%= link_to t(".weather"), weather_path %></li>
-            			<li><%= link_to t(".buses"), transportation_path %></li>
-            			<li><%= link_to t(".paul"), courses_path%></li>
-            		</ul>
-            	</div><!-- /navbar -->
-        </div><!-- /footer -->
+    <div>
+      <%= yield(:header) -%>
+    </div>  
+
+    <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <%- end -%>
+    <div id="offline"><%= t "you_are_offline" %></div>
+    <%= yield %>
+
+    <footer>
+      Powered by yippie.io. For us at <a href="https://github.com/dirkschumacher/iUPB">Github</a>!
+    </footer>
     <!--/footer-->
   </div> <!--! end of #container -->
 
-<% unless Rails.env.development? %>
+  <% unless Rails.env.development? %>
   <script>
-    var _gaq=[["_setAccount","<%= IUPB::GOOGLE_ANALYTICS_ACCOUNT %>"],["_trackPageview"]];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+  var _gaq=[["_setAccount","<%= IUPB::GOOGLE_ANALYTICS_ACCOUNT %>"],["_trackPageview"]];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
-  </script>
-<% end %>
-</body>
-</html>
+    </script>
+    <% end %>
+  </body>
+  </html>
