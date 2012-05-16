@@ -20,7 +20,8 @@ IUPB::Application.routes.draw do
   #resource :courses
   #match 'twitter' => 'high_voltage/pages#show', :id => 'twitter'
   
-  root :to => 'high_voltage/pages#show', :id => 'index'
+  match "/pages/*id" => 'pages#show', :as => :page, :format => false
+  root :to => 'pages#show', :id => 'index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

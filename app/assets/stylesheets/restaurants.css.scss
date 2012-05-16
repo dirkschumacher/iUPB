@@ -12,7 +12,7 @@
   float:right;
   margin-right: 10px;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
   .long-text {
     display:none;
   }
@@ -20,7 +20,7 @@
     margin-right: 0px;
   }
 }
-@media screen and (max-width: 300px) {   // untested.
+@media screen and (max-width: 320px) {   // untested.
   #restaurantSelector {
     float:none;
   }
