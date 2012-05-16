@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_filter :set_cache_header
+  before_filter :set_cache_header, :except => :search
 
   def index
   end
@@ -23,6 +23,7 @@ class CoursesController < ApplicationController
     @courses = Course.where(course_type: 'course').where(title_downcase: /.*#{query}.*/).limit(10).entries if query.length > 2
     
     attach_next_class @courses
+    set_cache_header(60*60) # only cache 1 hour
   end
   def attach_next_class(courses)
     courses.each do |course|
