@@ -1,27 +1,28 @@
 IUPB::Application.routes.draw do
+  scope "(:locale)", :locale => /de|en/ do
+    devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
-  match "restaurants" => 'restaurants#index', :as => :restaurants
-  match "restaurants/:restaurant" => 'restaurants#index', :as => :restaurant
-  match 'transportation' => 'pages#show', :id => 'transportation', :as => :transportation
-  match 'weather' => 'weather#index', :as => :weather
-  match 'twitter' => 'pages#show', :id => 'twitter', :as => :twitter
-  match 'courses' => 'courses#index', :as => :courses
+    match "restaurants" => 'restaurants#index', :as => :restaurants
+    match "restaurants/:restaurant" => 'restaurants#index', :as => :restaurant
+    match 'transportation' => 'pages#show', :id => 'transportation', :as => :transportation
+    match 'weather' => 'weather#index', :as => :weather
+    match 'twitter' => 'pages#show', :id => 'twitter', :as => :twitter
+    match 'courses' => 'courses#index', :as => :courses
+      
+    get "twitter/data", :as => :twitter_data
+  
+    match "courses/search/:query" => "courses#search"
+    match "courses/:id" => "courses#show", :as => :course
     
-  get "twitter/data", :as => :twitter_data
-
-  match "courses/search/:query" => "courses#search"
-  match "courses/:id" => "courses#show", :as => :course
-  
-  devise_scope :user do
-    get 'sign_in', :to => 'users/sessions#new', :as => :new_user_session
-    get 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
+    devise_scope :user do
+      get 'sign_in', :to => 'users/sessions#new', :as => :new_user_session
+      get 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
+    end
+    #resource :courses
+    #match 'twitter' => 'high_voltage/pages#show', :id => 'twitter'
+    
+    match "/pages/*id" => 'pages#show', :as => :page, :format => false
   end
-  #resource :courses
-  #match 'twitter' => 'high_voltage/pages#show', :id => 'twitter'
-  
-  match "/pages/*id" => 'pages#show', :as => :page, :format => false
   root :to => 'pages#show', :id => 'index'
   
   # The priority is based upon order of creation:

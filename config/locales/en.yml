@@ -4,6 +4,8 @@ en:
         temperature: "temperature"
         sunrise: "sunrise"
         sunset: "sunset"
+        forecast: "forecast"
+        current_weather: "current weather"
     please_wait: "Please wait..."
     courses:
       next_class: "Next: %{date}, %{time_from} until %{time_to} in %{place}"
