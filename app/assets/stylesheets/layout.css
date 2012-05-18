@@ -39,3 +39,7 @@ footer {
 .no-bullets {
 	list-style-type:none;
 }
+.source-info {
+	color:grey; 
+	font-size:10px;
+}

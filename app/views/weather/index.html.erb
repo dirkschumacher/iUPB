@@ -10,6 +10,6 @@
 	<li><h4><%= t ".sunset" %>: <%= @weatherData['sonnenuntergang'] %></h3></li>
 	<li><h4><%= t ".forecast" %>: <%= number_with_delimiter @forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['tx'] %>° C / <%= @forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['w_txt'] %></h3></li>
 </ul>
-<p style="color:grey; font-size:10px;">
+<p class="source-info">
 	Aktuelle Daten: <a href="http://wetter.uni-paderborn.de/">Wetterstation Uni Paderborn</a>. Vorhersage: <a href="http://www.wetter.com/">wetter.com</a>.
 </p>
