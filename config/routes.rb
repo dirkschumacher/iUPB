@@ -9,7 +9,6 @@ IUPB::Application.routes.draw do
     match 'twitter' => 'pages#show', :id => 'twitter', :as => :twitter
     match 'courses' => 'courses#index', :as => :courses
       
-    get "twitter/data", :as => :twitter_data
   
     match "courses/search/:query" => "courses#search"
     match "courses/:id" => "courses#show", :as => :course
