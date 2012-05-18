@@ -29,6 +29,9 @@
 }
 footer {
 	font-size: 8px;
+	color: #999;
+	text-transform: uppercase;
+	text-align: center;
 }
 .no-left-margin {
 	margin-left: 0px;
