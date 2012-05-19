@@ -1,5 +1,6 @@
 class WeatherController < ApplicationController
   def index
+    set_cache_header 60*20
     @weatherData = get_weather_data
     @forecast = get_forecast
   end

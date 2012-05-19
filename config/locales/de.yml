@@ -1,4 +1,7 @@
 de:
+    pages:
+      twitter:
+        UPB_on_twitter: "UPB auf Twitter"
     weather:
       index:
         temperature: "Temperatur"
