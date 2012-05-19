@@ -11,3 +11,15 @@
 	<div><%= link_to image_tag("icon_weather.png", :class => "round-corners")+ " " +t("layouts.application.weather"), weather_path  %> 
 	</div>
 </div>
+<script>
+if (window.navigator.userAgent.indexOf('iPhone') != -1) { 
+	if (window.navigator.standalone == false) {
+		var addToHomeConfig = {
+			returningVisitor: true
+		};
+		// load dynamically only for iPhones to reduce requests
+		window.iUPB.loadjscssfile("/stylesheets/add2home.css", "css");
+		window.iUPB.loadjscssfile("/scripts/add2home.js", "js");
+	}
+}
+</script>
