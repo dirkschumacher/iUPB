@@ -2,3 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.twitter_avatar {
+  float:left;
+}
+.twitter_message {
+  margin-left:60px;
+}
+//@media screen and (max-width: 480px) {
+//  .twitter_avatar {
+//   margin-right: 0px;
+//  }
+//}
+//@media screen and (max-width: 240px) {   // untested.
+//  .twitter_avatar {
+//    display:none;
+//  }
+//}

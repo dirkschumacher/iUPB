@@ -1,49 +1,70 @@
 de:
-    pages:
-      twitter:
-        UPB_on_twitter: "UPB auf Twitter"
-    weather:
+  jquery:
+    timeago:
+      seconds:
+        one: "Vor einer Sekunde"
+        other: "Vor %{count} Sekunden"
+      minutes:
+        one: "Vor einer Minute"
+        other: "Vor %{count} Minuten"
+      hours:
+        one: "Vor einer Stunde"
+        other: "Vor %{count} Stunden"
+      days: 
+        one: "Vor einem Tag"
+        other: "Vor %{count} Tagen"
+      months:
+        one: "Vor einem Monat"
+        other: "Vor %{count} Monaten"
+      years:
+        one: "Vor einem Jahr"
+        other: "Vor %{count} Jahren"
+  pages:
+    twitter:
+      UPB_on_twitter: "UPB auf Twitter"
+      by: "von"
+  weather:
+    index:
+      temperature: "Temperatur"
+      sunrise: "Sonnenaufgang"
+      sunset: "Sonnenuntergang"
+      forecast: "Vorhersage"
+      current_weather: "Aktuelles Wetter"
+  please_wait: "Bitte warten..."
+  courses:
+    next_class: "Nächste: %{date}, %{time_from} bis %{time_to} in %{place}"
+    show:
+      time_place: "%{date}, %{time_from} bis %{time_to} in %{place}"
+      tutorials: 'Übungsgruppen'
+      dates_and_rooms: 'Zeiten und Räume'
+      view_in_paul: 'Kurs in PAUL ansehen'
+      course_details: 'Kursansicht'
+    room_na: 'N.N.'
+    index:
+      search: "Suche..."
+      type_and_find: "Einfach den Kursnamen eingeben..."
+  restaurants:
       index:
-        temperature: "Temperatur"
-        sunrise: "Sonnenaufgang"
-        sunset: "Sonnenuntergang"
-        forecast: "Vorhersage"
-        current_weather: "Aktuelles Wetter"
-    please_wait: "Bitte warten..."
-    courses:
-      next_class: "Nächste: %{date}, %{time_from} bis %{time_to} in %{place}"
-      show:
-        time_place: "%{date}, %{time_from} bis %{time_to} in %{place}"
-        tutorials: 'Übungsgruppen'
-        dates_and_rooms: 'Zeiten und Räume'
-        view_in_paul: 'Kurs in PAUL ansehen'
-        course_details: 'Kursansicht'
-      room_na: 'N.N.'
-      index:
-        search: "Suche..."
-        type_and_find: "Einfach den Kursnamen eingeben..."
-    restaurants:
-        index:
-            prev_day: "vorheriger Tag"
-            next_day: "nächster Tag"
-            additives: "Zusatzstoffe"
-            hours: "Öffnungszeiten"
-    transportation:
-      index:
-        trip_at: "%{station} um %{date}"
-        to: "nach"
-        line: "Linie"
-        buses_leaving: "Bus Abfahrt"
-    layouts:
-      application:
-        menu: "Speisepläne"
-        weather: "Wetter"
-        buses: "Bus-Zeiten"
-        home: "Startseite"
-        paul: "PAUL"
-    date:
-      formats:
-        weekday_date: ! '%a, %d. %b'
-    time:
-      formats:
-        very_short: ! '%H:%M Uhr'
+          prev_day: "vorheriger Tag"
+          next_day: "nächster Tag"
+          additives: "Zusatzstoffe"
+          hours: "Öffnungszeiten"
+  transportation:
+    index:
+      trip_at: "%{station} um %{date}"
+      to: "nach"
+      line: "Linie"
+      buses_leaving: "Bus Abfahrt"
+  layouts:
+    application:
+      menu: "Speisepläne"
+      weather: "Wetter"
+      buses: "Bus-Zeiten"
+      home: "Startseite"
+      paul: "PAUL"
+  date:
+    formats:
+      weekday_date: ! '%a, %d. %b'
+  time:
+    formats:
+      very_short: ! '%H:%M Uhr'

@@ -1,10 +1,10 @@
 <%= content_for "page-attributes" do %>id="twitterPage"<% end %>
 <script>
 $(document).ready(function() {
+  var list = $("#twitter_list");
+  var twitterClient = new Twitter(list);
   var reload = function(){
-    $("#twitter_list").twitterFeed(function()
-    {
-    });
+    twitterClient.displayFeed(function (){});
   }
   reload();
   $("#reload-button").bind("click", function(e){
