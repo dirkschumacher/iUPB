@@ -34,7 +34,7 @@ en:
     layouts:
       application:
         menu: "Menu"
-        weather: "Wheather"
+        weather: "Weather"
         buses: "Buses"
         home: "Homepage"
         paul: "PAUL"
