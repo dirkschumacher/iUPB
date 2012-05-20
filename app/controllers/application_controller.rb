@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
 
   protected
   
-  # caches content for 4 hours via varnish. 
+  # caches content for 1 hour via varnish. 
   # use in as method or as a filter
-  def set_cache_header(duration=14400) 
+  def set_cache_header(duration=3600) 
     response.headers['Cache-Control'] = "public, max-age=#{duration.to_s}" if params[:locale]
   end
   
