@@ -3,12 +3,14 @@
 <h1><%= t ".current_weather" %></h1>
 <% end %>
 <ul class="nav nav-tabs nav-stacked">
-	<li><h4><%= t ".temperature" %>: <%= number_with_delimiter @weatherData['temp']  %>° C</h3></li>
-	<li><h4><%= t ".min" %>.  <%= t ".temperature" %>: <%= number_with_delimiter @weatherData['tempmin'] %>° C</h3></li>
-	<li><h4><%= t ".max" %>. <%= t ".temperature" %>: <%= number_with_delimiter @weatherData['tempmax'] %>° C</h3></li>
-	<li><h4><%= t ".sunrise" %>: <%= @weatherData['sonnenaufgang'] %></h3></li>
-	<li><h4><%= t ".sunset" %>: <%= @weatherData['sonnenuntergang'] %></h3></li>
-	<li><h4><%= t ".forecast" %>: <%= number_with_delimiter @forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['tx'] %>° C / <%= @forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['w_txt'] %></h3></li>
+	<li><h4><%= t ".temperature" %>: <%= number_with_delimiter @weatherData['temp']  %>° C</h4></li>
+	<li><h4><%= t ".min" %>.  <%= t ".temperature" %>: <%= number_with_delimiter @weatherData['tempmin'] %>° C</h4></li>
+	<li><h4><%= t ".max" %>. <%= t ".temperature" %>: <%= number_with_delimiter @weatherData['tempmax'] %>° C</h4></li>
+	<li><h4><%= t ".sunrise" %>: <%= @weatherData['sonnenaufgang'] %></h4></li>
+	<li><h4><%= t ".sunset" %>: <%= @weatherData['sonnenuntergang'] %></h4></li>
+	<% if @forecast_temp && @forecast_text %>
+		<li><h4><%= t ".forecast" %>: <%= number_with_delimiter @forecast_temp %>° C / <%= @forecast_text %></h4></li>
+	<% end %>
 </ul>
 <p class="source-info">
 	Aktuelle Daten: <a href="http://wetter.uni-paderborn.de/">Wetterstation Uni Paderborn</a>. Vorhersage: <a href="http://www.wetter.com/">wetter.com</a>.
