@@ -42,7 +42,7 @@ $(document).ready(function(event) {
             var time_from = new Date(next_class.time_from);
             var today = new Date();
             var tomorrow = new Date();
-            tomorrow.setDate(today.getDate() + 1)
+            tomorrow.setDate(today.getDate() + 1);
             var interval =  (time_from - today) / 1000 / 60 / 60;
             var class_today = today.getYear() == time_from.getYear() && today.getMonth() == time_from.getMonth() && today.getDay() == time_from.getDay();
             var class_tomorrow = tomorrow.getYear() == time_from.getYear() && tomorrow.getMonth() == time_from.getMonth() && tomorrow.getDay() == time_from.getDay();
