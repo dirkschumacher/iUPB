@@ -10,7 +10,7 @@ IUPB::Application.routes.draw do
     match 'courses' => 'courses#index', :as => :courses
       
   
-    match "courses/search/:query" => "courses#search"
+    match "courses/search/:query" => "courses#search", :as => :course_search
     match "courses/:id" => "courses#show", :as => :course
     
     devise_scope :user do

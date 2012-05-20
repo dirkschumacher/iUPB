@@ -27,7 +27,7 @@ $(document).ready(function(event) {
         $('#paul_heading').hide();
         $('#paul_search_label').show();
       }
-      $.getJSON('/courses/search/' + encodeURIComponent(search_field.val()), function(data)
+      $.getJSON('<%= course_search_path({:query => ""}) %>' + encodeURIComponent(search_field.val()), function(data)
       {
         result_list.empty();
         $.each(data, function() { 
