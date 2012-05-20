@@ -4,7 +4,7 @@
 	else
 		$("offline").show()
 
-jQuery(document).bind('pageshow', ->
+jQuery(document).ready ->
 	$(document.body).bind("online", window.iUPB.checkNetworkStatus)
 	$(document.body).bind("offline", window.iUPB.checkNetworkStatus);
 	
