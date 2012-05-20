@@ -19,4 +19,4 @@ jQuery(document).ready ->
 			$(this).spin(false)
 			return
 		return
-)
+
