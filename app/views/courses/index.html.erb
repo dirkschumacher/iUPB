@@ -30,7 +30,7 @@ $(document).ready(function(event) {
         $.each(data, function() { 
           var li = $('<li class="well" style="white-space: normal;">');
           var link = $('<a data-icon="arrow-r">');
-          link.append($('<h3 style="white-space: normal;">' + this.course.title + '</h3>'));
+          link.append($('<h4 style="white-space: normal;">' + this.course.title + '</h3>'));
           var id = this.course.id;
           link.attr('href', '/courses/' + encodeURIComponent(id));
           var next_class = this.course.next_class;
