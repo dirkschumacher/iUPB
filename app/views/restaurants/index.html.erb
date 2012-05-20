@@ -23,11 +23,23 @@
   	<a href="#" title="<%= t ".next_day" %>" id="next_link" style="right;"><i class="icon-chevron-right"></i></a>
   </h2>
 <% end %>
-<ul id="menus" class="no-left-margin">
-	<li>
-		<%= t "please_wait" %>
-	</li>
+<ul id="menus" class="no-bullets no-left-margin">
+  <li class="well">
+    <%= t "please_wait" %>
+  </li>
 </ul>
+<div id="restaurants-all" class="row-fluid">
+  <% @restaurants.each do |restaurant| %>
+  <div class="span4">
+  <h3><%= restaurant.name %></h3>
+    <ul data-restaurant="<%= restaurant.name %>" class="menu-list no-bullets no-left-margin">
+      <li class="well">
+        <%= t "please_wait" %>
+      </li>
+    </ul>  
+  </div>
+	<% end %>
+</div>
 <p class="center">
 	<a data-toggle="modal" title="<%= t ".hours" %> / <%= t ".additives" %>" class="btn btn-info" href="#infoText" style="font-style:italic;">i</a>
 </p>
@@ -93,7 +105,6 @@
 	// #TODO: put the following code in the Restaurant class (Restaurant.initMenuView(Date day) or so)
 	$(document).ready(function() {
 		var iUPB = window.iUPB;
-		iUPB.Restaurant.updateMenus(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
 		/*$('#restaurantPage').swipe({
 		 swipeLeft: function() {
 		 window.iUPB.Restaurant.vars.today = window.iUPB.Restaurant.loadNextDay(window.iUPB.Restaurant.vars.today);
@@ -103,23 +114,105 @@
 		 },
 		 });
 		 */
+		 var singleUpToDate = false;
+		 var multipleUpToDate = false;
+		 $(window).resize(function() {
+       updateAllRestaurants();
+     });
+    clearCache = function(){
+  	  multipleUpToDate = false;
+  	  singleUpToDate = false;
+    }
+    updateTitles = function(){
+      if(!multipleUpToDate || !singleUpToDate){
+    	  $("#day_title").text(I18n.l("date.formats.weekday_date", iUPB.Restaurant.vars.today));
+    	  window.iUPB.Restaurant.indicateCurrentRestaurant(window.iUPB.Restaurant.vars.restaurant);
+      }
+    }
+    updateAllRestaurants = function() {
+      if(!multipleUpToDate && !$("#restaurants-all").is(':hidden'))
+		  {
+		    $.xhrPool.abortAll();
+		    $("#restaurants-all").find(".menu-list").each(function(i, list){
+		      $list = $(list);
+    		  iUPB.Restaurant.updateMenus($list, iUPB.Restaurant.vars.today, $list.attr("data-restaurant")); 		    		      
+		    });
+  		  updateTitles();
+		    multipleUpToDate = true;
+		  }
+		  else if (!singleUpToDate)
+		  {
+		    $.xhrPool.abortAll();
+		    iUPB.Restaurant.updateMenus($("#menus"), iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant); 		  
+		    updateTitles();  
+		    singleUpToDate = true;
+		  }
+    }
+		updateMenus = function(){
+  		updateAllRestaurants();
+		}
+		nextDay = function(){
+	    clearCache();
+		  if(!$("#restaurants-all").is(':hidden'))
+		  {
+		    $.xhrPool.abortAll();
+		    var date;
+		    $("#restaurants-all").find(".menu-list").each(function(i, list){
+		      $list = $(list);
+		      date = iUPB.Restaurant.loadNextDay($list, iUPB.Restaurant.vars.today, $list.attr("data-restaurant"));	    		      
+		    });
+  		  iUPB.Restaurant.vars.today = date;
+      	updateTitles();
+  		  multipleUpToDate = true;
+		  }
+		  else
+		  {
+		    $.xhrPool.abortAll();
+		    iUPB.Restaurant.vars.today = iUPB.Restaurant.loadNextDay($("#menus"), iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
+      	updateTitles();
+      	singleUpToDate = true;
+		  }
+		}
+		prevDay = function(){
+	    clearCache();
+		  if(!$("#restaurants-all").is(':hidden'))
+		  {
+		    $.xhrPool.abortAll();
+		    var date;
+		    $("#restaurants-all").find(".menu-list").each(function(i, list){
+		      $list = $(list);
+		      date = iUPB.Restaurant.loadPrevDay($list, iUPB.Restaurant.vars.today, $list.attr("data-restaurant"));	    		      
+		    });
+		    iUPB.Restaurant.vars.today = date;
+    		updateTitles();
+    		multipleUpToDate = true;
+		  }
+		  else
+		  {
+		    $.xhrPool.abortAll();
+		    iUPB.Restaurant.vars.today = iUPB.Restaurant.loadPrevDay($("#menus"), iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
+		    updateTitles();
+		    singleUpToDate = true;
+		  }
+		}
+		updateMenus();
 		$("#prev_link").click(function(e) {
-			iUPB.Restaurant.vars.today = iUPB.Restaurant.loadPrevDay(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
+		  prevDay();
 			e.preventDefault();
 		});
 		$("#next_link").click(function(e) {
-			iUPB.Restaurant.vars.today = iUPB.Restaurant.loadNextDay(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
+		  nextDay();
 			e.preventDefault();
 		});
 		$(document).keydown(function(e) {
 			if(e.keyCode == 37) {// left key
-				iUPB.Restaurant.vars.today = iUPB.Restaurant.loadPrevDay(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
+  		  prevDay();
 				return false;
 			}
 		});
 		$(document).keydown(function(e) {
 			if(e.keyCode == 39) {// right key
-				iUPB.Restaurant.vars.today = iUPB.Restaurant.loadNextDay(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
+  		  nextDay();
 				return false;
 			}
 		});
@@ -131,8 +224,9 @@
 			var restaurant = $(this).data("restaurant-name");
 			var href = $(this).attr("href");
 			History.pushState({restaurant_name:restaurant}, restaurant, href);
+			clearCache();
 			iUPB.Restaurant.vars.restaurant = restaurant;
-			iUPB.Restaurant.updateMenus(iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant);
+  		updateMenus();			
 			e.preventDefault();
 		});
 	}); 
