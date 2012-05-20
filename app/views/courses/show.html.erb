@@ -47,7 +47,7 @@ $(document).ready(function(){
             <%= link_to group do  %>
             <h4 style="white-space: normal;"><%= group.group_title %></h4>
             <% if group['next_class'] %>
-            <p><%= t('courses.next_class', {date: l(group.next_class[:date], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
+            <p><%= t('courses.next_class', {date: l(group.next_class[:time_from], format: :short), time_from: l(group.next_class[:time_from], format: :very_short), time_to: l(group.next_class[:time_to], format: :very_short), place: group.next_class[:room] })%>
             </p>
 
             <% end %>
