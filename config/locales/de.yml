@@ -43,7 +43,7 @@ de:
       course_details: 'Kursansicht'
     room_na: 'N.N.'
     index:
-      search: "Suche..."
+      search: "Suche"
       type_and_find: "Einfach den Kursnamen eingeben..."
   restaurants:
       index:

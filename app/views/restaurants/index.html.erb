@@ -114,22 +114,22 @@
 		 },
 		 });
 		 */
-		 var singleUpToDate = false;
-		 var multipleUpToDate = false;
-		 $(window).resize(function() {
-       updateAllRestaurants();
-     });
-    clearCache = function(){
+		var singleUpToDate = false;
+	  var multipleUpToDate = false;
+	  $(window).resize(function() {
+      updateAllRestaurants();
+    });
+    var clearCache = function(){
   	  multipleUpToDate = false;
   	  singleUpToDate = false;
     }
-    updateTitles = function(){
+    var updateTitles = function(){
       if(!multipleUpToDate || !singleUpToDate){
     	  $("#day_title").text(I18n.l("date.formats.weekday_date", iUPB.Restaurant.vars.today));
     	  window.iUPB.Restaurant.indicateCurrentRestaurant(window.iUPB.Restaurant.vars.restaurant);
       }
     }
-    updateAllRestaurants = function() {
+    var updateAllRestaurants = function() {
       if(!multipleUpToDate && !$("#restaurants-all").is(':hidden'))
 		  {
 		    $.xhrPool.abortAll();
@@ -148,10 +148,10 @@
 		    singleUpToDate = true;
 		  }
     }
-		updateMenus = function(){
+		var updateMenus = function(){
   		updateAllRestaurants();
 		}
-		nextDay = function(){
+		var nextDay = function(){
 	    clearCache();
 		  if(!$("#restaurants-all").is(':hidden'))
 		  {
@@ -173,7 +173,7 @@
       	singleUpToDate = true;
 		  }
 		}
-		prevDay = function(){
+		var prevDay = function(){
 	    clearCache();
 		  if(!$("#restaurants-all").is(':hidden'))
 		  {

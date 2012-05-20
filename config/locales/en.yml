@@ -43,7 +43,7 @@ en:
       course_details: 'Course details'
     room_na: 'N.A.'
     index:
-      search: "Search..."
+      search: "Search"
       type_and_find: "Just type in the course name..."
   restaurants:
       index:

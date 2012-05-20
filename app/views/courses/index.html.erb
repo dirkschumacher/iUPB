@@ -2,12 +2,12 @@
 <% content_for :header do %>
 <h1 id="paul_heading"><%= t ".Paul"%></h1>
 <% end %>
-<input type="search" name="search" autocomplete="off" class="paul_search_field" placeholder="<%= t '.search' %>" id="search_id" value="" />
+<span id="paul_search_label" style="display:none;font-weight:bold;"><%= t ".search"%>: </span><input type="search" name="search" autocomplete="off" id="paul_search_field" placeholder="<%= t '.search' %>..." value="" />
 <script>
 $(document).ready(function(event) {
   //TODO: port this to coffee script :)
   
-  var search_field = $("#search_id");
+  var search_field = $("#paul_search_field");
   var result_list = $("#courses_result_list");
   search_field.bind( "change", function(event, ui) {
     if(search_field.val().length == 0)
@@ -23,7 +23,10 @@ $(document).ready(function(event) {
       return;
     search_timer = setTimeout(function() 
     {
-      $('#paul_heading').hide();
+      if(!$('#paul_heading').is(":hidden")){
+        $('#paul_heading').hide();
+        $('#paul_search_label').show();
+      }
       $.getJSON('/courses/search/' + encodeURIComponent(search_field.val()), function(data)
       {
         result_list.empty();
@@ -68,7 +71,7 @@ $(document).ready(function(event) {
   });
 });
 </script>
-<ul data-role="listview" id="courses_result_list" class="no-bullets no-left-margin">
+<ul id="courses_result_list" class="no-bullets no-left-margin">
   <li><h3><%= t '.type_and_find' %></h3></li>
 </ul>
 
