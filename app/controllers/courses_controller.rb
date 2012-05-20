@@ -30,13 +30,14 @@ class CoursesController < ApplicationController
       min_interval = 100.days
       course.course_data.each do |data|
         next_class = data['date'].to_date
-        interval = next_class - Date.today
-        if next_class >= DateTime.now and interval < min_interval
+        time_from = DateTime.new(next_class.year, next_class.mon, next_class.day, data['time_from'].hour, data['time_from'].min, 0)
+        time_to = DateTime.new(next_class.year, next_class.mon, next_class.day, data['time_to'].hour, data['time_to'].min, 0)
+        interval = time_from - DateTime.now
+        if time_from >= DateTime.now and interval < min_interval
           course['next_class'] = {
-            date: next_class,
             room: data['room'].length == 0 ? t('courses.room_na') : data['room'],
-            time_from: data['time_from'],
-            time_to: data['time_to']
+            time_from: time_from,
+            time_to: time_to
             #instructor: data['instructor']
           }
           min_interval = interval

@@ -33,6 +33,8 @@ en:
   please_wait: "Please wait..."
   courses:
     next_class: "Next: %{date}, %{time_from} until %{time_to} in %{place}"
+    today: "Today"
+    tomorrow: "Tomorrow"
     show:
       time_place: "%{date}, %{time_from} until %{time_to} in %{place}"
       tutorials: 'Tutorials'

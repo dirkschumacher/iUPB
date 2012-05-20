@@ -1,8 +1,8 @@
 <%= content_for "page-attributes" do %>id="paulPage"<% end %>
 <% content_for :header do %>
-<h1><%= t ".Paul"%></h1>
+<h1 id="paul_heading"><%= t ".Paul"%></h1>
 <% end %>
-<input type="search" name="search" autocomplete="off" placeholder="<%= t '.search' %>" id="search_id" value="" />
+<input type="search" name="search" autocomplete="off" class="paul_search_field" placeholder="<%= t '.search' %>" id="search_id" value="" />
 <script>
 $(document).ready(function(event) {
   //TODO: port this to coffee script :)
@@ -15,37 +15,50 @@ $(document).ready(function(event) {
   });
   var search_timer = null;
   search_field.keyup(function() {
+    if (search_timer)
+      clearTimeout(search_timer);
     if(search_field.val().length == 0)
       result_list.empty();
     if(search_field.val().length < 3)
       return;
-    if (search_timer)
-      clearTimeout(search_timer);
     search_timer = setTimeout(function() 
     {
+      $('#paul_heading').hide();
       $.getJSON('/courses/search/' + encodeURIComponent(search_field.val()), function(data)
       {
         result_list.empty();
         $.each(data, function() { 
-          var li = $('<li style="white-space: normal;">');
+          var li = $('<li class="well" style="white-space: normal;">');
           var link = $('<a data-icon="arrow-r">');
           link.append($('<h3 style="white-space: normal;">' + this.course.title + '</h3>'));
           var id = this.course.id;
           link.attr('href', '/courses/' + encodeURIComponent(id));
           var next_class = this.course.next_class;
+          li.append(link);
           if(next_class)
           {
-            var infos = $('<p>');
+            var infos = $('<h5>');
+            var dateText = I18n.l("date.formats.short", next_class.time_from);
+            var time_from = new Date(next_class.time_from);
+            var today = new Date();
+            var tomorrow = new Date().setDate(today.getDate() + 1);
+            var interval =  (time_from - today) / 1000 / 60 / 60;
+            var class_today = today.getYear() == time_from.getYear() && today.getMonth() == time_from.getMonth() && today.getDay() == time_from.getDay();
+            var class_tomorrow = tomorrow.getYear() == time_from.getYear() && tomorrow.getMonth() == time_from.getMonth() && tomorrow.getDay() == time_from.getDay();
+            
+            if(interval < 24 && class_today)
+              dateText = I18n.t("courses.today");
+            else if(interval < 48 && class_tomorrow)
+              dateText = I18n.t("courses.tomorrow");
             var text = I18n.t("courses.next_class", {
-              date: I18n.l("date.formats.short", next_class.date),
+              date: dateText,
               time_from: I18n.l("time.formats.very_short", next_class.time_from), 
               time_to: I18n.l("time.formats.very_short", next_class.time_to),
               place: next_class.room
             });
             infos.text(text);
-            link.append(infos);
+            li.append(infos);
           }
-          li.append(link);
           result_list.append(li);
         });
       }); 
