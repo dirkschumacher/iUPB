@@ -35,7 +35,7 @@ $(document).ready(function(event) {
           var link = $('<a data-icon="arrow-r">');
           link.append($('<h4 style="white-space: normal;">' + this.course.title + '</h3>'));
           var id = this.course.id;
-          link.attr('href', '/courses/' + encodeURIComponent(id));
+          link.attr('href', '<%= course_path({:id => ""}) %>' + encodeURIComponent(id));
           var next_class = this.course.next_class;
           li.append(link);
           if(next_class)
