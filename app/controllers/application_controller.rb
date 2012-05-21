@@ -17,4 +17,11 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
+  
+  # use as a filter
+  def only_upb_ip
+    upb_net = "131.234.0.0/16"
+    upb = IPAddr.new(upb_net)
+    upb === request.ip_address
+  end
 end
