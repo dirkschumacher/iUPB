@@ -1,7 +1,7 @@
 class WeatherController < ApplicationController
   def index
     set_cache_header 60*20
-    @weatherData = get_weather_data
+    #@weatherData = get_weather_data
     forecast = get_forecast
     if forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]
       @forecast_temp = forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['tx']

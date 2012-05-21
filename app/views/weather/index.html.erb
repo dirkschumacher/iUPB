@@ -2,12 +2,13 @@
 <% content_for :header do %>
 <h1><%= t ".current_weather" %></h1>
 <% end %>
-<ul class="nav nav-tabs nav-stacked">
-	<li><h4><%= t ".temperature" %>: <%= number_with_delimiter @weatherData['temp']  %>° C</h4></li>
-	<li><h4><%= t ".min" %>.  <%= t ".temperature" %>: <%= number_with_delimiter @weatherData['tempmin'] %>° C</h4></li>
-	<li><h4><%= t ".max" %>. <%= t ".temperature" %>: <%= number_with_delimiter @weatherData['tempmax'] %>° C</h4></li>
-	<li><h4><%= t ".sunrise" %>: <%= @weatherData['sonnenaufgang'] %></h4></li>
-	<li><h4><%= t ".sunset" %>: <%= @weatherData['sonnenuntergang'] %></h4></li>
+<h4 id="wait-message"><%= t 'please_wait' %></h4>
+<ul id="weather-data" class="hidden nav nav-tabs nav-stacked">
+	<li><h4><%= t ".temperature" %>: <span data-weather-binding="temp"></span>° C</h4></li>
+	<li><h4><%= t ".min" %>.  <%= t ".temperature" %>: <span data-weather-binding="tempmin"></span>° C</h4></li>
+	<li><h4><%= t ".max" %>. <%= t ".temperature" %>: <span data-weather-binding="tempmax"></span>° C</h4></li>
+	<li><h4><%= t ".sunrise" %>: <span data-weather-binding="sonnenaufgang"></span></h4></li>
+	<li><h4><%= t ".sunset" %>: <span data-weather-binding="sonnenuntergang"></span></h4></li>
 	<% if @forecast_temp && @forecast_text %>
 		<li><h4><%= t ".forecast" %>: <%= number_with_delimiter @forecast_temp %>° C / <%= @forecast_text %></h4></li>
 	<% end %>
@@ -15,3 +16,30 @@
 <p class="source-info">
 	Aktuelle Daten: <a href="http://wetter.uni-paderborn.de/">Wetterstation Uni Paderborn</a>. Vorhersage: <a href="http://www.wetter.com/">wetter.com</a>.
 </p>
+
+<script>
+$(document).ready(function(){
+  $.ajax({ 
+    url: "https://upbapi.cloudcontrolled.com/wetter.php?callback=?",
+    dataType: "jsonp",
+    type: "GET",
+    jsonp: true,
+    cache: true,
+    jsonpCallback: "success", 
+    success: function(data){
+      var $data_list = $('#weather-data');
+      $.each(data, function(key, value){
+        var $span = $data_list.find('span[data-weather-binding="' + key + '"]').first();
+        if($span)
+        {
+          if(key === 'temp' || key === 'tempmin' || key === 'tempmax' )
+            value = I18n.toNumber(value);
+          $span.text(value);
+        }
+      });
+      $('#wait-message').hide();
+      $data_list.removeClass('hidden');
+    }
+  });
+});
+</script>
