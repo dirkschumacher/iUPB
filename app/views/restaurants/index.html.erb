@@ -144,13 +144,14 @@
 		  {
 		    $.xhrPool.abortAll();
 		    iUPB.Restaurant.updateMenus($("#menus"), iUPB.Restaurant.vars.today, window.iUPB.Restaurant.vars.restaurant); 		  
-		    updateTitles();  
+		//    updateTitles();  
 		    singleUpToDate = true;
 		  }
     }
 		var updateMenus = function(){
   		updateAllRestaurants();
 		}
+		
 		var nextDay = function(){
 	    clearCache();
 		  if(!$("#restaurants-all").is(':hidden'))
@@ -196,6 +197,7 @@
 		  }
 		}
 		updateMenus();
+		updateTitles();
 		$("#prev_link").click(function(e) {
 		  prevDay();
 			e.preventDefault();
@@ -226,7 +228,8 @@
 			History.pushState({restaurant_name:restaurant}, restaurant, href);
 			clearCache();
 			iUPB.Restaurant.vars.restaurant = restaurant;
-  		updateMenus();			
+  			updateMenus();
+			updateTitles();
 			e.preventDefault();
 		});
 	}); 
