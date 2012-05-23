@@ -18,6 +18,7 @@ gem 'devise'
 gem "omniauth-facebook"
 gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"
+gem "koala"
 
 # Gems used only for assets and not required
 # in production environments by default.
