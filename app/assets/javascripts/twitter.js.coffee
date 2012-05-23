@@ -2,7 +2,7 @@ class @Twitter
   constructor: (@element) ->
   parseUsername: (text) ->
     text.replace /[@]+[A-Za-z0-9-_]+/g, (u) ->
-      u.link 'https://twitter.com/' + user.replace('@','')
+      u.link 'https://twitter.com/' + u.replace('@','')
   
   parseHashtag: (text) ->
     text.replace /[#]+[A-Za-z0-9-_]+/g, (t) ->
