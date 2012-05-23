@@ -2,6 +2,7 @@ IUPB::Application.routes.draw do
   scope "(:locale)", :locale => /de|en/ do
     devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
+    match "events" => 'events#index', :as => :events
     match "restaurants" => 'restaurants#index', :as => :restaurants
     match "restaurants/:restaurant" => 'restaurants#index', :as => :restaurant
     match 'transportation' => 'pages#show', :id => 'transportation', :as => :transportation

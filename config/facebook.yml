@@ -1,9 +1,11 @@
 development:
   app_id: YOUR APP ID
   secret_key: YOUR SECRET
+  token: User token
 test:
   app_id: YOUR APP ID
   secret_key: YOUR SECRET
 production:
   app_id: <%= ENV["FB_ID"] %>
-  secret_key: <%= ENV["FB_SECRET"" "%>
+  secret_key: <%= ENV["FB_SECRET" %>
+  token: <%= ENV["FB_TOKEN"] &>
