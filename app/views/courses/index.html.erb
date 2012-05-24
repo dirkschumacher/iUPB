@@ -30,6 +30,10 @@ $(document).ready(function(event) {
       $.getJSON('<%= course_search_path({:query => ""}) %>' + encodeURIComponent(search_field.val()), function(data)
       {
         result_list.empty();
+        if(data.length == 0)
+        {
+          result_list.append($('<li><h3><%= t '.no_results' %></h3></li>'));
+        }
         $.each(data, function() { 
           var li = $('<li class="well" style="white-space: normal;">');
           var link = $('<a data-icon="arrow-r">');
@@ -42,7 +46,8 @@ $(document).ready(function(event) {
           {
             var infos = $('<h5>');
             var dateText = I18n.l("date.formats.short", next_class.time_from);
-            var time_from = new Date(next_class.time_from);
+            var time_from = new Date(Date.parse(next_class.time_from));
+            var time_to = new Date(Date.parse(next_class.time_to));
             var today = new Date();
             var tomorrow = new Date();
             tomorrow.setDate(today.getDate() + 1);
@@ -56,8 +61,8 @@ $(document).ready(function(event) {
               dateText = I18n.t("courses.tomorrow");
             var text = I18n.t("courses.next_class", {
               date: dateText,
-              time_from: I18n.l("time.formats.very_short", next_class.time_from), 
-              time_to: I18n.l("time.formats.very_short", next_class.time_to),
+              time_from: I18n.l("time.formats.very_short", time_from), 
+              time_to: I18n.l("time.formats.very_short", time_to),
               place: next_class.room
             });
             infos.text(text);
