@@ -1,4 +1,9 @@
 de:
+  asta:
+    index:
+      read_more: "Mehr"
+      read_original: "Den Originalpost lesen"
+      by: "von"
   jquery:
     timeago:
       seconds:
@@ -45,6 +50,7 @@ de:
     index:
       search: "Suche"
       type_and_find: "Einfach den Kursnamen eingeben..."
+      no_results: "Keine Kurse gefunden. Probiers noch einmal :)"
   restaurants:
       index:
           prev_day: "vorheriger Tag"
