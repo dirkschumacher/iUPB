@@ -8,4 +8,4 @@ test:
 production:
   app_id: <%= ENV["FB_ID"] %>
   secret_key: <%= ENV["FB_SECRET"] %>
-  token: <%= ENV["FB_TOKEN"] &>
+  token: <%= ENV["FB_TOKEN"] %>
