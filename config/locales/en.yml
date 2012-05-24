@@ -23,6 +23,13 @@ en:
     twitter:
       UPB_on_twitter: "UPB on Twitter"
       by: "by"
+  asta:
+    index:
+      read_more: "more"
+      read_original: "Read more at AStA"
+      by: "by"
+      old: "old"
+      asta_news: "AStA News"
   weather:
     index:
       temperature: "temperature"

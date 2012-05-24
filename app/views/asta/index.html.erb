@@ -1,0 +1,22 @@
+<%= content_for "page-attributes" do %>id="astaNewsPage"<% end %>
+<% content_for :header do %>
+<h1><%= t ".asta_news" %></h1>
+<% end %>
+
+<ul id="asta-news-list" class="no-bullets no-left-margin">
+<% @news_items.each do |item| %>
+<li class="well">
+  <h4><%= item['title'] %></h4>
+  <div class="asta-meta">
+  <h6 class="asta-time"><%= time_ago_in_words item['date'] %> <%= t '.old' %></h6>
+  </div>
+  <div class="asta-text"><%= item['description'] %></div>
+  <a class="button button-info" target="_blank" href="<%= item['link'] %>"><%= t ".read_original" %></a>
+</li>
+<% end %>
+
+
+</ul>
+<p class="source-info">
+	Aktuelle Daten: <a target="_blank" href="http://asta.uni-paderborn.de/">AStA Paderborn</a>.
+</p>

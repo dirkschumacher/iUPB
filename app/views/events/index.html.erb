@@ -1,0 +1,19 @@
+<%= content_for "page-attributes" do %>id="eventsPage"<% end %>
+<% content_for :header do %>
+<h1><%= t "events" %></h1>
+<% end %>
+
+<ul id="events_list" class="no-bullets no-left-margin">
+<% @events.each do |event| %>
+	<% if event["attendees"] %>
+		<li class="well">
+			<h4><%= event["name"] %></h3>
+			<h5><%= l event["start_time"] %></h5>
+			<h5><%= t ".where" %>: <%= event["location"] %></h5>
+			<h5><%= t ".attendees_on_facebook" %>: <span class="badge badge-info"><%= event["attendees"] %></span></h5>
+			<p><a class="btn btn-info" href="<%= event["link"] %>" data-role="button" target="_blank"><%= t '.view_on_facebook' %></a></p>
+		</li>
+	<% end %>
+<% end %>
+</ul>
+

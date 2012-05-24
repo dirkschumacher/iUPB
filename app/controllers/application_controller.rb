@@ -24,4 +24,11 @@ class ApplicationController < ActionController::Base
     upb = IPAddr.new(upb_net)
     upb === request.ip_address
   end
+  
+  def fb_graph(url)
+    Koala::Facebook::API.new(Koala::Facebook::OAuth.new(
+      Facebook::APP_ID.to_s, 
+      Facebook::SECRET.to_s, 
+      url).get_app_access_token)
+  end
 end
