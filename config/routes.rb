@@ -3,6 +3,7 @@ IUPB::Application.routes.draw do
     devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
     match "events" => 'events#index', :as => :events
+    match "asta" => 'asta#index', :as => :asta
     match "restaurants" => 'restaurants#index', :as => :restaurants
     match "restaurants/:restaurant" => 'restaurants#index', :as => :restaurant
     match 'transportation' => 'pages#show', :id => 'transportation', :as => :transportation

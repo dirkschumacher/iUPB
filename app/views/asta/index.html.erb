@@ -1,0 +1,18 @@
+<%= content_for "page-attributes" do %>id="astaNewsPage"<% end %>
+<% content_for :header do %>
+<h1><%= t ".asta_news" %></h1>
+<% end %>
+
+<ul id="asta-news-list" class="no-bullets no-left-margin">
+<li><%= t "please_wait" %></li>
+<li class="well">
+  <div class="asta-meta">
+  <%= t ".Posted" %> <span class="asta-time badge badge-warning">2 hours ago</span> <%= t "by" %>
+  <span class="asta-author label label-info">Hans Wurst</span>
+  </div>
+  <div class="asta-text">Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem 
+    Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem 
+    Lorem Lorem Lorem Lorem Lorem Lorem Lorem ...</div>
+  <a href="#"><%= t ".read_more" %></a>
+</li>
+</ul>
