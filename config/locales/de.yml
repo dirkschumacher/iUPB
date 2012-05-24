@@ -2,8 +2,10 @@ de:
   asta:
     index:
       read_more: "Mehr"
-      read_original: "Den Originalpost lesen"
+      read_original: "Beim AStA weiterlesen"
       by: "von"
+      old: "alt"
+      asta_news: "AStA News"
   jquery:
     timeago:
       seconds:
