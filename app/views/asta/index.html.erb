@@ -3,20 +3,19 @@
 <h1><%= t ".asta_news" %></h1>
 <% end %>
 
-<ul id="asta-news-list" class="no-bullets no-left-margin">
+<div id="asta-news-list">
 <% @news_items.each do |item| %>
-<li class="well">
+<div class="row-fluid">
+<div class="well span12">
   <h4><%= item['title'] %></h4>
-  <div class="asta-meta">
   <h6 class="asta-time"><%= time_ago_in_words item['date'] %> <%= t '.old' %></h6>
-  </div>
-  <div class="asta-text"><%= item['description'] %></div>
-  <a class="button button-info" target="_blank" href="<%= item['link'] %>"><%= t ".read_original" %></a>
-</li>
+  <p><span class="asta-text"><%= item['description'] %></span><br>
+  <a class="btn-small btn btn-info" target="_blank" href="<%= item['link'] %>"><%= t ".read_original" %></a></p>
+</div>
+</div>
 <% end %>
+</div>
 
-
-</ul>
 <p class="source-info">
-	Aktuelle Daten: <a target="_blank" href="http://asta.uni-paderborn.de/">AStA Paderborn</a>.
+	Quelle: <a target="_blank" href="http://asta.uni-paderborn.de/">AStA Paderborn</a>.
 </p>
