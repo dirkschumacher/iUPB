@@ -79,6 +79,7 @@ de:
       home: "Startseite"
       paul: "PAUL"
       party: "Parties"
+      asta: "AStA News"
   date:
     formats:
       weekday_date: ! '%a, %d. %b'
