@@ -59,6 +59,12 @@ de:
           next_day: "nächster Tag"
           additives: "Zusatzstoffe"
           hours: "Öffnungszeiten"
+  events:
+      index:
+          attendees_on_facebook: "Gäste"
+          where: "Ort"
+          party_headline: "Party-Termine"
+          view_on_facebook: "in Facebook öffnen"
   transportation:
     index:
       trip_at: "%{station} um %{date}"
@@ -72,6 +78,7 @@ de:
       buses: "Bus-Zeiten"
       home: "Startseite"
       paul: "PAUL"
+      party: "Parties"
   date:
     formats:
       weekday_date: ! '%a, %d. %b'
