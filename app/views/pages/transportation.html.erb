@@ -3,44 +3,13 @@
 <h1><%= t "layouts.application.buses"%> <a href="#" id="reload-button"><i class="icon-refresh"></i></a></h1>
 <% end %>
 <script>
-$(document).ready(function(event) {
-  var load_buses = function()
-  {
-    $.ajax({ 
-      url: "https://upbapi.cloudcontrolled.com/busplan.php?callback=?",
-      dataType: "jsonp",
-      type: "GET",
-      jsonp: true,
-      cache: true,
-      jsonpCallback: "success", 
-      success: function(data){
-      var list = $("#bus_data_list");
-      list.empty();
-      for(var i = 0; i < data.length; i++)
-      {
-        var list_item = $('<li class="well"><h4>'
-         + I18n.t("transportation.index.trip_at", {
-            "station" : data[i].station, 
-            "date" : I18n.l("time.formats.very_short", data[i].date)
-           }) 
-         + '</h4><h5>'
-         + I18n.t("transportation.index.line") 
-         + ' <span class="badge badge-info">' 
-         + data[i].line 
-         + '</span>  ' 
-         + I18n.t("transportation.index.to") 
-         + ' <span class="label label-info">' 
-         + data[i].direction 
-         + '</span></h5></li>');
-  			list.append(list_item);
-      }
-    }});
-  };
-  load_buses();
-  $("#reload-button").bind("click", function(e){
-    load_buses();
-	  e.preventDefault();
+$(document).ready(function() {
+  window.iUPB.Transportation.load_buses();
+  $("#reload-button").click(function(e){
+    window.iUPB.Transportation.load_buses();
+	e.preventDefault();
   });
+  var autoReload = window.setInterval(window.iUPB.Transportation.load_buses, 60*1000);
 });
 </script>
 <ul id="bus_data_list" class="no-bullets no-left-margin">
