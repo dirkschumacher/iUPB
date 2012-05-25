@@ -66,6 +66,7 @@ en:
       to: "to"
       line: "Bus"
       buses_leaving: "Busses leaving"
+      no_buses_at_station: "No busses leaving anymore"
   events:
       index:
         attendees_on_facebook: "attendees"
