@@ -4,6 +4,7 @@ IUPB::Application.routes.draw do
   
     match "events" => 'events#index', :as => :events
     match "asta" => 'asta#index', :as => :asta
+    match "asta/data" => 'asta#data', :as => :asta_data
     match "restaurants" => 'restaurants#index', :as => :restaurants
     match "restaurants/:restaurant" => 'restaurants#index', :as => :restaurant
     match 'transportation' => 'pages#show', :id => 'transportation', :as => :transportation

@@ -5,7 +5,13 @@ class AstaController < ApplicationController
     @news_items = get_news_data
     set_cache_header 60 * AstaController::MINUTES
   end
-  
+  def data
+    @items = get_news_data
+    respond_to do |format|
+      format.xml
+      format.json
+    end
+  end
   protected
   def get_news_data
     # needs also a change in the api - horrible :)
