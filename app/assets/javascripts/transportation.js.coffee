@@ -54,9 +54,9 @@
         
 
 @iUPB.Transportation.helper.build_li_element = (bus) ->
-  $('<li class="well"><h4>' + I18n.t("transportation.index.trip_at", { "station" : bus.station, "date" : I18n.l("time.formats.very_short", bus.date)}) + '</h4><h5>' + I18n.t("transportation.index.line") + ' <span class="badge badge-info">' + bus.line + '</span>' + I18n.t("transportation.index.to") + ' <span class="label label-info">' + bus.direction + '</span></h5></li>')
+  $('<li class="well"><h4>' + I18n.t("transportation.index.trip_at", { "station" : bus.station, "date" : I18n.l("time.formats.very_short", bus.date)}) + '</h4><h5>' + I18n.t("transportation.index.line") + ' <span class="badge badge-info">' + bus.line + '</span> ' + I18n.t("transportation.index.to") + ' <span class="label label-info">' + bus.direction + '</span></h5></li>')
 
 @iUPB.Transportation.helper.build_reduced_li_element = (bus) ->
-  $('<li class="well"><h4>' + I18n.t("transportation.index.trip_at_reduced", {"date" : I18n.l("time.formats.very_short", bus.date)}) + '</h4><h5>' + I18n.t("transportation.index.line") + ' <span class="badge badge-info">' + bus.line + '</span>' + I18n.t("transportation.index.to") + ' <span class="label label-info">' + bus.direction + '</span></h5></li>')
+  $('<li class="well"><h4>' + I18n.t("transportation.index.trip_at_reduced", {"date" : I18n.l("time.formats.very_short", bus.date)}) + '</h4><h5>' + I18n.t("transportation.index.line") + ' <span class="badge badge-info">' + bus.line + '</span> ' + I18n.t("transportation.index.to") + ' <span class="label label-info">' + bus.direction + '</span></h5></li>')
     
     
