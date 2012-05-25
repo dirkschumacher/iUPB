@@ -2,7 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#bus_data_list li {
+.bus-list li {
   padding: 10px;
   margin-bottom: 10px;
+}
+#bus-all
+{
+  display:block;
+}  
+#bus_data_list {
+  display:none;
+}
+@media screen and (max-width: 980px) {
+  #bus-all
+  {
+    display:none;
+  } 
+  #bus_data_list {
+    display:block;
+  }
 }

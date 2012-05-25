@@ -62,6 +62,7 @@ en:
   transportation:
     index:
       trip_at: "%{station} at %{date}"
+      trip_at_reduced: "At %{date}"
       to: "to"
       line: "Bus"
       buses_leaving: "Busses leaving"
