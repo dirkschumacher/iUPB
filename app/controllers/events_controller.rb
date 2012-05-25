@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_filter :set_cache_header
   
   def index
-    @events = Rails.cache.fetch("iUPB.fb_parties", :expires_in => 1.hour) do
+    @events = Rails.cache.fetch("iUPB.fb_parties", :expires_in => 2.hours) do
       graph = Koala::Facebook::API.new(Facebook::TOKEN)
 
       # 135017669880336 is https://www.facebook.com/uniparty.pb

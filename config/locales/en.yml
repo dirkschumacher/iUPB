@@ -65,6 +65,12 @@ en:
       to: "to"
       line: "Bus"
       buses_leaving: "Busses leaving"
+  events:
+      index:
+        attendees_on_facebook: "attendees"
+        where: "venue"
+        party_headline: "Party calendar"
+        view_on_facebook: "open on facebook"
   layouts:
     application:
       menu: "Menu"
@@ -72,6 +78,7 @@ en:
       buses: "Buses"
       home: "Homepage"
       paul: "PAUL"
+      party: "Partys"
   time:
     formats:
       very_short: ! '%H:%M'
