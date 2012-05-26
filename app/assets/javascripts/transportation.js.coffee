@@ -3,16 +3,19 @@
   
 @iUPB.Transportation.vars = {}
 @iUPB.Transportation.vars.buses = []
-@iUPB.Transportation.vars.buckets = {}
-@iUPB.Transportation.vars.buckets["Uni/Schöne Aussicht"] = []
-@iUPB.Transportation.vars.buckets["MuseumsForum"] = []
-@iUPB.Transportation.vars.buckets["Uni/Südring"] = []
-  
 @iUPB.Transportation.helper = {}
 @iUPB.Transportation.helper.getTheDiffTime = (date1, date2) ->
   (date1.getTime() - date2.getTime())*1000*60
 
 
+
+@iUPB.Transportation.helper.resetBuckets = =>
+  @iUPB.Transportation.vars.buckets = {}
+  @iUPB.Transportation.vars.buckets["Uni/Schöne Aussicht"] = []
+  @iUPB.Transportation.vars.buckets["MuseumsForum"] = []
+  @iUPB.Transportation.vars.buckets["Uni/Südring"] = []
+
+@iUPB.Transportation.helper.resetBuckets()
 
 @iUPB.Transportation.helper.splitBusData = =>
   for bus in @iUPB.Transportation.vars.buses
@@ -31,6 +34,7 @@
 		success: (data) =>
 			single_list = $("#bus_data_list")
 			single_list.empty()
+			@iUPB.Transportation.helper.resetBuckets()
 			for bus in data
 			  do (bus) =>
 				  list_item = @iUPB.Transportation.helper.build_li_element(bus)
@@ -52,7 +56,8 @@
       bucket_list.append @iUPB.Transportation.helper.build_reduced_li_element(bus) for bus in bucket
     else
 		    bucket_list.append $('<li class="well">' + I18n.t("transportation.index.no_buses_at_station") + '</li>')
-		  true
+		  return true
+	  false
         
 
 @iUPB.Transportation.helper.build_li_element = (bus) ->
