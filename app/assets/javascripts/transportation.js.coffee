@@ -4,7 +4,9 @@
 @iUPB.Transportation.vars = {}
 @iUPB.Transportation.vars.buses = []
 @iUPB.Transportation.vars.buckets = {}
-
+@iUPB.Transportation.vars.buckets["Uni/Schöne Aussicht"] = []
+@iUPB.Transportation.vars.buckets["MuseumsForum"] = []
+@iUPB.Transportation.vars.buckets["Uni/Südring"] = []
   
 @iUPB.Transportation.helper = {}
 @iUPB.Transportation.helper.getTheDiffTime = (date1, date2) ->
@@ -13,12 +15,10 @@
 
 
 @iUPB.Transportation.helper.splitBusData = =>
-  buckets = {}
   for bus in @iUPB.Transportation.vars.buses
     do (bus) ->
-      buckets[bus.station] = [] if not buckets[bus.station]
-      buckets[bus.station].push bus
-  @iUPB.Transportation.vars.buckets = buckets  
+      @iUPB.Transportation.vars.buckets[bus.station] = [] if not @iUPB.Transportation.vars.buckets[bus.station]
+      @iUPB.Transportation.vars.buckets[bus.station].push bus
   
 @iUPB.Transportation.load_buses = =>
 	jQuery.ajax({ 
@@ -36,20 +36,22 @@
 				  list_item = @iUPB.Transportation.helper.build_li_element(bus)
   				single_list.append list_item
   		@iUPB.Transportation.vars.buses = data
+  		console.log @iUPB.Transportation.vars.buckets
   		@iUPB.Transportation.helper.splitBusData()
+  		console.log @iUPB.Transportation.vars.buckets
   		for key, bucket of @iUPB.Transportation.vars.buckets
   		  do (bucket) =>
-  		    @iUPB.Transportation.helper.fill_station(bucket)
+  		    @iUPB.Transportation.helper.fill_station(key, bucket)
   })
   
-@iUPB.Transportation.helper.fill_station = (bucket) =>
-  bucket_list = $("#bus-all").find('ul[data-bus-list="' + bucket[0].station.trim() + '"]').first()
+@iUPB.Transportation.helper.fill_station = (name, bucket) =>
+  bucket_list = $("#bus-all").find('ul[data-bus-list="' + name.trim() + '"]').first()
   if bucket_list
     bucket_list.empty()
     if bucket.length > 0
       bucket_list.append @iUPB.Transportation.helper.build_reduced_li_element(bus) for bus in bucket
     else
-		    bucket_list.append $('<li class="well">' + I18n.t("transportation.index.no_buses_at_station") + '</li')
+		    bucket_list.append $('<li class="well">' + I18n.t("transportation.index.no_buses_at_station") + '</li>')
 		  true
         
 

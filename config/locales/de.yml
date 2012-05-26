@@ -72,7 +72,7 @@ de:
       to: "nach"
       line: "Linie"
       buses_leaving: "Bus Abfahrt"
-      no_buses_at_station: "Fahren gerade keine Busse"
+      no_buses_at_station: "Es fahren gerade keine Busse"
   layouts:
     application:
       menu: "Speisepläne"
