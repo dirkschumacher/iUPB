@@ -25,7 +25,7 @@
   
 @iUPB.Transportation.load_buses = =>
 	jQuery.ajax({ 
-		url: "https://upbapi.cloudcontrolled.com/busplan.php?callback=?",
+		url: "http://upbapi.cloudcontrolled.com/busplan.php?callback=?",
 		dataType: "jsonp",
 		type: "GET",
 		jsonp: true,
