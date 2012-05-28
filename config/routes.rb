@@ -14,7 +14,15 @@ IUPB::Application.routes.draw do
     
     get '/sitemap', :to => 'sitemap#index', :as => :sitemap
     get '/sitemap/courses', :to => 'sitemap#courses' , :as => :course_directory
-  
+    
+    offline = Rack::Offline.configure do   
+      public_path = Pathname.new(Rails.public_path)
+      Dir["#{public_path.to_s}/assets/*.*"].each do |file|
+          cache Pathname.new(file).relative_path_from(public_path) if File.file?(file)
+      end
+      cache "/"  
+    end
+    match "/application.manifest" => offline, :as => :cache_manifest
     match "courses/search/:query" => "courses#search", :as => :course_search
     match "courses/:id" => "courses#show", :as => :course
     

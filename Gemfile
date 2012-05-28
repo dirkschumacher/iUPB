@@ -19,6 +19,7 @@ gem "omniauth-facebook"
 gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"
 gem "koala"
+gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
 
 # Gems used only for assets and not required
 # in production environments by default.
