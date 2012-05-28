@@ -47,6 +47,6 @@ class @Twitter
           post_event()
         })
         
-   parseURL: (text)->
-     text.replace /[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/g, (url) ->
-       url.link url
+   parseURL: (text) =>
+     text.replace /[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/g, (url) =>
+       t = @createLink(url, url.replace('http://','').replace('https://',''))
