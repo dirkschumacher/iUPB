@@ -75,7 +75,8 @@
     <%= yield %>
 	
     <footer class="footer">
-      Powered by <a href="http://www.yippie.io">yippie.io</a> and made with <i class="icon-love icon-heart"></i>
+      Powered by <%= link_to "yippie.io", "http://www.yippie.io" %> and made with <i class="icon-love icon-heart"></i><br>
+	  <%= link_to t("imprint"), "http://www.yippie.io/imprint" %>
     </footer>
     <!--/footer-->
   </div> <!--! end of #container -->
