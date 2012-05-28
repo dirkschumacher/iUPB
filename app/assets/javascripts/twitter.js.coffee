@@ -16,7 +16,7 @@ class @Twitter
       
   displayFeed: (post_event) =>
       $.ajax({ 
-        url: "http://search.twitter.com/search.json?q=%23upb+OR+%23unipb+OR+%23unipaderborn+OR+%23iupb&lang=de&callback=?",
+        url: "https://search.twitter.com/search.json?q=%23upb+OR+%23unipb+OR+%23unipaderborn+OR+%23iupb&lang=de&callback=?",
         dataType: "jsonp",
         type: "GET",
         jsonp: true,
@@ -30,7 +30,7 @@ class @Twitter
             avatar = $ '<a class="twitter_avatar">'
             avatar.attr('href', @profileLink tweet.from_user)
             user_image = $ '<img>'
-            user_image.attr('src', tweet.profile_image_url)
+            user_image.attr('src', tweet.profile_image_url_https)
             user_image.addClass 'box_round'
             avatar.append user_image
             textWrap = $ '<h4>'
