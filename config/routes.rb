@@ -17,7 +17,7 @@ IUPB::Application.routes.draw do
     
     offline = Rack::Offline.configure do   
       public_path = Pathname.new(Rails.public_path)
-      Dir["#{public_path.to_s}/assets/*.*"].each do |file|
+      Dir["#{public_path.to_s}/assets/*.*", "#{public_path.to_s}/scripts/*.*", "#{public_path.to_s}/stylesheets/*.*" ].each do |file|
           cache Pathname.new(file).relative_path_from(public_path) if File.file?(file)
       end
       network "/"  
