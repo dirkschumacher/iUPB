@@ -14,6 +14,13 @@
   margin-right: 10px;
   display:none;
 }
+.restaurant-name {
+	color:#333; 
+	font-weight:bold;
+	font-size:14px;
+	text-align:center;
+	display:none;
+}
 #restaurants-all
 {
   display:block;
@@ -40,6 +47,9 @@
   }
   #restaurantSelector {
     margin-right: 0px;
+    display:block;
+  }
+  .restaurant-name {
     display:block;
   }
 }

@@ -22,6 +22,7 @@
   	<span id="day_title"><%= l(@today, format: '%a, %d. %b') %></span> 
   	<a href="#" title="<%= t ".next_day" %>" id="next_link" style="right;"><i class="icon-chevron-right"></i></a>
   </h2>
+  <p class="restaurant-name"><%= @restaurant.name %></p>
 <% end %>
 <ul id="menus" class="no-bullets no-left-margin">
   <li class="well">
