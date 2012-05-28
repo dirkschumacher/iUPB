@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_filter :set_cache_header
   def index
     restaurant = params[:restaurant]||"Mensa"
     @restaurant = Restaurant.where(name: restaurant).first
