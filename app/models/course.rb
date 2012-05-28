@@ -1,5 +1,6 @@
 class Course 
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :title, type: String
   field :title_downcase, type: String, index: true
   field :paul_id, type: String

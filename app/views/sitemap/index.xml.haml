@@ -1,8 +1,22 @@
 - base_url = "http://#{request.host_with_port}"
 !!! XML
 %urlset{:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9"}
-  - for post in @courses
+  %url
+    %loc #{base_url}#{restaurants_path}
+  %url
+    %loc #{base_url}#{courses_path}
+  %url
+    %loc #{base_url}#{events_path}
+  %url
+    %loc #{base_url}#{weather_path}
+  %url
+    %loc #{base_url}#{twitter_path}
+  %url
+    %loc #{base_url}#{asta_path}
+  %url
+    %loc #{base_url}#{root_path}
+  %url
+    %loc #{base_url}
+  - for course in @courses
     %url
-      %loc #{base_url}#{course.paul_id}
-      %changefreq monthly
-      %priority 0.5
+      %loc #{base_url}#{course_path(course)}
