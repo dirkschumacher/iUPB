@@ -16,7 +16,7 @@ class @Twitter
       
   displayFeed: (post_event) =>
       $.ajax({ 
-        url: "http://search.twitter.com/search.json?q=%23upb+OR+%23unipb+OR+%23unipaderborn&lang=de&callback=?",
+        url: "http://search.twitter.com/search.json?q=%23upb+OR+%23unipb+OR+%23unipaderborn+OR+%23iupb&lang=de&callback=?",
         dataType: "jsonp",
         type: "GET",
         jsonp: true,
