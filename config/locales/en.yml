@@ -53,6 +53,7 @@ en:
       search: "Search"
       type_and_find: "Just type in the course name..."
       no_results: "No courses found. Try again :)"
+      data: "Data"
   restaurants:
       index:
           prev_day: "prev. day"

@@ -11,7 +11,9 @@ IUPB::Application.routes.draw do
     match 'weather' => 'weather#index', :as => :weather
     match 'twitter' => 'pages#show', :id => 'twitter', :as => :twitter
     match 'courses' => 'courses#index', :as => :courses
-      
+    
+    get '/sitemap', :to => 'sitemap#index', :as => :sitemap
+    get '/sitemap/courses', :to => 'sitemap#courses' , :as => :course_directory
   
     match "courses/search/:query" => "courses#search", :as => :course_search
     match "courses/:id" => "courses#show", :as => :course

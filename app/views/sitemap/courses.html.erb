@@ -1,0 +1,7 @@
+<%= content_for "page-attributes" do %>id="courseListing"<% end %>
+<ul>
+  <% @courses.each do |course| %>
+  <li><%= link_to course.title, course_path(course) %></li>
+  <% end %>
+  
+</ul>
