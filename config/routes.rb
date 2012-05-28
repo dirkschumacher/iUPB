@@ -20,7 +20,7 @@ IUPB::Application.routes.draw do
       Dir["#{public_path.to_s}/assets/*.*"].each do |file|
           cache Pathname.new(file).relative_path_from(public_path) if File.file?(file)
       end
-      cache "/"  
+      network "/"  
     end
     match "/application.manifest" => offline, :as => :cache_manifest
     match "courses/search/:query" => "courses#search", :as => :course_search
