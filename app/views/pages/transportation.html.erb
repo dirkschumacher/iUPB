@@ -4,12 +4,13 @@
 <% end %>
 <script>
 $(document).ready(function() {
-  window.iUPB.Transportation.load_buses();
+  var transportationManager = new TransportationManager($('#bus_data_list'), $('#bus-all'));
+  transportationManager.load_buses();
   $("#reload-button").click(function(e){
-    window.iUPB.Transportation.load_buses();
+    transportationManager.load_buses();
 	e.preventDefault();
   });
-  var autoReload = window.setInterval(window.iUPB.Transportation.load_buses, 60*1000);
+  var autoReload = window.setInterval(transportationManager.load_buses(), 60*1000);
 });
 </script>
 <ul id="bus_data_list" class="bus-list no-bullets no-left-margin">
