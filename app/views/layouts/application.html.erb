@@ -1,8 +1,10 @@
 <!doctype html>
 <!-- Conditional comment for mobile ie7 blogs.msdn.com/b/iemobile/ -->
 <!--[if IEMobile 7 ]>    <html class="no-js iem7" lang="en"> <![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html manifest="/application.manifest" class="no-js" lang="<%= I18n.locale || "en" %>"> <!--<![endif]-->
-
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" lang="<%= I18n.locale || "en" %>"> <!--<![endif]-->
+<%
+#manifest="/application.manifest"
+%>
 <head>
   <title>iUPB</title>
   <meta charset="utf-8">
