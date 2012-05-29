@@ -15,22 +15,22 @@ IUPB::Application.routes.draw do
     get '/sitemap', :to => 'sitemap#index', :as => :sitemap
     get '/sitemap/courses', :to => 'sitemap#courses' , :as => :course_directory
     
-    offline = Rack::Offline.configure do   
-      public_path = Pathname.new(Rails.public_path)
-      Dir["#{public_path.to_s}/assets/*.*", "#{public_path.to_s}/scripts/*.*", "#{public_path.to_s}/stylesheets/*.*" ].each do |file|
-          cache("/" + Pathname.new(file).relative_path_from(public_path).to_s) if File.file?(file)
-      end
-      #cache "/"
-      network "*"  
-      network "http://search.twitter.com/*"
-      network "http://upbapi.cloudcontrolled.com/*"
-      network "https://upbapi.cloudcontrolled.com/*"
-      network "http://www.google-analytics.com/*"
-      network "https://ssl.google-analytics.com/*"
-      network "https://search.twitter.com/*"
-      network "http://*.newrelic.com/*"
-    end
-    match "/application.manifest" => offline, :as => :cache_manifest
+    #offline = Rack::Offline.configure do   
+    #  public_path = Pathname.new(Rails.public_path)
+    #  Dir["#{public_path.to_s}/assets/*.*", "#{public_path.to_s}/scripts/*.*", "#{public_path.to_s}/stylesheets/*.*" ].each do |file|
+    #      cache("/" + Pathname.new(file).relative_path_from(public_path).to_s) if File.file?(file)
+    #  end
+    #  #cache "/"
+    #  network "*"  
+    #  network "http://search.twitter.com/*"
+    #  network "http://upbapi.cloudcontrolled.com/*"
+    #  network "https://upbapi.cloudcontrolled.com/*"
+    #  network "http://www.google-analytics.com/*"
+    #  network "https://ssl.google-analytics.com/*"
+    #  network "https://search.twitter.com/*"
+    #  network "http://*.newrelic.com/*"
+    #end
+    #match "/application.manifest" => offline, :as => :cache_manifest
     match "courses/search/:query" => "courses#search", :as => :course_search
     match "courses/:id" => "courses#show", :as => :course
     

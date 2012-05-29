@@ -1,4 +1,5 @@
 en:
+  source: "Source"
   imprint: "imprint"
   jquery:
     timeago:
@@ -38,6 +39,7 @@ en:
       sunset: "sunset"
       forecast: "forecast"
       current_weather: "current weather"
+      current_data: "Current data"
   please_wait: "Please wait..."
   courses:
     next_class: "Next: %{date}, %{time_from} until %{time_to} in %{place}"
