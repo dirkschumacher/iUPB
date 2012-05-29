@@ -1,4 +1,5 @@
 de:
+  source: "Quelle"
   imprint: "Impressum"
   asta:
     index:
@@ -38,6 +39,7 @@ de:
       sunset: "Sonnenuntergang"
       forecast: "Vorhersage"
       current_weather: "Aktuelles Wetter"
+      current_data: "Aktuelle Daten"
   please_wait: "Bitte warten..."
   courses:
     next_class: "Nächste: %{date}, %{time_from} bis %{time_to} in %{place}"
