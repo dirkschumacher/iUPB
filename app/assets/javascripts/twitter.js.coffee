@@ -9,7 +9,7 @@ class @Twitter
       t = @createLink('https://search.twitter.com/search?q=' + encodeURIComponent(t), t)
       
   createLink: (url, text) ->
-    '<a rel="nofollow" href="' + url + '">' + text + '</a>'
+    '<a target="_blank" rel="nofollow" href="' + url + '">' + text + '</a>'
     
   profileLink: (userid) ->
     'https://twitter.com/#!/' + userid
