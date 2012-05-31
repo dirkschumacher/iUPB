@@ -6,7 +6,7 @@
 #manifest="/application.manifest"
 %>
 <head>
-  <title>iUPB</title>
+  <title><%= content_for?(:title) ? content_for(:title) + " — " : "" %>iUPB</title>
   <meta charset="utf-8">
   <meta name="description" content="">
 

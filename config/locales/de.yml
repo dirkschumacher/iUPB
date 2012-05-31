@@ -86,6 +86,7 @@ de:
       paul: "PAUL"
       party: "Parties"
       asta: "AStA News"
+      twitter: "Twitter"
   date:
     formats:
       weekday_date: ! '%a, %d. %b'
