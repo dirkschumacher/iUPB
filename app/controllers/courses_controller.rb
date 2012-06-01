@@ -21,9 +21,21 @@ class CoursesController < ApplicationController
   def search
     query = params[:query].downcase
     @courses = []
-    @courses = Course.where(course_type: 'course').where(title_downcase: /.*#{query}.*/).limit(10).entries if query.length > 2
-    
-    update_courses @courses
+    if query.length > 2
+      #title_downcase: /.*#{query}.*/, 
+      db_query = Course.where(course_type: 'course')
+      search_condition = []
+      query.split(" ").each do |word| 
+        word = word.strip
+        search_condition << {'$or' => [ 
+          {meta_lecturer_names: /.*#{word}.*/}, 
+          {meta_rooms: /.*#{word}.*/} , 
+          {title_downcase: /.*#{word}.*/} 
+        ]}
+      end
+      @courses = db_query.where('$and' => search_condition).limit(10).entries
+      update_courses @courses
+    end
     set_cache_header(60*60) # only cache 1 hour
   end
   def update_course(course)
