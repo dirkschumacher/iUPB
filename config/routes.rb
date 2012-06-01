@@ -31,7 +31,7 @@ IUPB::Application.routes.draw do
     #  network "http://*.newrelic.com/*"
     #end
     #match "/application.manifest" => offline, :as => :cache_manifest
-    match "courses/search/:query" => "courses#search", :as => :course_search
+    match "courses/search" => "courses#search", :as => :course_search
     match "courses/:id" => "courses#show", :as => :course
     
     devise_scope :user do
