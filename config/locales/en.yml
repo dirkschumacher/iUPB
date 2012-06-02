@@ -54,7 +54,7 @@ en:
     room_na: 'N.A.'
     index:
       search: "Search"
-      type_and_find: "Just type in the course name..."
+      type_and_find: "Search for course names, rooms, lecturers, etc."
       no_results: "No courses found. Try again :)"
       data: "Data"
   restaurants:
