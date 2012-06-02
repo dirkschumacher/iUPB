@@ -11,7 +11,7 @@ class Course
   field :group_title, type: String
   
   #comma sperated list of lectures
-  field :meta_lecturer_names, type: String
-  field :meta_rooms, type: String 
+  field :meta_lecturer_names, type: String, index: true
+  field :meta_rooms, type: String , index: true
   key :internal_course_id
 end
