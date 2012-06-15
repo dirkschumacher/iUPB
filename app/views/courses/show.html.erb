@@ -1,13 +1,5 @@
-
+<% title(@course.course_type == 'course' ? @course.title : @course.group_title)%>
 <h2><%= link_to '<i class="icon-arrow-left"></i>'.html_safe, courses_path, id: "back-button"  %><br /><%= @course.course_type == 'course' ? @course.title : @course.group_title %> </h2>
-<script>
-$(document).ready(function(){
-  /*$("#back-button").click(function(e){
-    e.preventDefault();
-    return window.history.back();
-  });*/
-});
-</script>
 
 <% if @course.course_data.length > 0 || @groups && @groups.length > 0  %>
 <div class="accordion" id="accordion">
