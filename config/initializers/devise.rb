@@ -220,10 +220,11 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+  FBCONFIG = YAML.load(ERB.new(File.new(Rails.root.join("config/facebook.yml")).read).result)[Rails.env]
   if Rails.env.development? || Rails.env.test?
-     config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'] 
+     config.omniauth :facebook, FBCONFIG['app_id'], FBCONFIG['secret_key']
    else
-     config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'],
+     config.omniauth :facebook, FBCONFIG['app_id']||ENV['FACEBOOK_KEY'], FBCONFIG['secret_key']||ENV['FACEBOOK_SECRET'],
            {:scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
    end
 end
