@@ -1,0 +1,10 @@
+<h1><%= t ".new_entry" %></h1>
+<%= form_for @event, :url => { :action => "create" }, :html => {:class => "well"} do |f| %>
+  <legend for="event_name">Name</legend> <%= f.text_field :name %><br>
+  <legend for="event_start_time">Start</legend><input type="date" class="datepicker" name="event[start_time_date]" id="event_start_time_date"> <input type="time" class="" name="event[start_time_time]" id="event_start_time_time"><br>
+  <legend for="event_end_time">End</legend><input type="date" class="datepicker" name="event[end_time_date]" id="event_end_time_date"> <input type="time" class="" name="event[end_time_time]" id="event_end_time_time"><br>
+  <%= f.submit "Create" %>
+<% end %>
+<script>
+$('.datepicker').datepicker();
+</script>

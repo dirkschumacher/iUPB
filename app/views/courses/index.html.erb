@@ -37,12 +37,22 @@ $(document).ready(function(event) {
         }
         $.each(data, function() { 
           var li = $('<li class="well" style="white-space: normal;">');
+          var add_link = $('<a style="float:right">');
+          add_link.append($('<i class="icon-plus-sign"></i>'));
+          add_link.click(function(){
+			$.post("/timetable/add_course", { id: encodeURIComponent(id) }, function(data) {
+			   alert("<%= t ".saved_in_timetable" %>");
+			 });
+          });
+          li.append(add_link); 
+         
           var link = $('<a data-icon="arrow-r">');
           link.append($('<h4 style="white-space: normal;">' + this.course.title + '</h3>'));
           var id = this.course.id;
           link.attr('href', '<%= course_path({:id => ""}) %>' + encodeURIComponent(id));
           var next_class = this.course.next_class;
           li.append(link);
+
           if(next_class)
           {
             var infos = $('<h5>');

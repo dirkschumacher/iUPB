@@ -7,3 +7,10 @@
   <li><%= link_to t("layouts.application.twitter"), twitter_path  %></li>
   <li><%= link_to t("layouts.application.asta"), asta_path  %></li>
 </ul>
+
+<% if user_signed_in? %>
+<ul class="nav pull-right">
+  <li class="divider-vertical"></li>
+  <li> <%= link_to( '<i class="icon-off"></i> '.html_safe + t("logout"), destroy_user_session_path, method: :delete) %></li>
+</ul>
+<% end %>

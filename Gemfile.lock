@@ -153,6 +153,7 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    ri_cal (0.8.8)
     rubyzip (0.9.6.1)
     sass (3.1.15)
     sass-rails (3.2.5)
@@ -206,6 +207,7 @@ DEPENDENCIES
   rack-contrib
   rack-offline!
   rails (= 3.2.1)
+  ri_cal
   sass-rails (~> 3.2.3)
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)

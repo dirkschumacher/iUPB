@@ -1,6 +1,8 @@
 en:
   source: "Source"
   imprint: "imprint"
+  logout: "Logout"
+  login: "Login"
   jquery:
     timeago:
       seconds:
@@ -57,6 +59,7 @@ en:
       type_and_find: "Search for course names, rooms, lecturers, etc."
       no_results: "No courses found. Try again :)"
       data: "Data"
+      saved_in_timetable: "Successfully saved in timetable!"
   restaurants:
       index:
           prev_day: "prev. day"
@@ -77,6 +80,14 @@ en:
         where: "venue"
         party_headline: "Party calendar"
         view_on_facebook: "open on facebook"
+  timetable:
+      index:
+        your_timetable: "Your Timetable for this week"
+        day_1: Mon
+        day_2: Tue
+        day_3: Wed
+        day_4: Thu
+        day_5: Fri
   layouts:
     application:
       menu: "Menu"
@@ -86,6 +97,7 @@ en:
       paul: "PAUL"
       party: "Partys"
       twitter: "Twitter"
+      timetable: "Timetable"
   time:
     formats:
       very_short: ! '%H:%M'

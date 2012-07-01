@@ -1,0 +1,58 @@
+// Place all the styles related to the timetable controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.col {
+	width:16%;
+	border:1px solid gray;
+	float:left;
+}
+.slot {
+	border-bottom:1px dotted gray;
+	width:100%;
+	font-size: 9pt;
+}
+.cell_label {
+	font-size:8pt;
+	font-weight:bold;
+}
+.time_info {
+	font-size: 10px;
+}
+.cell_label_middle {
+	display:none;
+}
+.truncate {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.busy {
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	color: #3A87AD;
+	background-color: #D9EDF7;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.7, rgb(217,237,247)),
+		color-stop(0.98, rgb(255,255,255))
+	);
+//	border: 1px solid #FBEED5;
+}
+
+@media screen and (max-width: 480px) {
+	.col {
+		width:95%;
+		float:none;
+		margin-bottom: 5px;
+	}
+	.cell_label_middle {
+		display:inline;
+	}
+	
+	// div.col[data-tt-col-day='0']{
+	#col_0 {
+		display:none;
+	}
+}

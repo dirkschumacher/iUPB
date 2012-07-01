@@ -14,4 +14,15 @@ class Course
   field :meta_lecturer_names, type: String, index: true
   field :meta_rooms, type: String , index: true
   key :internal_course_id
+  
+  def get_dates(future=true)
+    dates = []
+    self.course_data.each do |c|
+      puts c["date"].year, c["date"].month, c["date"].day, c["time_from"].to_time.hour, c["time_from"].to_time.min
+      start_time = Time.mktime(c["date"].year, c["date"].month, c["date"].day, c["time_from"].to_time.hour, c["time_from"].to_time.min)   #mktime(year, month, day, hour, min)
+      end_time = Time.mktime(c["date"].year, c["date"].month, c["date"].day, c["time_to"].to_time.hour, c["time_to"].to_time.min)
+      dates << [start_time, end_time, c["room"], c["instructor"]] unless future && start_time < Time.now
+    end
+    dates
+  end
 end

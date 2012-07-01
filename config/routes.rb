@@ -1,4 +1,5 @@
 IUPB::Application.routes.draw do
+
   scope "(:locale)", :locale => /de|en/ do
     devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
@@ -11,6 +12,15 @@ IUPB::Application.routes.draw do
     match 'weather' => 'weather#index', :as => :weather
     match 'twitter' => 'pages#show', :id => 'twitter', :as => :twitter
     match 'courses' => 'courses#index', :as => :courses
+    
+    match "timetable" => "timetable#index", :as => :timetable
+    get "timetable/new"
+    get "timetable/export"
+    post "timetable/create"
+    post "timetable/add_course"
+    delete "timetable/destroy"
+    get "timetable/show"
+    put "timetable/update"
     
     get '/sitemap', :to => 'sitemap#index', :as => :sitemap
     get '/sitemap/courses', :to => 'sitemap#courses' , :as => :course_directory
@@ -34,10 +44,10 @@ IUPB::Application.routes.draw do
     match "courses/search" => "courses#search", :as => :course_search
     match "courses/:id" => "courses#show", :as => :course
     
-    devise_scope :user do
-      get 'sign_in', :to => 'users/sessions#new', :as => :new_user_session
-      get 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
-    end
+#    devise_scope :user do
+#      get 'sign_in', :to => 'users/sessions#new', :as => :new_user_session
+#      get 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
+#    end
     #resource :courses
     #match 'twitter' => 'high_voltage/pages#show', :id => 'twitter'
     

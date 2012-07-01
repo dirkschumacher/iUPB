@@ -1,6 +1,8 @@
 de:
   source: "Quelle"
   imprint: "Impressum"
+  login: "Login"
+  logout: "Logout"
   asta:
     index:
       read_more: "Mehr"
@@ -55,8 +57,9 @@ de:
     index:
       search: "Suche"
       type_and_find: "Suche nach Kursnamen, Raum, Dozenten, etc."
-      no_results: "Keine Kurse gefunden. Probiers noch einmal :)"
+      no_results: "Keine Kurse gefunden. Probier`s noch einmal :)"
       data: "Daten"
+      saved_in_timetable: "Im Stundenplan gespeichert!"
   restaurants:
       index:
           prev_day: "vorheriger Tag"
@@ -64,11 +67,19 @@ de:
           additives: "Zusatzstoffe"
           hours: "Öffnungszeiten"
   events:
-      index:
-          attendees_on_facebook: "Gäste"
-          where: "Ort"
-          party_headline: "Party-Termine"
-          view_on_facebook: "in Facebook öffnen"
+    index:
+      attendees_on_facebook: "Gäste"
+      where: "Ort"
+      party_headline: "Party-Termine"
+      view_on_facebook: "in Facebook öffnen"
+  timetable:
+    index:
+      your_timetable: "Dein Stundenplan für diese Woche"
+      day_1: Mo
+      day_2: Di
+      day_3: Mi
+      day_4: Do
+      day_5: Fr
   transportation:
     index:
       trip_at: "%{station} um %{date}"
@@ -87,6 +98,7 @@ de:
       party: "Parties"
       asta: "AStA News"
       twitter: "Twitter"
+      timetable: "Stundenplan"
   date:
     formats:
       weekday_date: ! '%a, %d. %b'
