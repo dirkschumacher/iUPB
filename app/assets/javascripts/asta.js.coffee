@@ -3,9 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 class @AStANews
   constructor: (@element, @dataSourceURL) ->
-  reload:
+  reload: ->
     $.getJSON(@dataSourceURL, (data) ->
-      @element.empty
+      @element.empty()
       list_items = for key, val of data
         @buildNewsItem(val)
       @element.append list_items
