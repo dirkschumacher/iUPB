@@ -33,6 +33,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'pry-rails', :group => :development   # a nicer 'rails console'
+
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 
