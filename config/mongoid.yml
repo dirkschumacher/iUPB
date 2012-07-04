@@ -1,14 +1,17 @@
 development:
   host: localhost
   database: iupb_development
+  allow_dynamic_fields: false
 
 test:
   host: localhost
   database: iupb_test
+  allow_dynamic_fields: false
   
 # set these environment variables on your prod server
 production:
   uri: <%= ENV['MONGOHQ_URL'] %>
+  allow_dynamic_fields: false
   # slaves:
   #   - host: slave1.local
   #     port: 27018
