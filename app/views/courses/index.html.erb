@@ -40,13 +40,14 @@ $(document).ready(function(event) {
           var add_link = $('<a style="float:right">');
           add_link.append($('<i class="icon-plus-sign"></i>'));
           add_link.click(function(){
+			var current_link = $(this);
 			$.post("/timetable/add_course", { id: encodeURIComponent(id) }, function(data) {
-			   alert("<%= t ".saved_in_timetable" %>");
+			   current_link.html('<i class="icon-ok-sign"></i>');
 			 });
           });
           li.append(add_link); 
          
-          var link = $('<a data-icon="arrow-r">');
+          var link = $('<a style="clear:left;" data-icon="arrow-r">');
           link.append($('<h4 style="white-space: normal;">' + this.course.title + '</h3>'));
           var id = this.course.id;
           link.attr('href', '<%= course_path({:id => ""}) %>' + encodeURIComponent(id));

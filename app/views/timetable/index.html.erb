@@ -1,4 +1,4 @@
-<%  # title t("layouts.application.timetable") %>
+<%  title t("layouts.application.timetable") %>
 <%= content_for "page-attributes" do %>id="timetablePage"<% end %>
 
 <h1><%= t ".your_timetable" %> <sup><span class="label label-inverse">beta</span></sup></h1>
@@ -29,13 +29,15 @@
 	<% @events.each do |event| %>
 		<li class="well single_event"><h6><%= event.name %></h6>
 			<p><%= l event.start_time, format: :short %>
-			<% if event.end_time > event.start_time %>
+			<% if event.end_time && event.end_time > event.start_time %>
 			 - <%= l event.end_time, format: :short %>
 			<% end %>	
 			</p>
 		</li>
 	<% end %>
 </ul>
+
+<p class="center"><a class="btn btn-small btn-info" href="<%= timetable_export_path(format: "ics") %>"><i class="icon-download icon-white"></i> <%= t ".download_ical" %></a></p>
 
 <script>
 $(document).ready(function() {

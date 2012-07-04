@@ -1,5 +1,6 @@
 @iUPB.Timetable = {}
 @iUPB.Timetable.vars = {}
+@iUPB.Timetable.TRUNCATE_LENGTH = 23
 
 @iUPB.Timetable.populateTimetable = (container) ->
 	$.retrieveJSON("/timetable.json", (json, status) ->
@@ -11,8 +12,8 @@
 				start_compare_time = window.iUPB.Timetable.zeroFill(start_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(start_date.getMinutes(), 2)
 				end_date = new Date(this.end_time||this.start_time)
 				end_compare_time = window.iUPB.Timetable.zeroFill(end_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(end_date.getMinutes(), 2)
-				if this.name.length > 23
-					name = this.name.substring(0,22) + "…"
+				if this.name.length > window.iUPB.Timetable.TRUNCATE_LENGTH
+					name = this.name.substring(0, window.iUPB.Timetable.TRUNCATE_LENGTH - 1) + "…"
 				else
 					name = this.name
 				day = start_date.getDay()
@@ -30,9 +31,9 @@
 					    cell.html(cell.html() + " &#8226;<a href='/courses/" + course + "'>" + name + "</a>")
 					  else
 					    cell.html(cell.html() + " &#8226;" + name)
-					  cell.html(cell.html() + "<span class='time_info'>(" + time_info + ")</span>")
+					  cell.html(cell.html() + " <span class='time_info'>(" + time_info + ")</span>")
 					  current.addClass("busy")
-					if end_compare_time > $(this).data("tt-start-time") and end_compare_time < $(this).data("tt-end-time") \
+					if end_compare_time > $(this).data("tt-start-time") and end_compare_time <= $(this).data("tt-end-time") \
 					or start_compare_time < $(this).data("tt-start-time") and end_compare_time > $(this).data("tt-end-time")
 						$(this).addClass("busy")
 					return

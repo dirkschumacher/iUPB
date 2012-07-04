@@ -1,5 +1,6 @@
 class Event
   include Mongoid::Document
+  include Mongoid::MultiParameterAttributes
   #include Mongoid::Timestamps
   field :start_time, type: DateTime, default: ->{ DateTime.now + 15.minutes }
   field :end_time, type: DateTime
@@ -39,23 +40,7 @@ class Event
   def course=(course)
     self.course_id = "#{course.id}"
   end
-  
-  def start_time_date 
-    start_time.to_date if start_time
-  end
-  
-  def end_time_date 
-    end_time.to_date if end_time
-  end
-  
-  def start_time_time
-    start_time.to_time if start_time
-  end
-  
-  def end_time_time
-    end_time.to_time if end_time
-  end
-  
+
   protected
   def end_time_greater_than_start_time
       if !end_time.blank? and end_time < start_time

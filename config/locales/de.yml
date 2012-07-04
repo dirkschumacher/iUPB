@@ -80,6 +80,7 @@ de:
       day_3: Mi
       day_4: Do
       day_5: Fr
+      download_ical: "Termine aufs Gerät runterladen"
   transportation:
     index:
       trip_at: "%{station} um %{date}"

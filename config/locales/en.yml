@@ -88,6 +88,7 @@ en:
         day_3: Wed
         day_4: Thu
         day_5: Fri
+        download_ical: "Download events to your device"
   layouts:
     application:
       menu: "Menu"
