@@ -45,7 +45,9 @@ $(document).ready(function(event) {
 			   current_link.html('<i class="icon-ok-sign"></i>');
 			 });
           });
+		  <% if Rails.env.development? %>
           li.append(add_link); 
+		  <% end %>
          
           var link = $('<a style="clear:left;" data-icon="arrow-r">');
           link.append($('<h4 style="white-space: normal;">' + this.course.title + '</h3>'));
