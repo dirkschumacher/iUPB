@@ -50,7 +50,7 @@ class CoursesController < ApplicationController
       data['time_to'] = time_to
       interval = time_to - Time.now
       if time_to >= Time.now and interval < min_interval
-        course['next_class'] = {
+        course.next_class = {
           room: data['room'].length == 0 ? t('courses.room_na') : data['room'],
           time_from: time_from,
           time_to: time_to

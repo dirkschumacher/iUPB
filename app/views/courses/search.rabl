@@ -1,4 +1,3 @@
 collection @courses
-attribute :title
+attributes :title, :next_class
 attribute :_id => :id
-attribute :next_class

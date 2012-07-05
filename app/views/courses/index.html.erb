@@ -36,7 +36,7 @@ $(document).ready(function(event) {
           result_list.append($('<li><h3><%= t '.no_results' %></h3></li>'));
         }
         $.each(data, function() { 
-          var li = $('<li class="well" style="white-space: normal;">');
+          var li = $('<li class="well" style="white-space: normal;">'), id = this.course.id;
           var add_link = $('<a style="float:right">');
           add_link.append($('<i class="icon-plus-sign"></i>'));
           add_link.click(function(){
@@ -51,11 +51,10 @@ $(document).ready(function(event) {
          
           var link = $('<a style="clear:left;" data-icon="arrow-r">');
           link.append($('<h4 style="white-space: normal;">' + this.course.title + '</h3>'));
-          var id = this.course.id;
           link.attr('href', '<%= course_path({:id => ""}) %>' + encodeURIComponent(id));
-          var next_class = this.course.next_class;
           li.append(link);
 
+          var next_class = this.course.next_class;
           if(next_class)
           {
             var infos = $('<h5>');

@@ -1,4 +1,6 @@
 class Course 
+  attr_accessor :next_class
+  
   include Mongoid::Document
   include Mongoid::Timestamps
   field :title, type: String
