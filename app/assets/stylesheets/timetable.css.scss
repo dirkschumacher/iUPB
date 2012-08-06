@@ -22,9 +22,11 @@
 	display:none;
 }
 .truncate {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	-o-text-overflow: ellipsis;
+  	-moz-binding: url( 'bindings.xml#ellipsis' );
 }
 
 .busy {
@@ -38,7 +40,7 @@
 	//	color-stop(0.7, rgb(217,237,247)),
 	//	color-stop(0.98, rgb(255,255,255))
 	//);
-//	border: 1px solid #FBEED5;
+	//	border: 1px solid #FBEED5;
 }
 
 @media screen and (max-width: 480px) {
@@ -51,7 +53,7 @@
 		display:inline;
 	}
 	
-	// div.col[data-tt-col-day='0']{
+	// div.col[data-tt-col-day='0']{ // not using because not working in some old CSS2 browsers
 	#col_0 {
 		display:none;
 	}

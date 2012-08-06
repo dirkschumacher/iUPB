@@ -47,20 +47,22 @@ class TimetableController < ApplicationController
       @start_time = Time.now.beginning_of_week
       @end_time = Time.now.end_of_week - 2.days
     end
-    @events = current_user.events.where(start_time: @start_time..@end_time).sort {|e, f| e.start_time <=> f.start_time}
+    @events = current_user.events.where(start_time: @start_time..@end_time).asc(:start_time)
     respond_to do |format|
-      format.html {
+      format.html do
         @slots = [["7:00", "9:00"], ["9:00", "11:00"], ["11:00", "13:00"], ["13:00", "14:00"], ["14:00", "16:00"], ["16:00", "18:00"], ["18:00", "20:00"]]
         @days = (0..5)
-      }
-      format.json { render json: @events }
+      end
+      format.json do
+       render json: @events
+     end
     end
   end
   
   def export
     events = current_user.events.where(start_time: Time.now..(Time.now + 6.months))
     respond_to do |format|
-      format.ics {
+      format.ics do
         @cal = RiCal.Calendar do |cal|
           events.each do |event|
             cal.event do |cal_event|
@@ -74,7 +76,7 @@ class TimetableController < ApplicationController
           end
         end
         render text: @cal.to_s
-      }
+      end
     end
   end
 

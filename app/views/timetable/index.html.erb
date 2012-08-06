@@ -9,7 +9,7 @@
 		<div class="label"><h3 class="day_label"><% unless col == 0 %> <%= t ".day_"+col.to_s %><% end %>&nbsp;</h3></div> 
 		
 		<% @slots.each do |slot| %>
-			<div data-tt-start-time="<%= slot[0].sub(":", "") %>" data-tt-end-time="<%= slot[1].sub(":", "") %>" data-tt-day="<%= col.to_s %>" class="slot" style="height:<%= (slot[1].sub(":", "").to_i - slot[0].sub(":", "").to_i) / 3 %>px;">
+			<div data-tt-start-time="<%= slot[0].sub(":", "") %>" data-tt-end-time="<%= slot[1].sub(":", "") %>" data-tt-day="<%= col.to_s %>" class="slot truncate" style="height:<%= (slot[1].sub(":", "").to_i - slot[0].sub(":", "").to_i) / 3 %>px;">
 			<% if col == 0 %>
 				<span class="cell_label cell_label_first"><%= slot[0] %> - <%= slot[1] %></span>
 			<% else %>
@@ -27,17 +27,20 @@
 <h3><%= t ".list" %></h3>
 <ul class="no-bullets no-left-margin" id="events_overview">
 	<% @events.each do |event| %>
-		<li class="well single_event"><h6><%= event.name %></h6>
+		<li class="well single_event"><h6 id="<%= event.id %>"><%= event.name %></h6>
 			<p><%= l event.start_time, format: :short %>
 			<% if event.end_time && event.end_time > event.start_time %>
 			 - <%= l event.end_time, format: :short %>
-			<% end %>	
+			<% end %>
 			</p>
+			<% if event.course %>
+				<p><%= link_to ".details", course_path(id: event.course.id) %></p>
+			<% end %>
 		</li>
 	<% end %>
 </ul>
 
-<p class="center"><a class="btn btn-small btn-info" href="<%= timetable_export_path(format: "ics") %>"><i class="icon-download icon-white"></i> <%= t ".download_ical" %></a></p>
+<p class="center"><a class="btn btn-small btn-info" href="<%= timetable_export_path(format: "ics") %>"><i class="icon-download-alt icon-white"></i> <%= t ".download_ical" %></a></p>
 
 <script>
 $(document).ready(function() {
