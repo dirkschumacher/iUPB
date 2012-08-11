@@ -52,3 +52,11 @@
 	color:grey; 
 	font-size:10px;
 }
+.only-smartphone-landscape {
+	display: none !important;
+}
+@media (min-width: 321px) {
+	.only-smartphone-landscape {
+    display: inherit !important;
+  }
+}

@@ -29,6 +29,6 @@ class ApplicationController < ActionController::Base
     Koala::Facebook::API.new(Koala::Facebook::OAuth.new(
       Facebook::APP_ID.to_s, 
       Facebook::SECRET.to_s, 
-      url).get_app_access_token)
+      url))
   end
 end

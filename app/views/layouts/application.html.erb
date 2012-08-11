@@ -17,7 +17,7 @@
 
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon.png">
@@ -56,7 +56,7 @@
     <span id="spinner"></span>
     <nav class="navbar-inner">
       <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <a id="menu_collapse_link" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
