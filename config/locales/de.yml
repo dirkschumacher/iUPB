@@ -81,6 +81,7 @@ de:
       day_4: Do
       day_5: Fr
       download_ical: "Termine aufs Gerät runterladen"
+      list: "Liste"
   transportation:
     index:
       trip_at: "%{station} um %{date}"
