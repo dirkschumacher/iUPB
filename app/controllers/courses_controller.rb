@@ -5,11 +5,15 @@ class CoursesController < ApplicationController
   end
   
   def show
-    @course = Course.find(params[:id])
-    update_course @course
-    if @course.course_type == 'course'
-      @groups = Course.where(paul_id: @course.paul_id).where(course_type: 'group').excludes(id: @course.id).order_by([[:title_downcase, :asc]]).entries
-      update_courses @groups
+    begin
+      @course = Course.find(params[:id])
+      update_course @course
+      if @course.course_type == 'course'
+        @groups = Course.where(paul_id: @course.paul_id).where(course_type: 'group').excludes(id: @course.id).order_by([[:title_downcase, :asc]]).entries
+        update_courses @groups
+      end
+    rescue ::Mongoid::Errors::DocumentNotFound => e
+      render 'gone', :status => :gone
     end
     # If the request is stale according to the given timestamp and etag value
     # (i.e. it needs to be processed again) then execute this block
