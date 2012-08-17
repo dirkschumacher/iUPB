@@ -48,8 +48,8 @@ en:
     today: "Today"
     tomorrow: "Tomorrow"
     gone:
-      course_gone_heading: "Sorry, but this course does not exist anymore"
-      course_gone_text: "This course was probably held last semester and won't be offered this year under the same PAUL-ID. Try our PAUL search, in case you are looking for courses offered this semester."
+      course_gone_heading: "This course is so 2012"
+      course_gone_text: "The course was probably held last semester and won't be offered this year under the same PAUL-ID. Try our PAUL search, in case you are looking for courses offered this semester."
     show:
       time_place: "%{date}, %{time_from} until %{time_to} in %{place}"
       tutorials: 'Tutorials'
