@@ -101,6 +101,7 @@ de:
       asta: "AStA News"
       twitter: "Twitter"
       timetable: "Stundenplan"
+      40years: "40 Jahre UPB"
   date:
     formats:
       weekday_date: ! '%a, %d. %b'

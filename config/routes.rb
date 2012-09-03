@@ -1,5 +1,7 @@
 IUPB::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' if Rails.env.development?
+
   scope "(:locale)", :locale => /de|en/ do
     devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
@@ -13,7 +15,9 @@ IUPB::Application.routes.draw do
     match 'twitter' => 'pages#show', :id => 'twitter', :as => :twitter
     match 'courses' => 'courses#index', :as => :courses
     
+    match "40jahre" => "forty_years#index", :as => :fortyyears
     match "timetable" => "timetable#index", :as => :timetable
+    
     get "timetable/new"
     get "timetable/export"
     post "timetable/create"

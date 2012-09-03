@@ -23,6 +23,8 @@ gem "koala"
 gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
 gem "haml"
 gem "ri_cal"
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -33,6 +35,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem "rails_admin", :group => :development
 
 gem 'pry-rails', :group => :development   # a nicer 'rails console'
 

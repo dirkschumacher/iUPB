@@ -100,6 +100,7 @@ en:
       party: "Partys"
       twitter: "Twitter"
       timetable: "Timetable"
+      40years: "40 years UPB"
   time:
     formats:
       very_short: ! '%H:%M'
