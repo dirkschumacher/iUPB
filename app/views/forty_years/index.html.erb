@@ -4,12 +4,12 @@
 <h1><%= t ".40_years_upb" %> <sup><span class="label label-inverse">beta</span></sup></h1>
 <div id="timetable">
 <% @days.each do |col| %>
-	<div class="col box_round" data-tt-col-day="<%= col.to_s %>" id="col_<%= col.to_s %>">
-		<div class="label"><h3 class="day_label"><% unless col == 0 %> <%= t ".day_"+col.to_s %><% end %>&nbsp;</h3></div> 
+	<div class="forty-col box_round" data-tt-col-day="<%= col.to_s %>" id="col_<%= col.to_s %>">
+		<div class="label"><h3 class="day_label"><% unless col % 8 == 0 %> <%= t ".day_"+col.to_s %><% end %>&nbsp;</h3></div> 
 		
 		<% @slots.each do |slot| %>
 			<div data-tt-start-time="<%= slot[0].sub(":", "") %>" data-tt-end-time="<%= slot[1].sub(":", "") %>" data-tt-day="<%= col.to_s %>" class="slot truncate" style="height:<%= (slot[1].sub(":", "").to_i - slot[0].sub(":", "").to_i) / 3 %>px;">
-			<% if col == 0 %>
+			<% if col % 8 == 0 %>
 				<span class="cell_label cell_label_first"><%= slot[0] %> - <%= slot[1] %></span>
 			<% else %>
 				<span class="cell_label cell_label_middle"><%= slot[0] %> - <%= slot[1] %> </span> 

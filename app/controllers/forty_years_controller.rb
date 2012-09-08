@@ -5,7 +5,7 @@ class FortyYearsController < ApplicationController
     respond_to do |format|
       format.html do
         @slots = [["7:00", "9:00"], ["9:00", "11:00"], ["11:00", "13:00"], ["13:00", "14:00"], ["14:00", "16:00"], ["16:00", "18:00"], ["18:00", "20:00"]]
-        @days = (0..14)
+        @days = (0..15)
       end
       format.json do
        render json: @events
