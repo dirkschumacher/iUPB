@@ -14,8 +14,12 @@
 	</div>
   	<div><%= link_to image_tag("icon_asta.png", :class => "round-corners")+ " " +t("layouts.application.asta"), asta_path  %> 
   	</div>
-      	<div><%= link_to image_tag("icon_40jahre.png", :class => "round-corners")+ " " +t("layouts.application.40years"), fortyyears_path  %> 
-      	</div>
+     <% if Rails.env.development? %>  	
+	<div><%= link_to image_tag("icon_40jahre.png", :class => "round-corners")+ " " +t("layouts.application.40years"), fortyyears_path  %>  
+	</div>
+	<div><%= link_to image_tag("icon_timetable.png", :class => "round-corners")+ " " +t("layouts.application.timetable"), timetable_path  %>  
+	</div>
+	<% end %>
 </div>
 <script>
 if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 
