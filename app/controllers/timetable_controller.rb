@@ -40,21 +40,28 @@ class TimetableController < ApplicationController
   end
 
   def index
-    if Time.now > Time.now.end_of_week - 2.days # weekend
-      @start_time = (Time.now.end_of_week + 1.days).beginning_of_week
+    if params[:year] and params[:week]
+      @start_time = Date.commercial(params[:year].to_i, params[:week].to_i).to_time.beginning_of_week
       @end_time = @start_time.end_of_week - 2.days
     else
-      @start_time = Time.now.beginning_of_week
-      @end_time = Time.now.end_of_week - 2.days
-    end
+      if Time.now > Time.now.end_of_week - 2.days # weekend
+        @start_time = (Time.now.end_of_week + 1.days).beginning_of_week
+        @end_time = @start_time.end_of_week - 2.days
+      else
+        @start_time = Time.now.beginning_of_week
+        @end_time = Time.now.end_of_week - 2.days
+      end
+    end  
     @events = current_user.events.where(start_time: @start_time..@end_time).asc(:start_time)
     respond_to do |format|
       format.html do
+        @year_js = @end_time.year
+        @week_js = @end_time.strftime("%W")
         @slots = [["7:00", "9:00"], ["9:00", "11:00"], ["11:00", "13:00"], ["13:00", "14:00"], ["14:00", "16:00"], ["16:00", "18:00"], ["18:00", "20:00"]]
         @days = (0..5)
       end
       format.json do
-       render json: @events
+       render json: @events, methods: "_name"
      end
     end
   end

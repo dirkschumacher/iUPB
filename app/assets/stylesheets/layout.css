@@ -60,3 +60,12 @@
     display: inherit !important;
   }
 }
+.login-button:hover {
+  text-decoration:none;
+}
+.login-button i {
+  font-size:50px;
+}
+.login-button-bar {
+  margin-top:20px;
+}

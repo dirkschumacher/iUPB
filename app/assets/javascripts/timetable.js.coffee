@@ -3,19 +3,22 @@
 @iUPB.Timetable.TRUNCATE_LENGTH = 23
 @iUPB.Timetable.API_URL = "/timetable.json"
 
-@iUPB.Timetable.populateTimetable = (container) ->
-	$.retrieveJSON(window.iUPB.Timetable.API_URL, (json, status) ->
-		if status == "cached" || status == "success" # TODO is this ok to use?
-			window.iUPB.Timetable.emptyTimetable(container)
+@iUPB.Timetable.populateTimetable = (container, year, week) ->
+	$.retrieveJSON(window.iUPB.Timetable.API_URL, {year: year, week:week}, (json, status) ->
+		if status is "cached" or status is "success" #is ok
+			window.iUPB.Timetable.emptyTimetable(container)	
+			monday = window.iUPB.Timetable.weekToDate(year, week, 0)
+			friday = window.iUPB.Timetable.weekToDate(year, week, 4)
+			$("#day_title").text(I18n.l("date.formats.weekday_date", monday) + " - " + I18n.l("date.formats.weekday_date", friday))
 			$.each(json, ->
 				start_date = new Date(this.start_time)
 				start_compare_time = window.iUPB.Timetable.zeroFill(start_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(start_date.getMinutes(), 2)
 				end_date = new Date(this.end_time||this.start_time)
 				end_compare_time = window.iUPB.Timetable.zeroFill(end_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(end_date.getMinutes(), 2)
-				if this.name.length > window.iUPB.Timetable.TRUNCATE_LENGTH
-					name = this.name.substring(0, window.iUPB.Timetable.TRUNCATE_LENGTH - 1) + "…"
+				if this._name.length > window.iUPB.Timetable.TRUNCATE_LENGTH
+					name = this._name.substring(0, window.iUPB.Timetable.TRUNCATE_LENGTH - 1) + "…"
 				else
-					name = this.name
+					name = this._name
 				day = start_date.getDay()
 				location = this.location
 				id = this._id
@@ -42,6 +45,37 @@
 			return
 	)
 	return
+	
+@iUPB.Timetable.setUpPage = ($timeTable, year, week) ->
+  window.iUPB.Timetable.vars.currentYear = year
+  window.iUPB.Timetable.vars.currentWeek = week
+  window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek)
+  $("#next_link").click((e)->
+      e.preventDefault()
+      if window.iUPB.Timetable.vars.currentWeek >= 52
+        window.iUPB.Timetable.vars.currentWeek = 1
+        window.iUPB.Timetable.vars.currentYear++
+      else
+        window.iUPB.Timetable.vars.currentWeek++
+      window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek)
+    )
+  $("#prev_link").click((e)->
+    e.preventDefault()
+    if window.iUPB.Timetable.vars.currentWeek is 1
+      window.iUPB.Timetable.vars.currentWeek = 52
+      window.iUPB.Timetable.vars.currentYear--
+    else
+      window.iUPB.Timetable.vars.currentWeek--
+    window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek)
+  )
+  
+#adopted from http://stackoverflow.com/questions/4555324/get-friday-from-week-number-and-year-in-javascript
+#Thanks Mic for this beautiful peace of code
+@iUPB.Timetable.weekToDate =(year, wn, dayNb) ->
+  j10 = new Date( year,0,10,12,0,0)
+  j4 = new Date( year,0,4,12,0,0)
+  mon1 = j4.getTime() - j10.getDay() * 86400000
+  new Date(mon1 + ((wn - 1)  * 7  + dayNb) * 86400000)
 
 @iUPB.Timetable.emptyTimetable = (container) ->
 	container.find("div.busy").removeClass("busy")

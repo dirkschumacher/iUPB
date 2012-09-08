@@ -3,6 +3,12 @@ de:
   imprint: "Impressum"
   login: "Login"
   logout: "Logout"
+  email: "E-Mail"
+  password: "Passwort"
+  remember_me: "Eingeloggt bleiben"
+  sign_in: "Bitten einloggen"
+  marketing:
+    login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
   forty_years:
     index:
       your_timetable: "Dein Stundenplan für diese Woche"
@@ -93,6 +99,8 @@ de:
       view_on_facebook: "in Facebook öffnen"
   timetable:
     index:
+      prev_week: "vorherige Woche"
+      next_week: "nächste Woche"
       your_timetable: "Dein Stundenplan für diese Woche"
       day_1: Mo
       day_2: Di

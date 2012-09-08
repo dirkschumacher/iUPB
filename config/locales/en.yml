@@ -82,6 +82,8 @@ en:
         view_on_facebook: "open on facebook"
   timetable:
       index:
+        prev_week: "previous week"
+        next_week: "next week"
         your_timetable: "Your Timetable for this week"
         day_1: Mon
         day_2: Tue
