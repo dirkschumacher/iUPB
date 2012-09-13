@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def only_upb_ip
     upb_net = "131.234.0.0/16"
     upb = IPAddr.new(upb_net)
-    upb === request.ip_address
+    upb === request.remote_ip
   end
   
   def fb_graph(url)

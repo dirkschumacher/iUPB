@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "support@yippie.io"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -212,6 +212,17 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
 
+  FBCONFIG = YAML.load(ERB.new(File.new(Rails.root.join("config/facebook.yml")).read).result)[Rails.env]
+  if Rails.env.development? || Rails.env.test?
+     config.omniauth :facebook, FBCONFIG['app_id'], FBCONFIG['secret_key']
+  else
+     config.omniauth :facebook, FBCONFIG['app_id']||ENV['FACEBOOK_KEY'], FBCONFIG['secret_key']||ENV['FACEBOOK_SECRET'],
+           {:scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  end
+
+   GOOGLECONFIG = YAML.load(ERB.new(File.new(Rails.root.join("config/google.yml")).read).result)[Rails.env]
+   config.omniauth :google_oauth2, GOOGLECONFIG['app_id']||ENV["GOOGLE_APP_ID"], GOOGLECONFIG['secret_key']||ENV["GOOGLE_APP_SECRET"], { scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email", access_type: "offline", approval_prompt: "" }
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -220,11 +231,4 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
-  FBCONFIG = YAML.load(ERB.new(File.new(Rails.root.join("config/facebook.yml")).read).result)[Rails.env]
-  if Rails.env.development? || Rails.env.test?
-     config.omniauth :facebook, FBCONFIG['app_id'], FBCONFIG['secret_key']
-   else
-     config.omniauth :facebook, FBCONFIG['app_id']||ENV['FACEBOOK_KEY'], FBCONFIG['secret_key']||ENV['FACEBOOK_SECRET'],
-           {:scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-   end
 end

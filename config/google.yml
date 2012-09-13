@@ -1,0 +1,9 @@
+development:
+  app_id: YOUR APP ID
+  secret_key: YOUR SECRET
+test:
+  app_id: YOUR APP ID
+  secret_key: YOUR SECRET
+production:
+  app_id: <%= ENV["GOOGLE_APP_ID"] %>
+  secret_key: <%= ENV["GOOGLE_APP_SECRET"] %>

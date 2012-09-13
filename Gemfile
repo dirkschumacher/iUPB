@@ -17,6 +17,7 @@ gem 'dalli', :group => "production"
 gem 'kgio', :group => "production"
 gem 'devise'
 gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
 gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"
 gem "koala"
