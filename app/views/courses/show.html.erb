@@ -54,5 +54,25 @@
 <% end %>
 
 <p class="center">
-<a class="btn btn-info" href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t '.view_in_paul'%></a>
+<a class="btn btn-info" href="<%= timetable_add_course_path %>" data-role="button" id="add_link"><%= t '.add_to_time_table' %></a>
 </p>
+
+<p class="center">
+<a class="btn btn-info" href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t '.view_in_paul' %></a>
+</p>
+<script>
+  jQuery("#add_link").click(function(e){
+    e.preventDefault();
+    current_link = $(this);
+    $.post("<%= timetable_add_course_path %>", { id: encodeURIComponent("<%= @course.id %>") }, function(data) {
+      current_link.prop("disabled", true);
+      current_link.removeClass("btn-info");
+      current_link.addClass("btn-success");
+      current_link.html('<i class="icon-ok"></i>');
+      current_link.unbind("click");
+      current_link.click(function(e){
+        e.preventDefault();
+      });
+    });
+  });
+</script>

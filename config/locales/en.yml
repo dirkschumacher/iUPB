@@ -81,6 +81,7 @@ en:
       tutorials: 'Tutorials'
       dates_and_rooms: 'Schedule with Rooms'
       view_in_paul: 'View course in PAUL'
+      add_to_time_table: 'Add to timetable'
       course_details: 'Course details'
     room_na: 'N.A.'
     index:

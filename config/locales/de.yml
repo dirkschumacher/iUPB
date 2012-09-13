@@ -81,6 +81,7 @@ de:
       tutorials: 'Übungsgruppen'
       dates_and_rooms: 'Zeiten und Räume'
       view_in_paul: 'Kurs in PAUL ansehen'
+      add_to_time_table: 'in den Stundenplan'
       course_details: 'Kursansicht'
     room_na: 'N.N.'
     index:

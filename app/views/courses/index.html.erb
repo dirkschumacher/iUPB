@@ -38,12 +38,16 @@ $(document).ready(function(event) {
         $.each(data, function() { 
           var li = $('<li class="well" style="white-space: normal;">'), id = this.course.id;
           var add_link = $('<a style="float:right">');
-          add_link.append($('<i class="icon-plus-sign"></i>'));
+          add_link.append($('<i class="icon-plus"></i>'));
           add_link.click(function(){
-			var current_link = $(this);
-			$.post("/timetable/add_course", { id: encodeURIComponent(id) }, function(data) {
-			   current_link.html('<i class="icon-ok-sign"></i>');
-			 });
+			     var current_link = $(this);
+			     $.post("/timetable/add_course", { id: encodeURIComponent(id) }, function(data) {
+			       current_link.html('<i class="icon-ok"></i>');
+			     });
+           current_link.unbind("click");
+           current_link.click(function(e){
+              e.preventDefault();
+           });
           });
 		  <% if Rails.env.development? %>
           li.append(add_link); 
