@@ -3,6 +3,35 @@ en:
   imprint: "imprint"
   logout: "Logout"
   login: "Login"
+  email: "E-Mail"
+  password: "Passwort"
+  remember_me: "Remember me"
+  sign_in: "Please login"
+  sign_up: "Sign up"
+  here_you_can_sign_up: "Here you can sign up for a new account"
+  forgot_your_password: "Forgot your password"
+  marketing:
+    login_with_iupb: Use iUPB login
+    login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
+  forty_years:
+    index:
+      your_timetable: "Your timetable for this week"
+      day_1: "22. Oct."
+      day_2: "23. Oct."
+      day_3: "24. Oct."
+      day_4: "25. Oct."
+      day_5: "26. Oct."
+      day_6: "27. Oct."
+      day_7: "28. Oct."
+      day_9: "29. Oct."
+      day_10: "30. Oct."
+      day_11: "31. Oct."
+      day_12: "1. Nov."
+      day_13: "2. Nov."
+      day_14: "3. Nov."
+      day_15: "4. Nov."
+      download_ical: "download to your device calendar"
+      list: "List"
   jquery:
     timeago:
       seconds:

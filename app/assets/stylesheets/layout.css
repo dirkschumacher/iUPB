@@ -69,3 +69,9 @@
 .login-button-bar {
   margin-top:20px;
 }
+.small-login-button:hover {
+  text-decoration:none;
+}
+.small-login-button i {
+  font-size:16pt;
+}

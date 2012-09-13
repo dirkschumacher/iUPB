@@ -221,7 +221,7 @@ Devise.setup do |config|
   end
 
    GOOGLECONFIG = YAML.load(ERB.new(File.new(Rails.root.join("config/google.yml")).read).result)[Rails.env]
-   config.omniauth :google_oauth2, GOOGLECONFIG['app_id']||ENV["GOOGLE_APP_ID"], GOOGLECONFIG['secret_key']||ENV["GOOGLE_APP_SECRET"], { scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email", access_type: "offline", approval_prompt: "" }
+   config.omniauth :google_oauth2, GOOGLECONFIG['app_id']||ENV["GOOGLE_APP_ID"], GOOGLECONFIG['secret_key']||ENV["GOOGLE_APP_SECRET"], { scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email", access_type: "", approval_prompt: "" }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

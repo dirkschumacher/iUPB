@@ -37,9 +37,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem "rails_admin", :group => :development
+group :development do
+	gem "rails_admin"
 
-gem 'pry-rails', :group => :development   # a nicer 'rails console'
+	gem 'pry-rails'   # a nicer 'rails console'
+	gem 'quiet_assets'
+end
+
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'

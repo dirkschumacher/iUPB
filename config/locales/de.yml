@@ -7,25 +7,29 @@ de:
   password: "Passwort"
   remember_me: "Eingeloggt bleiben"
   sign_in: "Bitten einloggen"
+  sign_up: "Registrieren"
+  here_you_can_sign_up: "Hier kannst du dich direkt bei uns registrieren"
+  forgot_your_password: "Passwort vergessen"
   marketing:
-    login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
+    login_with_iupb: iUPB-Login nutzen
+    login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen. – Perfekt in dein Smartphone integriert."
   forty_years:
     index:
       your_timetable: "Dein Stundenplan für diese Woche"
-      day_1: "22. Oktober"
-      day_2: "23. Oktober"
-      day_3: "24. Oktober"
-      day_4: "25. Oktober"
-      day_5: "26. Oktober"
-      day_6: "27. Oktober"
-      day_7: "28. Oktober"
-      day_9: "29. Oktober"
-      day_10: "30. Oktober"
-      day_11: "31. Oktober"
-      day_12: "1. November"
-      day_13: "2. November"
-      day_14: "3. November"
-      day_15: "4. November"
+      day_1: "22. Okt."
+      day_2: "23. Okt."
+      day_3: "24. Okt."
+      day_4: "25. Okt."
+      day_5: "26. Okt."
+      day_6: "27. Okt."
+      day_7: "28. Okt."
+      day_9: "29. Okt."
+      day_10: "30. Okt."
+      day_11: "31. Okt."
+      day_12: "1. Nov."
+      day_13: "2. Nov."
+      day_14: "3. Nov."
+      day_15: "4. Nov."
       download_ical: "Termine aufs Gerät runterladen"
       list: "Liste"
   asta:
@@ -129,6 +133,9 @@ de:
       twitter: "Twitter"
       timetable: "Stundenplan"
       40years: "40 Jahre UPB"
+  activerecord:
+    models:
+      user: Benutzer
   date:
     formats:
       weekday_date: ! '%a, %d. %b'
