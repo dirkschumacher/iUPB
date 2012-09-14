@@ -30,7 +30,8 @@ class CoursesController < ApplicationController
         search_condition << {'$or' => [ 
           {meta_lecturer_names: /.*#{word}.*/}, 
           {meta_rooms: /.*#{word}.*/} , 
-          {title_downcase: /.*#{word}.*/} 
+          {course_short_desc: /.*#{word}.*/} ,
+          {title_downcase: /.*#{word}.*/}
         ]}
       end
       @courses = db_query.where('$and' => search_condition).limit(10).entries
