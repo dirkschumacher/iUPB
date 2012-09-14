@@ -216,7 +216,7 @@ Devise.setup do |config|
   if Rails.env.development? || Rails.env.test?
      config.omniauth :facebook, FBCONFIG['app_id'], FBCONFIG['secret_key']
   else
-     config.omniauth :facebook, FBCONFIG['app_id']||ENV['FACEBOOK_KEY'], FBCONFIG['secret_key']||ENV['FACEBOOK_SECRET'],
+     config.omniauth :facebook, FBCONFIG['app_id']||ENV['FB_ID'], FBCONFIG['secret_key']||ENV['FB_SECRET'],
            {:scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   end
 
