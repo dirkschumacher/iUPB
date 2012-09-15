@@ -14,11 +14,12 @@ class FortyYearsController < ApplicationController
     end
   end
   def random_fact
-    render json: FortyYearsFact.find
+    fact = FortyYearsFact.find
+    render json: {id: fact.id, text: fact.text}
   end
 
   def export
-    events = current_user.events.where(start_time: Time.now..(Time.now + 6.months))
+    events = FortyYearsEvent.all
     respond_to do |format|
       format.ics do
         @cal = RiCal.Calendar do |cal|
@@ -29,7 +30,7 @@ class FortyYearsController < ApplicationController
               cal_event.dtstart     = event.start_time.getutc
               cal_event.dtend       = event.end_time.getutc
               cal_event.location    = event.location||""
-              cal_event.url         = (event.course ? event.course.paul_url : "")
+              cal_event.url         = event.link
             end
           end
         end
@@ -38,11 +39,4 @@ class FortyYearsController < ApplicationController
     end
   end
   
-  protected
-  def course_present?(course, user)
-    user.events.each do |event|
-      return true if event.course_id == course.id
-    end
-    false
-  end
 end
