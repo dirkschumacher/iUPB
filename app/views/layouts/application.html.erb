@@ -29,6 +29,10 @@
 	
 	<!-- iPhone/iPod Touch Portrait – 640 x 920 pixels (high-resolution) -->
 	<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="/splash-screen-640x920.png">
+
+  <!-- iPhone/iPod Touch Portrait – 640 x 1096 pixels (iPhone 5 high-resolution) -->
+  <!-- experimental, not tested. based on http://j.mp/PmckES -->
+  <link rel="apple-touch-startup-image" media="(min-device-height: 500px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="/splash-screen-640x1096.png">
 	
 	<!-- iPad Portrait 768x1004 -->
 	<link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: portrait)" href="/splash-screen-768x1004.png">
@@ -91,9 +95,22 @@
     <!--/footer-->
   </div> <!--! end of #container -->
 
-  <% unless Rails.env.development? %>
+  <% if Rails.env.production? %>
   <script>
-  var _gaq=[["_setAccount","<%= IUPB::GOOGLE_ANALYTICS_ACCOUNT %>"],["_trackPageview"]];
+  // detect iOS WebApp Mode
+  var _webAppMode;
+  if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 
+    if (window.navigator.standalone == true) {
+      _webAppMode = "iOS: WebApp";
+    } else {
+      _webAppMode = "iOS: no WebApp";
+    }
+  } else {
+    _webAppMode = "unknown (no iOS)";
+  }
+  var _gaq=[["_setAccount","<%= IUPB::GOOGLE_ANALYTICS_ACCOUNT %>"],
+            ['_setCustomVar', 1, 'Web App Mode', _webAppMode, 2],
+            ["_trackPageview"]];
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
