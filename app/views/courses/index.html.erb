@@ -22,6 +22,8 @@ $(document).ready(function(event) {
       result_list.empty();
     if(search_field.val().length < 3)
       return;
+    if(search_field.val().length > 30)
+      return;
     search_timer = setTimeout(function() 
     {
       if(!$('#paul_heading').is(":hidden")){
@@ -30,6 +32,9 @@ $(document).ready(function(event) {
       }
       $.getJSON('<%= course_search_path %>?query=' + encodeURIComponent(search_field.val()), function(data)
       {
+        <% unless Rails.env.development? %>
+            if(_gaq) _gaq.push(['_trackEvent', 'Paul', 'Search', search_field.val()]);
+  		  <% end %>
         result_list.empty();
         if(data.length == 0)
         {
