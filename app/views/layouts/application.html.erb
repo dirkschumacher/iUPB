@@ -95,7 +95,7 @@
     <!--/footer-->
   </div> <!--! end of #container -->
 
-  <% unless Rails.env.development? %>
+  <% if Rails.env.production? %>
   <script>
   // detect iOS WebApp Mode
   var _webAppMode;
