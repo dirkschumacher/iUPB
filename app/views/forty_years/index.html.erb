@@ -1,7 +1,7 @@
 <%  title t("layouts.application.40years") %>
 <%= content_for "page-attributes" do %>id="40yrPage"<% end %>
 
-<h1><%= image_tag "logo_40jahre.png", style: "max-width:200px;" %> <sup><span class="label label-inverse">beta</span></sup></h1>
+<h1><%= link_to image_tag("logo_40jahre.png", :style => "max-width:200px;"), "http://40jahre.uni-paderborn.de", :target => "_blank", :confirm => "Offizielle 40 Jahres-Website öffnen?\n(40jahre.upb.de)" %></h1>
 <br>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#programme" data-toggle="tab"><%= t ".programme" %></a></li>
@@ -56,13 +56,54 @@
 
   <div class="tab-pane" id="facts">
 
-  	Fakten
+  	<div id="factCarousel" class="carousel slide visible-phone" data-interval="false">
+	  <!-- Carousel items -->
+	  <div class="carousel-inner">
+	  	<% @facts.each do |fact| %>
+	  		<div class="item <%= (fact.id == 1 ? "active" : "") %>">
+	  			<div class="well">
+		  			<h1><%= fact.id.to_s %></h1>
+		  			<blockquote>
+					  <p><%= fact.text %></p>
+					</blockquote>
+				</div>
+			</div>
 
+	  	<% end %>
+	    
+	  </div>
+	  <!-- Carousel nav -->
+	  <a class="carousel-control left" href="#factCarousel" data-slide="prev">&lsaquo;</a>
+	  <a class="carousel-control right" href="#factCarousel" data-slide="next">&rsaquo;</a>
+	</div>
+	
+	<div id="factList" class="hidden-phone">
+	  <ul class="no-bullets">
+	  	<% @facts.each do |fact| %>
+	  	 <li class="well">
+	  		<p class="fact_no"><%= fact.id %></p>
+	  		<p class="fact_text"><%= fact.text %></p>
+	  	  </li>
+	  	<% end %>
+	  </ul>
+  	</div>
   </div>
 </div>
 
+<p class="source-info">
+		<%= t "source" %>: <a target="_blank" href="http://40jahre.uni-paderborn.de">Uni Paderborn</a>.
+	</p>
+
 <script>
 $(document).ready(function() {
+	$('blockquote').swipe({
+	 swipeLeft: function() {
+	 		$('#factCarousel').carousel('next');
+	 	},
+	 swipeRight: function() {
+	 		$('#factCarousel').carousel('prev');
+	 	},
+	 });
 	window.iUPB.FortyYears.populateTimetable($("#timetable"));
 });
 </script>
