@@ -93,7 +93,20 @@
 
   <% unless Rails.env.development? %>
   <script>
-  var _gaq=[["_setAccount","<%= IUPB::GOOGLE_ANALYTICS_ACCOUNT %>"],["_trackPageview"]];
+  // detect iOS WebApp Mode
+  var _webAppMode;
+  if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 
+    if (window.navigator.standalone == true) {
+      _webAppMode = "iOS: WebApp";
+    } else {
+      _webAppMode = "iOS: no WebApp";
+    }
+  } else {
+    _webAppMode = "unknown (no iOS)";
+  }
+  var _gaq=[["_setAccount","<%= IUPB::GOOGLE_ANALYTICS_ACCOUNT %>"],
+            ['_setCustomVar', 1, 'Web App Mode', _webAppMode, 2],
+            ["_trackPageview"]];
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
