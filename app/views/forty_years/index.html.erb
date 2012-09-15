@@ -6,6 +6,7 @@
 <ul class="nav nav-tabs">
   <li class="active"><a href="#programme" data-toggle="tab"><%= t ".programme" %></a></li>
   <li><a href="#facts" data-toggle="tab"><%= t ".facts" %></a></li>
+  <li><a href="#more" data-toggle="tab"><%= t ".more" %></a></li>
 </ul>
 
 <div class="tab-content">
@@ -87,6 +88,10 @@
 	  	<% end %>
 	  </ul>
   	</div>
+  </div>
+
+  <div class="tab-pane active" id="more">
+  	<p class="well center"><%= t ".find_more" %>:<br> <%= link_to "40jahre.upb.de" ,"http://40jahre.uni-paderborn.de", :target => "_blank", :class => "btn" %></p>
   </div>
 </div>
 

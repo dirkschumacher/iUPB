@@ -15,6 +15,10 @@ en:
     login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
   forty_years:
     index:
+      facts: Facts
+      programme: Events
+      more: more
+      find_more: "Find more infos and photos about the 40 year's anniversary at their official web site"
       your_timetable: "Your timetable for this week"
       day_1: "22. Oct."
       day_2: "23. Oct."
