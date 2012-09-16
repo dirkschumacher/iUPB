@@ -42,12 +42,16 @@ $(document).ready(function(event) {
         }
         $.each(data, function() { 
           var li = $('<li class="well" style="white-space: normal;">'), id = this.course.id;
-          var add_link = $('<a style="cursor:pointer;float:right">');
+          var add_link = $('<a href="#addCourse" style="cursor:pointer;float:right">');
           add_link.append($('<i style="font-size:22px;" class="icon-plus"></i>'));
-          add_link.click(function(){
+          add_link.click(function(e){
+           e.preventDefault();
 			     var current_link = $(this);
 			     $.post("/timetable/add_course", { id: encodeURIComponent(id) }, function(data) {
 			       current_link.html('<i class="icon-ok"></i>');
+             <% if Rails.env.production? %>
+                if(_gaq) _gaq.push(['_trackEvent', 'Timetable', 'Course Added', 'Search Result List']);
+             <% end %>
 			     });
            current_link.unbind("click");
            current_link.click(function(e){
