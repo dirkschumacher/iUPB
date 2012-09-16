@@ -6,4 +6,8 @@ class FortyYearsEvent
   field :description, type: String
   field :location, type: String
   field :link, type: String
+
+  def name_with_date
+  	"#{self.start_time.day}.#{self.start_time.month}.: #{self.name}"
+  end
 end

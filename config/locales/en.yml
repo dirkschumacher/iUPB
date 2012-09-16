@@ -39,6 +39,7 @@ en:
       details: more info at Uni website
       read_more: read more...
       read_less: read less.
+      quick_event_select: Event quick selection
   jquery:
     timeago:
       seconds:
