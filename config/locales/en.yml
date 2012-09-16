@@ -36,6 +36,9 @@ en:
       day_15: "4. Nov."
       download_ical: "download to your device calendar"
       list: "List"
+      details: more info at Uni website
+      read_more: read more...
+      read_less: read less.
   jquery:
     timeago:
       seconds:

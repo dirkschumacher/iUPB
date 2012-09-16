@@ -13,13 +13,13 @@
   <div class="tab-pane active" id="programme">
 
 <div id="timetable">
-<% @days.each do |col| %>
+<% @days.each_with_index do |col, index| %>
 	<div class="forty-col box_round" data-tt-col-day="<%= col.to_s %>" id="col_<%= col.to_s %>">
-		<div class="label"><h3 class="day_label"><% unless col % 8 == 0 %> <%= t ".day_"+col.to_s %><% end %>&nbsp;</h3></div> 
+		<div class="label"><h3 class="day_label"><% unless col == 0 %> <%= t ".day_"+index.to_s %><% end %>&nbsp;</h3></div> 
 		
 		<% @slots.each do |slot| %>
 			<div data-tt-start-time="<%= slot[0].sub(":", "") %>" data-tt-end-time="<%= slot[1].sub(":", "") %>" data-tt-day="<%= col.to_s %>" class="slot truncate" style="height:<%= (slot[1].sub(":", "").to_i - slot[0].sub(":", "").to_i) / 3 %>px;">
-			<% if col % 8 == 0 %>
+			<% if col == 0 %>
 				<span class="cell_label cell_label_first"><%= slot[0] %> - <%= slot[1] %></span>
 			<% else %>
 				<span class="cell_label cell_label_middle"><%= slot[0] %> - <%= slot[1] %> </span> 
@@ -32,24 +32,29 @@
 <% end %>
 </div>
 <br style="clear:both;">
+<br>
+<p class="center"><a class="btn btn-small btn-info" href="<%= forty_years_export_path(format: "ics") %>"><i class="icon-download-alt icon-white"></i> <%= t ".download_ical" %></a></p>
 
 <h3><%= t ".list" %></h3>
 <ul class="no-bullets no-left-margin" id="events_overview">
 	<% @events.each do |event| %>
 		<li class="well single_event"><h6 id="<%= event.id %>"><%= event.name %></h6>
-			<p><%= l event.start_time, format: :short %>
+			<p><%= l event.start_time.utc, format: :short %>
 			<% if event.end_time && event.end_time > event.start_time %>
-			 - <%= l event.end_time, format: :short %>
+			 - <%= l event.end_time.utc, format: :short %>
 			<% end %>
 			</p>
+			<p class="expandeble">
+				<%= event.description %>
+			</p>
 			<% if event.link %>
-				<p><%= link_to ".details", event.link %>
+				<p><%= link_to "&raquo; ".html_safe + t(".details"), event.link %>
 			<% end %>
 		</li>
 	<% end %>
 </ul>
 
-<p class="center"><a class="btn btn-small btn-info" href="<%= timetable_export_path(format: "ics") %>"><i class="icon-download-alt icon-white"></i> <%= t ".download_ical" %></a></p>
+<p class="center"><a class="btn btn-small btn-info" href="<%= forty_years_export_path(format: "ics") %>"><i class="icon-download-alt icon-white"></i> <%= t ".download_ical" %></a></p>
   </div>
   
 
@@ -110,5 +115,14 @@ $(document).ready(function() {
 	 	},
 	 });
 	window.iUPB.FortyYears.populateTimetable($("#timetable"));
+	$(".expandeble").expander({
+		expandText: '<%= t ".read_more" %>',
+		userCollapseText: '<%= t ".read_less" %>',
+		expandPrefix: '&hellip; ',
+		expandEffect: 'fadeIn',
+		expandSpeed: 250,
+		collapseEffect: 'fadeOut',
+		collapseSpeed: 200
+	});
 });
 </script>

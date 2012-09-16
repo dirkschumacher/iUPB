@@ -36,6 +36,9 @@ de:
       day_15: "4. Nov."
       download_ical: "Termine aufs Gerät runterladen"
       list: "Liste"
+      details: weitere Details auf Uni-Website
+      read_more: mehr lesen...
+      read_less: weniger.
   asta:
     index:
       read_more: "Mehr"
