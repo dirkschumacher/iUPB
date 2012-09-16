@@ -52,7 +52,7 @@
 <script>
 $(document).ready(function() {
   window.iUPB.Timetable.setUpPage($("#timetable"), <%= @year_js %>, <%= @week_js %>);
-  <% if user_signed_in? && @userHasNoCourses %>
+  <% if @userHasNoCourses %>
     $("#paul-link").popover({title: "<%= t(".popover.title")%>", content: "<%= t(".popover.content")%>" , placement: "bottom", trigger:"manual"}); 
     $("#menu_collapse_link").trigger("click");
     $("#paul-link").popover("toggle");

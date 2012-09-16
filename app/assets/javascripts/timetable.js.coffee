@@ -72,16 +72,18 @@
 				$eventsList.append($li)
 				
 			  #add some logic
-				$('#link-deleteone-' + id + '').click ->
+				$('#link-deleteone-' + id + '').click (e)->
 			    if confirm I18n.t("timetable.index.deleteoneconfirm")
 			      $.ajax("/timetable/destroy", {type: "delete", data: "id=" + id}).success( ->
 			          window.iUPB.Timetable.populateTimetable(container, year, week)
 			        )
-				$('#link-deleteall-' + id + '').click ->
+			    e.preventDefault()
+				$('#link-deleteall-' + id + '').click (e)->
   			  if confirm I18n.t("timetable.index.deleteallconfirm")
 			      $.ajax("/timetable/destroy_course", {type: "delete", data: "id=" + id}).success( ->
 			          window.iUPB.Timetable.populateTimetable(container, year, week)
 			        )
+			    e.preventDefault()
 			)
 			return
 		else # server error or so
