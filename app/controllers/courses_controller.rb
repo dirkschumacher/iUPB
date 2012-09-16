@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
         search_condition << {'$or' => [ 
           {meta_lecturer_names: /.*#{word}.*/}, 
           {meta_rooms: /.*#{word}.*/} , 
-          {course_short_desc: /.*#{word}.*/} ,
+          {course_short_desc_downcase: /.*#{word}.*/} ,
           {title_downcase: /.*#{word}.*/}
         ]}
       end
