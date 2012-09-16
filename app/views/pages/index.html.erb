@@ -20,14 +20,12 @@
   	<div>
 	  <%= link_to '<i class="icons-asta round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.asta"), asta_path %> 
   	</div>
-     <% if Rails.env.development? %>  
 <div>
 	  	  <%= link_to '<i class="icons-fortyyears round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.40years"), fortyyears_path %> 
 	</div>
 	<div>
 	  	  <%= link_to '<i class="icons-timetable round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.timetable"), timetable_path %> 
 	</div>
-	<% end %>
 	
 </div>
 <script>
