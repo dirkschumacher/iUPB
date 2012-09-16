@@ -1,5 +1,5 @@
 .forty-col {
-	width:11.11%;
+	width:12.3%;
 	border:1px solid gray;
 	float:left;
 }
@@ -14,7 +14,20 @@
 	margin-right: 10px; 
 	float:left;
 	height: 20px; 
+	padding-top:7px;
 }
 .fact_text {
 	font-size: 14px;
+}
+@media (max-width: 620px) { 
+  .forty-col {
+    width:90%;
+    clear:both;
+    margin-bottom:5px;
+  }
+}
+@media (min-width: 620px) and (max-width: 1199px) { 
+  .forty-col {
+    width:12.0%;
+  }
 }
