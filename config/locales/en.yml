@@ -7,7 +7,7 @@ en:
   password: "Password"
   password_confirmation: "Password confirmation"
   remember_me: "Remember me"
-  sign_in: "Please login"
+  sign_in: "Login"
   sign_up: "Sign up"
   here_you_can_sign_up: "Here you can sign up for a new account"
   forgot_your_password: "Forgot your password"

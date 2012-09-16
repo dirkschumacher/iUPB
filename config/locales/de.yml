@@ -7,7 +7,7 @@ de:
   password: "Passwort"
   password_confirmation: "Passwort bestätigen"
   remember_me: "Eingeloggt bleiben"
-  sign_in: "Bitten einloggen"
+  sign_in: "Einloggen"
   sign_up: "Registrieren"
   here_you_can_sign_up: "Hier kannst du dich direkt bei uns registrieren"
   forgot_your_password: "Passwort vergessen"
