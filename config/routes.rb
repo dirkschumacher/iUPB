@@ -16,6 +16,7 @@ IUPB::Application.routes.draw do
     match 'courses' => 'courses#index', :as => :courses
     
     match "40jahre" => "forty_years#index", :as => :fortyyears
+    match "40jahre_fact" => "forty_years#random_fact", :as => :fortyyears_random_fact
     match "timetable" => "timetable#index", :as => :timetable
     
     get "timetable/new"
