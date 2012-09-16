@@ -1,8 +1,22 @@
 @iUPB.FortyYears = {}
 @iUPB.FortyYears.vars = {}
-@iUPB.FortyYears.TRUNCATE_LENGTH = 23
+@iUPB.FortyYears.TRUNCATE_LENGTH = 99999
 @iUPB.FortyYears.API_URL = "/40jahre.json"
-
+@iUPB.FortyYears.FACT_API_URL = "/40jahre_fact"
+@iUPB.FortyYears.FACT_CSS_CONTAINER = "#forty-year-fact-container"
+@iUPB.FortyYears.displayRandomFact = ->
+  #if Math.random() <= 0.3
+    $.retrieveJSON(window.iUPB.FortyYears.FACT_API_URL, (json, status) ->
+        $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).text json.id
+        $("#header-container").popover title: "Fakt über die Uni Nr.: " + json.id, content:json.text, placement:"bottom", trigger:"manual"
+        $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).unbind "click"
+        #$(document).click ->
+        #  $("#header-container").popover "hide"
+        $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).click (e)->
+          e.preventDefault()
+          $("#header-container").popover "toggle"
+        $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).show()
+      )
 @iUPB.FortyYears.populateTimetable = (container) ->
   $.retrieveJSON(window.iUPB.FortyYears.API_URL, (json, status) ->
   	if status == "cached" || status == "success" # TODO is this ok to use?
@@ -12,10 +26,10 @@
   			start_compare_time = window.iUPB.FortyYears.zeroFill(start_date.getHours(), 2) + window.iUPB.FortyYears.zeroFill(start_date.getMinutes(), 2)
   			end_date = new Date(this.end_time||this.start_time)
   			end_compare_time = window.iUPB.FortyYears.zeroFill(end_date.getHours(), 2) + window.iUPB.FortyYears.zeroFill(end_date.getMinutes(), 2)
-  			if this.name.length > window.iUPB.FortyYears.TRUNCATE_LENGTH
-  				name = this.name.substring(0, window.iUPB.FortyYears.TRUNCATE_LENGTH - 1) + "…"
-  			else
-  				name = this.name
+  			#if this.name.length > window.iUPB.FortyYears.TRUNCATE_LENGTH
+  			#	name = this.name.substring(0, window.iUPB.FortyYears.TRUNCATE_LENGTH - 1) + "…"
+  			#else
+  			name = this.name
   			day = start_date.getDay()
   			location = this.location
   			id = this._id

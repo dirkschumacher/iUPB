@@ -56,7 +56,10 @@
   <script>
   I18n.defaultLocale = "<%= I18n.default_locale %>";
   I18n.locale = "<%= I18n.locale %>";
-  window.iUPB.enableLoadingIndicator();
+  $(document).ready(function() {
+    window.iUPB.enableLoadingIndicator();
+    window.iUPB.FortyYears.displayRandomFact();
+  });
   </script>
   <%= yield(:head) -%>
 </head>
@@ -64,7 +67,8 @@
   <header class="navbar navbar-fixed-top">
     <span id="spinner"></span>
     <nav class="navbar-inner">
-      <div class="container">
+      <div id="header-container" class="container">
+        <span id="forty-year-fact-container" class="badge badge-important pull-right"></span>
         <a id="menu_collapse_link" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
