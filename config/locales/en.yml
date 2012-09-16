@@ -13,6 +13,10 @@ en:
   marketing:
     login_with_iupb: Use iUPB login
     login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
+    new: Brandnew
+    timetable: Your iUPB timetable
+    timetable_text: "After signing in you can quickly add courses from PAUL to your personal timetable. You can then yiew all your next classes, updated automatically from PAUL. Also, you can download all lectures to your phone or computer calendar."
+    register_or_login_now: Sign in/up now
   forty_years:
     index:
       facts: Facts

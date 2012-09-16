@@ -32,7 +32,7 @@ $(document).ready(function(event) {
       }
       $.getJSON('<%= course_search_path %>?query=' + encodeURIComponent(search_field.val()), function(data)
       {
-        <% unless Rails.env.development? %>
+        <% if Rails.env.production? %>
             if(_gaq) _gaq.push(['_trackEvent', 'Paul', 'Search', search_field.val()]);
   		  <% end %>
         result_list.empty();
@@ -54,7 +54,7 @@ $(document).ready(function(event) {
               e.preventDefault();
            });
           });
-		  <% if Rails.env.development? %>
+		  <% if user_signed_in? %>
           li.append(add_link); 
 		  <% end %>
          
@@ -99,7 +99,18 @@ $(document).ready(function(event) {
 });
 </script>
 <ul id="courses_result_list" class="no-bullets no-left-margin">
-  <li><h3><%= t '.type_and_find' %></h3></li>
+  <li><h3><%= t '.type_and_find' %></h3><p>&nbsp;</p>
+    <div class="hero-unit" style="padding: 20px !important;">
+      <h2><%= t("marketing.new") %>: <%= t("marketing.timetable") %>
+      <p><%= t("marketing.timetable_text") %></p>
+      <% if !user_signed_in? %>
+      <p>
+        <%= link_to t("marketing.register_or_login_now"), new_user_session_path, class: "btn btn-primary" %>
+      </p>
+      <% end %>
+      <%= image_tag "timetable_preview.png" %>
+    </div>
+  </li>
 </ul>
 <p class="source-info">
 	<%= t('source') %>: <a target="_blank" href="https://paul.uni-paderborn.de">paul.upb.de</a> (WS 2012/13)

@@ -9,7 +9,7 @@ class TimetableController < ApplicationController
     head :precondition_failed and return unless params[:id]
     course = Course.find(params[:id])
     dates = course.get_dates(true)
-    unless course_present?(course, current_user)
+    unless current_user.has_course?(course)
       dates.each do |date|
         event = current_user.events.build
         event.start_time = date[0]
@@ -35,6 +35,13 @@ class TimetableController < ApplicationController
 
   def destroy
     event = current_user.events.find(params[:id])
+    event.delete
+    head :ok
+  end
+
+  def destroy_course
+    event = current_user.events.find(params[:id])
+    Event.where(course_id: event.course_id).delete
     event.delete
     head :ok
   end
@@ -94,11 +101,4 @@ class TimetableController < ApplicationController
   def update
   end
   
-  protected
-  def course_present?(course, user)
-    user.events.each do |event|
-      return true if event.course_id == course.id
-    end
-    false
-  end
 end

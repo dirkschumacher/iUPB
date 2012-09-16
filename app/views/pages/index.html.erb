@@ -1,34 +1,34 @@
 <% content_for "page-attributes" do %>id="homePage"<% end %>
 <div class="two-column dashboard-list">
 	<div >
-	<%= link_to '<i class="icons-restaurant round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.menu"), restaurants_path%>
+	<%= link_to '<i class="icons-restaurant round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.menu"), restaurants_path %>
 	</div>
   	<div>
-  	  	<%= link_to '<i class="icons-transportation round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.buses"), transportation_path%>
+  	  	<%= link_to '<i class="icons-transportation round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.buses"), transportation_path %>
   	</div>
 	<div>
-	  <%= link_to '<i class="icons-paul round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.paul"), courses_path%>
+	  <%= link_to '<i class="icons-paul round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.paul"), courses_path %>
 	</div>
 	<div>
-	  <%= link_to '<i class="icons-party round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.party"), events_path%> 
+	  <%= link_to '<i class="icons-party round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.party"), events_path %> 
   	</div>
-	<div><%= link_to '<i class="icons-weather round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.weather"), weather_path%> 
+	<div><%= link_to '<i class="icons-weather round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.weather"), weather_path %> 
 	</div>
 	<div>
-	  <%= link_to '<i class="icons-twitter round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.twitter"), twitter_path%> 
+	  <%= link_to '<i class="icons-twitter round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.twitter"), twitter_path %> 
 	</div>
   	<div>
-	  <%= link_to '<i class="icons-asta round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.asta"), asta_path%> 
+	  <%= link_to '<i class="icons-asta round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.asta"), asta_path %> 
   	</div>
      <% if Rails.env.development? %>  
 <div>
-	  	  <%= link_to '<i class="icons-fortyyears round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.40years"), fortyyears_path%> 
+	  	  <%= link_to '<i class="icons-fortyyears round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.40years"), fortyyears_path %> 
 	</div>
-	
 	<div>
-	  	  <%= link_to '<i class="icons-timetable round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.timetable"), timetable_path%> 
+	  	  <%= link_to '<i class="icons-timetable round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.timetable"), timetable_path %> 
 	</div>
 	<% end %>
+	
 </div>
 <script>
 if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 

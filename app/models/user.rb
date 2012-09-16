@@ -74,5 +74,16 @@ class User
   
   embeds_many :events
   accepts_nested_attributes_for :events
+
+  def has_course?(course)
+    self.events.each do |event|
+      return true if event.course_id == course.id
+    end
+    false
+  end
+
+  def has_event?(course)
+    has_course?(course)
+  end
   
 end
