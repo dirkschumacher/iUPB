@@ -96,6 +96,7 @@ en:
       dates_and_rooms: 'Schedule with Rooms'
       view_in_paul: 'View course in PAUL'
       add_to_time_table: 'Add to timetable'
+      in_time_table: "This couse is saved in your timetable."
       course_details: 'Course details'
     room_na: 'N.A.'
     index:
@@ -137,7 +138,7 @@ en:
         download_ical: "Download events to your device"
         list: "List"
         deleteallconfirm: "Do you really want to completely delete this course from your timetable?"
-        deleteoneconfirm: "Do you really want to delete the course just in this week?"
+        deleteoneconfirm: "Do you really want to delete the course in this week?"
         delete_one: "Remove from this week"
         delete_all: "Remove from my timetable"
         popover:

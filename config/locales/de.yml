@@ -96,6 +96,7 @@ de:
       dates_and_rooms: 'Zeiten und Räume'
       view_in_paul: 'Kurs in PAUL ansehen'
       add_to_time_table: 'in den Stundenplan'
+      in_time_table: "Dieser Kurs ist in deinem Stundenplan gespeichert."
       course_details: 'Kursansicht'
     room_na: 'N.N.'
     index:
@@ -128,10 +129,10 @@ de:
       day_5: Fr
       download_ical: "Termine aufs Gerät runterladen"
       list: "Liste"
-      deleteallconfirm: "Möchtest du wirklich alle Einträge des Kurses entfernen?"
-      deleteoneconfirm: "Möchtest du wirklich den Kurs nur aus dieser Woche entfernen?"
-      delete_one: "Aus dieser Woche entfernen"
-      delete_all: "Komplett löschen"
+      deleteallconfirm: "Möchtest du wirklich alle Termine des Kurses entfernen?"
+      deleteoneconfirm: "Möchtest du diesen Termin wirklich entfernen?"
+      delete_one: "Diesen Termin entfernen"
+      delete_all: "Veranstaltung komplett löschen"
       popover:
         title: "Kurse gibt es beim PAUL"
         content: "Kurse kannst du ganz einfach über die PAUL Suche zu deinem Studenplan hinzufügen"
