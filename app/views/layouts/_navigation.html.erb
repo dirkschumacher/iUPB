@@ -6,10 +6,9 @@
   <li><%= link_to t("layouts.application.weather"), weather_path  %></li>
   <li><%= link_to t("layouts.application.twitter"), twitter_path  %></li>
   <li><%= link_to t("layouts.application.asta"), asta_path  %></li>
-<% if Rails.env.development? %>  <li><%= link_to t("layouts.application.40years"), fortyyears_path, id: "top-40-link"  %></li> 
+  <li><%= link_to t("layouts.application.40years"), fortyyears_path, id: "top-40-link"  %></li> 
   <li><%= link_to t("layouts.application.timetable"), timetable_path%> </li>
 </ul>
-<% end %>
 <% if user_signed_in? %>
 <ul class="nav pull-right">
   <li class="divider-vertical"></li>
