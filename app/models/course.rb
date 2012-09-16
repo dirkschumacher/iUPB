@@ -12,7 +12,7 @@ class Course
   field :paul_url, type: String
   field :group_title, type: String
   field :course_short_desc, type: String
-  field :course_short_desc_downcase, type: String
+  field :course_short_desc_downcase, type: String, index: true
   
   #comma sperated list of lectures
   field :meta_lecturer_names, type: String, index: true
