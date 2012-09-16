@@ -41,7 +41,7 @@ class TimetableController < ApplicationController
 
   def destroy_course
     event = current_user.events.find(params[:id])
-    Event.where(course_id: event.course_id).delete
+    current_user.events.where(course_id: event.course_id).delete
     event.delete
     head :ok
   end
