@@ -29,10 +29,37 @@
 <% end %>
 </div>
 
+<h3 style="clear:both"><%= t ".list" %></h3>
+<ul class="no-bullets no-left-margin" id="events_overview">
+	<% @events.each do |event| %>
+		<li class="well single_event"><h6 id="<%= event.id %>"><%= event.name %></h6>
+			<p><%= l event.start_time.utc, format: :short %>
+			<% if event.end_time && event.end_time > event.start_time %>
+			 - <%= l event.end_time.utc, format: :short %>
+			<% end %>
+			</p>
+			<p class="expandeble">
+				<%= event.description %>
+			</p>
+			<% if event.link %>
+				<p><%= link_to "&raquo; ".html_safe + t(".details"), event.link %>
+			<% end %>
+		</li>
+	<% end %>
+</ul>
 <p class="center"><a class="btn btn-small btn-info" href="<%= timetable_export_path(format: "ics") %>"><i class="icon-download-alt icon-white"></i> <%= t ".download_ical" %></a></p>
 
 <script>
 $(document).ready(function() {
   window.iUPB.Timetable.setUpPage($("#timetable"), <%= @year_js %>, <%= @week_js %>);
+  <% if user_signed_in? && @userHasNoCourses %>
+    $("#paul-link").popover({title: "<%= t(".popover.title")%>", content: "<%= t(".popover.content")%>" , placement: "bottom", trigger:"manual"}); 
+    $("#menu_collapse_link").trigger("click");
+    $("#paul-link").popover("toggle");
+    setTimeout(function() {
+      $("#paul-link").popover("toggle");
+      $("#menu_collapse_link").trigger("click");
+    }, 10000);
+  <% end %>
 });
 </script>
