@@ -87,6 +87,9 @@ de:
       current_temperature: "Aktuelle Temperatur"
   please_wait: "Bitte warten..."
   courses:
+    gone:
+      course_gone_heading: "Dieser Kurs ist so 2012"
+      course_gone_text: "Wahrscheinlich ist dies ein Kurs aus dem letzten Semester. Probier einfach unsere Kurssuche aus, wenn du die Kurse des aktuellen Semesters durchsuchen möchtest."
     next_class: "Nächste: %{date}, %{time_from} bis %{time_to} in %{place}"
     today: "Heute"
     tomorrow: "Morgen"
