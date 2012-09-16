@@ -17,8 +17,7 @@
         $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).click (e)->
           e.stopPropagation()
           $(popover_container).popover "toggle"
-        $("body").unbind "click"
-        $("body").click ->
+        $("div.container").click ->
           $(popover_container).popover("hide")
         $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).show()
       )
