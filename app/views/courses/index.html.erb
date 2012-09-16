@@ -67,7 +67,7 @@ $(document).ready(function(event) {
           if(next_class)
           {
             var infos = $('<h5>');
-            var dateText = I18n.l("date.formats.short", next_class.time_from);
+            var dateText = I18n.l("date.formats.weekday_date", next_class.time_from);
             var time_from = new Date(Date.parse(next_class.time_from));
             var time_to = new Date(Date.parse(next_class.time_to));
             var today = new Date();
