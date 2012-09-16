@@ -6,7 +6,7 @@
 @iUPB.FortyYears.FACT_CSS_CONTAINER = "#forty-year-fact-container"
 @iUPB.FortyYears.displayRandomFact = ->
   #if Math.random() <= 0.3
-    $.retrieveJSON(window.iUPB.FortyYears.FACT_API_URL, (json, status) ->
+    $.getJSON(window.iUPB.FortyYears.FACT_API_URL, (json, status) ->
         $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).text json.id
         $("#header-container").popover title: "Fakt über die Uni Nr.: " + json.id, content:json.text, placement:"bottom", trigger:"manual"
         $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).unbind "click"
