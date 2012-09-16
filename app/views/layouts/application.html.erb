@@ -105,6 +105,8 @@
     } else {
       _webAppMode = "iOS: no WebApp";
     }
+  } else if (window.navigator.userAgent.indexOf('iUPBAndroidNativeApp') != -1) {
+    _webAppMode = "Native (Android)";
   } else {
     _webAppMode = "unknown (no iOS)";
   }
