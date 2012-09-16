@@ -71,6 +71,8 @@ en:
       forecast: "forecast"
       current_weather: "current weather"
       current_data: "Current data"
+      today: "today"
+      current_temperature: "Current temperature"
   please_wait: "Please wait..."
   courses:
     next_class: "Next: %{date}, %{time_from} until %{time_to} in %{place}"

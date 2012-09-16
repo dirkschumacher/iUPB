@@ -71,6 +71,8 @@ de:
       forecast: "Vorhersage"
       current_weather: "Aktuelles Wetter"
       current_data: "Aktuelle Daten"
+      today: "heute"
+      current_temperature: "Aktuelle Temperatur"
   please_wait: "Bitte warten..."
   courses:
     next_class: "Nächste: %{date}, %{time_from} bis %{time_to} in %{place}"

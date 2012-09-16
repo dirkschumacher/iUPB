@@ -4,9 +4,9 @@
 <% end %>
 <h4 id="wait-message"><%= t 'please_wait' %></h4>
 <ul id="weather-data" class="hidden nav nav-tabs nav-stacked">
-	<li><h4><%= t ".temperature" %>: <span data-weather-binding="temp"></span>° C</h4></li>
-	<li><h4><%= t ".min" %>.  <%= t ".temperature" %>: <span data-weather-binding="tempmin"></span>° C</h4></li>
-	<li><h4><%= t ".max" %>. <%= t ".temperature" %>: <span data-weather-binding="tempmax"></span>° C</h4></li>
+	<li><h4><%= t ".current_temperature" %>: <span data-weather-binding="temp"></span>° C</h4></li>
+	<li><h4><%= t ".min" %>.  <%= t ".temperature" %> <%= t ".today" %>: <span data-weather-binding="tempmin"></span>° C</h4></li>
+	<li><h4><%= t ".max" %>. <%= t ".temperature" %> <%= t ".today" %>: <span data-weather-binding="tempmax"></span>° C</h4></li>
 	<li><h4><%= t ".sunrise" %>: <span data-weather-binding="sonnenaufgang"></span></h4></li>
 	<li><h4><%= t ".sunset" %>: <span data-weather-binding="sonnenuntergang"></span></h4></li>
 	<% if @forecast_temp && @forecast_text %>
@@ -36,7 +36,7 @@ $(document).ready(function(){
         if($span)
         {
           if(key === 'temp' || key === 'tempmin' || key === 'tempmax' )
-            value = I18n.toNumber(value);
+            value = Math.round(value, 0);
           $span.text(value);
         }
       });
