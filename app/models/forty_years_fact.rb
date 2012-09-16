@@ -1,6 +1,4 @@
 # encoding: UTF-8
-require 'ostruct'
-
 class FortyYearsFact
 	# Facts from http://40jahre.uni-paderborn.de/index.php?id=22. Methods below.
 	FortyYearsFact::FACTS = [{:id=>1,
