@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_filter :set_cache_header, :except => :search
+  # before_filter :set_cache_header, :except => :search
 
   def index
   end
