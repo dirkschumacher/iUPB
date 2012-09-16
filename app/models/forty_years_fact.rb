@@ -118,7 +118,7 @@ class FortyYearsFact
    "Wintersemester 1983/1984: 1. Gastdozentur für Schriftstellerinnen und Schriftsteller mit Max von der Grün."}]
 
   def self.find(id = nil)
-  	id = Random.rand(0...39) unless id
+  	id = Random.rand(39) unless id
   	OpenStruct.new(self::FACTS[id.to_i - 1])
   end
 

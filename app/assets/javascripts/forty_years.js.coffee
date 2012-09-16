@@ -2,7 +2,26 @@
 @iUPB.FortyYears.vars = {}
 @iUPB.FortyYears.TRUNCATE_LENGTH = 23
 @iUPB.FortyYears.API_URL = "/40jahre.json"
+@iUPB.FortyYears.FACT_API_URL = "/40jahre_fact"
+@iUPB.FortyYears.FACT_CSS_CONTAINER = "#forty-year-fact-container"
+@iUPB.FortyYears.FACT_CSS_40YR_LINK = "#top-40-link"
+@iUPB.FortyYears.HEADER_CONTAINER = "#header-container"
 
+@iUPB.FortyYears.displayRandomFact = ->
+  #if Math.random() <= 0.3
+    $.getJSON(window.iUPB.FortyYears.FACT_API_URL, (json, status) ->
+        $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).text json.id
+        popover_container = if $("span.icon-bar").is(":hidden") then window.iUPB.FortyYears.FACT_CSS_40YR_LINK else window.iUPB.FortyYears.HEADER_CONTAINER
+        $(popover_container).popover title: "Fakt über die Uni Nr.: " + json.id, content:json.text, placement: "bottom", trigger:"manual"
+        $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).unbind "click"
+        $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).click (e)->
+          e.stopPropagation()
+          $(popover_container).popover "toggle"
+        $("body").unbind "click"
+        $("body").click ->
+          $(popover_container).popover("hide")
+        $(window.iUPB.FortyYears.FACT_CSS_CONTAINER).show()
+      )
 @iUPB.FortyYears.populateTimetable = (container) ->
   offset = -2 # GMT / UTC difference. 
   $.retrieveJSON(window.iUPB.FortyYears.API_URL, (json, status) ->
