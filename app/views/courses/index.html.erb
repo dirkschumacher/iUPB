@@ -42,7 +42,7 @@ $(document).ready(function(event) {
         }
         $.each(data, function() { 
           var li = $('<li class="well" style="white-space: normal;">'), id = this.course.id;
-          var add_link = $('<a style="float:right">');
+          var add_link = $('<a style="cursor:pointer;float:right">');
           add_link.append($('<i class="icon-plus"></i>'));
           add_link.click(function(){
 			     var current_link = $(this);
