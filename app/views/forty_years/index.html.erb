@@ -15,8 +15,8 @@
   		<form class="form-horizontal">
   		<div class="control-group">
   		<label for="quick_event_select" class="control-label"><strong><%= t ".quick_event_select" %>:</strong></label> <%= select_tag "quick_event_select", options_from_collection_for_select([OpenStruct.new({id: "", name_with_date: "Bitte wählen"})] + @events, :id, :name_with_date), {:onchange => "if(this.value !== '') document.getElementById(this.value).scrollIntoView(true)", :class => "controls"} %>
-  		</form>
   		</div>
+  		</form>
   	</div>
 
 <div id="timetable">
