@@ -128,6 +128,13 @@ de:
       day_5: Fr
       download_ical: "Termine aufs Gerät runterladen"
       list: "Liste"
+      deleteallconfirm: "Möchtest du wirklich alle Einträge des Kurses entfernen?"
+      deleteoneconfirm: "Möchtest du wirklich den Kurs nur aus dieser Woche entfernen?"
+      delete_one: "Aus dieser Woche entfernen"
+      delete_all: "Komplett löschen"
+      popover:
+        title: "Kurse gibt es beim PAUL"
+        content: "Kurse kannst du ganz einfach über die PAUL Suche zu deinem Studenplan hinzufügen"
   transportation:
     index:
       trip_at: "%{station} um %{date}"

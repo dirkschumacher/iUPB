@@ -23,7 +23,8 @@ class Event
   
   def _name
     if self.course
-      self.course.course_short_desc || self.course.title || self.course.group_title
+      return self.course.course_short_desc if self.course.course_short_desc.length > 0
+      self.course.title || self.course.group_title
     else
       self.name
     end

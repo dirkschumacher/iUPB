@@ -10,6 +10,8 @@
 			monday = window.iUPB.Timetable.weekToDate(year, week, 0)
 			friday = window.iUPB.Timetable.weekToDate(year, week, 4)
 			$("#day_title").text(I18n.l("date.formats.weekday_date", monday) + " - " + I18n.l("date.formats.weekday_date", friday))
+			$eventsList = $("#events_overview")
+			$eventsList.empty()
 			$.each(json, ->
 				start_date = new Date(this.start_time)
 				start_compare_time = window.iUPB.Timetable.zeroFill(start_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(start_date.getMinutes(), 2)
@@ -38,6 +40,48 @@
 						$(this).addClass("busy")
 					return
 				)
+				
+				#update the list as well
+				$li = $('<li  id="' + id + '" class="well single_event"></li>')
+				$li.append($('<h6>' + this._name + '</h6>'))
+				$optionsContainer = $ '<div class="pull-right dropdown">'
+				$optionsButton = $('<a id="dropdown-' + id + '" data-toggle="dropdown" role="button"  href="#">')
+				$optionsButton.addClass "btn"
+				$optionsButton.addClass "btn-primary"
+				$optionsButton.addClass "btn-dropdown-toggle"
+				$optionsButton.html('<span class="caret"></span>')
+				$optionsDropDown = $('
+	        <ul role="menu" aria-labelledby="dropdown-' + id + '" class="dropdown-menu">
+            <li><a id="link-deleteone-' + id + '" href="#"><i class="icon-remove"></i>' + I18n.t("timetable.index.delete_one") + '</a></li>
+            <li><a id="link-deleteall-' + id + '" href="#"><i class="icon-trash"></i>' + I18n.t("timetable.index.delete_all") + '</a></li>
+          </ul>
+        ')
+				$optionsContainer.append $optionsButton
+				$optionsContainer.append $optionsDropDown
+				$li.append $optionsContainer
+				$timeBlock = $("<p>")
+				$descriptionBlock = $('<p class="expandeble">')
+				$linkBlock = $ "<p>"
+				$timeBlock.text I18n.l("date.formats.weekday_date", start_date) + " " + I18n.l("time.formats.very_short", start_date) + if end_date? and start_date < end_date then " - " + I18n.l("date.formats.weekday_date", end_date)  + " " + I18n.l("time.formats.very_short", end_date) else ""
+				$timeBlock.text $timeBlock.text() + " - " + location
+				$descriptionBlock.text this.description
+				$linkBlock.append($('<a href="' + this.link + '">&raquo; ' + I18n.t("timetable.index.details") + '</a>'))
+				$li.append $timeBlock
+				$li.append $descriptionBlock
+				$li.append $linkBlock if this.link?
+				$eventsList.append($li)
+				
+			  #add some logic
+				$('#link-deleteone-' + id + '').click ->
+			    if confirm I18n.t("timetable.index.deleteoneconfirm")
+			      $.ajax("/timetable/destroy", {type: "delete", data: "id=" + id}).success( ->
+			          window.iUPB.Timetable.populateTimetable(container, year, week)
+			        )
+				$('#link-deleteall-' + id + '').click ->
+  			  if confirm I18n.t("timetable.index.deleteallconfirm")
+			      $.ajax("/timetable/destroy_course", {type: "delete", data: "id=" + id}).success( ->
+			          window.iUPB.Timetable.populateTimetable(container, year, week)
+			        )
 			)
 			return
 		else # server error or so
