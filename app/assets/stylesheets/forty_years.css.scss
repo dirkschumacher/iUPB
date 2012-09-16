@@ -19,14 +19,14 @@
 .fact_text {
 	font-size: 14px;
 }
-@media (max-width: 480px) { 
+@media (max-width: 490px) { 
   .forty-col {
     width:90%;
     clear:both;
     margin-bottom:5px;
   }
 }
-@media (min-width: 480px) and (max-width: 1199px) { 
+@media (min-width: 490px) and (max-width: 1199px) { 
   .forty-col {
     width:12.0%;
   }
