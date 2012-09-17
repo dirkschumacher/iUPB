@@ -5,7 +5,8 @@
 <ul class="nav nav-tabs">
   <li class="active"><a href="#programme" data-toggle="tab"><%= t ".programme" %></a></li>
   <li><a href="#facts" data-toggle="tab"><%= t ".facts" %></a></li>
-  <li><a href="#more" data-toggle="tab"><%= t ".more" %></a></li>
+  <li><a href="#video" data-toggle="tab"><i class="icon-film hidden-phone"></i> Lipdub</a></li>
+  <li><a href="#more" data-toggle="tab"><span class="hidden-phone"><%= t ".more" %></span><span class="visible-phone">...</span></a></li>
 </ul>
 
 <div class="tab-content">
@@ -102,6 +103,20 @@
   	</div>
   </div>
 
+  <div class="tab-pane" id="video">
+  	<p class="well center">
+  		Die <a href="https://www.facebook.com/goahead.pb" target="_blank">Hochschulgruppe GoAhead!</a> hat zum Geburtstag der Uni einen <strong>Lipdub</strong> organisiert, an dem sich viele Studierende und Mitarbeitende beteiligt haben:
+  	</p>
+  	<p class="center">
+		<video id="lipdub_video" width="640" height="360" controls preload="metadata">
+			<source src="http://homepages.uni-paderborn.de/mwhittak/videos/UPB40Jahre_Lipdub.mp4" type="video/mp4">
+			<source src="http://homepages.uni-paderborn.de/mwhittak/videos/UPB40Jahre_Lipdub.ogv" type="video/ogg">
+			<source src="http://homepages.uni-paderborn.de/mwhittak/videos/UPB40Jahre_Lipdub.webm" type="video/webm">
+			Falls das Video nicht erscheint, probieren Sie bitte die <a href="http://40jahre.uni-paderborn.de" target="_blank">Flash-Version auf der Uni-Seite</a> aus.
+		</video>
+  	</p>
+  </div>
+
   <div class="tab-pane" id="more">
   	<p class="well center"><%= t ".find_more" %>:<br> <%= link_to "40jahre.upb.de" ,"http://40jahre.uni-paderborn.de", :target => "_blank", :class => "btn" %></p>
   </div>
@@ -130,6 +145,15 @@ $(document).ready(function() {
 		expandSpeed: 250,
 		collapseEffect: 'fadeOut',
 		collapseSpeed: 200
+	});
+	$("#lipdub_video").bind("play", function(){
+		if(_gaq){	
+			var source_url = document.getElementById("lipdub_video").currentSrc;
+			var suffix = "unknown";
+			if(source_url) suffix = source_url.substr(source_url.length - 3);
+			_gaq.push(['_trackEvent', 'Forty Years', 'Video Playback', 'Lipdub: ' + suffix]);
+		}
+		$("#lipdub_video").unbind("play");
 	});
 });
 </script>

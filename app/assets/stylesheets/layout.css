@@ -75,3 +75,7 @@
 .small-login-button i {
   font-size:16pt;
 }
+video {
+	max-width: 100%;
+	height: auto;
+}
