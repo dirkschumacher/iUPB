@@ -21,7 +21,7 @@ de:
   forty_years:
     index:
       facts: Fakten
-      programme: Programmplan
+      programme: Programm
       more: mehr
       find_more: Mehr Infos und Fotos findest du auf der offiziellen Jubiläumswebsite
       your_timetable: "Dein Stundenplan für diese Woche"
@@ -43,7 +43,7 @@ de:
       list: "Liste"
       details: weitere Details auf Uni-Website
       read_more: mehr lesen...
-      read_less: weniger.
+      read_less: weniger anzeigen
       quick_event_select: Event-Schnellauswahl
   asta:
     index:
