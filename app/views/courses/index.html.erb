@@ -105,9 +105,10 @@ $(document).ready(function(event) {
 <ul id="courses_result_list" class="no-bullets no-left-margin">
   <li><h3><%= t '.type_and_find' %></h3><p>&nbsp;</p>
     <div class="hero-unit" style="padding: 20px !important;">
-      <h2><%= t("marketing.new") %>: <%= t("marketing.timetable") %>
+      <h2><%= t("marketing.new") %>: <%= t("marketing.timetable") %></h2>
       <p><%= t("marketing.timetable_text") %></p>
       <% if !user_signed_in? %>
+      <small><%= t "marketing.tt_functions_wout_login" %></small>
       <p>
         <%= link_to t("marketing.register_or_login_now"), new_user_session_path, class: "btn btn-primary" %>
       </p>

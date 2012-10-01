@@ -1,12 +1,10 @@
 
 <div class="row">
 	<div class="span6">
-		<div class="hero-unit" style="padding:20px;">
+		<div class="hero-unit" style="padding:40px;">
 			<h2><%= t "sign_in" %></h2>
 				<p>
 					<%= t "marketing.login_message" %>
-					<br>
-					<small><%= t "marketing.tt_functions_wout_login" %></small>
 				</p>
  <p class="login-button-bar"><%= link_to "<i class=\"foundicon-facebook\"></i>".html_safe, omniauth_authorize_path(resource_name, :facebook), class:"login-button" %> <%= link_to "<i class=\"foundicon-google-plus\"></i>".html_safe, omniauth_authorize_path(resource_name, :google_oauth2), class:"login-button" %></p>
 			
