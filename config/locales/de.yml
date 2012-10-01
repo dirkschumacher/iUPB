@@ -14,6 +14,7 @@ de:
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."
+    tt_functions_wout_login: "Natürlich kannst du auch jederzeit oben Kurse suchen und alle anderen Funktionen nutzen ohne dich anzumelden."
     new: Neu
     timetable: Dein iUPB-Stundenplan
     timetable_text: "Nach dem Login bei iUPB kannst du schnell und einfach Kurse aus PAUL in deinen persönlichen Stundenplan übernehmen. iUPB zeigt dir dann automatisch deine nächsten Vorlesungen an - immer aktuell. Du hast außerdem die Möglichkeit alle Veranstaltungstermine in deinen Smartphone- oder Computer-Kalender zu laden."
