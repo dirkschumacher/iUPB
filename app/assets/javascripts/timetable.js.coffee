@@ -13,14 +13,18 @@
 			$eventsList = $("#events_overview")
 			$eventsList.empty()
 			$.each(json, ->
-				start_date = new Date(this.start_time)
+				start_date = new Date(this.start_time_utc)
 				start_compare_time = window.iUPB.Timetable.zeroFill(start_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(start_date.getMinutes(), 2)
-				end_date = new Date(this.end_time||this.start_time)
+				end_date = new Date(this.end_time_utc||this.start_time_utc)
 				end_compare_time = window.iUPB.Timetable.zeroFill(end_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(end_date.getMinutes(), 2)
-				if this._name.length > window.iUPB.Timetable.TRUNCATE_LENGTH
-					name = this._name.substring(0, window.iUPB.Timetable.TRUNCATE_LENGTH - 1) + "…"
-				else
-					name = this._name
+				if this.short_title?
+				  if this.short_title.length > window.iUPB.Timetable.TRUNCATE_LENGTH
+  					name = this.short_title.substring(0, window.iUPB.Timetable.TRUNCATE_LENGTH - 1) + "…"
+  				else
+  					name = this.short_title
+  			else
+  			  name = this._name
+			  long_title = this._name
 				day = start_date.getDay()
 				location = this.location
 				id = this._id
@@ -44,7 +48,7 @@
 				
 				#update the list as well
 				$li = $('<li  id="' + id + '" class="well single_event"></li>')
-				$li.append($('<h6>' + name + '</h6>'))
+				$li.append($('<h6>' + long_title + '</h6>'))
 				$optionsContainer = $ '<div class="pull-right dropdown">'
 				$optionsButton = $('<a id="dropdown-' + id + '" data-toggle="dropdown" role="button"  href="#">')
 				$optionsButton.addClass "btn"

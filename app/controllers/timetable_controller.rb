@@ -69,7 +69,7 @@ class TimetableController < ApplicationController
         @days = (0..5)
       end
       format.json do
-       render json: @events, methods: "_name"
+       render json: @events, methods: ["_name","start_time_utc","end_time_utc","short_title"]
      end
     end
   end

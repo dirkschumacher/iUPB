@@ -23,13 +23,23 @@ class Event
   
   def _name
     if self.course
-      return self.course.course_short_desc if self.course.course_short_desc.length > 0
-      return self.course.title if self.course_type === "course"
-      return self.course.group_title if self.course_type === "course"
+      return self.course.title if self.course.course_type === "course"
+      return self.course.group_title if self.course.course_type === "course"
     end
     self.name
   end
   
+  def short_title 
+      return self.course.course_short_desc if self.course and self.course.course_short_desc.length > 0 
+      self.name
+  end
+  
+  def start_time_utc
+    self.start_time.utc
+  end
+  def end_time_utc
+    self.end_time.utc
+  end
   def course
     if self.course_id
       Course.find(self.course_id)
