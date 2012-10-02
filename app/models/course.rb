@@ -22,8 +22,8 @@ class Course
   def get_dates(future=true)
     dates = []
     self.course_data.each do |c|
-      start_time = Time.local(c["date"].year, c["date"].month, c["date"].day, c["time_from"].to_time.hour, c["time_from"].to_time.min)   #mktime(year, month, day, hour, min)
-      end_time = Time.local(c["date"].year, c["date"].month, c["date"].day, c["time_to"].to_time.hour, c["time_to"].to_time.min)
+      start_time = Time.mktime(c["date"].year, c["date"].month, c["date"].day, c["time_from"].to_time.hour, c["time_from"].to_time.min)   #mktime(year, month, day, hour, min)
+      end_time = Time.mktime(c["date"].year, c["date"].month, c["date"].day, c["time_to"].to_time.hour, c["time_to"].to_time.min)
       dates << [start_time, end_time, c["room"], c["instructor"]] unless future && start_time < Time.now
     end
     dates
