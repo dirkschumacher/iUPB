@@ -144,6 +144,7 @@ en:
         deleteoneconfirm: "Do you really want to delete the course in this week?"
         delete_one: "Remove from this week"
         delete_all: "Remove from my timetable"
+        view_course_details: "Further information"
         popover:
           title: "Ask Paul to add courses"
           content: "You can easily add course to your timetable using the PAUL search"

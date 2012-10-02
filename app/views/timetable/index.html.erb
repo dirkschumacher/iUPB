@@ -51,7 +51,7 @@
 
 <script>
 $(document).ready(function() {
-  window.iUPB.Timetable.setUpPage($("#timetable"), <%= @year_js %>, <%= @week_js %>);
+  window.iUPB.Timetable.setUpPage($("#timetable"), <%= @year_js %>, <%= @week_js %>, '<%= course_path({:id => ""}) %>');
   $("div[data-tt-col-day='<%= (@start_time > Time.now ? 0 : Time.now.wday) %>']").get(0).scrollIntoView(true);
   <% if @userHasNoCourses %>
     $("#paul-link").popover({title: "<%= t(".popover.title")%>", content: "<%= t(".popover.content")%>" , placement: "bottom", trigger:"manual"}); 

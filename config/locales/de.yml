@@ -136,6 +136,7 @@ de:
       deleteoneconfirm: "Möchtest du diesen Termin wirklich entfernen?"
       delete_one: "Diesen Termin entfernen"
       delete_all: "Veranstaltung komplett löschen"
+      view_course_details: "Zeiten und Übungsgruppen"
       popover:
         title: "Kurse gibt es beim PAUL"
         content: "Kurse kannst du ganz einfach über die PAUL Suche zu deinem Studenplan hinzufügen"

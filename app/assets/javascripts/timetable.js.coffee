@@ -3,7 +3,7 @@
 @iUPB.Timetable.TRUNCATE_LENGTH = 23
 @iUPB.Timetable.API_URL = "/timetable.json"
 
-@iUPB.Timetable.populateTimetable = (container, year, week) ->
+@iUPB.Timetable.populateTimetable = (container, year, week, course_path) ->
 	$.retrieveJSON(window.iUPB.Timetable.API_URL, {year: year, week:week}, (json, status) ->
 		if status is "cached" or status is "success" #is ok
 			window.iUPB.Timetable.emptyTimetable(container)	
@@ -43,7 +43,7 @@
 				
 				#update the list as well
 				$li = $('<li  id="' + id + '" class="well single_event"></li>')
-				$li.append($('<h6>' + this._name + '</h6>'))
+				$li.append($('<h6>' + name + '</h6>'))
 				$optionsContainer = $ '<div class="pull-right dropdown">'
 				$optionsButton = $('<a id="dropdown-' + id + '" data-toggle="dropdown" role="button"  href="#">')
 				$optionsButton.addClass "btn"
@@ -52,6 +52,7 @@
 				$optionsButton.html('<span class="caret"></span>')
 				$optionsDropDown = $('
 	        <ul role="menu" aria-labelledby="dropdown-' + id + '" class="dropdown-menu">
+            <li><a id="link-view-details-' + id + '" href="' + course_path + id + '"><i class="icon-remove"></i>' + I18n.t("timetable.index.view_course_details") + '</a></li>
             <li><a id="link-deleteone-' + id + '" href="#"><i class="icon-remove"></i>' + I18n.t("timetable.index.delete_one") + '</a></li>
             <li><a id="link-deleteall-' + id + '" href="#"><i class="icon-trash"></i>' + I18n.t("timetable.index.delete_all") + '</a></li>
           </ul>
@@ -92,10 +93,10 @@
 	)
 	return
 	
-@iUPB.Timetable.setUpPage = ($timeTable, year, week) ->
+@iUPB.Timetable.setUpPage = ($timeTable, year, week, course_path) ->
   window.iUPB.Timetable.vars.currentYear = year
   window.iUPB.Timetable.vars.currentWeek = week
-  window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek)
+  window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek, course_path)
   $("#next_link").click((e)->
       e.preventDefault()
       if window.iUPB.Timetable.vars.currentWeek >= 52
@@ -103,7 +104,7 @@
         window.iUPB.Timetable.vars.currentYear++
       else
         window.iUPB.Timetable.vars.currentWeek++
-      window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek)
+      window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek, course_path)
     )
   $("#prev_link").click((e)->
     e.preventDefault()
@@ -112,7 +113,7 @@
       window.iUPB.Timetable.vars.currentYear--
     else
       window.iUPB.Timetable.vars.currentWeek--
-    window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek)
+    window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek, course_path)
   )
   
 #adopted from http://stackoverflow.com/questions/4555324/get-friday-from-week-number-and-year-in-javascript
