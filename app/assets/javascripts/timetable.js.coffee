@@ -24,6 +24,7 @@
 				day = start_date.getDay()
 				location = this.location
 				id = this._id
+				courseId = this.course_id
 				$.each(container.find("div[data-tt-day='" + day + "']"), ->
 					if start_compare_time >= $(this).data("tt-start-time") and start_compare_time < $(this).data("tt-end-time")
 					  current = $(this)
@@ -52,7 +53,7 @@
 				$optionsButton.html('<span class="caret"></span>')
 				$optionsDropDown = $('
 	        <ul role="menu" aria-labelledby="dropdown-' + id + '" class="dropdown-menu">
-            <li><a id="link-view-details-' + id + '" href="' + course_path + id + '"><i class="icon-remove"></i>' + I18n.t("timetable.index.view_course_details") + '</a></li>
+            <li><a id="link-view-details-' + id + '" href="' + course_path + courseId + '"><i class="icon-eye-open"></i>' + I18n.t("timetable.index.view_course_details") + '</a></li>
             <li><a id="link-deleteone-' + id + '" href="#"><i class="icon-remove"></i>' + I18n.t("timetable.index.delete_one") + '</a></li>
             <li><a id="link-deleteall-' + id + '" href="#"><i class="icon-trash"></i>' + I18n.t("timetable.index.delete_all") + '</a></li>
           </ul>
