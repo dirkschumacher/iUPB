@@ -17,34 +17,36 @@
 
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  
+   <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1" />
+
+     <!-- iOS Device Startup Images -->
+ 	<!-- iPhone/iPod Touch Portrait – 320 x 460 (standard resolution) -->
+ 	<link rel="apple-touch-startup-image" href="/splash-screen-320x460.png" media="(device-width: 320px) and (device-height: 480px)" />
+
+ 	<!-- iPhone/iPod Touch Portrait – 640 x 920 pixels (high-resolution) -->
+ 	<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2) and (device-height: 480px)" href="/splash-screen-640x920.png" />
+ 	
+ 	<!-- iPhone/iPod Touch Portrait – 640 x 1096 pixels (high-resolution) -->
+ 	<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2) and (min-device-height: 548px)" href="/splash-screen-640x1096.png" />
+
+ 	<!-- iPad Portrait 768x1004 -->
+ 	<link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: portrait)" href="/splash-screen-768x1004.png" />
+
+ 	<!-- iPad Landscape 1024x748 -->
+ 	<link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: landscape)" href="/splash-screen-1024x748.png" />
+ 	
+ 	<!-- iPad Landscape Retina 2048x1496 -->
+   <link rel="apple-touch-startup-image" href="/splash-screen-2048x1496.png" media="(device-width: 768px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" /> 
+   
+  <!-- iPad Portrait Retina 1536x2008 -->
+  <link rel="apple-touch-startup-image" href="/splash-screen-1536x2008.png" media="(device-width: 768px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)" />
+  
   <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon.png">
   <!-- <link rel="shortcut icon" href="img/l/apple-touch-icon.png"> -->
   
-    <!-- iOS Device Startup Images -->
-	<!-- iPhone/iPod Touch Portrait – 320 x 460 (standard resolution) -->
-	<link rel="apple-touch-startup-image" href="/splash-screen-320x460.png" media="screen and (max-device-width: 320px)">
-	
-	<!-- iPhone/iPod Touch Portrait – 640 x 920 pixels (high-resolution) -->
-	<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="/splash-screen-640x920.png">
-
-  <!-- iPhone/iPod Touch Portrait – 640 x 1136 pixels (iPhone 5 high-resolution) -->
-  <link rel="apple-touch-startup-image" media="(min-device-height: 500px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="/splash-screen-640x1136.png">
-	
-	<!-- iPad Portrait 768x1004 -->
-	<link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: portrait)" href="/splash-screen-768x1004.png">
-
-	<!-- iPad Landscape 1024x748 -->
-	<link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: landscape)" href="/splash-screen-1024x748.png">
-	
-	<!-- iPad Landscape Retina 2048x1496 -->
-	<link rel="apple-touch-startup-image" href="/splash-screen-2048x1496.png" media="(device-width: 768px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)"> 
-	<!-- iPad Portrait Retina 1536x2008 -->
-	<link rel="apple-touch-startup-image" href="/splash-screen-1536x2008.png" media="(device-width: 768px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)">
-	
-
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
  <link rel="image_src" href="http://www.i-upb.de/apple-touch-icon-114.png">
