@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   # caches content for 1 hour via varnish. 
   # use in as method or as a filter
   def set_cache_header(duration=3600) 
-    response.headers['Cache-Control'] = "public, max-age=#{duration.to_s}" if params[:locale]
+    response.headers['Cache-Control'] = "public, max-age=#{duration.to_s}" if params[:locale] && !user_signed_in? && flash.empty?
   end
   
   def set_locale

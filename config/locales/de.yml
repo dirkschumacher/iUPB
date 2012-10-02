@@ -5,22 +5,24 @@ de:
   logout: "Logout"
   email: "E-Mail"
   password: "Passwort"
+  password_confirmation: "Passwort bestätigen"
   remember_me: "Eingeloggt bleiben"
-  sign_in: "Bitten einloggen"
+  sign_in: "Einloggen"
   sign_up: "Registrieren"
   here_you_can_sign_up: "Hier kannst du dich direkt bei uns registrieren"
   forgot_your_password: "Passwort vergessen"
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."
+    tt_functions_wout_login: "Natürlich kannst du auch jederzeit oben Kurse suchen und alle anderen Funktionen nutzen ohne dich anzumelden."
     new: Neu
     timetable: Dein iUPB-Stundenplan
-    timetable_text: "Nach dem Login bei iUPB kannst du schnell und einfach Kurse aus PAUL in deinen persönlichen Stundenplan übernehmen. iUPB zeigt dir dann automatisch deine nächsten Vorlesungen an - immer aktuell. Du hast außerdem die Möglichkeit alle Veranstaltungstermine in dein Smartphone- oder Computer-Kalender zu laden."
+    timetable_text: "Nach dem Login bei iUPB kannst du schnell und einfach Kurse aus PAUL in deinen persönlichen Stundenplan übernehmen. iUPB zeigt dir dann automatisch deine nächsten Vorlesungen an - immer aktuell. Du hast außerdem die Möglichkeit alle Veranstaltungstermine in deinen Smartphone- oder Computer-Kalender zu laden."
     register_or_login_now: Jetzt einloggen/registrieren
   forty_years:
     index:
       facts: Fakten
-      programme: Programmplan
+      programme: Programm
       more: mehr
       find_more: Mehr Infos und Fotos findest du auf der offiziellen Jubiläumswebsite
       your_timetable: "Dein Stundenplan für diese Woche"
@@ -42,7 +44,7 @@ de:
       list: "Liste"
       details: weitere Details auf Uni-Website
       read_more: mehr lesen...
-      read_less: weniger.
+      read_less: weniger anzeigen
       quick_event_select: Event-Schnellauswahl
   asta:
     index:
@@ -163,6 +165,9 @@ de:
   activerecord:
     models:
       user: Benutzer
+    attributes:
+      user:
+        email: E-Mail
   date:
     formats:
       weekday_date: ! '%a, %d. %b'

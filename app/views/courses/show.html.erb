@@ -55,7 +55,7 @@
 <% if user_signed_in? %>
 <p class="center">
   <% unless current_user.has_course?(@course) %>
-<a class="btn btn-info" href="<%= timetable_add_course_path %>" data-role="button" id="add_link"><%= t '.add_to_time_table' %></a>
+<a class="btn btn-info" href="#addCourse" data-role="button" id="add_link"><%= t '.add_to_time_table' %></a>
   <% else %>
     <i class="icon-ok"></i> <%= t(".in_time_table") %>
   <% end %>
@@ -78,6 +78,9 @@
       current_link.click(function(e){
         e.preventDefault();
       });
+      <% if Rails.env.production? %>
+      if(_gaq) _gaq.push(['_trackEvent', 'Timetable', 'Course Added', 'Detail view']);
+      <% end %>
     });
   });
 </script>

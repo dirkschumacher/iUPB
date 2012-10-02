@@ -4,15 +4,17 @@ en:
   logout: "Logout"
   login: "Login"
   email: "E-Mail"
-  password: "Passwort"
+  password: "Password"
+  password_confirmation: "Password confirmation"
   remember_me: "Remember me"
-  sign_in: "Please login"
+  sign_in: "Login"
   sign_up: "Sign up"
   here_you_can_sign_up: "Here you can sign up for a new account"
   forgot_your_password: "Forgot your password"
   marketing:
     login_with_iupb: Use iUPB login
     login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
+    tt_functions_wout_login: "Of course you can search for courses (field above) and use all the other features without signing up / in."
     new: Brandnew
     timetable: Your iUPB timetable
     timetable_text: "After signing in you can quickly add courses from PAUL to your personal timetable. You can then yiew all your next classes, updated automatically from PAUL. Also, you can download all lectures to your phone or computer calendar."
@@ -42,7 +44,7 @@ en:
       list: "List"
       details: more info at Uni website
       read_more: read more...
-      read_less: read less.
+      read_less: display less.
       quick_event_select: Event quick selection
   jquery:
     timeago:
