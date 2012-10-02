@@ -15,7 +15,7 @@
           <% @course.course_data.each do |data| %>
           <li>
             <h4 style="white-space: normal;">
-              <%= t('.time_place', {date: l(data["date"].to_date, format: :short), time_from: l(data["time_from"], format: :very_short), time_to: l(data["time_to"], format: :very_short), place: data["room"] })%>
+              <%= t('.time_place', {date: l(data["date"].to_date, format: :short), time_from: l(data["time_from"].utc, format: :very_short), time_to: l(data["time_to"].utc, format: :very_short), place: data["room"] })%>
             </h4>
             <p><%= data["instructor"] %></p>
           </li>
