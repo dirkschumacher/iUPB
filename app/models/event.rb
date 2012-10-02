@@ -24,7 +24,7 @@ class Event
   def _name
     if self.course
       return self.course.title if self.course.course_type === "course"
-      return self.course.group_title if self.course.course_type === "course"
+      return self.course.group_title if self.course.course_type === "group"
     end
     self.name
   end

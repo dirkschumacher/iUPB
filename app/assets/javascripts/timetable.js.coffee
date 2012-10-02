@@ -14,6 +14,7 @@
 			$eventsList.empty()
 			$.each(json, ->
 				start_date = new Date(this.start_time_utc)
+				console.log start_date
 				start_compare_time = window.iUPB.Timetable.zeroFill(start_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(start_date.getMinutes(), 2)
 				end_date = new Date(this.end_time_utc||this.start_time_utc)
 				end_compare_time = window.iUPB.Timetable.zeroFill(end_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(end_date.getMinutes(), 2)

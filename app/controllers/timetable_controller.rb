@@ -81,10 +81,10 @@ class TimetableController < ApplicationController
         @cal = RiCal.Calendar do |cal|
           events.each do |event|
             cal.event do |cal_event|
-              cal_event.summary     = event.name
+              cal_event.summary     = event._name
               cal_event.description = event.description||""
-              cal_event.dtstart     = event.start_time.getutc
-              cal_event.dtend       = event.end_time.getutc
+              cal_event.dtstart     = event.start_time.utc
+              cal_event.dtend       = event.end_time.utc
               cal_event.location    = event.location||""
               cal_event.url         = (event.course ? event.course.paul_url : "")
             end
