@@ -41,7 +41,7 @@
 			<p class="expandeble">
 				<%= event.description %>
 			</p>
-			<% if event.respond_to(:link) && event.link %>
+			<% if event.respond_to?(:link) && event.link %>
 				<p><%= link_to "&raquo; ".html_safe + t(".details"), event.link %>
 			<% end %>
 		</li>
