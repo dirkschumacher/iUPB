@@ -60,7 +60,7 @@ class TimetableController < ApplicationController
       end
     end  
     @events = current_user.events.where(start_time: @start_time..@end_time).asc(:start_time)
-    @userHasNoCourses = current_user.events.length == 0
+    @userHasNoCourses = current_user.events.empty?
     respond_to do |format|
       format.html do
         @year_js = @end_time.year
