@@ -13,7 +13,7 @@
 			$eventsList = $("#events_overview")
 			$eventsList.empty()
 			$.each(json, ->
-				start_date = Date.parse this.start_time_utc
+				start_date = Date.parse(this.start_time_utc)
 				start_compare_time = window.iUPB.Timetable.zeroFill(start_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(start_date.getMinutes(), 2)
 				end_date = Date.parse(this.end_time_utc||this.start_time_utc)
 				end_compare_time = window.iUPB.Timetable.zeroFill(end_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(end_date.getMinutes(), 2)
