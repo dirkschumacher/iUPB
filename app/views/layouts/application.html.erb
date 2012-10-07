@@ -105,10 +105,15 @@
   // detect iOS WebApp Mode
   var _webAppMode;
   if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 
-    if (window.navigator.standalone == true) {
+    if (window.navigator.standalone) {
       _webAppMode = "iOS: WebApp";
     } else {
-      _webAppMode = "iOS: no WebApp";
+      var is_uiwebview = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(window.navigator.userAgent);
+      if(is_uiwebview) {
+        _webAppMode = "iOS: NativeApp";  
+      } else {
+        _webAppMode = "iOS: no WebApp";
+      }
     }
   } else if (window.navigator.userAgent.indexOf('iUPBAndroidNativeApp') != -1) {
     _webAppMode = "Android: NativeApp";
