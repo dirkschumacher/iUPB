@@ -68,8 +68,8 @@
 				$timeBlock = $("<p>")
 				$descriptionBlock = $('<p class="expandeble">')
 				$linkBlock = $ "<p>"
-				$timeBlock.text I18n.l("date.formats.weekday_date", start_date) + " " + I18n.l("time.formats.very_short", start_date) + if end_date? and start_date < end_date then " - " + I18n.l("date.formats.weekday_date", end_date)  + " " + I18n.l("time.formats.very_short", end_date) else ""
-				$timeBlock.text $timeBlock.text() + " - " + location
+				$timeBlock.text I18n.l("date.formats.weekday_date", start_date) + " " + I18n.l("time.formats.very_short", start_date) + if end_date? and start_date < end_date then " - " + I18n.l("time.formats.very_short", end_date) else ""
+				$timeBlock.text $timeBlock.text() + " / " + location
 				$descriptionBlock.text this.description
 				$linkBlock.append($('<a href="' + this.link + '">&raquo; ' + I18n.t("timetable.index.details") + '</a>'))
 				$li.append $timeBlock
