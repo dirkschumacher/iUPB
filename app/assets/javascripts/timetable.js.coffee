@@ -2,7 +2,25 @@
 @iUPB.Timetable.vars = {}
 @iUPB.Timetable.TRUNCATE_LENGTH = 23
 @iUPB.Timetable.API_URL = "/timetable.json"
-
+#parses a date
+#adopted from http://stackoverflow.com/a/5805595
+@iUPB.Timetable.parseDate = (dateString) ->
+  rx = /^(\d{4}\-\d\d\-\d\d([tT][\d:\.]*)?)([zZ]|([+\-])(\d\d):(\d\d))?$/
+  p = rx.exec(s) || []
+  if p[1]
+      day= p[1].split(/\D/).map((itm) ->
+          return parseInt(itm, 10) || 0
+      )
+      day[1] -= 1
+      day = new Date(Date.UTC.apply(Date, day))
+      return NaN unless day.getDate()
+      if p[5]
+          tz = parseInt(p[5], 10)*60
+          tz += parseInt(p[6], 10) if p[6]
+          tz *= -1 if p[4] is "+"
+          day.setUTCMinutes(day.getUTCMinutes()+ tz) if tz
+      return day
+  return NaN
 @iUPB.Timetable.populateTimetable = (container, year, week, course_path) ->
 	$.retrieveJSON(window.iUPB.Timetable.API_URL, {year: year, week:week}, (json, status) ->
 		if status is "cached" or status is "success" #is ok
@@ -13,9 +31,9 @@
 			$eventsList = $("#events_overview")
 			$eventsList.empty()
 			$.each(json, ->
-				start_date = Date.parse this.start_time_utc
+				start_date = window.Timetable.parseDate(this.start_time_utc)
 				start_compare_time = window.iUPB.Timetable.zeroFill(start_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(start_date.getMinutes(), 2)
-				end_date = Date.parse(this.end_time_utc||this.start_time_utc)
+				end_date = window.Timetable.parseDate(this.end_time_utc||this.start_time_utc)
 				end_compare_time = window.iUPB.Timetable.zeroFill(end_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(end_date.getMinutes(), 2)
 				if this.short_title?
 				  if this.short_title.length > window.iUPB.Timetable.TRUNCATE_LENGTH
