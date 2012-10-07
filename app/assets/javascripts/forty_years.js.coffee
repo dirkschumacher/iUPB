@@ -50,7 +50,7 @@
   				    time_info = time_info + "-" + window.iUPB.FortyYears.zeroFill(end_date.getHours() + offset, 2) + ":" + window.iUPB.FortyYears.zeroFill(end_date.getMinutes(), 2)
   				  if location
   				    time_info = time_info + "/" + location.replace(" ", "")
-  				  cell.html(cell.html() + " &#8226;<a href='#" + id + "'>" + name + "</a>" + " <span class='time_info'>(" + time_info + ")</span><br>")
+  				  cell.html(cell.html() + " &#8226;<a href='#" + id + "' onclick='document.getElementById(\"" + id + "\").scrollIntoView(true);return false;'>" + name + "</a>" + " <span class='time_info'>(" + time_info + ")</span><br>")
   				  current.addClass("busy")
   				if end_compare_time > $(this).data("tt-start-time") and end_compare_time <= $(this).data("tt-end-time") \
   				or start_compare_time < $(this).data("tt-start-time") and end_compare_time > $(this).data("tt-end-time")
