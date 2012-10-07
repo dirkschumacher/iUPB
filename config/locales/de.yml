@@ -108,7 +108,7 @@ de:
     index:
       search: "Suche"
       type_and_find: "Suche nach Kursnamen, Raum, Dozenten, etc."
-      no_results: "Keine Kurse gefunden. Probier`s noch einmal :)"
+      no_results: "Keine Kurse gefunden. Probier's noch einmal :)"
       data: "Daten"
       saved_in_timetable: "Im Stundenplan gespeichert!"
   restaurants:
