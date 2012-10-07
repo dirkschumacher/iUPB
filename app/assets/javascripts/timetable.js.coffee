@@ -6,7 +6,7 @@
 #adopted from http://stackoverflow.com/a/5805595
 @iUPB.Timetable.parseDate = (dateString) ->
   rx = /^(\d{4}\-\d\d\-\d\d([tT][\d:\.]*)?)([zZ]|([+\-])(\d\d):(\d\d))?$/
-  p = rx.exec(s) || []
+  p = rx.exec(dateString) || []
   if p[1]
       day= p[1].split(/\D/).map((itm) ->
           return parseInt(itm, 10) || 0
@@ -21,6 +21,7 @@
           day.setUTCMinutes(day.getUTCMinutes()+ tz) if tz
       return day
   return NaN
+
 @iUPB.Timetable.populateTimetable = (container, year, week, course_path) ->
 	$.retrieveJSON(window.iUPB.Timetable.API_URL, {year: year, week:week}, (json, status) ->
 		if status is "cached" or status is "success" #is ok
@@ -31,9 +32,9 @@
 			$eventsList = $("#events_overview")
 			$eventsList.empty()
 			$.each(json, ->
-				start_date = window.Timetable.parseDate(this.start_time_utc)
+				start_date = window.iUPB.Timetable.parseDate(this.start_time_utc)
 				start_compare_time = window.iUPB.Timetable.zeroFill(start_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(start_date.getMinutes(), 2)
-				end_date = window.Timetable.parseDate(this.end_time_utc||this.start_time_utc)
+				end_date = window.iUPB.Timetable.parseDate(this.end_time_utc||this.start_time_utc)
 				end_compare_time = window.iUPB.Timetable.zeroFill(end_date.getHours(), 2) + window.iUPB.Timetable.zeroFill(end_date.getMinutes(), 2)
 				if this.short_title?
 				  if this.short_title.length > window.iUPB.Timetable.TRUNCATE_LENGTH
