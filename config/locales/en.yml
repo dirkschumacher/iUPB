@@ -11,6 +11,7 @@ en:
   sign_up: "Sign up"
   here_you_can_sign_up: "Here you can sign up for a new account"
   forgot_your_password: "Forgot your password"
+  or: or
   marketing:
     login_with_iupb: Use iUPB login
     login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
@@ -41,6 +42,7 @@ en:
       day_14: "3. Nov."
       day_15: "4. Nov."
       download_ical: "download to your device calendar"
+      subscribe_ical: "subscribe"
       list: "List"
       details: more info at Uni website
       read_more: read more...

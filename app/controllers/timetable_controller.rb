@@ -67,6 +67,10 @@ class TimetableController < ApplicationController
         @week_js = @end_time.strftime("%W")
         @slots = [["7:00", "9:00"], ["9:00", "11:00"], ["11:00", "13:00"], ["13:00", "14:00"], ["14:00", "16:00"], ["16:00", "18:00"], ["18:00", "20:00"]]
         @days = (0..5)
+        unless current_user.authentication_token
+          current_user.ensure_authentication_token
+          current_user.save
+        end
       end
       format.json do
        render json: @events, methods: ["_name","start_time_utc","end_time_utc","short_title"]

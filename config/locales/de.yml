@@ -11,6 +11,7 @@ de:
   sign_up: "Registrieren"
   here_you_can_sign_up: "Hier kannst du dich direkt bei uns registrieren"
   forgot_your_password: "Passwort vergessen"
+  or: oder
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."
@@ -133,6 +134,7 @@ de:
       day_4: Do
       day_5: Fr
       download_ical: "Termine aufs Gerät runterladen"
+      subscribe_ical: "abonnieren"
       list: "Liste"
       deleteallconfirm: "Möchtest du wirklich alle Termine des Kurses entfernen?"
       deleteoneconfirm: "Möchtest du diesen Termin wirklich entfernen?"
