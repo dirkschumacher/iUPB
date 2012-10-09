@@ -8,7 +8,6 @@ IUPB::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
   config.static_cache_control = "public, max-age=604800"
 
@@ -65,9 +64,17 @@ IUPB::Application.configure do
   config.active_support.deprecation = :notify
   
   config.time_zone = 'Berlin'
+
+
+  # Serve pre-gzipped static assets
+  config.middleware.insert_after(
+   "Rack::Cache", "Middleware::CompressedStaticAssets",
+   paths["public"].first, config.assets.prefix, config.static_cache_control)
+
 end
 require 'newrelic_rpm'
 def pp
   true
 end
+
 
