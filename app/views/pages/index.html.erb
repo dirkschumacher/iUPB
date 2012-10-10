@@ -28,6 +28,7 @@
 	</div>
 	
 </div>
+<% content_for :javascript do %>
 <script>
 if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 
 	if (window.navigator.standalone == false) {
@@ -40,3 +41,4 @@ if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userA
 	}
 }
 </script>
+<% end %>
