@@ -6,22 +6,26 @@
 #manifest="/application.manifest"
 %>
 <head>
-  <title><%= content_for?(:title) ? content_for(:title) + " — " : "" %>iUPB</title>
+  <title><%= content_for?(:title) ? content_for(:title) + " — " : "" %>iUPB <%= Rails.env.staging? ? "beta" : "" %></title>
   <meta charset="utf-8">
   <meta name="description" content="iUPB ist die WebApp mit allen wichtigen Infos rund um die Uni Paderborn, wie Mensaplan, Busverbindungen uvm. Für Studenten und Mitarbeiter!">
 
   <meta property="og:title" content="<%= content_for?(:title) ? content_for(:title) + " — " : "" %>iUPB">
   <meta property="og:url" content="<%= request.fullpath %>">
   <meta property="og:site_name" content="iUPB">
+  <meta property="fb:app_id" content="<%= ENV["FB_ID"] %>">
 
+  <% unless Rails.env.production? %>
+    <meta name="robots" content="noindex,nofollow">
+  <% end %>
 
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   
-   <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1" />
 
-     <!-- iOS Device Startup Images -->
+  <!-- iOS Device Startup Images -->
  	<!-- iPhone/iPod Touch Portrait – 320 x 460 (standard resolution) -->
  	<link rel="apple-touch-startup-image" href="/splash-screen-320x460.png" media="(device-width: 320px) and (device-height: 480px)" />
 
@@ -49,7 +53,7 @@
   
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
- <link rel="image_src" href="http://www.i-upb.de/apple-touch-icon-114.png">
+  <link rel="image_src" href="http://www.i-upb.de/apple-touch-icon-114.png">
 
   <meta http-equiv="cleartype" content="on">
   <%= csrf_meta_tags %>
