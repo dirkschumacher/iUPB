@@ -70,7 +70,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <%= link_to "iUPB", root_path, :class => 'brand', :id => 'home-button', :title => t(".home") %>
+        <%= link_to "iUPB" + (Rails.env.staging? ? " beta" : ""), root_path, :class => 'brand', :id => 'home-button', :title => t(".home") %>
         <div class="nav-collapse">
           <%= render 'layouts/navigation' %>
         </div><!--/.nav-collapse -->
