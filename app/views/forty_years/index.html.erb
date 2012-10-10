@@ -110,7 +110,7 @@
 <p class="source-info">
 		<%= t "source" %>: <a target="_blank" href="http://40jahre.uni-paderborn.de">Uni Paderborn</a>.
 	</p>
-
+<% content_for :javascript do %>
 <script>
 $(document).ready(function() {
 	$('blockquote').swipe({
@@ -133,3 +133,4 @@ $(document).ready(function() {
 	});
 });
 </script>
+<% end %>

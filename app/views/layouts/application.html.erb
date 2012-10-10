@@ -52,16 +52,7 @@
  <link rel="image_src" href="http://www.i-upb.de/apple-touch-icon-114.png">
 
   <meta http-equiv="cleartype" content="on">
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <script>
-  I18n.defaultLocale = "<%= I18n.default_locale %>";
-  I18n.locale = "<%= I18n.locale %>";
-  $(document).ready(function() {
-    window.iUPB.enableLoadingIndicator();
-    window.iUPB.FortyYears.displayRandomFact();
-  });
-  </script>
   <%= yield(:head) -%>
 </head>
 <body>
@@ -100,32 +91,45 @@
     <!--/footer-->
   </div> <!--! end of #container -->
 
+  <%= javascript_include_tag "application" %>
+  <script>
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+      $(document).ready(function() {
+          window.iUPB.enableLoadingIndicator();
+          window.iUPB.FortyYears.displayRandomFact();
+      });
+  </script>
+  <%= yield(:javascript) -%>
   <% if Rails.env.production? %>
   <script>
-  // detect iOS WebApp Mode
-  var _webAppMode;
-  if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 
-    if (window.navigator.standalone) {
-      _webAppMode = "iOS: WebApp";
-    } else {
-      var is_uiwebview = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(window.navigator.userAgent);
-      if(is_uiwebview) {
-        _webAppMode = "iOS: NativeApp";  
+  (function($) {
+      // detect iOS WebApp Mod
+      var _webAppMode;
+      if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) {
+          if (window.navigator.standalone) {
+              _webAppMode = "iOS: WebApp";
+          } else {
+              var is_uiwebview = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(window.navigator.userAgent);
+              if(is_uiwebview) {
+                  _webAppMode = "iOS: NativeApp";
+              } else {
+                  _webAppMode = "iOS: no WebApp";
+              }
+          }
+      } else if (window.navigator.userAgent.indexOf('iUPBAndroidNativeApp') != -1) {
+          _webAppMode = "Android: NativeApp";
       } else {
-        _webAppMode = "iOS: no WebApp";
+          _webAppMode = "unknown";
       }
-    }
-  } else if (window.navigator.userAgent.indexOf('iUPBAndroidNativeApp') != -1) {
-    _webAppMode = "Android: NativeApp";
-  } else {
-    _webAppMode = "unknown";
-  }
-  var _gaq=[["_setAccount","<%= IUPB::GOOGLE_ANALYTICS_ACCOUNT %>"],
-            ['_setCustomVar', 1, 'Web App Mode', _webAppMode, 2],
-            ["_trackPageview"]];
-  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-    s.parentNode.insertBefore(g,s)}(document,"script"));
+      var _gaq=[["_setAccount","<%= IUPB::GOOGLE_ANALYTICS_ACCOUNT %>"],
+          ['_setCustomVar', 1, 'Web App Mode', _webAppMode, 2],
+          ["_trackPageview"]];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+          g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+          s.parentNode.insertBefore(g,s)}(document,"script"));
+  }($))
+
     </script>
     <% end %>
   </body>

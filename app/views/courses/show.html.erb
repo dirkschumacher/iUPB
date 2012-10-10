@@ -68,6 +68,7 @@
 <p class="center">
 <a class="btn btn-info" href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t '.view_in_paul' %></a>
 </p>
+<% content_for :jscript do %>
 <script>
   jQuery("#add_link").click(function(e){
     e.preventDefault();
@@ -87,3 +88,4 @@
     });
   });
 </script>
+<% end %>

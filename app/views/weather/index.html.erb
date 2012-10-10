@@ -19,33 +19,35 @@
 <p class="source-info">
 	<%= t ".current_data" %>: <a target="_blank" href="http://wetter.uni-paderborn.de/">Wetterstation Uni Paderborn</a>. <%= t ".forecast" %>:&nbsp;<a target="_blank" href="http://www.wetter.com/">wetter.com</a>, <a href="http://www.yr.no/place/Germany/North_Rhine-Westphalia/Paderborn/hour_by_hour.html" target="_blank">yr.no</a>.
 </p>
+<% content_for :javascript do %>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: "https://upbapi.cloudcontrolled.com/wetter.php?callback=?",
+                dataType: "jsonp",
+                type: "GET",
+                jsonp: true,
+                cache: true,
+                jsonpCallback: "success",
+                success: function(data){
+                    var $data_list = $('#weather-data');
+                    $.each(data, function(key, value){
+                        var $span = $data_list.find('span[data-weather-binding="' + key + '"]').first();
+                        if($span)
+                        {
+                            if(key === 'temp' || key === 'tempmin' || key === 'tempmax' )
+                                value = Math.round(value, 0);
+                            $span.text(value);
+                        }
+                    });
+                    $('#wait-message').hide();
+                    $data_list.removeClass('hidden');
+                }
+            });
+        });
+    </script>
+<% end %>
 
-<script>
-$(document).ready(function(){
-  $.ajax({ 
-    url: "https://upbapi.cloudcontrolled.com/wetter.php?callback=?",
-    dataType: "jsonp",
-    type: "GET",
-    jsonp: true,
-    cache: true,
-    jsonpCallback: "success", 
-    success: function(data){
-      var $data_list = $('#weather-data');
-      $.each(data, function(key, value){
-        var $span = $data_list.find('span[data-weather-binding="' + key + '"]').first();
-        if($span)
-        {
-          if(key === 'temp' || key === 'tempmin' || key === 'tempmax' )
-            value = Math.round(value, 0);
-          $span.text(value);
-        }
-      });
-      $('#wait-message').hide();
-      $data_list.removeClass('hidden');
-    }
-  });
-});
-</script>
 <style>
 @media (min-width: 321px) and (max-height: 321px) {
   #menu_collapse_link {

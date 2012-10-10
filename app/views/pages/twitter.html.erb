@@ -1,5 +1,6 @@
 <% title t(".UPB_on_twitter") %>
 <%= content_for "page-attributes" do %>id="twitterPage"<% end %>
+<% content_for :javascript do %>
 <script>
 $(document).ready(function() {
   var list = $("#twitter_list");
@@ -14,6 +15,7 @@ $(document).ready(function() {
   })
 });
 </script>
+<% end %>
 <% content_for :header do %>
 <h1><%= t ".UPB_on_twitter"%> <a href="#" id="reload-button"><i class="icon-refresh"></i></a></h1>
 <% end %>

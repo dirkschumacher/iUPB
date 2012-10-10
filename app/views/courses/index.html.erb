@@ -4,6 +4,7 @@
 <h1 id="paul_heading"><%= t ".Paul"%></h1>
 <% end %>
 <span id="paul_search_label" style="display:none;font-weight:bold;"><%= t ".search"%>: </span><input type="search" name="search" autocomplete="off" id="paul_search_field" placeholder="<%= t '.search' %>..." value="" />
+<% content_for :javascript do %>
 <script>
 $(document).ready(function(event) {
   //TODO: port this to coffee script :)
@@ -102,6 +103,7 @@ $(document).ready(function(event) {
   });
 });
 </script>
+<% end %>
 <ul id="courses_result_list" class="no-bullets no-left-margin">
   <li><h3><%= t '.type_and_find' %></h3><p>&nbsp;</p>
     <div class="hero-unit" style="padding: 20px !important;">
