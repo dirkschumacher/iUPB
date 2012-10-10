@@ -9,7 +9,7 @@ gem 'rails', '3.2.1'
 gem 'heroku'
 gem 'bson_ext' # MongoDB performance
 gem 'mongoid'
-gem "bing_translator", "~> 0.0.2"
+#gem "bing_translator", "~> 0.0.2"
 gem 'rack-contrib', :require => 'rack/contrib'
 gem 'i18n-js'
 gem 'newrelic_rpm', :group => "production"
