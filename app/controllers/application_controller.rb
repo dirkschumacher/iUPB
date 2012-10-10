@@ -31,4 +31,12 @@ class ApplicationController < ActionController::Base
       Facebook::SECRET.to_s, 
       url))
   end
+
+  # Can check for a specific user agent
+  # e.g., is_device?('iphone') or is_device?('mobileexplorer')
+  def is_device?(type)
+    request.user_agent.to_s.downcase.include?(type.to_s.downcase)
+  end
+  helper_method :is_device?
+  
 end
