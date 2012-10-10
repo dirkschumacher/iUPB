@@ -9,3 +9,7 @@ production:
   app_id: <%= ENV["FB_ID"] %>
   secret_key: <%= ENV["FB_SECRET"] %>
   token: <%= ENV["FB_TOKEN"] %>
+staging:
+  app_id: <%= ENV["FB_ID"] %>
+  secret_key: <%= ENV["FB_SECRET"] %>
+  token: <%= ENV["FB_TOKEN"] %>

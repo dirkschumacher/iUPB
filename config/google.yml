@@ -7,3 +7,6 @@ test:
 production:
   app_id: <%= ENV["GOOGLE_APP_ID"] %>
   secret_key: <%= ENV["GOOGLE_APP_SECRET"] %>
+staging:
+  app_id: <%= ENV["GOOGLE_APP_ID"] %>
+  secret_key: <%= ENV["GOOGLE_APP_SECRET"] %>
