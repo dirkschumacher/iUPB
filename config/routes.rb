@@ -2,6 +2,13 @@ IUPB::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' if Rails.env.development?
 
+  scope "api" do
+    scope "v1" do
+      match "restaurants(.:format)" => "restaurants#restaurants", :defaults => {:format => "json"}
+      match "menus/:restaurant(.:format)" => "restaurants#index", :defaults => {:format => "json", :restaurant => "Mensa"}
+    end
+  end
+
   scope "(:locale)", :locale => /de|en/ do
     devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   

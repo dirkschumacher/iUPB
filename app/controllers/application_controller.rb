@@ -1,14 +1,27 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :set_locale
+  before_filter :set_locale, :set_custom_params
   
   def default_url_options(options={})
-    if params[:canvas] == "true"
+    if canvas?
       { :locale => I18n.locale, :canvas => "true"}    #I know it's redundant :)
     else
       { :locale => I18n.locale}
     end
   end
+
+  def canvas?
+    return false if params[:canvas] == "false"
+    params[:canvas] == "true" || session[:canvas]
+  end
+  helper_method :canvas?
+
+  # Can check for a specific user agent
+  # e.g., is_device?('iphone') or is_device?('mobileexplorer')
+  def is_device?(type)
+    request.user_agent.to_s.downcase.include?(type.to_s.downcase)
+  end
+  helper_method :is_device?
 
   protected
   
@@ -18,6 +31,11 @@ class ApplicationController < ActionController::Base
     response.headers['Cache-Control'] = "public, max-age=#{duration.to_s}" if params[:locale] && !user_signed_in? && flash.empty?
   end
   
+  def set_custom_params
+    session[:canvas] = true if params[:canvas] == "true"
+    session[:canvas] = nil if params[:canvas] == "false"
+  end
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
@@ -35,12 +53,5 @@ class ApplicationController < ActionController::Base
       Facebook::SECRET.to_s, 
       url))
   end
-
-  # Can check for a specific user agent
-  # e.g., is_device?('iphone') or is_device?('mobileexplorer')
-  def is_device?(type)
-    request.user_agent.to_s.downcase.include?(type.to_s.downcase)
-  end
-  helper_method :is_device?
   
 end

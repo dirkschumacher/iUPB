@@ -58,7 +58,7 @@
   <meta http-equiv="cleartype" content="on">
   <%= csrf_meta_tags %>
   <%= yield(:head) -%>
-  <% if params[:canvas] == "true" %>
+  <% if canvas? %>
   <style>
     body {
         padding-top:10px;
@@ -67,7 +67,7 @@
   <% end %>
 </head>
 <body>
-  <% unless params[:canvas] == "true" %>
+  <% unless canvas? %>
   <header class="navbar navbar-fixed-top">
     <span id="spinner"></span>
     <nav class="navbar-inner">
@@ -110,10 +110,10 @@
       I18n.locale = "<%= I18n.locale %>";
       $(document).ready(function() {
           window.iUPB.enableLoadingIndicator();
-          <% unless params[:canvas] == "true" %>
+          <% unless canvas? %>
             window.iUPB.FortyYears.displayRandomFact();
           <% end %>
-          window.iUPB.vars.canvas = <%= params[:canvas]||"false" %>;
+          window.iUPB.vars.canvas = <%= canvas? ? "true" : "false" %>;
       });
   </script>
   <%= yield(:javascript) -%>
