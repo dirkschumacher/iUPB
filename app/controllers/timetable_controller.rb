@@ -83,6 +83,7 @@ class TimetableController < ApplicationController
     respond_to do |format|
       format.ics do
         @cal = RiCal.Calendar do |cal|
+          cal.add_x_property 'X-WR-CALNAME', 'iUPB' 
           events.each do |event|
             cal.event do |cal_event|
               cal_event.summary     = event._name
