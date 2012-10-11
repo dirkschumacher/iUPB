@@ -12,9 +12,6 @@ gem 'mongoid'
 #gem "bing_translator", "~> 0.0.2"
 gem 'rack-contrib', :require => 'rack/contrib'
 gem 'i18n-js'
-gem 'newrelic_rpm', :group => "production"
-gem 'dalli', :group => "production"
-gem 'kgio', :group => "production"
 gem 'devise'
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
@@ -46,9 +43,15 @@ end
 
 group :production do
 	gem "thin"
+	gem 'newrelic_rpm'
+	gem 'dalli'
+	gem 'kgio'
 end
 group :staging do
 	gem "thin"
+	gem 'newrelic_rpm'
+	gem 'dalli'
+	gem 'kgio'
 end
 
 
