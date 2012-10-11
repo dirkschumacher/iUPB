@@ -44,6 +44,13 @@ group :development do
 	gem 'quiet_assets'
 end
 
+group :production do
+	gem "thin"
+end
+group :staging do
+	gem "thin"
+end
+
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
