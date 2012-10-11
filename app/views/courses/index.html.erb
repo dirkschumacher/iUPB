@@ -65,7 +65,13 @@ $(document).ready(function(event) {
          
           var link = $('<a style="clear:left;" data-icon="arrow-r">');
           link.append($('<h4 style="white-space: normal;">' + this.course.title + '</h3>'));
-          link.attr('href', '<%= course_path({:id => ""}) %>' + encodeURIComponent(id));
+          var course_route = "";
+          if(window.iUPB.vars.canvas){
+            course_route = Routes.course_path(id, {locale: I18n.locale, canvas: window.iUPB.vars.canvas});
+          } else {
+            course_route = Routes.course_path(id, {locale: I18n.locale});
+          }
+          link.attr('href', course_route);
           li.append(link);
 
           var next_class = this.course.next_class;

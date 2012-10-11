@@ -20,3 +20,4 @@ jQuery(document).ready ->
 			return
 		return
 
+@iUPB.vars = {}

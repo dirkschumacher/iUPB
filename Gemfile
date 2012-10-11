@@ -22,6 +22,8 @@ gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
 gem "haml"
 gem "ri_cal"
 
+gem "js-routes" # https://github.com/railsware/js-routes
+
 
 # Gems used only for assets and not required
 # in production environments by default.

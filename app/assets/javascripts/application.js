@@ -17,4 +17,5 @@
 //= require libs
 //= require twitter/bootstrap
 //= require bootstrap
+//= require js-routes
 //= require_tree .

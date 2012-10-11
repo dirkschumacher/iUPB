@@ -111,8 +111,9 @@
       $(document).ready(function() {
           window.iUPB.enableLoadingIndicator();
           <% unless params[:canvas] == "true" %>
-          window.iUPB.FortyYears.displayRandomFact();
+            window.iUPB.FortyYears.displayRandomFact();
           <% end %>
+          window.iUPB.vars.canvas = <%= params[:canvas]||"false" %>;
       });
   </script>
   <%= yield(:javascript) -%>
