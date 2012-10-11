@@ -31,7 +31,7 @@ $(document).ready(function(event) {
         $('#paul_heading').hide();
         $('#paul_search_label').show();
       }
-      $.getJSON('<%= course_search_path %>?query=' + encodeURIComponent(search_field.val()), function(data)
+      $.retrieveJSON('/courses/search?query=' + encodeURIComponent(search_field.val()), function(data)
       {
         <% if Rails.env.production? %>
             if(_gaq) _gaq.push(['_trackEvent', 'Paul', 'Search', search_field.val()]);
