@@ -62,14 +62,21 @@
 <script>
 $(document).ready(function() {
   window.iUPB.Timetable.setUpPage($("#timetable"), <%= @year_js %>, <%= @week_js %>, '<%= course_path({:id => ""}) %>');
-  <% if @userHasNoCourses && !canvas? %>
-    $("#paul-link").popover({title: "<%= t(".popover.title")%>", content: "<%= t(".popover.content")%>" , placement: "bottom", trigger:"manual"}); 
-    $("#menu_collapse_link").trigger("click");
-    $("#paul-link").popover("toggle");
-    setTimeout(function() {
-      $("#paul-link").popover("toggle");
-      $("#menu_collapse_link").trigger("click");
-    }, 10000);
+  <% if @userHasNoCourses %>
+  	<% if canvas? %>
+  		if(Android){ // Android App JavaScriptInterface
+  			Android.showToast("<%= t(".popover.content")%>");
+  		}
+  	<% else # normal website
+  		%>
+	    $("#paul-link").popover({title: "<%= t(".popover.title")%>", content: "<%= t(".popover.content")%>" , placement: "bottom", trigger:"manual"}); 
+	    $("#menu_collapse_link").trigger("click");
+	    $("#paul-link").popover("toggle");
+	    setTimeout(function() {
+	      $("#paul-link").popover("toggle");
+	      $("#menu_collapse_link").trigger("click");
+	    }, 10000);
+    <% end %>
   <% else %>
   	$("div[data-tt-col-day='<%= (@start_time > Time.now ? 0 : Time.now.wday) %>']").get(0).scrollIntoView(true);
   <% end %>
