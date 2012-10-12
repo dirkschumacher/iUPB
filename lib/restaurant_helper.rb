@@ -31,7 +31,9 @@ class RestaurantHelper
       raise "Supplied restaurant does not exist"
     end
     url = restaurant.feed_url
-    xml = open(url).read
+    xml = Rails.cache.fetch("iUPB.restaurant_xml_#{restaurant.name||url}", :expires_in => 2.hours) do
+      open(url).read
+    end
     menu = Nokogiri.XML(xml)
     menus = []
     
