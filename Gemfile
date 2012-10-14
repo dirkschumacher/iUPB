@@ -38,7 +38,6 @@ end
 
 group :development do
 	gem "rails_admin"
-
 	gem 'pry-rails'   # a nicer 'rails console'
 	gem 'quiet_assets'
 end
@@ -48,6 +47,7 @@ group :production do
 	gem 'newrelic_rpm'
 	gem 'dalli'
 	gem 'kgio'
+	gem "sourceninja", "~> 0.9.0"
 end
 group :staging do
 	gem "thin"
