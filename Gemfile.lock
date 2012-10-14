@@ -59,6 +59,8 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    contact_us (0.4.0.beta)
+      rails (>= 3.0.0)
     daemons (1.1.9)
     dalli (2.0.5)
     devise (2.0.4)
@@ -253,6 +255,7 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 3.2.1)
   compass-rails
+  contact_us (~> 0.4.0.beta)
   dalli
   devise
   haml

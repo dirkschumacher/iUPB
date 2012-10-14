@@ -1,0 +1,27 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  contact_us:
+    contact_mailer:
+      contact_email:
+        sent_by_contact_form: "Sent by contact form from %{email}"
+        sent_by_name: "Sent by %{name} from %{email}"
+        subject: "Contact Us message from %{email}"
+    contacts:
+      new: &new
+        contact_us: "Send us a message"
+        email: "e-mail"
+        message: "message"
+        name: nName"
+        subject: "subject"
+        submit: "send!"
+      new_formtastic:
+        <<: *new
+      new_simple_form:
+        <<: *new
+    notices:
+      error: "You must enter both fields."
+      success : | 
+        THANK YOU! 
+        Thanks for your message. People like you, who send us a message when there's a problem or just give feedback, make it possible to improve iUPB for everyone.

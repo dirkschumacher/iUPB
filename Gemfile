@@ -23,7 +23,7 @@ gem "haml"
 gem "ri_cal"
 
 gem "js-routes" # https://github.com/railsware/js-routes
-
+gem 'contact_us', '~> 0.4.0.beta' # https://github.com/jdutil/contact_us
 
 # Gems used only for assets and not required
 # in production environments by default.
