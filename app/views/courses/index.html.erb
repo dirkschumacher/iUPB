@@ -46,7 +46,7 @@ $(document).ready(function(event) {
 
           var li = $('<li class="well" style="white-space: normal;">'), id = this.course.id;
           var add_link = $('<a href="#addCourse" style="cursor:pointer;float:right">');
-          add_link.append($('<i style="font-size:22px;" class="icon-plus">' + (window.iUPB.vars.fontsAvailable === false ? window.iUPB.fallbackIcons.mapping["icon-plus"] : '') + '</i>'));
+          add_link.append($('<b style="font-size:22px;">' + iUPB.fallbackIcons.mapping["icon-plus"] + '</b>'));
           add_link.click(function(e){
            e.preventDefault();
 			     var current_link = $(this);

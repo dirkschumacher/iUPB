@@ -121,23 +121,39 @@
   window.iUPB.Timetable.vars.currentYear = year
   window.iUPB.Timetable.vars.currentWeek = week
   window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek, course_path)
-  $("#next_link").click((e)->
-      e.preventDefault()
-      if window.iUPB.Timetable.vars.currentWeek >= 52
+  window.iUPB.Timetable.nextFun = ->
+  	if window.iUPB.Timetable.vars.currentWeek >= 52
         window.iUPB.Timetable.vars.currentWeek = 1
         window.iUPB.Timetable.vars.currentYear++
       else
         window.iUPB.Timetable.vars.currentWeek++
       window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek, course_path)
-    )
-  $("#prev_link").click((e)->
-    e.preventDefault()
-    if window.iUPB.Timetable.vars.currentWeek is 1
+
+  window.iUPB.Timetable.prevFun = ->
+  	if window.iUPB.Timetable.vars.currentWeek is 1
       window.iUPB.Timetable.vars.currentWeek = 52
       window.iUPB.Timetable.vars.currentYear--
     else
       window.iUPB.Timetable.vars.currentWeek--
     window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek, course_path)
+
+  $("#next_link").click((e)->
+    e.preventDefault()
+    window.iUPB.Timetable.nextFun()
+    return
+  )
+  $("#prev_link").click((e)->
+    e.preventDefault()
+    window.iUPB.Timetable.prevFun()
+    return
+  )
+  $('#restaurantPage').swipe(
+    swipeLeft: ->
+      window.iUPB.Timetable.nextFun()
+      return
+    swipeRight: ->
+      window.iUPB.Timetable.prevFun()
+      return
   )
   
 #adopted from http://stackoverflow.com/questions/4555324/get-friday-from-week-number-and-year-in-javascript
