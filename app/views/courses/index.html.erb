@@ -42,6 +42,8 @@ $(document).ready(function(event) {
           result_list.append($('<li><h3><%= t '.no_results' %></h3></li>'));
         }
         $.each(data, function() { 
+          var next_class = this.course.next_class;
+
           var li = $('<li class="well" style="white-space: normal;">'), id = this.course.id;
           var add_link = $('<a href="#addCourse" style="cursor:pointer;float:right">');
           add_link.append($('<i style="font-size:22px;" class="icon-plus"></i>'));
@@ -60,7 +62,9 @@ $(document).ready(function(event) {
            });
           });
 		  <% if user_signed_in? %>
-          li.append(add_link); 
+          if(next_class){
+            li.append(add_link); 
+          }
 		  <% end %>
          
           var link = $('<a style="clear:left;" data-icon="arrow-r">');
@@ -74,7 +78,7 @@ $(document).ready(function(event) {
           link.attr('href', course_route);
           li.append(link);
 
-          var next_class = this.course.next_class;
+          
           if(next_class)
           {
             var infos = $('<h5>');

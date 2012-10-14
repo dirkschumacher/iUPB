@@ -3,6 +3,7 @@
 
 @iUPB.Restaurant.indicateCurrentRestaurant = (restaurant) ->
   $("#restaurantSelector .long-text").text(restaurant);
+  $(".restaurant-name").text(restaurant);
   $("#restaurantList li a.active").removeClass("active");
   $("a[data-restaurant-name='" + restaurant + "']").addClass("active");
   return
