@@ -147,14 +147,16 @@
     window.iUPB.Timetable.prevFun()
     return
   )
-  $('#restaurantPage').swipe(
-    swipeLeft: ->
-      window.iUPB.Timetable.nextFun()
-      return
-    swipeRight: ->
-      window.iUPB.Timetable.prevFun()
-      return
-  )
+  #
+  #$('#restaurantPage').swipe(
+  #  swipeLeft: ->
+  #    window.iUPB.Timetable.nextFun()
+  #    return
+  #  swipeRight: ->
+  #    window.iUPB.Timetable.prevFun()
+  #    return
+  #)
+  
   
 #adopted from http://stackoverflow.com/questions/4555324/get-friday-from-week-number-and-year-in-javascript
 #Thanks Mic for this beautiful peace of code

@@ -114,11 +114,12 @@
             window.iUPB.FortyYears.displayRandomFact();
           <% end %>
           window.iUPB.vars.canvas = <%= canvas? ? "true" : "false" %>;
-          $(document).fontChecker(window.iUPB.fallbackIcons.replace, {
+          /* $(document).fontChecker(window.iUPB.fallbackIcons.replace, {
             fontAwesome: true, //set to true if using Font Awesome (default is false)
             onLoad: 'fontLoading', //call this class(es) when the font is loading (!important tag may be needed)
             onFail: 'fontFail' //call this class(es) when the font has failed to load (!important tag may be needed)
           });
+          */
       });
   </script>
   <%= yield(:javascript) -%>
