@@ -72,9 +72,7 @@ $(document).ready(function() {
   window.iUPB.Timetable.setUpPage($("#timetable"), <%= @year_js %>, <%= @week_js %>, '<%= course_path({:id => ""}) %>');
   <% if @userHasNoCourses %>
   	<% if canvas? %>
-  		if(Android){ // Android App JavaScriptInterface
-  			Android.showToast("<%= t(".popover.content")%>");
-  		}
+  		alert("<%= t(".popover.content")%>");
   	<% else # normal website
   		%>
 	    $("#paul-link").popover({title: "<%= t(".popover.title")%>", content: "<%= t(".popover.content")%>" , placement: "bottom", trigger:"manual"}); 
