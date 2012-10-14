@@ -1,6 +1,7 @@
 de:
   source: "Quelle"
   imprint: "Impressum"
+  contact: "Schreib uns"
   login: "Login"
   logout: "Logout"
   email: "E-Mail"
