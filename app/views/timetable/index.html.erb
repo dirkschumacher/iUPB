@@ -69,7 +69,7 @@
 <% content_for :javascript do %>
 <script>
 $(document).ready(function() {
-  window.iUPB.Timetable.setUpPage($("#timetable"), <%= @year_js %>, <%= @week_js %>, '<%= course_path({:id => ""}) %>');
+  window.iUPB.Timetable.setUpPage($("#timetable"), <%= @year_js %>, <%= @week_js %>);
   <% if @userHasNoCourses %>
   	<% if canvas? %>
   		alert("<%= t(".popover.content")%>");

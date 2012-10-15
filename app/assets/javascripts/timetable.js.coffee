@@ -22,7 +22,7 @@
       return day
   return NaN
 
-@iUPB.Timetable.populateTimetable = (container, year, week, course_path) ->
+@iUPB.Timetable.populateTimetable = (container, year, week) ->
 	$.retrieveJSON(window.iUPB.Timetable.API_URL, {year: year, week:week}, (json, status) ->
 		if status is "cached" or status is "success" #is ok
 			window.iUPB.Timetable.emptyTimetable(container)	
@@ -74,9 +74,13 @@
 				$optionsButton.addClass "btn-primary"
 				$optionsButton.addClass "btn-dropdown-toggle"
 				$optionsButton.html('<span class="caret"></span>')
+				if window.iUPB.vars.canvas
+	        course_route = Routes.course_path(courseId, {locale: I18n.locale, canvas: window.iUPB.vars.canvas})
+				else
+	        course_route = Routes.course_path(courseId, {locale: I18n.locale})
 				$optionsDropDown = $('
 	        <ul role="menu" aria-labelledby="dropdown-' + id + '" class="dropdown-menu">
-            <li><a id="link-view-details-' + id + '" href="' + course_path + courseId + '"><i class="icon-eye-open"></i>' + I18n.t("timetable.index.view_course_details") + '</a></li>
+            <li><a id="link-view-details-' + id + '" href="' + course_route + '"><i class="icon-eye-open"></i>' + I18n.t("timetable.index.view_course_details") + '</a></li>
             <li><a id="link-deleteone-' + id + '" href="#"><i class="icon-remove"></i>' + I18n.t("timetable.index.delete_one") + '</a></li>
             <li><a id="link-deleteall-' + id + '" href="#"><i class="icon-trash"></i>' + I18n.t("timetable.index.delete_all") + '</a></li>
           </ul>
@@ -117,17 +121,17 @@
 	)
 	return
 	
-@iUPB.Timetable.setUpPage = ($timeTable, year, week, course_path) ->
+@iUPB.Timetable.setUpPage = ($timeTable, year, week) ->
   window.iUPB.Timetable.vars.currentYear = year
   window.iUPB.Timetable.vars.currentWeek = week
-  window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek, course_path)
+  window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek)
   window.iUPB.Timetable.nextFun = ->
   	if window.iUPB.Timetable.vars.currentWeek >= 52
         window.iUPB.Timetable.vars.currentWeek = 1
         window.iUPB.Timetable.vars.currentYear++
       else
         window.iUPB.Timetable.vars.currentWeek++
-      window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek, course_path)
+      window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek)
 
   window.iUPB.Timetable.prevFun = ->
   	if window.iUPB.Timetable.vars.currentWeek is 1
@@ -135,7 +139,7 @@
       window.iUPB.Timetable.vars.currentYear--
     else
       window.iUPB.Timetable.vars.currentWeek--
-    window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek, course_path)
+    window.iUPB.Timetable.populateTimetable($timeTable, window.iUPB.Timetable.vars.currentYear, window.iUPB.Timetable.vars.currentWeek)
 
   $("#next_link").click((e)->
     e.preventDefault()
