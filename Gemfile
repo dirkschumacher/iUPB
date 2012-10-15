@@ -23,7 +23,7 @@ gem "haml"
 gem "ri_cal"
 
 gem "js-routes" # https://github.com/railsware/js-routes
-
+gem 'contact_us', '~> 0.4.0.beta' # https://github.com/jdutil/contact_us
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,7 +38,6 @@ end
 
 group :development do
 	gem "rails_admin"
-
 	gem 'pry-rails'   # a nicer 'rails console'
 	gem 'quiet_assets'
 end
@@ -48,6 +47,7 @@ group :production do
 	gem 'newrelic_rpm'
 	gem 'dalli'
 	gem 'kgio'
+	gem "sourceninja", "~> 0.9.0"
 end
 group :staging do
 	gem "thin"
