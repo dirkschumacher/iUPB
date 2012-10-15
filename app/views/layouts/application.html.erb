@@ -25,6 +25,11 @@
   
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1" />
 
+  <% if Rails.env.staging? %>
+  <!-- iOS Smart Banner -->
+    <meta name="apple-itunes-app" content="app-id=369168211">
+  <% end %>
+
   <!-- iOS Device Startup Images -->
  	<!-- iPhone/iPod Touch Portrait – 320 x 460 (standard resolution) -->
  	<link rel="apple-touch-startup-image" href="/splash-screen-320x460.png" media="(device-width: 320px) and (device-height: 480px)" />
