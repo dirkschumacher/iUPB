@@ -15,6 +15,7 @@ class RestaurantsController < ApplicationController
       @today = Date.parse(params[:date]) 
     else
       @today = Date.today
+      @today = @today.next if Time.now.hours >= 20
     end
     unless @restaurant.menus.where(:date.gt => @today).first
       RestaurantHelper::update_database
