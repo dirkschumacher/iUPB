@@ -42,3 +42,4 @@ IUPB::Application.configure do
 end
 require 'pp'
 
+ENV["ios_webapp_notice"] = "true"

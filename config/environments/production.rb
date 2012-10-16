@@ -77,4 +77,4 @@ def pp
   true
 end
 
-ENV["ios_webapp_notice"] = false
+ENV["ios_webapp_notice"] = "false"

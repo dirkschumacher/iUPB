@@ -28,7 +28,7 @@
 	</div>
 	
 </div>
-<% if ENV["ios_webapp_notice"] %>
+<% if ENV["ios_webapp_notice"] == "true" %>
 	<% content_for :javascript do %>
 	<script>
 	if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 
