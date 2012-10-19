@@ -23,7 +23,7 @@
   <meta name="MobileOptimized" content="320">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1">
 
   <% if Rails.env.production? %>
   <!-- iOS Smart Banner -->
@@ -119,12 +119,7 @@
             window.iUPB.FortyYears.displayRandomFact();
           <% end %>
           window.iUPB.vars.canvas = <%= canvas? ? "true" : "false" %>;
-          /* $(document).fontChecker(window.iUPB.fallbackIcons.replace, {
-            fontAwesome: true, //set to true if using Font Awesome (default is false)
-            onLoad: 'fontLoading', //call this class(es) when the font is loading (!important tag may be needed)
-            onFail: 'fontFail' //call this class(es) when the font has failed to load (!important tag may be needed)
-          });
-          */
+          window.iUPB.fallbackIcons.replace(window.iUPB.fontsAvailable())
       });
   </script>
   <%= yield(:javascript) -%>
