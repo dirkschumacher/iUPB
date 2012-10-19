@@ -3,8 +3,7 @@
 @iUPB.fontsAvailable = ->
   if window.iUPB.vars.fontsAvailable is undefined
     android_version = /Android (\d+(?:\.\d+)+);/.exec(window.navigator.userAgent)
-    alert(android_version)
-    if android_version is not null and android_version.indexOf("4.0") is not -1 
+    if android_version != null and android_version.indexOf("4.0") != -1 
       window.iUPB.vars.fontsAvailable = false
     else
       window.iUPB.vars.fontsAvailable = true
