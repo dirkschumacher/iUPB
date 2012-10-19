@@ -119,7 +119,7 @@
             window.iUPB.FortyYears.displayRandomFact();
           <% end %>
           window.iUPB.vars.canvas = <%= canvas? ? "true" : "false" %>;
-          window.iUPB.fallbackIcons.replace(window.iUPB.fontsAvailable())
+          window.iUPB.fallbackIcons.replace(window.iUPB.fontsAvailable());
       });
   </script>
   <%= yield(:javascript) -%>
