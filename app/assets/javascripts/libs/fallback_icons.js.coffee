@@ -1,14 +1,14 @@
 @iUPB.fallbackIcons = {}
 
 @iUPB.fontsAvailable = ->
-	if window.iUPB.vars.fontsAvailable is undefined
-		android_version = /Android (\d+(?:\.\d+)+);/.exec(window.navigator.userAgent)
+  if window.iUPB.vars.fontsAvailable is undefined
+    android_version = /Android (\d+(?:\.\d+)+);/.exec(window.navigator.userAgent)
     alert(android_version)
-		if android_version is not null and android_version.indexOf("4.0") is not -1 
-			window.iUPB.vars.fontsAvailable = false
-		else
-			window.iUPB.vars.fontsAvailable = true
-	window.iUPB.vars.fontsAvailable
+    if android_version is not null and android_version.indexOf("4.0") is not -1 
+      window.iUPB.vars.fontsAvailable = false
+    else
+      window.iUPB.vars.fontsAvailable = true
+  window.iUPB.vars.fontsAvailable
 
 @iUPB.fallbackIcons.mapping = 
   "icon-plus": "+"
@@ -17,7 +17,7 @@
 
 @iUPB.fallbackIcons.replace = (fontsAvailable = window.iUPB.fontsAvailable()) ->
   if fontsAvailable is false
-  	$.each(window.iUPB.fallbackIcons.mapping, (klaas, sub) ->
+    $.each(window.iUPB.fallbackIcons.mapping, (klaas, sub) ->
       $("i." + klaas).replaceWith($('<b style="font-size:22px;">' + sub + '</b>'))
     )
   return
