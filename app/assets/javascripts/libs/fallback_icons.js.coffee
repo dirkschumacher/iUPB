@@ -14,6 +14,7 @@
   "icon-chevron-left": "&laquo;"
   "icon-chevron-right": "&raquo;"
   "icon-heart": "&hearts;"
+  "icon-list": "&equiv; "
 
 @iUPB.fallbackIcons.replace = (fontsAvailable = window.iUPB.fontsAvailable()) ->
   if fontsAvailable is false
