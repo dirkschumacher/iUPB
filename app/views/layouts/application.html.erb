@@ -11,7 +11,7 @@
   <meta name="description" content="iUPB ist die WebApp mit allen wichtigen Infos rund um die Uni Paderborn, wie Mensaplan, Busverbindungen uvm. Für Studenten und Mitarbeiter!">
 
   <meta property="og:title" content="<%= content_for?(:title) ? content_for(:title) + " — " : "" %>iUPB">
-  <meta property="og:url" content="<%= request.fullpath %>">
+  <meta property="og:url" content="<%= "http://www.i-upb.de#{request.fullpath}" %>">
   <meta property="og:site_name" content="iUPB">
   <meta property="fb:app_id" content="<%= ENV["FB_ID"] %>">
 
