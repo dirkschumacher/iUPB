@@ -14,11 +14,12 @@
 var pingo_iframe = '<iframe src="http://pingo.upb.de/" style="height:90%;min-height:90%; width:100%;" frameborder="0"></iframe>';
 var pingo_link = '<p>&nbsp;<br><a href="http://pingo.upb.de/" target="_blank" class="btn btn-primary btn-large">Go to PINGO</a></p><p>&nbsp;<br>Please open PINGO using the button. <br><em>(If you access this page with a compatible phone, you\'ll immediately be able to rock the vote!)</em></p>';
 jQuery(document).ready(function(){
-	if(jQuery.browser.mobile)
+	if(jQuery.browser.mobile){
 		$("#pingoContent").html(pingo_iframe);
 		$("#pingoHeadline").hide();
-	else
+	} else {
 		$("#pingoFrameDiv").html(pingo_link);
+	}
 });
 </script>
 <% end %>
