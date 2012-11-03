@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
   helper_method :is_device?
 
   protected
+
+  def mobile_browsers
+    ["android", "ipod", "ipad", "iphone", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
+  end
   
   # caches content for 1 hour via varnish. 
   # use in as method or as a filter
