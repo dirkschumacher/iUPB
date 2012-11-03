@@ -165,6 +165,7 @@ de:
       twitter: "Twitter"
       timetable: "Stundenplan"
       40years: "40 Jahre UPB"
+      pingo: "PINGO"
   activerecord:
     models:
       user: Benutzer

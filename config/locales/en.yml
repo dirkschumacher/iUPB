@@ -164,6 +164,7 @@ en:
       twitter: "Twitter"
       timetable: "Timetable"
       40years: "40 years UPB"
+      pingo: "PINGO"
   time:
     formats:
       very_short: ! '%H:%M'
