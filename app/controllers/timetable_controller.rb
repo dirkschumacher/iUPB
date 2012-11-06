@@ -3,6 +3,15 @@ class TimetableController < ApplicationController
   
   def new
     @event = current_user.events.build
+    @courses = []
+    begin
+      @courses = current_user.events.distinct(:course_id).map do |c|
+        if c && course = Course.only(:title).find(c)
+          [course.title, c]
+        end
+     end
+     @courses.compact!
+    rescue ; end
   end
   
   def add_course
@@ -26,8 +35,12 @@ class TimetableController < ApplicationController
 
   def create
     @event = current_user.events.build(params[:event])
+    @event.custom = true
+    if @event.course_id
+      @event.description = Course.only(:title).find(@event.course_id).title
+    end
     if @event.save
-      redirect_to timetable_path, notice: "Alright... Saved that! :)"
+      redirect_to timetable_path, notice: "OK! Gespeichert :)"
     else
       render "new"
     end

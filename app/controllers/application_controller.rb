@@ -23,6 +23,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :is_device?
 
+  def is_mobile?
+    mobile_browsers.each do |mb|
+      return true if is_device?(mb)
+    end
+    return false
+  end
+  helper_method :is_mobile?
+
   protected
 
   def mobile_browsers
