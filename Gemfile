@@ -12,7 +12,7 @@ gem 'mongoid'
 #gem "bing_translator", "~> 0.0.2"
 gem 'rack-contrib', :require => 'rack/contrib'
 gem 'i18n-js'
-gem 'devise'
+gem 'devise', '>= 2.1.2'
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
 gem 'rabl'
