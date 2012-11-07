@@ -24,7 +24,7 @@ class Event
     event.validates :name, presence: true
   end
   
-  validate :start_time_greater_than_today, :end_time_greater_than_start_time
+  validate :start_time_greater_than_today, :end_time_greater_than_start_time, :recurring_end_greater_than_start_time
 
   def children_events
     self.user.events.where(parent_event_id: self.id)
@@ -104,6 +104,17 @@ class Event
   def start_time_greater_than_today
       if start_time && start_time < DateTime.now
         errors.add(:start_time, "can't be in the past")
+      end
+  end
+
+  def recurring_end_greater_than_start_time
+      if recurring
+        if recurring_end
+          errors.add(:recurring_end, "can't be set before start time") if recurring_end < start_time.to_date
+        else
+          errors.add(:recurring_end, "cannot be blank")
+        end
+        
       end
   end
 end
