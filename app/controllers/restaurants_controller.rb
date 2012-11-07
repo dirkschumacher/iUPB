@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_filter :set_cache_header
 
   def restaurants
-    @restaurants = Restaurant.all(sort: [[ :name, :desc ]])
+    @restaurants = Restaurant.all(sort: [[ :name, :asc ]])
     render json: @restaurants, :only => [:name]
   end
 
