@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
   def index
     restaurant = params[:restaurant]||"Mensa"
     @restaurant = Restaurant.where(name: restaurant).first
-    @restaurants = Restaurant.all(sort: [[ :name, :asc ]])
+    @restaurants = Restaurant.all(sort: [[ :name, :desc ]])
   
     if params[:date]
       @today = Date.parse(params[:date]) 
