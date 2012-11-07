@@ -22,6 +22,15 @@
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <%= stylesheet_link_tag    "application", :media => "all" %>
+
+  <% unless Rails.env.production? %>
+    <style type="text/css">
+      .translation_missing {
+        border-bottom: 1px dashed #F5A9A9;
+        background-color: #F4DCDC;
+      }
+    </style>
+  <% end %>
   
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1">
 
