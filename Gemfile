@@ -50,7 +50,7 @@ group :production do
 	gem "sourceninja", "~> 0.9.0"
 end
 group :staging do
-	gem "thin"
+	gem "unicorn"
 	gem 'newrelic_rpm'
 	gem 'dalli'
 	gem 'kgio'
