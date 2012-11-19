@@ -1,1 +1,1 @@
-web: bundle exec thin start -p $PORT -e $RACK_ENV
+web: bundle exec $SERVER_BIN $SERVER_START_CMD -p $PORT $SERVER_ARGS

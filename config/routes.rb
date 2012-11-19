@@ -2,6 +2,8 @@ IUPB::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' if Rails.env.development?
 
+  get '/mu-3a3f1ed3-7eba3187-8180d5c5-3951e1a6' => 'stuff#blitz' if Rails.env.staging?
+
   scope "api" do
     scope "v1" do
       match "restaurants(.:format)" => "restaurants#restaurants", :defaults => {:format => "json"}
