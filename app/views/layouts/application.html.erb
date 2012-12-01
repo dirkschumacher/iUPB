@@ -148,9 +148,6 @@
       I18n.locale = "<%= I18n.locale %>";
       $(document).ready(function() {
           window.iUPB.enableLoadingIndicator();
-          <% unless canvas? %>
-            window.iUPB.FortyYears.displayRandomFact();
-          <% end %>
           window.iUPB.vars.canvas = <%= canvas? ? "true" : "false" %>;
           window.iUPB.fallbackIcons.replace(window.iUPB.fontsAvailable());
       });
