@@ -13,6 +13,7 @@ de:
   here_you_can_sign_up: "Hier kannst du dich direkt bei uns registrieren"
   forgot_your_password: "Passwort vergessen"
   or: oder
+  loading: "Lade"
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."
@@ -79,6 +80,12 @@ de:
     twitter:
       UPB_on_twitter: "UPB auf Twitter"
       by: "von"
+    pingo:
+      pingo_button: "PINGO öffnen"
+      pingo_button_text: "Bitte öffne PINGO mit dem Button."
+      pingo_nophone: "Wenn du diese Seite mit einem kompatiblen Smartphone öffnest, kannst du direkt an Umfragen teilnehmen."
+      what_is_pingo_button: "Was ist PINGO?"
+      what_is_pingo: "PINGO ist ein Class-Room-Response-System, d. h. du kannst mit PINGO in der Vorlesung Fragen/Aufgaben vom Dozenten beantworten und dieser bekommt direktes Feedback. Dein Dozent wird dich auf die Nutzung von PINGO hinweisen."
   weather:
     index:
       temperature: "Temperatur"

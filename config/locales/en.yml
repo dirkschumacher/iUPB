@@ -13,6 +13,7 @@ en:
   here_you_can_sign_up: "Here you can sign up for a new account"
   forgot_your_password: "Forgot your password"
   or: or
+  loading: "Loading"
   marketing:
     login_with_iupb: Use iUPB login
     login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
@@ -73,6 +74,12 @@ en:
     twitter:
       UPB_on_twitter: "UPB on Twitter"
       by: "by"
+    pingo:
+      pingo_button: "Go to PINGO"
+      pingo_button_text: "Please open PINGO using the button."
+      pingo_nophone: "If you access this page with a compatible phone, you will immediately be able to rock the vote!"
+      what_is_pingo_button: "What is PINGO?"
+      what_is_pingo: "PINGO is a classroom response system: during lectures you can quickly answer your lecturer's questions/problems and give her instant feedback. Your lecturer will inform you when she uses PINGO in class."
   asta:
     index:
       read_more: "more"
