@@ -1,7 +1,7 @@
 <% title "PINGO" %>
 <%= content_for "page-attributes" do %>id="embedPage"<% end %>
 <% content_for :header do %>
-<h3 id="pingoHeadline">PINGO <a href="#what_is_pingo" data-toggle="collapse" data-target="#what_is_pingo">
+<h3 id="pingoHeadline">PINGO <a id="what_is_link" href="#what_is_pingo" data-toggle="collapse" data-target="#what_is_pingo">
   <i class="icon-question-sign"></i>
 </a></h3>
 <% end %>
@@ -16,6 +16,9 @@
 var pingo_iframe = '<iframe src="http://pingo.upb.de/" style="height:90%;min-height:90%; width:100%;" frameborder="0"></iframe>';
 var pingo_link = '<p>&nbsp;<br><a href="http://pingo.upb.de/" target="_blank" class="btn btn-primary btn-large"><%= t ".pingo_button" %></a></p><p>&nbsp;<br><%= t ".pingo_button_text" %> <br><em>(<%= t ".pingo_nophone" %>)</em></p>';
 jQuery(document).ready(function(){
+	$("#what_is_link").click(function(e){
+		e.preventDefault();
+	});
 	if(jQuery.browser.mobile){
 		$("#pingoContent").html(pingo_iframe);
 		// $("#pingoHeadline").hide();
