@@ -44,14 +44,14 @@ end
 
 group :production do
 	gem "thin"
-	gem 'newrelic_rpm'
+	gem 'newrelic_rpm', '>= 3.5.3.25'
 	gem 'dalli'
 	gem 'kgio'
 	gem "sourceninja", "~> 0.9.0"
 end
 group :staging do
 	gem "unicorn"
-	gem 'newrelic_rpm'
+	gem 'newrelic_rpm', '>= 3.5.3.25'
 	gem 'dalli'
 	gem 'kgio'
 end
