@@ -102,7 +102,7 @@ class Event
   end
 
   def start_time_greater_than_today
-      if start_time && start_time < DateTime.now
+      if course.nil? && start_time && start_time < DateTime.now
         errors.add(:start_time, "can't be in the past")
       end
   end
