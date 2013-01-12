@@ -3,3 +3,5 @@
 <h1><%= @ad.name %></h1>
 
 <p><%= @ad.text %></p>
+
+<%= link_to t(".report"), report_ad_path(@ad) %>

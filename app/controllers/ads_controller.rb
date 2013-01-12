@@ -6,6 +6,7 @@ class AdsController < ApplicationController
 
   def new
     @ad = Ad.new
+    @ad.email = current_user.email if user_signed_in?
   end
   
   def edit
@@ -16,6 +17,7 @@ class AdsController < ApplicationController
   
   def show
     @ad = Ad.find(params[:id])
+  end
 
   def create
     @ad = Ad.new(params[:ad])
@@ -25,6 +27,18 @@ class AdsController < ApplicationController
     else
       render "new"
     end
+  end
+  
+  def report
+    @ad = Ad.find(params[:id])
+    @contact = ContactUs::Contact.new
+    @contact.message = "REPORT: #{@ad.name}"    # TODO
+    @contact.email = "support@yippie.io"
 
+     if @contact.save
+      redirect_to(ad_path(@ad), :notice => t('.success'))
+    else
+      redirect_to(ad_path(@ad), :notice => t('.error')) 
+    end
   end
 end

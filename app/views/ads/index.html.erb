@@ -1,7 +1,7 @@
-<% title t(".ads_headline") %>
-<%= content_for "page-attributes" do %>id="adsPage"<% end %>
+<% title t(".ads_headline", default: "Ads") %>
+	<%= content_for "page-attributes" do %>id="adsPage"<% end %>
 <% content_for :header do %>
-<h1><%= t ".ads_headline" %></h1>
+	<h1><%= t ".ads_headline" %></h1>
 <% end %>
 
 <ul>
@@ -10,9 +10,24 @@
 	<% end %>
 </ul>
 
-<h2>Ads:</h2>
 
+
+<h2>Ads:</h2>
+<div id="posts">
+
+</div>
+
+<div style="display:none;" id="post_list">
 <% @ads.each do |ad| %>
+ <div class="single_post well">
 	<h4><%= link_to ad.name, ad %></h4>
 	<p><%= ad.text %></p>
+ </div>
+<% end %>
+</div>
+
+<% content_for :javascript do %>
+<script>
+	$("#posts").append(window.iUPB.Ads.generateGrid($(".single_post")));
+</script>
 <% end %>
