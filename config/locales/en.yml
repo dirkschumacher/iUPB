@@ -162,6 +162,7 @@ en:
           content: "You can easily add course to your timetable using the PAUL search"
   layouts:
     application:
+      ads: "Local ads"
       menu: "Menu"
       weather: "Weather"
       buses: "Buses"

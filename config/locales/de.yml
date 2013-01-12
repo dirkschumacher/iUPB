@@ -162,6 +162,7 @@ de:
       no_buses_at_station: "Es fahren gerade keine Busse"
   layouts:
     application:
+      ads: "Kleinanzeigen"
       menu: "Speisepläne"
       weather: "Wetter"
       buses: "Bus-Zeiten"
