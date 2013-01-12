@@ -18,5 +18,19 @@ class AdCategory
       self.ads
     end
   end
+  
+  def parents
+    parents_ar = []
+    obj = self
+    until obj.parent.nil?
+      parents_ar << obj.parent
+      obj = obj.parent
+    end
+    parents_ar + [self]
+  end
+  
+  def breadcrumb(delimiter = " > ")
+    self.parents.map(&:name).join(delimiter)
+  end
 
 end

@@ -22,6 +22,12 @@ gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
 gem "haml"
 gem "ri_cal"
 
+gem 'mongoid_slug', :git => "git://github.com/digitalplaywright/mongoid-slug.git", ref: "7f99b27b26d460a5e12bba9accccd1dd215073c8" # Mongoid2 /  https://github.com/digitalplaywright/mongoid-slug/issues/100#issuecomment-10030053
+
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem "aws-s3",            :require => "aws/s3"
+gem "tire"
+
 gem "js-routes" # https://github.com/railsware/js-routes
 gem 'contact_us', '~> 0.4.0.beta' # https://github.com/jdutil/contact_us
 

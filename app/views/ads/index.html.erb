@@ -1,9 +1,14 @@
 <% title t(".ads_headline", default: "Ads") %>
 	<%= content_for "page-attributes" do %>id="adsPage"<% end %>
 <% content_for :header do %>
-	<h1><%= t ".ads_headline" %></h1>
+	<h1><%= link_to t(".ads_headline"), ads_path %>
+	<% if @category %>
+		 (<%= @category.breadcrumb %>)
+	<% end %>	
+	</h1>
 <% end %>
-
+<br>
+<%= render "search_field" %>
 <ul>
 	<% @categories.each do |cat| %>
 		<li><%= link_to cat.name, ads_path(category: cat.id) %> (<%= cat.all_ads.count %>)</li>
@@ -20,8 +25,11 @@
 <div style="display:none;" id="post_list">
 <% @ads.each do |ad| %>
  <div class="single_post well">
-	<h4><%= link_to ad.name, ad %></h4>
-	<p><%= ad.text %></p>
+	<% if ad.photo? %>
+		<%= link_to image_tag(ad.photo.url(:square), class: "polaroid", size: "100x100"), ad %>
+	<% end %>
+	<h4><%= link_to ad.title, ad %></h4>
+	<p class="expandable"><%= ad.text %></p>
  </div>
 <% end %>
 </div>
@@ -29,5 +37,14 @@
 <% content_for :javascript do %>
 <script>
 	$("#posts").append(window.iUPB.Ads.generateGrid($(".single_post")));
+	$(".expandable").expander({
+		expandText: '⬊',
+		userCollapseText: '⬉',
+		expandPrefix: '&hellip; ',
+		expandEffect: 'fadeIn',
+		expandSpeed: 250,
+		collapseEffect: 'fadeOut',
+		collapseSpeed: 200
+	});
 </script>
 <% end %>

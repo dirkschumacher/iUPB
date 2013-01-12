@@ -1,3 +1,16 @@
 // Place all the styles related to the ads controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.polaroid {
+	padding: 5px;
+	background-color: #fff;
+	box-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+	background-image: -webkit-linear-gradient(top, #fff 85%, #eee);
+	background-image: -moz-linear-gradient(top, #fff 85%, #eee);
+	background-image: linear-gradient(top, #fff 85%, #eee);
+	-webkit-transform: rotate(-3deg);
+	-moz-transform: rotate(-3deg);
+	transform: rotate(-3deg);
+	margin-bottom: 20px;
+	margin-top: 5px;
+}

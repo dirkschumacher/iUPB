@@ -32,10 +32,12 @@ class AdsController < ApplicationController
   def report
     @ad = Ad.find(params[:id])
     @contact = ContactUs::Contact.new
-    @contact.message = "REPORT: #{@ad.name}"    # TODO
+    @contact.subject = "REPORT: #{@ad.title} by #{@ad.name}"    # TODO
+    @contact.message = "DELETE: #{remove_ad_url(@ad, admin_token: @ad.admin_token)}\n" + 
+      "EDIT: #{edit_ad_url(@ad, admin_token: @ad.admin_token)}"
     @contact.email = "support@yippie.io"
 
-     if @contact.save
+    if @contact.save
       redirect_to(ad_path(@ad), :notice => t('.success'))
     else
       redirect_to(ad_path(@ad), :notice => t('.error')) 
