@@ -24,6 +24,12 @@ IUPB::Application.routes.draw do
     match 'twitter' => 'pages#show', :id => 'twitter', :as => :twitter
     match 'courses' => 'courses#index', :as => :courses
     
+    resources :ads do
+      member do
+        get 'remove'
+      end
+    end
+    
     match "40jahre" => "forty_years#index", :as => :fortyyears
     match "40jahre_fact" => "forty_years#random_fact", :as => :fortyyears_random_fact
     match "timetable" => "timetable#index", :as => :timetable

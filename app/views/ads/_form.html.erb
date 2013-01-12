@@ -1,0 +1,20 @@
+<%  title t("layouts.application.ads") + ": " +  t(".new_entry") %>
+
+<h1><%= t ".new_entry" %></h1>
+<% if @ad.errors.any? %>
+  <div id="error_explanation">
+    <h5>Oops:</h5>
+    <ul>
+    <% @ad.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for @ad do |f| %>
+  <label for="ad_name">Name:</label> <%= f.text_field :name %>
+<label for="ad_text"><%= t ".text" %>:</label>
+<%= f.text_area :text %>
+<br>
+  <%= f.submit "OK", :class => "btn btn-primary" %>
+<% end %>
