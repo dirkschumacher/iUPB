@@ -14,6 +14,14 @@ de:
   forgot_your_password: "Passwort vergessen"
   or: oder
   loading: "Lade"
+  ads:
+    new:
+      title: "Kleinanzeigen für die UPB"
+      introtext: "Erstelle Kleinanzeigen für Studierende und Mitarbeiter der Uni Paderborn. Mehr als 2.000 Nutzer pro Tag besuchen diesen Service."
+    form:
+      new_entry: "Kleinanzeige hinzufügen"
+      save_button: "Poste deine Anzeige für 30 Tage"
+      text: "Anzeigentext"
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."

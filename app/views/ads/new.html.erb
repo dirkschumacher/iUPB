@@ -1,3 +1,4 @@
-<h1>Ads#new</h1>
-<p>Find me in app/views/ads/new.html.erb</p>
+<%  title t("layouts.application.ads") + ": " +  t(".new_entry") %>
+<h1><%= link_to '<i class="icon-arrow-left"></i>'.html_safe, ads_path, id: "back-button"  %> <%= t ".title"%></h1>
+<p><%= t ".introtext"%></p>
 <%= render "form" %>

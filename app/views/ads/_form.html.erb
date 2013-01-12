@@ -1,6 +1,4 @@
-<%  title t("layouts.application.ads") + ": " +  t(".new_entry") %>
-
-<h1><%= t ".new_entry" %></h1>
+<h2><%= t ".new_entry" %></h2>
 <% if @ad.errors.any? %>
   <div id="error_explanation">
     <h5>Oops:</h5>
@@ -13,8 +11,9 @@
 <% end %>
 <%= form_for @ad do |f| %>
   <label for="ad_name">Name:</label> <%= f.text_field :name %>
+  <label for="ad_email">Email:</label> <%= f.email_field :email %>
 <label for="ad_text"><%= t ".text" %>:</label>
 <%= f.text_area :text %>
 <br>
-  <%= f.submit "OK", :class => "btn btn-primary" %>
+  <%= f.submit t(".save_button"), :class => "btn btn-primary" %>
 <% end %>
