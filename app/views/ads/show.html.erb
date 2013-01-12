@@ -1,0 +1,12 @@
+<%  title t("layouts.application.ads") + ": " +  @ad.title %>
+<h1><%= link_to '<i class="icon-arrow-left"></i>'.html_safe, ads_path, id: "back-button"  %> <%= @ad.title %></h1>
+<%= image_tag @ad.photo.url(:medium), class: "polaroid" %>
+<p class="well"><%= @ad.text %></p>
+
+<p><small><%= @ad.name %> 
+<% if @ad.publish_email %>
+	 (<%= @ad.email %>)
+<% end %>
+</small></p>
+
+<%= link_to t(".report"), report_ad_path(@ad) %>

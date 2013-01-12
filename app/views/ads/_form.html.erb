@@ -10,10 +10,32 @@
   </div>
 <% end %>
 <%= form_for @ad do |f| %>
-  <label for="ad_name">Name:</label> <%= f.text_field :name %>
-  <label for="ad_email">Email:</label> <%= f.email_field :email %>
-<label for="ad_text"><%= t ".text" %>:</label>
-<%= f.text_area :text %>
+
+  <%= f.label :ad_category %>
+  <%= f.select :ad_category_id, AdCategory.all.map {|c| [ c.breadcrumb, c.id ] }.sort { |a,b| a.first <=> b.first }, { :include_blank => false } %>
+
+  <%= f.label :title %> <%= f.text_field :title %>
+ 
+  <%= f.label :name %> <%= f.text_field :name %>
+
+  <%= f.label :email %> <%= f.email_field :email %> 
 <br>
+  <label for="ad_publish_email" class="checkbox"><i class="icon-eye-open"></i> <%= t(".publish_email") %>
+  	<%= f.check_box :publish_email %>
+  </label>
+  
+  <%= f.label :text %>
+  <%= f.text_area :text, rows: 3, class: "autogrow" %>
+  
+  <%= f.label :photo %>
+  <%= f.file_field :photo %>
+  
+  <br>
   <%= f.submit t(".save_button"), :class => "btn btn-primary" %>
+<% end %>
+
+<% content_for :javascript do %>
+	<script>
+		$(".autogrow").autogrow();
+	</script>
 <% end %>

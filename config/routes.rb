@@ -27,6 +27,7 @@ IUPB::Application.routes.draw do
     resources :ads do
       member do
         get 'remove'
+        get 'report'
       end
     end
     
