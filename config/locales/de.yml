@@ -15,6 +15,10 @@ de:
   or: oder
   loading: "Lade"
   ads:
+    remove:
+      button_delete: "Anzeige wirklich löschen"
+      title: "Anzeige löschen"
+      ad_notfound: "Anzeige nicht gefunden"
     new:
       title: "Kleinanzeigen für die UPB"
       introtext: "Erstelle Kleinanzeigen für Studierende und Mitarbeiter der Uni Paderborn. Mehr als 2.000 Nutzer pro Tag besuchen diesen Service."
