@@ -8,7 +8,7 @@
 
 <p><small><%= @ad.name %> 
 <% if @ad.publish_email %>
-	 (<%= @ad.email %>)
+	 (<%= mail_to @ad.email, @ad.email, encode: :javascript, subject: "#{@ad.title.truncate(30)} auf iUPB" %>)
 <% end %>
 </small></p>
 
