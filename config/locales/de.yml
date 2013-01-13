@@ -22,6 +22,7 @@ de:
       ad_list_heading: "Anzeigen:"
       create: "Poste deine Anzeige"
       no_entries: "Keine Anzeigen bisher. Poste doch eine!"
+      price: "Preis:"
     remove:
       button_delete: "Ich möchte die Anzeige wirklich löschen"
       title: "Anzeige löschen"
@@ -37,6 +38,7 @@ de:
       publish_email: "wählen um E-Mail öffentlich anzuzeigen (du kannst auch einen anderen Kontaktweg in der Beschreibung angeben)"
     show:
       report: "Anzeige melden"
+      price: "Preis:"
       report_sure: "Anzeige wirklich an den yippie.io-Support melden?"
   marketing:
     login_with_iupb: iUPB-Login nutzen

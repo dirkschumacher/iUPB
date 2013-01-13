@@ -3,9 +3,13 @@
 <% if @ad.photo? %>
 	<%= image_tag @ad.photo.url(:medium), class: "polaroid" %>
 <% end %>
-<p class="well"><%= @ad.text %></p>
 
-<p><small><span class="post_time_to_timeago"><%= @ad.created_at %></span> <strong><%= t("by") %> <%= @ad.name %>  </strong> 
+<p class="well"><%= @ad.text %></p>
+<% if @ad.price %>
+   	<p><%= t ".price" %> <%= @ad.price %></p>
+<% end %>
+
+<p><small><span class="post_time_to_timeago" style="display:none"><%= @ad.created_at %></span> <strong><%= t("by") %> <%= @ad.name %>  </strong> 
 <% if @ad.publish_email %>
 	 (<%= mail_to @ad.email, @ad.email, encode: :javascript, subject: "#{@ad.title.truncate(30)} auf iUPB" %>)
 <% end %>
@@ -19,6 +23,7 @@ $(document).ready(function() {
 	$(".post_time_to_timeago").each(function() {
 		$this = $(this)
         $this.text($.timeago($this.text()))
+		$this.show()
 	});
 });
 </script>
