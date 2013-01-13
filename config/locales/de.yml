@@ -30,7 +30,9 @@ de:
       new_entry: "Kleinanzeige hinzufügen"
       save_button: "Poste deine Anzeige für 7 Tage"
       text: "Anzeigentext"
-      publish_email: "E-Mail Adresse veröffentlichen"
+      enter_entry: "Kleinanzeige eingeben"
+      save_button: "Poste deine Anzeige für 30 Tage"
+      publish_email: "wählen um E-Mail öffentlich anzuzeigen (du kannst auch einen anderen Kontaktweg in der Beschreibung angeben)"
     show:
       report: "Anzeige melden"
   marketing:

@@ -19,7 +19,7 @@ class Ad
   
   # These Mongo guys sure do get funky with their IDs in +serializable_hash+, let's fix it.
   def to_indexed_json
-   self.to_json(only: [:id, :title, :text, :name, :created_at], methods: [:category_name])
+   self.to_json(only: [:id, :title, :text, :name, :created_at], methods: [:category_name, :square_photo_url])
   end
 
   field :title, type: String, index: true
@@ -52,6 +52,10 @@ class Ad
   
   def ensure_admin_token
     self.update_attribute(:admin_token, random_token) unless self.admin_token
+  end
+  
+  def square_photo_url
+    self.photo.url(:square) if self.photo?
   end
   
   protected
