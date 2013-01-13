@@ -22,7 +22,7 @@ class AdsController < ApplicationController
         end
       end
       
-      pp @ads
+      pp @ads #DEBUG
     else
       if @category
        @ads = @category.all_ads
@@ -55,6 +55,7 @@ class AdsController < ApplicationController
   
   def show
     @ad = Ad.find(params[:id])
+    @ad.track_view
   end
 
   def create
@@ -71,7 +72,7 @@ class AdsController < ApplicationController
   def report
     @ad = Ad.find(params[:id])
     @contact = ContactUs::Contact.new
-    @contact.subject = "REPORT: #{@ad.title} by #{@ad.name}"    # TODO
+    @contact.subject = "REPORT: #{@ad.title} by #{@ad.name}"
     @contact.message = "DELETE: #{remove_ad_url(@ad, admin_token: @ad.admin_token)}\n" + 
       "EDIT: #{edit_ad_url(@ad, admin_token: @ad.admin_token)}"
     @contact.email = "support@yippie.io"

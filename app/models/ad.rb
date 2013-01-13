@@ -44,6 +44,11 @@ class Ad
   validates :title, :name, :text, :email, :ad_category_id, presence: true
   
   validates :name, :text, :email, :admin_token, presence: true
+  
+  def track_view
+    self.inc(:views, 1)
+  end
+  
   def to_slug
     self.name.parameterize
   end

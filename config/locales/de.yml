@@ -40,6 +40,8 @@ de:
       report: "Anzeige melden"
       price: "Preis:"
       report_sure: "Anzeige wirklich an den yippie.io-Support melden?"
+      viewed_count: "Anzeige wurde %{count} mal aufgerufen"
+      created: erstellt
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."

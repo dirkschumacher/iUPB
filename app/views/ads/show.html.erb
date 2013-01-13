@@ -9,13 +9,34 @@
    	<p><%= t ".price" %> <%= @ad.price %></p>
 <% end %>
 
-<p><small><span class="post_time_to_timeago" style="display:none"><%= @ad.created_at %></span> <strong><%= t("by") %> <%= @ad.name %>  </strong> 
-<% if @ad.publish_email %>
-	 (<%= mail_to @ad.email, @ad.email, encode: :javascript, subject: "#{@ad.title.truncate(30)} auf iUPB" %>)
-<% end %>
-</small></p>
+<div class="row">
+  <div class="span6">
+	<p><small>
+		<%= t(".viewed_count", count: @ad.views) %>.
+	</small>
+	</p>
+  </div>
+  <div class="span6">
+	<p><small><span class="post_time_to_timeago" style="display:none"><%= @ad.created_at %></span> <%= t(".created") %> <%= t("by") %> <strong><%= @ad.name %>  </strong> 
+	<% if @ad.publish_email %>
+		 (<%= mail_to @ad.email, @ad.email, encode: :javascript, subject: "#{@ad.title.truncate(30)} auf iUPB" %>)
+	<% end %>
+	</small></p>
+  </div>
+</div>
 
-<%= link_to t(".report"), report_ad_path(@ad), confirm: t(".report_sure") %>
+<div class="row">
+  <div class="span6">
+	<%= fb_like_button %>
+  </div>
+  <div class="span6">
+	<p>
+		<%= link_to "<i class='icon-exclamation-sign'></i> ".html_safe + t(".report"), report_ad_path(@ad), confirm: t(".report_sure") %>
+	</p>
+  </div>
+</div>
+
+
 
 <% content_for :javascript do %>
 <script>
