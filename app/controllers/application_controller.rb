@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
       { :locale => I18n.locale}
     end
   end
-
+  
+  #thanks: http://stackoverflow.com/a/88341
+  def random_token
+    o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+    (0...50).map{ o[rand(o.length)] }.join
+  end
+  
   def canvas?
     return false if params[:canvas] == "false"
     params[:canvas] == "true" || session[:canvas]

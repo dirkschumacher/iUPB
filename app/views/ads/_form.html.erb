@@ -1,5 +1,5 @@
 <h2><%= t ".new_entry" %></h2>
-<% if @ad.errors.any? %>
+<% if @ad.errors and @ad.errors.any? %>
   <div id="error_explanation">
     <h5>Oops:</h5>
     <ul>

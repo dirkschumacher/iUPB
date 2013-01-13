@@ -1,2 +1,7 @@
-<h1>Ads#remove</h1>
-<p>Find me in app/views/ads/remove.html.erb</p>
+<h1><%= link_to '<i class="icon-arrow-left"></i>'.html_safe, ads_path, id: "back-button"  %><%= t ".title" %></h1>
+<% if @ad %>
+<h2><%= @ad.name %></h2>
+<p class="center"><%= link_to ('<button class="btn btn-danger btn-large">' + t(".button_delete") + '</button>').html_safe, @ad, method: :delete, id: "delete-button" %></p>
+<% else %>
+<p class="center notice"><%= t ".ad_notfound" %></p>
+<% end %>

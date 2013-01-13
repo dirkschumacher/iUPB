@@ -26,6 +26,7 @@ class Ad
   field :name, type: String
   field :text, type: String
   field :email, type: String
+  field :admin_token, type: String
   field :publish_email, type: Boolean, default: false
   field :views, type: Integer, default: 0
   
@@ -41,6 +42,10 @@ class Ad
   
   validates :title, :name, :text, :email, :ad_category_id, presence: true
   
+  validates :name, :text, :email, :admin_token, presence: true
+  def to_slug
+    self.name.parameterize
+  end
   def category_name
     self.ad_category.name
   end

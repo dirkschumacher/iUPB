@@ -15,6 +15,14 @@ de:
   or: oder
   loading: "Lade"
   ads:
+    index:
+      ads_headline: "UPB Kleinanzeigen"
+      ad_list_heading: "Anzeigen:"
+      create: "Poste deine Anzeige"
+    remove:
+      button_delete: "Ich möchte die Anzeige wirklich löschen"
+      title: "Anzeige löschen"
+      ad_notfound: "Anzeige nicht gefunden"
     new:
       title: "Kleinanzeigen für die UPB"
       introtext: "Erstelle Kleinanzeigen für Studierende und Mitarbeiter der Uni Paderborn. Mehr als 2.000 Nutzer pro Tag besuchen diesen Service."
@@ -22,6 +30,8 @@ de:
       new_entry: "Kleinanzeige hinzufügen"
       save_button: "Poste deine Anzeige für 30 Tage"
       text: "Anzeigentext"
+    show:
+      report: "Anzeige melden"
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."

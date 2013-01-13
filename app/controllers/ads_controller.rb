@@ -5,9 +5,9 @@ class AdsController < ApplicationController
       @category = AdCategory.find(params[:category])
     end
 
-    if params[:search] && !params[:search].empty?
+    if params[:q] && !params[:q].empty?
       qry = ->(query) do
-        query.string params[:search]
+        query.string params[:q]
       end
       
       @ads = Ad.tire.search do
@@ -38,9 +38,19 @@ class AdsController < ApplicationController
   end
   
   def edit
+    @ad = Ad.where(admin_token: params[:admin_token]).first
   end
-
+  def update
+    
+  end
   def remove
+    @ad = Ad.where(admin_token: params[:admin_token]).first
+  end
+  
+  def destroy
+    @ad = Ad.where(admin_token: params[:admin_token])
+    @ad.delete
+    redirect_to ads_path, notice: t(".notice_deleted")
   end
   
   def show
@@ -50,6 +60,7 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     @ad.user = current_user if user_signed_in?
+    @ad.admin_token = random_token
     if @ad.save
       redirect_to ads_path, notice: t(".notice_saved")
     else
