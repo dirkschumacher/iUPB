@@ -1,6 +1,7 @@
 de:
   source: "Quelle"
   imprint: "Impressum"
+  user_generated_content: "Der oben angezeigte Inhalt wurde von den jeweils angegebenen Benutzern erstellt und stammt nicht von iUPB."
   contact: "Schreib uns"
   login: "Login"
   logout: "Logout"
@@ -37,6 +38,7 @@ de:
     show:
       report: "Anzeige melden"
       price: "Preis:"
+      report_sure: "Anzeige wirklich an den yippie.io-Support melden?"
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."

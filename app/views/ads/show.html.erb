@@ -11,11 +11,11 @@
 
 <p><small><%= @ad.name %> 
 <% if @ad.publish_email %>
-	 (<%= @ad.email %>)
+	 (<%= mail_to @ad.email, @ad.email, encode: :javascript, subject: "#{@ad.title.truncate(30)} auf iUPB" %>)
 <% end %>
 </small></p>
 
-<%= link_to t(".report"), report_ad_path(@ad) %>
+<%= link_to t(".report"), report_ad_path(@ad), confirm: t(".report_sure") %>
 
 <% content_for :javascript do %>
 <script>
