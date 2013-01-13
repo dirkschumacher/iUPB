@@ -23,7 +23,7 @@
   <label for="ad_publish_email" class="checkbox"><i class="icon-eye-open"></i> <%= t(".publish_email") %>
   	<%= f.check_box :publish_email %>
   </label>
-  
+  <%= f.label :price %> <%= f.text_field :price %>
   <%= f.label :text %>
   <%= f.text_area :text, rows: 3, class: "autogrow" %>
   
