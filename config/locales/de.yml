@@ -33,6 +33,7 @@ de:
       publish_email: "wählen um E-Mail öffentlich anzuzeigen (du kannst auch einen anderen Kontaktweg in der Beschreibung angeben)"
     show:
       report: "Anzeige melden"
+      report_sure: "Anzeige wirklich an den yippie.io-Support melden?"
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."

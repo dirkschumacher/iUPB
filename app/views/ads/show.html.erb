@@ -12,7 +12,7 @@
 <% end %>
 </small></p>
 
-<%= link_to t(".report"), report_ad_path(@ad) %>
+<%= link_to t(".report"), report_ad_path(@ad), confirm: t(".report_sure") %>
 
 <% content_for :javascript do %>
 <script>
