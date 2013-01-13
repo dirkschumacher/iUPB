@@ -10,9 +10,11 @@ class AdsController < ApplicationController
   end
   
   def edit
-    @ad = Ad.where(admin_token: params[:admin_token])
+    @ad = Ad.where(admin_token: params[:admin_token]).first
   end
-
+  def update
+    
+  end
   def remove
     @ad = Ad.where(admin_token: params[:admin_token]).first
   end
