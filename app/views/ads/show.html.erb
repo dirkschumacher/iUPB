@@ -1,7 +1,9 @@
 <%  title t("layouts.application.ads") + ": " +  @ad.title %>
 <h1><%= link_to '<i class="icon-arrow-left"></i>'.html_safe, ads_path, id: "back-button"  %> <%= @ad.title %></h1>
-<%= image_tag @ad.photo.url(:medium), class: "polaroid" %>
-<p class="post_time_to_timeago"><%= @ad.created_at %></p>
+<% if @ad.photo? %>
+	<%= image_tag @ad.photo.url(:medium), class: "polaroid" %>
+<% end %>
+	<p class="post_time_to_timeago"><%= @ad.created_at %></p>
 <p class="well"><%= @ad.text %></p>
 
 <p><small><%= @ad.name %> 
