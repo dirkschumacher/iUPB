@@ -1,6 +1,7 @@
 de:
   source: "Quelle"
   imprint: "Impressum"
+  user_generated_content: "Der oben angezeigte Inhalt wurde von den jeweils angegebenen Benutzern erstellt und stammt nicht von iUPB."
   contact: "Schreib uns"
   login: "Login"
   logout: "Logout"

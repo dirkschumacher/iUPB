@@ -1,6 +1,7 @@
 en:
   source: "Source"
   imprint: "imprint"
+  user_generated_content: "The content shown above is user-generated and not created by iUPB."
   contact: "Write us"
   logout: "Logout"
   login: "Login"

@@ -136,6 +136,9 @@
     <%= yield %>
 	
     <footer class="footer">
+	  <% if params[:controller] == "ads" %>
+		<u><%= t("user_generated_content") %></u><br><br>
+	  <% end %>
       Powered by <%= link_to "yippie.io", "http://www.yippie.io" %> and made with <i class="icon-love icon-heart"></i><br>
 	  <%= link_to t("contact"), contact_us_path %> | <%= link_to t("imprint"), "http://www.yippie.io/imprint" %>
     </footer>
