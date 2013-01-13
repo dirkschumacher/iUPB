@@ -20,6 +20,7 @@ de:
       ads_headline: "UPB Kleinanzeigen"
       ad_list_heading: "Anzeigen:"
       create: "Poste deine Anzeige"
+      no_entries: "Keine Anzeigen bisher. Poste doch eine!"
     remove:
       button_delete: "Ich möchte die Anzeige wirklich löschen"
       title: "Anzeige löschen"
@@ -28,8 +29,10 @@ de:
       title: "Kleinanzeigen für die UPB"
       introtext: "Erstelle Kleinanzeigen für Studierende und Mitarbeiter der Uni Paderborn. Mehr als 2.000 Nutzer pro Tag besuchen diesen Service."
     form:
+      new_entry: "Kleinanzeige hinzufügen"
+      save_button: "Poste deine Anzeige für 7 Tage"
+      text: "Anzeigentext"
       enter_entry: "Kleinanzeige eingeben"
-      save_button: "Poste deine Anzeige für 30 Tage"
       publish_email: "wählen um E-Mail öffentlich anzuzeigen (du kannst auch einen anderen Kontaktweg in der Beschreibung angeben)"
     show:
       report: "Anzeige melden"
