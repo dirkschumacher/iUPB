@@ -1,7 +1,7 @@
 de:
   source: "Quelle"
   imprint: "Impressum"
-  user_generated_content: "Der oben angezeigte Inhalt wurde von den jeweils angegebenen Benutzern erstellt und stammt nicht von iUPB."
+  user_generated_content: "Der oben angezeigte Inhalt wurde von den jeweils angegebenen Benutzern erstellt und stammt nicht von iUPB/yippie.io."
   contact: "Schreib uns"
   login: "Login"
   logout: "Logout"
@@ -14,6 +14,7 @@ de:
   here_you_can_sign_up: "Hier kannst du dich direkt bei uns registrieren"
   forgot_your_password: "Passwort vergessen"
   or: oder
+  by: "von"
   loading: "Lade"
   ads:
     index:
@@ -34,9 +35,9 @@ de:
       save_button: "Poste deine Anzeige für 7 Tage"
       text: "Anzeigentext"
       enter_entry: "Kleinanzeige eingeben"
-      publish_email: "wählen um E-Mail öffentlich anzuzeigen (du kannst auch einen anderen Kontaktweg in der Beschreibung angeben)"
       dont_forget_contact: "Gib immer eine Möglchkeit an, wie man dich kontaktieren kann!"
       dont_forget_allpublic: "Nicht vergessen, die Informationen hier sind öffentlich zugänglich!"
+      publish_email: "wählen um E-Mail öffentlich anzuzeigen"
     show:
       report: "Anzeige melden"
       price: "Preis:"
