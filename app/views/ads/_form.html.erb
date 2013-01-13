@@ -33,11 +33,11 @@
 <div class="row">
   <div class="span12">
 <%= f.label :text %>
-<ul>
-<li><%= t ".dont_forget_contact" %></li>
-<li><%= t ".dont_forget_allpublic" %></li>
+<ul class="help-block">
+  <li><%= t ".dont_forget_contact" %></li>
+  <li><%= t ".dont_forget_allpublic" %></li>
 </ul>
-  <%= f.text_area :text, rows: 3, class: "autogrow", required: "required" %>
+  <%= f.text_area :text, rows: 3, class: "autogrow span8", required: "required" %>
    </div>
 </div>
   <%= f.label :photo %>
