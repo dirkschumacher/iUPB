@@ -7,15 +7,20 @@
 	<% end %>	
 	</h1>
 <% end %>
-<br>
-<%= render "search_field" %>
+<hr>
+<div class="row">
+	<div class="span6">
+		<%= render "search_field" %>
+	</div>
+	<div class="span6">
+		<%= link_to ('<button class="btn btn-success">' + t(".create") + '</button>').html_safe, new_ad_path %>
+	</div>
+</div>
 <ul>
 	<% @categories.each do |cat| %>
 		<li><%= link_to cat.name, ads_path(category: cat.id) %> (<%= cat.all_ads.count %>)</li>
 	<% end %>
 </ul>
-
-
 
 <h2><%= t ".ad_list_heading"%></h2>
 <div id="posts">

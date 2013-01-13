@@ -15,6 +15,10 @@ de:
   or: oder
   loading: "Lade"
   ads:
+    index:
+      ads_headline: "UPB Kleinanzeigen"
+      ad_list_heading: "Anzeigen:"
+      create: "Poste deine Anzeige"
     remove:
       button_delete: "Anzeige wirklich löschen"
       title: "Anzeige löschen"
