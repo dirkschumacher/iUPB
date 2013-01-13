@@ -60,7 +60,7 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     @ad.user = current_user if user_signed_in?
-    @ad.admin_token = random_token
+    @ad.ensure_admin_token
     if @ad.save
       redirect_to ads_path, notice: t(".notice_saved")
     else

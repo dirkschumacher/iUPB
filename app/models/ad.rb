@@ -49,4 +49,16 @@ class Ad
   def category_name
     self.ad_category.name
   end
+  
+  def ensure_admin_token
+    self.update_attribute(:admin_token, random_token) unless self.admin_token
+  end
+  
+  protected
+  #thanks: http://stackoverflow.com/a/88341
+  def random_token
+    o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+    (0...50).map{ o[rand(o.length)] }.join
+  end
+  
 end
