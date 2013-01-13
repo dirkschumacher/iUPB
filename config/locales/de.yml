@@ -28,8 +28,9 @@ de:
       introtext: "Erstelle Kleinanzeigen für Studierende und Mitarbeiter der Uni Paderborn. Mehr als 2.000 Nutzer pro Tag besuchen diesen Service."
     form:
       new_entry: "Kleinanzeige hinzufügen"
-      save_button: "Poste deine Anzeige für 30 Tage"
+      save_button: "Poste deine Anzeige für 7 Tage"
       text: "Anzeigentext"
+      publish_email: "E-Mail Adresse veröffentlichen"
     show:
       report: "Anzeige melden"
   marketing:
