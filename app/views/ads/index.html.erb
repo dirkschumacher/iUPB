@@ -25,10 +25,12 @@
 <div style="display:none;" id="post_list">
 <% @ads.each do |ad| %>
  <div class="single_post well">
-	<% if ad.photo? %>
+	<div style="text-align: center">
+	  <% if ad.photo? %>
 		<%= link_to image_tag(ad.photo.url(:square), class: "polaroid", size: "100x100"), ad %>
-	<% end %>
+	  <% end %>
 	<h4><%= link_to ad.title, ad %></h4>
+	</div>
 	<p class="expandable"><%= ad.text %></p>
  </div>
 <% end %>

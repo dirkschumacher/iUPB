@@ -1,7 +1,35 @@
 class AdsController < ApplicationController
   def index
     @categories = AdCategory.where(parent_id: params[:category]||nil)
-    @ads = @categories.flat_map(&:all_ads)
+    if params[:category]
+      @category = AdCategory.find(params[:category])
+    end
+
+    if params[:search] && !params[:search].empty?
+      qry = ->(query) do
+        query.string params[:search]
+      end
+      
+      @ads = Ad.tire.search do
+        query &qry
+        if @category
+          filter do
+            {:category_id => @category.id}
+          end
+        end
+        facet 'categories' do
+          terms :category_id
+        end
+      end
+      
+      pp @ads
+    else
+      if @category
+       @ads = @category.all_ads
+      else
+       @ads = @categories.flat_map(&:all_ads)
+      end
+    end
   end
 
   def new

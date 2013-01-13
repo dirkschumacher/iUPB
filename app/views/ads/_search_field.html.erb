@@ -1,5 +1,5 @@
 <%= form_tag ads_path, method: :get, id: "ads_search_form", class: "form-inline" %>
-	<input type="search" name="search" autocomplete="off" id="ads_search_field" placeholder="<%= t 'courses.index.search' %>..." value="<%= params[:query]||"" %>" > <input type="submit" value="<%= t 'courses.index.search' %>!" class="btn">
+	<input type="search" name="search" autocomplete="off" id="ads_search_field" placeholder="<%= t 'courses.index.search' %>..." value="<%= params[:search]||"" %>" > <input type="submit" value="<%= t 'courses.index.search' %>!" class="btn">
 	<% if params[:category] %>
 		<%= hidden_field_tag "category", params[:category] %>
 	<% end %>

@@ -7,13 +7,12 @@ class Ad
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
-  index_name "ads-#{Rails.env}"
-
   mapping do
     indexes :id,         :index    => :not_analyzed
     indexes :title,      :analyzer => 'snowball', :boost => 100
     indexes :text,       :analyzer => 'snowball'
     indexes :name,       :analyzer => 'keyword'
+    indexes :category_id, :index    => :not_analyzed
     indexes :category_name,       :analyzer => 'keyword'
     indexes :created_at, :type => 'date', :include_in_all => false
   end
