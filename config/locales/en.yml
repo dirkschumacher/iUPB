@@ -1,7 +1,7 @@
 en:
   source: "Source"
   imprint: "imprint"
-  user_generated_content: "The content shown above is user-generated and not created by iUPB."
+  user_generated_content: "The content shown above is user-generated and not created by iUPB/yippie.io."
   contact: "Write us"
   logout: "Logout"
   login: "Login"
@@ -14,6 +14,7 @@ en:
   here_you_can_sign_up: "Here you can sign up for a new account"
   forgot_your_password: "Forgot your password"
   or: or
+  by: "by"
   loading: "Loading"
   marketing:
     login_with_iupb: Use iUPB login
