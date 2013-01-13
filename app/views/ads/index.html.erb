@@ -1,11 +1,22 @@
 <% title t(".ads_headline", default: "Ads") %>
 	<%= content_for "page-attributes" do %>id="adsPage"<% end %>
 <% content_for :header do %>
-	<h1><%= link_to t(".ads_headline"), ads_path %>
-	<% if @category %>
-		 (<%= @category.breadcrumb %>)
-	<% end %>	
+	<h1><%= t(".ads_headline") %>
 	</h1>
+	
+	<% if @category %>
+		<ul class="breadcrumb">
+			<li><%= link_to t(".ads_headline"), ads_path %> <span class="divider">/</span></li>
+			<% @category.parents.each do |cat| %>
+				<% if cat == @category %>
+					<li><%= cat.name %></li>
+				<% else %>
+					<li><%= link_to cat.name, ads_path(category: cat.id) %> <span class="divider">/</span></li>
+				<% end %>
+			<% end %>
+		</ul>
+	<% end %>	
+	
 <% end %>
 <hr>
 <div class="row">
@@ -13,16 +24,15 @@
 		<%= render "search_field" %>
 	</div>
 	<div class="span6">
-		<%= link_to ('<button class="btn btn-success">' + t(".create") + '</button>').html_safe, new_ad_path %>
+		<%= link_to ('<button class="btn btn-success btn-primary">' + t(".create") + '</button>').html_safe, new_ad_path %>
 	</div>
 </div>
-<ul>
+<ul class="inline">
 	<% @categories.each do |cat| %>
 		<li><%= link_to cat.name, ads_path(category: cat.id) %> (<%= cat.all_ads.count %>)</li>
 	<% end %>
 </ul>
 
-<h2><%= t ".ad_list_heading"%></h2>
 <div id="posts">
 
 </div>
@@ -44,6 +54,10 @@
 
 <% content_for :javascript do %>
 <script>
+	$(".post_time_to_timeago").each(function() {
+		$this = $(this)
+	    $this.text($.timeago($this.text()))
+	});
 	$("#posts").append(window.iUPB.Ads.generateGrid($(".single_post")));
 	$(".expandable").expander({
 		expandText: '⬊',
@@ -53,10 +67,6 @@
 		expandSpeed: 250,
 		collapseEffect: 'fadeOut',
 		collapseSpeed: 200
-	});
-	$(".post_time_to_timeago").each(function() {
-		$this = $(this)
-        $this.text($.timeago($this.text()))
 	});
 </script>
 <% end %>

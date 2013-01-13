@@ -10,15 +10,15 @@
   </div>
 <% end %>
 <%= form_for @ad do |f| %>
-
+<div class="control-group">
   <%= f.label :ad_category %>
   <%= f.select :ad_category_id, AdCategory.all.map {|c| [ c.breadcrumb, c.id ] }.sort { |a,b| a.first <=> b.first }, { :include_blank => false } %>
-
-  <%= f.label :title %> <%= f.text_field :title %>
+  <%= f.label :title %> <div class="control"><%= f.text_field :title %></div>
  
   <%= f.label :name %> <%= f.text_field :name %>
 
   <%= f.label :email %> <%= f.email_field :email %> 
+</div>
 <br>
   <label for="ad_publish_email" class="checkbox"><i class="icon-eye-open"></i> <%= t(".publish_email") %>
   	<%= f.check_box :publish_email %>

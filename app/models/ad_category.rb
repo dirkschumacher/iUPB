@@ -25,7 +25,7 @@ class AdCategory
     until obj.parent.nil?
       parents_ar << obj.parent
       obj = obj.parent
-    end
+    end  
     parents_ar + [self]
   end
   
