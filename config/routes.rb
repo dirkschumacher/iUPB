@@ -24,7 +24,7 @@ IUPB::Application.routes.draw do
     match 'twitter' => 'pages#show', :id => 'twitter', :as => :twitter
     match 'courses' => 'courses#index', :as => :courses
     
-    resources :ads do
+    resources :ads, :path => "posts" do
       member do
         get 'remove'
         get 'report'
