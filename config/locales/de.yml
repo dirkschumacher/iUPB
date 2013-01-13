@@ -19,6 +19,7 @@ de:
       ads_headline: "UPB Kleinanzeigen"
       ad_list_heading: "Anzeigen:"
       create: "Poste deine Anzeige"
+      no_entries: "Keine Anzeigen bisher. Poste doch eine!"
     remove:
       button_delete: "Ich möchte die Anzeige wirklich löschen"
       title: "Anzeige löschen"

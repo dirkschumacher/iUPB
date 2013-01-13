@@ -32,7 +32,9 @@
 		<li><%= link_to cat.name, ads_path(category: cat.id) %> (<%= cat.all_ads.count %>)</li>
 	<% end %>
 </ul>
-
+<% if @ads.count == 0 %>
+	<p class="well center"><%= t ".no_entries" %></p>
+<% end %>
 <div id="posts">
 
 </div>
