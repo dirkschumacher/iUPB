@@ -10,23 +10,33 @@
   </div>
 <% end %>
 <%= form_for @ad do |f| %>
-<div class="control-group">
+<div class="row">
+	<div class="span6">
   <%= f.label :ad_category %>
   <%= f.select :ad_category_id, AdCategory.all.map {|c| [ c.breadcrumb, c.id ] }.sort { |a,b| a.first <=> b.first }, { :include_blank => false } %>
   <%= f.label :title %> <div class="control"><%= f.text_field :title %></div>
- 
+ </div><div class="span6">
   <%= f.label :name %> <%= f.text_field :name %>
 
   <%= f.label :email %> <%= f.email_field :email %> 
 </div>
-<br>
-  <label for="ad_publish_email" class="checkbox"><i class="icon-eye-open"></i> <%= t(".publish_email") %>
+</div>
+<div class="row">
+  <div class="span6">
+	<label for="ad_publish_email" class="checkbox"><i class="icon-eye-open"></i> <%= t(".publish_email") %>
   	<%= f.check_box :publish_email %>
   </label>
-  <%= f.label :price %> <%= f.text_field :price %>
-  <%= f.label :text %>
-  <%= f.text_area :text, rows: 3, class: "autogrow" %>
-  
+  </div>
+  <div class="span6">
+    <%= f.label :price %> <%= f.text_field :price %>
+  </div>
+</div>  
+<div class="row">
+  <div class="span12">
+<%= f.label :text %>
+  <%= f.text_area :text, rows: 3, class: "autogrow"%>
+   </div>
+</div>
   <%= f.label :photo %>
   <%= f.file_field :photo %>
   
