@@ -15,6 +15,7 @@ de:
   forgot_your_password: "Passwort vergessen"
   or: oder
   by: "von"
+  ad_updated: "Anzeige erfolgreich bearbeitet"
   loading: "Lade"
   ads:
     index:
@@ -27,6 +28,10 @@ de:
       button_delete: "Ich möchte die Anzeige wirklich löschen"
       title: "Anzeige löschen"
       ad_notfound: "Anzeige nicht gefunden"
+    edit:
+      title: "Anzeige editieren"
+      ad_not_found: "Anzeige nicht gefunden"
+      
     new:
       title: "Kleinanzeigen für die UPB"
       introtext: "Erstelle Kleinanzeigen für Studierende und Mitarbeiter der Uni Paderborn. Mehr als 2.000 Nutzer pro Tag besuchen iUPB. Benutze die Kleinanzeigen wie ein digitales schwarzes Brett. Poste, wenn du alte Bücher nicht mehr brauchst oder eine neue Wohnung suchst. Natürlich kannst du auch Dinge verkaufen, wir freuen uns freuen uns aber auch, wenn viele Dinge getauscht oder verschenkt würden!"

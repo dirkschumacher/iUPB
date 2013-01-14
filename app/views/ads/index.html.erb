@@ -5,7 +5,7 @@
 	</h1>
 	
 	<% if @category %>
-		<ul class="breadcrumb">
+		<ul id="posts_breadcrumb" class="breadcrumb">
 			<li><%= link_to t(".ads_headline"), ads_path %> <span class="divider">/</span></li>
 			<% @category.parents.each do |cat| %>
 				<% if cat == @category %>
