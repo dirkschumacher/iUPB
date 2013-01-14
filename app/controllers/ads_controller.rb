@@ -74,11 +74,12 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     @ad.user = current_user if user_signed_in?
-    if verify_recaptcha && @ad.save
+    if verify_recaptcha(model: @ad, message: t("recaptcha.errors.incorrect-captcha-sol")) && @ad.save
       @ad.ensure_admin_token
       AdMailer.ad_created_email(@ad).deliver
       redirect_to @ad, notice: t(".notice_saved")
     else
+      flash.delete(:recaptcha_error)
       render "new"
     end
   end

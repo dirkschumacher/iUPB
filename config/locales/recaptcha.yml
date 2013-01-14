@@ -2,8 +2,13 @@ en:
   recaptcha:
     errors:
       incorrect-captcha-sol: 'Invalid Captcha code'
+    
+  
 
 de:
   recaptcha:
     errors:
       incorrect-captcha-sol: 'Ungültiger Captcha-Code'
+    
+  
+
