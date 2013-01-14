@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+	<p><%= link_to image_tag("http://www.i-upb.de/apple-touch-icon-114.png", alt: "iUPB"), root_url(utm_source: "notice", utm_medium: "email", utm_campaign: "created_mail") %></p>
+    <h1>Links für <%= link_to @ad.title, ad_url(@ad, locale: "de", utm_source: "notice", utm_medium: "email", utm_campaign: "created_mail") %></h1>
+	<p><small>Links for <%= link_to @ad.title, ad_url(@ad, locale: "en", utm_source: "notice", utm_medium: "email", utm_campaign: "created_mail") %></small></p>
+    <p>
+      <%= link_to "Anzeige bearbeiten (Edit)", edit_ad_url(@ad, locale: nil, admin_token: @ad.admin_token) %>
+    </p>
+    <p>
+      <%= link_to "Anzeige löschen (Delete)", remove_ad_url(@ad, locale: nil, admin_token: @ad.admin_token) %><br/>
+    </p>
+	<p>Danke, dass du iUPB nutzt. Noch einen schönen Tag! :)</p>
+    <p><small>Thanks for using iUPB and have a great day! :)</small></p>
+	<hr>
+	<p><small>Do not reply! Contact us via <%= mail_to "support@yippie.io" %></small></p>
+  </body>
+</html>

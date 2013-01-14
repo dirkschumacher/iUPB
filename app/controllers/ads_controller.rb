@@ -40,9 +40,11 @@ class AdsController < ApplicationController
   def edit
     @ad = Ad.where(admin_token: params[:admin_token]).first
   end
+  
   def update
     
   end
+  
   def remove
     @ad = Ad.where(admin_token: params[:admin_token]).first
   end
@@ -63,7 +65,8 @@ class AdsController < ApplicationController
     @ad.user = current_user if user_signed_in?
     @ad.ensure_admin_token
     if @ad.save
-      redirect_to ads_path, notice: t(".notice_saved")
+      AdMailer.ad_created_email(@ad).deliver
+      redirect_to @ad, notice: t(".notice_saved")
     else
       render "new"
     end
