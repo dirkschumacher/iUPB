@@ -43,14 +43,11 @@ class AdsController < ApplicationController
   end
   
   def update
-    @ad = Ad.where(admin_token: params[:ad][:admin_token]).first
-    if @ad.blank? 
-      redirect_to ads_path
-    elsif @ad.update_attributes params[:ad]
-      flash[:success] = t ".ad_updated"
-      redirect_to @ad
+    @ad = Ad.where(admin_token: params[:admin_token]).first
+    if @ad.update_attributes(params[:ad])
+      redirect_to @ad, notice: t(".notice_saved")
     else
-      redirect_to edit_ad_path @ad, admin_token: @ad.admin_token 
+      render "edit"
     end
   end
   

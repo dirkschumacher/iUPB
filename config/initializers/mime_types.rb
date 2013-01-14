@@ -4,4 +4,3 @@
 # Mime::Type.register "text/richtext", :rtf
 # Mime::Type.register_alias "text/html", :iphone
 Mime::Type.register "font/woff", :woff
-Mime::Type.register "text/calendar", :ics
