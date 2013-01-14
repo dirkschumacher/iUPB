@@ -17,6 +17,7 @@ de:
   by: "von"
   ad_updated: "Anzeige erfolgreich bearbeitet"
   loading: "Lade"
+  notice_saved: "Gespeichert!"
   ads:
     index:
       ads_headline: "UPB Kleinanzeigen"
@@ -31,7 +32,6 @@ de:
     edit:
       title: "Anzeige editieren"
       ad_not_found: "Anzeige nicht gefunden"
-      
     new:
       title: "Kleinanzeigen für die UPB"
       introtext: "Erstelle Kleinanzeigen für Studierende und Mitarbeiter der Uni Paderborn. Mehr als 2.000 Nutzer pro Tag besuchen iUPB. Benutze die Kleinanzeigen wie ein digitales schwarzes Brett. Poste, wenn du alte Bücher nicht mehr brauchst oder eine neue Wohnung suchst. Natürlich kannst du auch Dinge verkaufen, wir freuen uns freuen uns aber auch, wenn viele Dinge getauscht oder verschenkt würden!"
@@ -48,7 +48,8 @@ de:
       price: "Preis:"
       report_sure: "Anzeige wirklich an den iUPB-Support melden?"
       viewed_count: "Anzeige wurde %{count} mal aufgerufen"
-      created: erstellt
+      created: "erstellt"
+      last_edit_at: "Zuletzt editiert:"
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."
@@ -149,6 +150,7 @@ de:
       course_details: 'Kursansicht'
     room_na: 'N.N.'
     index:
+      title: "Paul"
       search: "Suche"
       type_and_find: "Suche nach Kursnamen, Raum, Dozenten, etc."
       no_results: "Keine Kurse gefunden. Probier\\'s noch einmal :)"

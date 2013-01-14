@@ -46,6 +46,10 @@ class Ad
   
   validates :name, :text, :email, :admin_token, presence: true
   
+  validates :name, length: { maximum: 100 }
+  validates :title, length: { maximum: 100 }
+  validates :price, length: { maximum: 20 }
+  validates :email, length: { maximum: 60 }
   def track_view
     self.inc(:views, 1)
   end
