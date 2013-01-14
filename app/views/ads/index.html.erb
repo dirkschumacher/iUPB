@@ -48,7 +48,7 @@
 	  <% end %>
 	<h4><%= link_to ad.title, ad %></h4>
     <p class="post_time_to_timeago"><%= ad.created_at %></p>
-	<% if ad.price %>
+	<% unless ad.price.blank? %>
     	<p><%= t ".price" %> <%= ad.price %></p>
 	<% end %>
 	</div>
@@ -65,8 +65,8 @@
 	});
 	$("#posts").append(window.iUPB.Ads.generateGrid($(".single_post")));
 	$(".expandable").expander({
-		expandText: '⬊',
-		userCollapseText: '⬉',
+		expandText: '<%= t "forty_years.index.read_more" %>',
+		userCollapseText: '<%= t "forty_years.index.read_less" %>',
 		expandPrefix: '&hellip; ',
 		expandEffect: 'fadeIn',
 		expandSpeed: 250,

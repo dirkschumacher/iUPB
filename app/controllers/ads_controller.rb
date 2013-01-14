@@ -42,7 +42,12 @@ class AdsController < ApplicationController
   end
   
   def update
-    
+    @ad = Ad.where(admin_token: params[:admin_token]).first
+    if @ad.update_attributes(params[:ad])
+      redirect_to @ad, notice: t(".notice_saved")
+    else
+      render "edit"
+    end
   end
   
   def remove

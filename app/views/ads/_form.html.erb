@@ -10,6 +10,7 @@
   </div>
 <% end %>
 <%= form_for @ad do |f| %>
+ <%= hidden_field_tag :admin_token, @ad.admin_token %>
 <div class="row">
 	<div class="span6">
   <%= f.label :ad_category %>
