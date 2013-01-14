@@ -25,6 +25,7 @@ de:
       ad_list_heading: "Anzeigen:"
       create: "Poste deine Anzeige"
       no_entries: "Keine Anzeigen bisher. Poste doch eine!"
+    ad:
       price: "Preis:"
     remove:
       button_delete: "Ich möchte die Anzeige wirklich löschen"

@@ -40,21 +40,7 @@
 </div>
 
 <div style="display:none;" id="post_list">
-<% @ads.each do |ad| %>
- <div class="single_post well">
-	<div style="text-align: center">
-	  <% if ad.square_photo_url %>
-		<%= link_to image_tag(ad.square_photo_url, class: "polaroid", size: "100x100"), ad %>
-	  <% end %>
-	<h4><%= link_to ad.title, ad %></h4>
-    <p class="post_time_to_timeago"><%= ad.created_at %></p>
-	<% unless ad.price.blank? %>
-    	<p><%= t ".price" %> <%= ad.price %></p>
-	<% end %>
-	</div>
-	<p class="expandable"><%= ad.text %></p>
- </div>
-<% end %>
+<%= render @ads %>
 </div>
 
 <% content_for :javascript do %>

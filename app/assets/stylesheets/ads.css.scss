@@ -31,3 +31,8 @@
 	display: inline;
 }
 
+.single_post {
+	& h4, & .expandable {
+		word-wrap:break-word;
+	}
+}
