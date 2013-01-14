@@ -18,6 +18,7 @@ de:
   ad_updated: "Anzeige erfolgreich bearbeitet"
   loading: "Lade"
   notice_saved: "Gespeichert!"
+  success: "Hurray!"
   ads:
     index:
       ads_headline: "UPB Kleinanzeigen"
