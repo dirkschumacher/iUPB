@@ -5,7 +5,7 @@
 <% end %>
 
 <p class="well"><%= @ad.text %></p>
-<% if @ad.price %>
+<% if @ad.price? %>
    	<p><%= t ".price" %> <%= @ad.price %></p>
 <% end %>
 
