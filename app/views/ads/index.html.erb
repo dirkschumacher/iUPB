@@ -27,7 +27,7 @@
 		<%= link_to ('<button class="btn btn-success btn-primary">' + t(".create") + '</button>').html_safe, new_ad_path %>
 	</div>
 </div>
-<ul class="inline">
+<ul id="posts_categories" class="inline">
 	<% @categories.each do |cat| %>
 		<li><%= link_to cat.name, ads_path(category: cat.id) %> (<%= cat.all_ads.count %>)</li>
 	<% end %>

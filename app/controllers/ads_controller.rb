@@ -1,6 +1,6 @@
 class AdsController < ApplicationController
   def index
-    @categories = AdCategory.where(parent_id: params[:category]||nil)
+    @categories = AdCategory.where(parent_id: params[:category]||nil).asc(:name)
     if params[:category]
       @category = AdCategory.find(params[:category])
     end
@@ -29,6 +29,7 @@ class AdsController < ApplicationController
       else
        @ads = @categories.flat_map(&:all_ads)
       end
+      @ads = @ads.sort {|a,b| b <=> a}
     end
   end
 
