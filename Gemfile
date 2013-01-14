@@ -20,6 +20,7 @@ gem 'yajl-ruby', :require => "yajl"
 gem "koala"
 gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
 gem "haml"
+gem "recaptcha", :require => "recaptcha/rails"
 gem "ri_cal"
 
 gem 'mongoid_slug', :git => "git://github.com/digitalplaywright/mongoid-slug.git", ref: "7f99b27b26d460a5e12bba9accccd1dd215073c8" # Mongoid2 /  https://github.com/digitalplaywright/mongoid-slug/issues/100#issuecomment-10030053

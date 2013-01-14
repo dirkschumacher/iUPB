@@ -47,3 +47,6 @@ end
 require 'pp'
 
 ENV["ios_webapp_notice"] = "true"
+
+ENV["RECAPTCHA_PUBLIC_KEY"] = "6LeVjdsSAAAAAD0_78kykevDifYnnraGUpXKZks7"
+ENV["RECAPTCHA_PRIVATE_KEY"] = "6LeVjdsSAAAAAFpHw7lXSTKrUOKHTBkG5UaZN5mf"

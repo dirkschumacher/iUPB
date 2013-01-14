@@ -41,10 +41,19 @@
   <%= f.text_area :text, rows: 3, class: "autogrow span8", required: "required" %>
    </div>
 </div>
-  <%= f.label :photo %>
-  <%= f.file_field :photo %>
-  
-  <br>
+
+<div class="row">
+  <div class="span6">
+    <%= f.label :photo %>
+	  <%= f.file_field :photo %>
+  </div>
+  <div class="span6">
+	<% unless @ad.persisted? %>
+     <%= recaptcha_tags display: {theme: "clean"} %>
+	<% end %>
+  </div>
+</div>
+   <br>
   <%= f.submit t(".save_button"), :class => "btn btn-primary" %>
 <% end %>
 

@@ -44,7 +44,7 @@ class Ad
   
   validates :title, :name, :text, :email, :ad_category_id, presence: true
   
-  validates :name, :text, :email, :admin_token, presence: true
+  validates :name, :text, :email, presence: true
   
   def track_view
     self.inc(:views, 1)
@@ -63,6 +63,10 @@ class Ad
   
   def square_photo_url
     self.photo.url(:square) if self.photo?
+  end
+  
+  def normalized_views
+    - (self.views / (Time.now - self.created_at)) * 10000
   end
   
   protected

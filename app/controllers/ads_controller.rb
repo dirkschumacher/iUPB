@@ -30,6 +30,8 @@ class AdsController < ApplicationController
        @ads = @categories.flat_map(&:all_ads)
       end
     end
+    
+    @ads = @ads.sort { |a, b| a.normalized_views <=> b.normalized_views }
   end
 
   def new
@@ -43,10 +45,14 @@ class AdsController < ApplicationController
   
   def update
     @ad = Ad.where(admin_token: params[:admin_token]).first
-    if @ad.update_attributes(params[:ad])
-      redirect_to @ad, notice: t(".notice_saved")
+    if @ad
+      if @ad.update_attributes(params[:ad])
+        redirect_to @ad, notice: t(".notice_saved")
+      else
+        render "edit"
+      end
     else
-      render "edit"
+      redirect_to ads_path, notice: t(".not_found")
     end
   end
   
@@ -68,8 +74,8 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     @ad.user = current_user if user_signed_in?
-    @ad.ensure_admin_token
-    if @ad.save
+    if verify_recaptcha && @ad.save
+      @ad.ensure_admin_token
       AdMailer.ad_created_email(@ad).deliver
       redirect_to @ad, notice: t(".notice_saved")
     else
