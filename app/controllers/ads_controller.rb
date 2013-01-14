@@ -29,10 +29,9 @@ class AdsController < ApplicationController
       else
        @ads = @categories.flat_map(&:all_ads)
       end
-      @ads = @ads.sort {|a,b| b <=> a}
+      @ads = @ads.sort { |a, b| a.normalized_views <=> b.normalized_views }
     end
     
-    @ads = @ads.sort { |a, b| a.normalized_views <=> b.normalized_views }
   end
 
   def new
