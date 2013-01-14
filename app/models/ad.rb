@@ -1,6 +1,7 @@
 class Ad
   include Mongoid::Document
   include Mongoid::Timestamps::Created
+  include Mongoid::Timestamps::Updated
   include Mongoid::Slug
   include Mongoid::Paperclip
   
