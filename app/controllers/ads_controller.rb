@@ -33,6 +33,12 @@ class AdsController < ApplicationController
     end
     
     @ads = @ads.sort { |a, b| a.normalized_views <=> b.normalized_views }
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @ads, except: [:admin_token, :email, :publish_email, :user_id] }
+      format.atom
+    end
   end
 
   def new

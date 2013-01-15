@@ -50,6 +50,8 @@ class Ad
   validates :title, length: { maximum: 100 }
   validates :price, length: { maximum: 20 }
   validates :email, length: { maximum: 60 }
+  validates :text, length: { minimum: 10 }
+  
   def track_view
     self.inc(:views, 1)
   end

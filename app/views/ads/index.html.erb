@@ -43,6 +43,10 @@
 <%= render @ads %>
 </div>
 
+
+
+<% content_for :head, auto_discovery_link_tag(:atom, ads_path(format: :atom)) %>
+
 <% content_for :javascript do %>
 <script>
 	$(".post_time_to_timeago").each(function() {
