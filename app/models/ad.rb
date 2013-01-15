@@ -71,6 +71,10 @@ class Ad
     self.photo.url(:square) if self.photo?
   end
   
+  
+  # the "super cool ranking algorithm" is 
+  # "a multifactor, linear and continuous-time model based ranking algorithm"
+  # we use for ordering our ads ;)
   def normalized_views
     - (self.views / (Time.now - self.created_at)) * 10000
   end

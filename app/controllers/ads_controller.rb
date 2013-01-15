@@ -5,7 +5,7 @@ class AdsController < ApplicationController
       @category = AdCategory.find(params[:category])
     end
 
-    if params[:q] && !params[:q].empty?
+    if params[:q] && !params[:q].empty? # we have a search
       qry = ->(query) do
         query.string params[:q]
       end
@@ -23,16 +23,14 @@ class AdsController < ApplicationController
       end
       
       pp @ads #DEBUG
-    else
+    else # nope, no search, normal index
       if @category
-       @ads = @category.all_ads
+        @ads = @category.all_ads
       else
-       @ads = @categories.flat_map(&:all_ads)
+        @ads = @categories.flat_map(&:all_ads)
       end
-      @ads = @ads.sort {|a,b| b <=> a}
-    end
-    
-    @ads = @ads.sort { |a, b| a.normalized_views <=> b.normalized_views }
+      @ads = @ads.sort { |a, b| a.normalized_views <=> b.normalized_views }
+    end 
     
     respond_to do |format|
       format.html
