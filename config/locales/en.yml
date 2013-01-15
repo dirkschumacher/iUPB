@@ -16,6 +16,44 @@ en:
   or: or
   by: "by"
   loading: "Loading"
+  ad_updated: "Post was modified"
+  notice_saved: "Saved!"
+  success: "Hurray!"
+  ads:
+    index:
+      ads_headline: "Local UPB Ads"
+      ad_list_heading: "Ads:"
+      create: "Post your ad"
+      no_entries: "No ads so far. Post one!"
+    ad:
+      price: "Price:"
+    remove:
+      button_delete: "I would really like to delete this ad"
+      title: "Delete ad"
+      ad_notfound: "Ad not found"
+    edit:
+      title: "Edit ad"
+      ad_not_found: "Ad not found"
+    new:
+      title: "Local ads for UPB"
+      introtext: "Erstelle Kleinanzeigen für Studierende und Mitarbeiter der Uni Paderborn. Mehr als 2.000 Nutzer pro Tag besuchen iUPB. Benutze die Kleinanzeigen wie ein digitales schwarzes Brett. Poste, wenn du alte Bücher nicht mehr brauchst oder eine neue Wohnung suchst. Natürlich kannst du auch Dinge verkaufen, wir freuen uns freuen uns aber auch, wenn viele Dinge getauscht oder verschenkt würden!"
+    form:
+      new_entry: "Post your ad"
+      save_button: "Post your ad for 7 days"
+      text: "Text"
+      enter_entry: "Write your ad"
+      dont_forget_contact: "Always post contact details"
+      dont_forget_allpublic: "Keep in mind that the description of the ad is publicly available"
+      publish_email: "check if you want to publish your mail address"
+    show:
+      report: "Report ad"
+      price: "Price:"
+      report_sure: "Do you really want to report this ad to iUPB-Support?"
+      viewed_count:
+          one: viewed only once 
+          other: "viewed %{count} times"
+      created: "created"
+      last_edit_at: "Last edit:"
   marketing:
     login_with_iupb: Use iUPB login
     login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
