@@ -20,7 +20,7 @@
 		if column_count == options["columns"] or index == elements.length - 1
 			grid.append(current_row)
 			current_row = false
-			column_count = 0
+			column_count = 1
 		else
 			column_count++
 		return
