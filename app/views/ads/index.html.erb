@@ -45,7 +45,7 @@
 
 
 
-<% content_for :head, auto_discovery_link_tag(:atom, ads_path(format: :atom)) %>
+<% content_for :head, auto_discovery_link_tag(:atom, params.merge({format: :atom, locale: nil}), {title: "iUPB Kleinanzeigen #{@category ? "("+@category.name+")" : "Feed"}"}) %>
 
 <% content_for :javascript do %>
 <script>
