@@ -21,10 +21,10 @@ de:
   success: "Hurray!"
   ads:
     index:
-      ads_headline: "UPB Kleinanzeigen"
-      ad_list_heading: "Anzeigen:"
-      create: "Poste deine Anzeige"
-      no_entries: "Keine Anzeigen bisher. Poste doch eine!"
+      ads_headline: "Schwarzes Brett"
+      ad_list_heading: "Übersicht:"
+      create: "Poste etwas!"
+      no_entries: "Noch nichts gepostet. Poste doch etwas!"
     ad:
       price: "Preis:"
     remove:
@@ -35,21 +35,21 @@ de:
       title: "Anzeige editieren"
       ad_not_found: "Anzeige nicht gefunden"
     new:
-      title: "Kleinanzeigen für die UPB"
-      introtext: "Erstelle Kleinanzeigen für Studierende und Mitarbeiter der Uni Paderborn. Mehr als 2.000 Nutzer pro Tag besuchen iUPB. Benutze die Kleinanzeigen wie ein digitales schwarzes Brett. Poste, wenn du alte Bücher nicht mehr brauchst oder eine neue Wohnung suchst. Natürlich kannst du auch Dinge verkaufen, wir freuen uns freuen uns aber auch, wenn viele Dinge getauscht oder verschenkt würden!"
+      title: "Etwas Neues auf dem schwarzen Brett veröffentlichen"
+      introtext: "Veröffentliche etwas auf dem schwarzen Brett der Uni Paderborn und erreich' mehr als 2.000 Benutzer täglich! Poste, wenn du alte Bücher nicht mehr brauchst, eine neue Wohnung suchst oder sonst etwas wichtiges für alle mitzuteilen hast."
     form:
-      new_entry: "Kleinanzeige hinzufügen"
-      save_button: "Poste deine Anzeige für 7 Tage"
+      new_entry: "Anzeige hinzufügen"
+      save_button: "Posten für 7 Tage"
       text: "Anzeigentext"
       enter_entry: "Kleinanzeige eingeben"
       dont_forget_contact: "Gib immer eine Möglchkeit an, wie man dich kontaktieren kann!"
       dont_forget_allpublic: "Nicht vergessen, die Informationen hier sind öffentlich zugänglich!"
       publish_email: "wählen um E-Mail öffentlich anzuzeigen"
     show:
-      report: "Anzeige melden"
+      report: "Melden"
       price: "Preis:"
-      report_sure: "Anzeige wirklich an den iUPB-Support melden?"
-      viewed_count: "Anzeige wurde %{count} mal aufgerufen"
+      report_sure: "Wirklich an den iUPB-Support melden?"
+      viewed_count: "Dies wurde %{count} mal aufgerufen"
       created: "erstellt"
       last_edit_at: "Zuletzt editiert:"
   marketing:
@@ -201,7 +201,7 @@ de:
       no_buses_at_station: "Es fahren gerade keine Busse"
   layouts:
     application:
-      ads: "Kleinanzeigen"
+      ads: "Schwarzes Brett"
       menu: "Speisepläne"
       weather: "Wetter"
       buses: "Bus-Zeiten"
