@@ -74,6 +74,7 @@ IUPB::Application.configure do
   # https://devcenter.heroku.com/articles/paperclip-s3
   config.paperclip_defaults = {
      :storage => :s3,
+     :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 10.years.from_now.httpdate },
      :s3_credentials => {
        :bucket => ENV['AWS_BUCKET'],
        :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
