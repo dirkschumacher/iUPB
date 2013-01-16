@@ -12,7 +12,7 @@
 	<%= image_tag @ad.photo.url(:medium), class: "polaroid" %>
 <% end %>
 
-<p class="well"><%= simple_format h(@ad.text) %></p>
+<%= simple_format(h(@ad.text), class: "well") %>
 <% if @ad.price? %>
    	<p><%= t ".price" %> <%= @ad.price %></p>
 <% end %>

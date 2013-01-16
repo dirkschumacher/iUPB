@@ -18,6 +18,7 @@ en:
   loading: "Loading"
   ad_updated: "Post was modified"
   notice_saved: "Saved!"
+  notice_deleted: "Removed!"
   success: "Hurray!"
   ads:
     index:

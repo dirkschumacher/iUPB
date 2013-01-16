@@ -18,6 +18,7 @@ de:
   ad_updated: "Anzeige erfolgreich bearbeitet"
   loading: "Lade"
   notice_saved: "Gespeichert!"
+  notice_deleted: "Gelöscht!"
   success: "Hurray!"
   ads:
     index:
