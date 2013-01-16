@@ -134,6 +134,8 @@ de:
       current_data: "Aktuelle Daten"
       today: "heute"
       current_temperature: "Aktuelle Temperatur"
+      min: "min"
+      max: "max"
   please_wait: "Bitte warten..."
   courses:
     gone:
