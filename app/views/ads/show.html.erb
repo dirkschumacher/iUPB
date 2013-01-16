@@ -1,4 +1,12 @@
 <%  title t("layouts.application.ads") + ": " +  @ad.title %>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <h1><%= link_to '<i class="icon-arrow-left"></i>'.html_safe, ads_path, id: "back-button"  %> <%= @ad.title %></h1>
 <% if @ad.photo? %>
 	<%= image_tag @ad.photo.url(:medium), class: "polaroid" %>
@@ -39,6 +47,7 @@
   </div>
 </div>
 
+<div class="fb-comments" data-href="<%= CGI.escape(request.protocol+request.host_with_port+request.fullpath)%>" data-width="470" data-num-posts="2"></div>
 
 
 <% content_for :javascript do %>
