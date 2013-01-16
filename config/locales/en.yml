@@ -53,7 +53,7 @@ en:
           one: viewed only once 
           other: "viewed %{count} times"
       created: "created"
-      last_edit_at: "Last edit:"
+      last_edit_at: "Last edit at: "
   marketing:
     login_with_iupb: Use iUPB login
     login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
