@@ -73,7 +73,7 @@ IUPB::Application.configure do
 
 end
 require 'newrelic_rpm'
-def pp
+def pp(*args)
   true
 end
 
