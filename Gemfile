@@ -26,7 +26,6 @@ gem "ri_cal"
 gem 'mongoid_slug', :git => "git://github.com/digitalplaywright/mongoid-slug.git", ref: "7f99b27b26d460a5e12bba9accccd1dd215073c8" # Mongoid2 /  https://github.com/digitalplaywright/mongoid-slug/issues/100#issuecomment-10030053
 
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
-gem "aws-s3",            :require => "aws/s3"
 gem "tire"
 
 gem "js-routes" # https://github.com/railsware/js-routes
@@ -55,12 +54,14 @@ group :production do
 	gem 'dalli'
 	gem 'kgio'
 	gem "sourceninja", "~> 0.9.0"
+	gem "aws-sdk"
 end
 group :staging do
 	gem "unicorn"
 	gem 'newrelic_rpm', '>= 3.5.3.25'
 	gem 'dalli'
 	gem 'kgio'
+	gem "aws-sdk"
 end
 
 
