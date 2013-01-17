@@ -19,9 +19,9 @@
 <div class="well">
   <%= simple_format(h(@ad.text)) %>
 </div>
-<% unless @youtube_videos.blank? || @youtube_videos.empty? %>
-    <h4><%= t(".video_detected", count: @youtube_videos.length) %></h4>
-	<% @youtube_videos.each do |video| %>
+<% unless @videos.blank? || @videos.empty? %>
+    <h4><%= t(".video_detected", count: @videos.length) %></h4>
+	<% @videos.each do |video| %>
 	<p><%= video.html.html_safe %></p>
 	<% end %>
 <% end %>
