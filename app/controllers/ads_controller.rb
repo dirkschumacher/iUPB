@@ -80,7 +80,7 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     @ad.user = current_user if user_signed_in?
-    unless @ad.photo
+    if @ad.photo.blank?
       video = extract_youtube_videos(@ad.text).first
       @ad.alternative_thumbnail_url = video.thumbnail_url unless video.blank? || video.thumbnail_url.blank?
     end
