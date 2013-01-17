@@ -74,6 +74,16 @@ class AdsController < ApplicationController
   def show
     @ad = Ad.find(params[:id])
     @ad.track_view
+    urls = URI.extract @ad.text
+    pp urls
+    urls_converted = urls.map { |url| 
+                                if url.blank? 
+                                  url 
+                                else 
+                                  OEmbed::Providers::Youtube.get(url) 
+                                end
+                              }
+    @youtube_videos = urls_converted.keep_if(&:video?).slice 0,2
   end
 
   def create

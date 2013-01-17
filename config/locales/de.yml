@@ -46,6 +46,9 @@ de:
       dont_forget_allpublic: "Nicht vergessen, die Informationen hier sind öffentlich zugänglich!"
       publish_email: "wählen um E-Mail öffentlich anzuzeigen"
     show:
+      video_detected:
+        zero: "Video im Text"
+        other: "Videos im Text"
       report: "Melden"
       price: "Preis:"
       report_sure: "Wirklich an den iUPB-Support melden?"

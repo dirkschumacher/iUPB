@@ -46,6 +46,9 @@ en:
       dont_forget_allpublic: "Keep in mind that the description is publicly available"
       publish_email: "check if you want to publish your mail address"
     show:
+      video_detected:
+          zero: "Video detected"
+          other: "Videos detected"
       report: "Report ad"
       price: "Price:"
       report_sure: "Do you really want to report this ad to iUPB-Support?"
