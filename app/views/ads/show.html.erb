@@ -42,7 +42,7 @@
 		 (<%= mail_to @ad.email, @ad.email, encode: :javascript, subject: "#{@ad.title.truncate(30)} auf iUPB" %>)
 	<% end %>
 	<% unless @ad.updated_at.blank? %>
-		| <%= t ".last_edit_at "%> <span class="post_time_to_timeago" style="display:none"><%= @ad.updated_at %></span>
+		| <%= t ".last_edit_at" %> <span class="post_time_to_timeago" style="display:none"><%= @ad.updated_at %></span>
 	<% end %>
 	</small></p>
   </div>
