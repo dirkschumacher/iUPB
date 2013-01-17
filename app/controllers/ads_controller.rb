@@ -51,7 +51,8 @@ class AdsController < ApplicationController
   def update
     @ad = Ad.where(admin_token: params[:admin_token]).first
     if @ad
-      if @ad.update_attributes(params[:ad])
+      set_youtube_thumbnail @ad
+      if @ad.update_attributes(params[:ad]) && @ad.update #Can be done better, I know
         redirect_to @ad, notice: t(".notice_saved")
       else
         render "edit"
@@ -80,12 +81,9 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     @ad.user = current_user if user_signed_in?
-    if @ad.photo.blank?
-      video = extract_youtube_videos(@ad.text).first
-      @ad.alternative_thumbnail_url = video.thumbnail_url unless video.blank? || video.thumbnail_url.blank?
-    end
+    set_youtube_thumbnail @ad
+    @ad.ensure_admin_token
     if verify_recaptcha(model: @ad, message: t("recaptcha.errors.incorrect-captcha-sol")) && @ad.save
-      @ad.ensure_admin_token
       AdMailer.ad_created_email(@ad).deliver
       redirect_to @ad, notice: t(".notice_saved")
     else
@@ -109,6 +107,14 @@ class AdsController < ApplicationController
   end
   
   protected
+  
+  def set_youtube_thumbnail (ad)
+    if ad.photo.blank?
+      video = extract_youtube_videos(ad.text).first
+      ad.alternative_thumbnail_url = video.thumbnail_url unless video.blank? || video.thumbnail_url.blank?
+    end
+  end
+  
   def extract_youtube_videos (html_string)
     urls = URI.extract html_string
     urls_converted = urls.uniq.map { |url| 
