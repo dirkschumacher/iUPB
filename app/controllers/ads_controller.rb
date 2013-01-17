@@ -92,8 +92,7 @@ class AdsController < ApplicationController
   def report
     @ad = Ad.find(params[:id])
     @contact = ContactUs::Contact.new
-    @contact.subject = "REPORT: #{@ad.title} by #{@ad.name}"
-    @contact.message = "DELETE: #{remove_ad_url(@ad, admin_token: @ad.admin_token)}\n" + 
+    @contact.message = "#{@ad.title} by #{@ad.name}/#{@ad.email} \n\nVIEW: #{ad_url(@ad)} \n\n DELETE: #{remove_ad_url(@ad, admin_token: @ad.admin_token)}\n\n" + 
       "EDIT: #{edit_ad_url(@ad, admin_token: @ad.admin_token)}"
     @contact.email = "support@yippie.io"
 
