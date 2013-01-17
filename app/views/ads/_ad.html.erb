@@ -2,6 +2,8 @@
 	<div style="text-align: center">
 	  <% if ad.square_photo_url %>
 		<%= link_to image_tag(ad.square_photo_url, class: "polaroid", size: "100x100"), ad %>
+	  <% elsif ad.alternative_thumbnail_url %>
+			<%= link_to image_tag(ad.alternative_thumbnail_url, class: "polaroid", size: "100x100"), ad %>
 	  <% end %>
 	<h4><%= link_to ad.title, ad %></h4>
     <p class="post_time_to_timeago"><%= ad.created_at %></p>

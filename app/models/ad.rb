@@ -27,6 +27,7 @@ class Ad
   field :name, type: String
   field :text, type: String
   field :email, type: String
+  field :alternative_thumbnail_url, type: String
   field :admin_token, type: String
   field :price, type: String
   field :publish_email, type: Boolean, default: false

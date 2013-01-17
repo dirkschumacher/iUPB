@@ -74,24 +74,16 @@ class AdsController < ApplicationController
   def show
     @ad = Ad.find(params[:id])
     @ad.track_view
-    urls = URI.extract @ad.text
-    urls_converted = urls.uniq.map { |url| 
-                                if url.blank? 
-                                  nil 
-                                else 
-                                  begin 
-                                    OEmbed::Providers::Youtube.get url 
-                                  rescue
-                                    nil
-                                  end
-                                end
-                              }
-    @youtube_videos = urls_converted.compact.keep_if(&:video?).slice 0,2
+    @youtube_videos = extract_youtube_videos(@ad.text).slice 0,2
   end
 
   def create
     @ad = Ad.new(params[:ad])
     @ad.user = current_user if user_signed_in?
+    unless @ad.photo
+      video = extract_youtube_videos(@ad.text).first
+      @ad.alternative_thumbnail_url = video.thumbnail_url unless video.blank? || video.thumbnail_url.blank?
+    end
     if verify_recaptcha(model: @ad, message: t("recaptcha.errors.incorrect-captcha-sol")) && @ad.save
       @ad.ensure_admin_token
       AdMailer.ad_created_email(@ad).deliver
@@ -114,5 +106,22 @@ class AdsController < ApplicationController
     else
       redirect_to(ad_path(@ad), :notice => t('.error')) 
     end
+  end
+  
+  protected
+  def extract_youtube_videos (html_string)
+    urls = URI.extract html_string
+    urls_converted = urls.uniq.map { |url| 
+                                if url.blank? 
+                                  nil 
+                                else 
+                                  begin 
+                                    OEmbed::Providers::Youtube.get url 
+                                  rescue
+                                    nil
+                                  end
+                                end
+                              }
+    urls_converted.compact.keep_if(&:video?)
   end
 end
