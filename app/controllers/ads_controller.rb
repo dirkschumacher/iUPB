@@ -68,7 +68,7 @@ class AdsController < ApplicationController
   
   def destroy
     @ad = Ad.where(admin_token: params[:admin_token])
-    @ad.delete
+    @ad.destroy
     redirect_to ads_path, notice: t(".notice_deleted")
   end
   
