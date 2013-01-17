@@ -48,7 +48,7 @@ en:
       publish_email: "check if you want to publish your mail address"
     show:
       video_detected:
-          zero: "Video detected"
+          one: "Video detected"
           other: "Videos detected"
       report: "Report ad"
       price: "Price:"

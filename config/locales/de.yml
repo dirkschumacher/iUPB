@@ -48,7 +48,7 @@ de:
       publish_email: "wählen um E-Mail öffentlich anzuzeigen"
     show:
       video_detected:
-        zero: "Video im Text"
+        one: "Video im Text"
         other: "Videos im Text"
       report: "Melden"
       price: "Preis:"
