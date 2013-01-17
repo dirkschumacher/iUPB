@@ -37,6 +37,7 @@ de:
       ad_not_found: "Anzeige nicht gefunden"
     new:
       title: "Etwas Neues auf der Pinnwand veröffentlichen"
+      you_ll_get_an_email: "Nach dem Erstellen bekommst du eine Email mit Links, so dass du deine Anzeige selbstständig löschen oder ändern kannst."
       introtext: "Veröffentliche etwas auf dem Pinnwand der Uni Paderborn und erreich' mehr als 2.000 Benutzer täglich! Poste, wenn du alte Bücher nicht mehr brauchst, eine neue Wohnung suchst oder sonst etwas wichtiges für alle mitzuteilen hast."
     form:
       new_entry: "Anzeige hinzufügen"

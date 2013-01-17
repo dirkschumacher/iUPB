@@ -38,6 +38,7 @@ en:
     new:
       title: "Pinboard"
       introtext: ""
+      you_ll_get_an_email: "After submiting your post, you will get an email with instructions on how to delete or edit your post."
     form:
       new_entry: "Post something"
       save_button: "Post for 7 days"
