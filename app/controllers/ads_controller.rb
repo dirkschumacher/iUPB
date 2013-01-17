@@ -51,6 +51,7 @@ class AdsController < ApplicationController
   def update
     @ad = Ad.where(admin_token: params[:admin_token]).first
     if @ad
+      set_youtube_thumbnail @ad
       if @ad.update_attributes(params[:ad])
         redirect_to @ad, notice: t(".notice_saved")
       else
@@ -80,10 +81,7 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     @ad.user = current_user if user_signed_in?
-    if @ad.photo.blank?
-      video = extract_youtube_videos(@ad.text).first
-      @ad.alternative_thumbnail_url = video.thumbnail_url unless video.blank? || video.thumbnail_url.blank?
-    end
+    set_youtube_thumbnail @ad
     if verify_recaptcha(model: @ad, message: t("recaptcha.errors.incorrect-captcha-sol")) && @ad.save
       @ad.ensure_admin_token
       AdMailer.ad_created_email(@ad).deliver
@@ -109,19 +107,27 @@ class AdsController < ApplicationController
   end
   
   protected
+  
+  def set_youtube_thumbnail (ad)
+    if ad.photo.blank?
+      video = extract_youtube_videos(ad.text).first
+      ad.alternative_thumbnail_url = video.thumbnail_url unless video.blank? || video.thumbnail_url.blank?
+    end
+  end
+  
   def extract_youtube_videos (html_string)
     urls = URI.extract html_string
-    urls_converted = urls.uniq.map { |url| 
-                                if url.blank? 
-                                  nil 
-                                else 
-                                  begin 
-                                    OEmbed::Providers::Youtube.get url 
-                                  rescue
-                                    nil
-                                  end
-                                end
-                              }
+    urls_converted = urls.uniq.map do |url| 
+      if url.blank? 
+        nil 
+      else 
+        begin 
+          OEmbed::Providers::Youtube.get url 
+        rescue
+          nil
+        end
+      end
+    end
     urls_converted.compact.keep_if(&:video?)
   end
 end
