@@ -1,5 +1,7 @@
 en:
   recaptcha:
+    input:
+      enter_above: "Enter the words above"
     errors:
       incorrect-captcha-sol: 'Invalid Captcha code'
     
@@ -7,6 +9,8 @@ en:
 
 de:
   recaptcha:
+    input:
+      enter_above: "Gib die dargestellten Wörter ein"
     errors:
       incorrect-captcha-sol: 'Ungültiger Captcha-Code'
     

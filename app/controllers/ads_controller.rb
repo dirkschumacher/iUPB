@@ -52,7 +52,7 @@ class AdsController < ApplicationController
     @ad = Ad.where(admin_token: params[:admin_token]).first
     if @ad
       set_youtube_thumbnail @ad
-      if @ad.update_attributes(params[:ad]) && @ad.update #Can be done better, I know
+      if @ad.update_attributes(params[:ad])
         redirect_to @ad, notice: t(".notice_saved")
       else
         render "edit"
@@ -68,7 +68,7 @@ class AdsController < ApplicationController
   
   def destroy
     @ad = Ad.where(admin_token: params[:admin_token])
-    @ad.delete
+    @ad.destroy
     redirect_to ads_path, notice: t(".notice_deleted")
   end
   
@@ -82,8 +82,8 @@ class AdsController < ApplicationController
     @ad = Ad.new(params[:ad])
     @ad.user = current_user if user_signed_in?
     set_youtube_thumbnail @ad
-    @ad.ensure_admin_token
     if verify_recaptcha(model: @ad, message: t("recaptcha.errors.incorrect-captcha-sol")) && @ad.save
+      @ad.ensure_admin_token
       AdMailer.ad_created_email(@ad).deliver
       redirect_to @ad, notice: t(".notice_saved")
     else
@@ -117,17 +117,17 @@ class AdsController < ApplicationController
   
   def extract_youtube_videos (html_string)
     urls = URI.extract html_string
-    urls_converted = urls.uniq.map { |url| 
-                                if url.blank? 
-                                  nil 
-                                else 
-                                  begin 
-                                    OEmbed::Providers::Youtube.get url 
-                                  rescue
-                                    nil
-                                  end
-                                end
-                              }
+    urls_converted = urls.uniq.map do |url| 
+      if url.blank? 
+        nil 
+      else 
+        begin 
+          OEmbed::Providers::Youtube.get url 
+        rescue
+          nil
+        end
+      end
+    end
     urls_converted.compact.keep_if(&:video?)
   end
 end
