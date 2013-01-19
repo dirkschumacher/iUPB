@@ -17,7 +17,7 @@
 <% end %>
 
 <div class="well">
-  <%= convert_links(Sanitize.clean(simple_format(h(@ad.text)))).html_safe %>
+  <%= convert_links(simple_format(h(@ad.text))).html_safe %>
 </div>
 <% unless @youtube_videos.blank? || @youtube_videos.empty? %>
     <h4><%= t(".video_detected", count: @youtube_videos.length) %></h4>
