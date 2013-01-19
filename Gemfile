@@ -24,7 +24,6 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem "ri_cal"
 
 gem "ruby-oembed", "~> 0.8.8" 
-gem "sanitize"
 gem 'mongoid_slug', :git => "git://github.com/digitalplaywright/mongoid-slug.git", ref: "7f99b27b26d460a5e12bba9accccd1dd215073c8" # Mongoid2 /  https://github.com/digitalplaywright/mongoid-slug/issues/100#issuecomment-10030053
 
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
