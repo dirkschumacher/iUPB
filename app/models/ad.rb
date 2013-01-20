@@ -45,9 +45,8 @@ class Ad
   belongs_to :user
   belongs_to :ad_category
   
-  validates :title, :name, :text, :email, :ad_category_id, presence: true
-  
-  validates :name, :text, :email, presence: true
+  validates :title, :name, :text, :ad_category_id, presence: true
+  validates :email, presence: true, format: { with: /^([^@\s]+)@((?:[-a-z0-9]+.)+[a-z]{2,})$/i }
   
   validates :name, length: { maximum: 100 }
   validates :title, length: { maximum: 100 }
