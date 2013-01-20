@@ -3,11 +3,10 @@ en:
     input:
       enter_above: "Enter the words above"
     errors:
-      incorrect-captcha-sol: 'Invalid Captcha code'
-    
+      incorrect-captcha-sol: 'Invalid Captcha code'  
   will_paginate:
     previous_label: Previous
-    previous_label: Next
+    next_label: Next
   
 
   
@@ -18,9 +17,8 @@ de:
       enter_above: "Gib die dargestellten Wörter ein"
     errors:
       incorrect-captcha-sol: 'Ungültiger Captcha-Code'
-    
-    will_paginate:
-      previous_label: "Zurück"
-      previous_label: Weiter
+  will_paginate:
+    previous_label: "Zurück"
+    next_label: Weiter
     
   
