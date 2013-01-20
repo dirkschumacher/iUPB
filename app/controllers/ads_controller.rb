@@ -34,7 +34,7 @@ class AdsController < ApplicationController
     
     respond_to do |format|
       format.html { 
-        @ads = @ads.paginate(:per_page => 16, :page => params[:page])
+        @ads = @ads.paginate(:per_page => 16, :page => params[:page]) unless params[:q]
         if request.xhr?
           render partial: @ads
         else 
