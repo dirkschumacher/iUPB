@@ -5,6 +5,11 @@ en:
     errors:
       incorrect-captcha-sol: 'Invalid Captcha code'
     
+  will_paginate:
+    previous_label: Previous
+    previous_label: Next
+  
+
   
 
 de:
@@ -14,5 +19,8 @@ de:
     errors:
       incorrect-captcha-sol: 'Ungültiger Captcha-Code'
     
+    will_paginate:
+      previous_label: "Zurück"
+      previous_label: Weiter
+    
   
-

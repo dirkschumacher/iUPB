@@ -70,6 +70,8 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 
 gem "high_voltage"
+gem "will_paginate_mongoid"
+gem 'bootstrap-will_paginate'
 
 gem "nokogiri"
 

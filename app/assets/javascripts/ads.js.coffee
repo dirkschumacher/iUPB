@@ -25,4 +25,6 @@
 			column_count++
 		return
 	)
+	if options.doNotDelete != true then $("#post_list").empty()
+	
 	return grid

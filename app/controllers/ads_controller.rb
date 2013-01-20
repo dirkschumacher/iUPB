@@ -22,7 +22,7 @@ class AdsController < ApplicationController
         end
       end
       
-      pp @ads #DEBUG
+      # pp @ads #DEBUG
     else # nope, no search, normal index
       if @category
         @ads = @category.all_ads
@@ -33,7 +33,14 @@ class AdsController < ApplicationController
     end 
     
     respond_to do |format|
-      format.html
+      format.html { 
+        @ads = @ads.paginate(:per_page => 16, :page => params[:page])
+        if request.xhr?
+          render partial: @ads
+        else 
+          render "index"
+        end
+      }
       format.json { render json: @ads, except: [:admin_token, :email, :publish_email, :user_id] }
       format.atom
     end
@@ -112,6 +119,7 @@ class AdsController < ApplicationController
     if ad.photo.blank?
       video = extract_youtube_videos(ad.text).first
       ad.alternative_thumbnail_url = video.thumbnail_url unless video.blank? || video.thumbnail_url.blank?
+      params[:ad][:alternative_thumbnail_url] = ad.alternative_thumbnail_url
     end
   end
   

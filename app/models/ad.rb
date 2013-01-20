@@ -7,6 +7,8 @@ class Ad
   
   include Tire::Model::Search
   include Tire::Model::Callbacks
+  
+  attr_protected :views
 
   mapping do
     indexes :id,         :index    => :not_analyzed
