@@ -53,6 +53,8 @@ GEM
     bbenezech-nested_form (0.0.6)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.4.2)
+    bootstrap-will_paginate (0.0.9)
+      will_paginate
     bson (1.6.2)
     bson_ext (1.6.2)
       bson (~> 1.6.2)
@@ -238,9 +240,6 @@ GEM
     ri_cal (0.8.8)
     ruby-oembed (0.8.8)
     rubyzip (0.9.6.1)
-    sanitize (2.0.3)
-      nokogiri (>= 1.4.4, < 1.6)
-      nokogiri (>= 1.4.4, < 1.6)
     sass (3.1.15)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -289,6 +288,10 @@ GEM
     uuidtools (2.1.3)
     warden (1.2.1)
       rack (>= 1.0)
+    will_paginate (3.0.4)
+    will_paginate_mongoid (1.1.0)
+      mongoid (>= 2.4)
+      will_paginate (~> 3.0)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -296,6 +299,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
+  bootstrap-will_paginate
   bson_ext
   coffee-rails (~> 3.2.1)
   compass-rails
@@ -327,7 +331,6 @@ DEPENDENCIES
   recaptcha
   ri_cal
   ruby-oembed (~> 0.8.8)
-  sanitize
   sass-rails (~> 3.2.3)
   sourceninja (~> 0.9.0)
   thin
@@ -335,4 +338,5 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
+  will_paginate_mongoid
   yajl-ruby

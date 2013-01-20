@@ -23,9 +23,11 @@
   	<div>
 	  	  <%= link_to '<i class="icons-timetable round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.timetable"), timetable_path %> 
 	</div>
+	<% unless Rails.env.production? %>
 	<div>
 	  	  <%= link_to '<i class="icons-ads round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.ads"), ads_path %> 
 	</div>
+	<% end %>
 	<div>
 	  	  <%= link_to '<i class="icons-pingo round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.pingo"), page_path(id: "pingo") %> 
 	</div>

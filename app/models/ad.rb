@@ -7,6 +7,8 @@ class Ad
   
   include Tire::Model::Search
   include Tire::Model::Callbacks
+  
+  attr_protected :views
 
   mapping do
     indexes :id,         :index    => :not_analyzed
@@ -33,7 +35,7 @@ class Ad
   field :publish_email, type: Boolean, default: false
   field :views, type: Integer, default: 0
   
-  has_mongoid_attached_file :photo,styles: {
+  has_mongoid_attached_file :photo, styles: {
     square: '200x200#',
     medium: '400x400>'
   }
@@ -69,7 +71,11 @@ class Ad
   end
   
   def square_photo_url
-    self.photo.url(:square) if self.photo?
+    if self.photo?
+      self.photo.url(:square)
+    else
+      self.alternative_thumbnail_url unless self.alternative_thumbnail_url.blank?
+    end
   end
   
   

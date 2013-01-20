@@ -36,14 +36,16 @@
 <% if @ads.count == 0 %>
 	<p class="well center"><%= t ".no_entries" %></p>
 <% end %>
-<div id="posts">
-
+<div id="results">
+	<div id="posts">
+	</div>
 </div>
 
 <div style="display:none;" id="post_list">
 <%= render @ads %>
 </div>
 
+<%= will_paginate(@ads) %>
 
 
 <% content_for :head, auto_discovery_link_tag(:atom, params.merge({format: :atom, locale: nil}), {title: "iUPB Kleinanzeigen #{@category ? "("+@category.name+")" : "Feed"}"}) %>
@@ -51,8 +53,9 @@
 <% content_for :javascript do %>
 <script>
 	$(".post_time_to_timeago").each(function() {
-		$this = $(this)
-	    $this.text($.timeago($this.text()))
+		$this = $(this);
+	    $this.text($.timeago($this.text()));
+		$this.removeClass("post_time_to_timeago");
 	});
 	$("#posts").append(window.iUPB.Ads.generateGrid($(".single_post")));
 	$(".expandable").expander({
@@ -66,3 +69,6 @@
 	});
 </script>
 <% end %>
+
+<% #pageless(@ads.total_pages, ads_path, "#post_list") 
+%>

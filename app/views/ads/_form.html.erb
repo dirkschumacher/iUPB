@@ -49,7 +49,7 @@
   </div>
   <div class="span6">
 	<% unless @ad.persisted? %>
-     <%= recaptcha_tags display: {theme: "clean"} %>
+		<%= render "recaptcha" %>
 	<% end %>
   </div>
 </div>
