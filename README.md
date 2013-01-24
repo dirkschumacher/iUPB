@@ -22,7 +22,7 @@ Fork our repository, change, test and then make a pull-request.
 - Has more than 2,000 active Android installations and more than 5,000 iOS downloads
 - We haven't spent a single euro on infrastructure so far. We serve 30,000 users per month by just using free plans of popular Heroku services (thanks [@heroku](https://github.com/heroku)!)
 
-# Find out more
+## Find out more
 
 - www.yippie.io
 - https://twitter.com/yippieio/
