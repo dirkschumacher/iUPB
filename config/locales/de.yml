@@ -1,6 +1,8 @@
 de:
   source: "Quelle"
   imprint: "Impressum"
+  user_generated_content: "Der oben angezeigte Inhalt wurde von den jeweils angegebenen Benutzern erstellt und stammt nicht von iUPB/yippie.io."
+  contact: "Schreib uns"
   login: "Login"
   logout: "Logout"
   email: "E-Mail"
@@ -12,6 +14,49 @@ de:
   here_you_can_sign_up: "Hier kannst du dich direkt bei uns registrieren"
   forgot_your_password: "Passwort vergessen"
   or: oder
+  by: "von"
+  ad_updated: "Anzeige erfolgreich bearbeitet"
+  loading: "Lade"
+  notice_saved: "Gespeichert!"
+  notice_deleted: "Gelöscht!"
+  success: "Hurray!"
+  ads:
+    index:
+      ads_headline: "Pinnwand"
+      ad_list_heading: "Übersicht:"
+      create: "Poste etwas!"
+      no_entries: "Noch nichts gepostet. Poste doch etwas!"
+      introtext: "Veröffentliche etwas auf der Pinnwand der Uni Paderborn und erreich' mehr als 2.000 Benutzer täglich! Poste, wenn du alte Bücher nicht mehr brauchst, eine neue Wohnung suchst oder sonst etwas Wichtiges, Lustiges oder Interessantes für alle hast."
+    ad:
+      price: "Preis:"
+    remove:
+      button_delete: "Ich möchte die Anzeige wirklich löschen"
+      title: "Anzeige löschen"
+      ad_notfound: "Anzeige nicht gefunden"
+    edit:
+      title: "Anzeige editieren"
+      ad_not_found: "Anzeige nicht gefunden"
+    new:
+      title: "Etwas Neues auf der Pinnwand veröffentlichen"
+      you_ll_get_an_email: "Nach dem Erstellen bekommst du eine Email mit Links, so dass du deine Anzeige selbstständig löschen oder ändern kannst."
+    form:
+      new_entry: "Anzeige hinzufügen"
+      save_button: "Posten für 7 Tage"
+      text: "Anzeigentext"
+      enter_entry: "Kleinanzeige eingeben"
+      dont_forget_contact: "Gib immer eine Möglchkeit an, wie man dich kontaktieren kann!"
+      dont_forget_allpublic: "Nicht vergessen, die Informationen hier sind öffentlich zugänglich!"
+      publish_email: "wählen um E-Mail öffentlich anzuzeigen"
+    show:
+      video_detected:
+        one: "Video im Text"
+        other: "Videos im Text"
+      report: "Melden"
+      price: "Preis:"
+      report_sure: "Wirklich an den iUPB-Support melden?"
+      viewed_count: "Dies wurde %{count} mal aufgerufen"
+      created: "erstellt"
+      last_edit_at: "Zuletzt editiert: "
   marketing:
     login_with_iupb: iUPB-Login nutzen
     login_message: "Melde dich mit deinem Facebook oder Google-Account an, um schnell und einfach deinen Stundenplan zu erstellen – perfekt in dein Smartphone integriert."
@@ -78,6 +123,12 @@ de:
     twitter:
       UPB_on_twitter: "UPB auf Twitter"
       by: "von"
+    pingo:
+      pingo_button: "PINGO öffnen"
+      pingo_button_text: "Bitte öffne PINGO mit dem Button."
+      pingo_nophone: "Wenn du diese Seite mit einem kompatiblen Smartphone öffnest, kannst du direkt an Umfragen teilnehmen."
+      what_is_pingo_button: "Was ist PINGO?"
+      what_is_pingo: "PINGO ist ein Class-Room-Response-System, d. h. du kannst mit PINGO in der Vorlesung Fragen/Aufgaben vom Dozenten beantworten und dieser bekommt direktes Feedback. Dein Dozent wird dich auf die Nutzung von PINGO hinweisen."
   weather:
     index:
       temperature: "Temperatur"
@@ -88,6 +139,8 @@ de:
       current_data: "Aktuelle Daten"
       today: "heute"
       current_temperature: "Aktuelle Temperatur"
+      min: "min"
+      max: "max"
   please_wait: "Bitte warten..."
   courses:
     gone:
@@ -106,6 +159,7 @@ de:
       course_details: 'Kursansicht'
     room_na: 'N.N.'
     index:
+      title: "Paul"
       search: "Suche"
       type_and_find: "Suche nach Kursnamen, Raum, Dozenten, etc."
       no_results: "Keine Kurse gefunden. Probier\\'s noch einmal :)"
@@ -154,6 +208,7 @@ de:
       no_buses_at_station: "Es fahren gerade keine Busse"
   layouts:
     application:
+      ads: "Pinnwand"
       menu: "Speisepläne"
       weather: "Wetter"
       buses: "Bus-Zeiten"
@@ -164,6 +219,7 @@ de:
       twitter: "Twitter"
       timetable: "Stundenplan"
       40years: "40 Jahre UPB"
+      pingo: "PINGO"
   activerecord:
     models:
       user: Benutzer

@@ -46,12 +46,20 @@ $(document).ready(function(event) {
 
           var li = $('<li class="well" style="white-space: normal;">'), id = this.course.id;
           var add_link = $('<a href="#addCourse" style="cursor:pointer;float:right">');
-          add_link.append($('<b style="font-size:22px;">' + iUPB.fallbackIcons.mapping["icon-plus"] + '</b>'));
+          if(iUPB.fontsAvailable()){
+            add_link.append($('<i style="font-size:22px;" class="icon-plus"></i>'));
+          } else {
+            add_link.append($('<b style="font-size:28px;">' + iUPB.fallbackIcons.mapping["icon-plus"] + '</b>'));
+          }
           add_link.click(function(e){
            e.preventDefault();
 			     var current_link = $(this);
 			     $.post("/timetable/add_course", { id: encodeURIComponent(id) }, function(data) {
-			       current_link.html('<i class="icon-ok"></i>');
+            if(iUPB.fontsAvailable()){
+			        current_link.html('<i style="font-size:22px;" class="icon-ok"></i>');
+            } else {
+              current_link.html('<b style="font-size:22px;">' + iUPB.fallbackIcons.mapping["icon-ok"] + '</b>');
+            }
              <% if Rails.env.production? %>
                 if(_gaq) _gaq.push(['_trackEvent', 'Timetable', 'Course Added', 'Search Result List']);
              <% end %>

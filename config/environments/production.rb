@@ -64,6 +64,17 @@ IUPB::Application.configure do
   config.active_support.deprecation = :notify
   
   config.time_zone = 'Berlin'
+  
+  # https://devcenter.heroku.com/articles/paperclip-s3
+  config.paperclip_defaults = {
+     :storage => :s3,
+     :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 10.years.from_now.httpdate },
+     :s3_credentials => {
+       :bucket => ENV['AWS_BUCKET'],
+       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+     }
+   }
 
 
   # Serve pre-gzipped static assets
@@ -73,8 +84,8 @@ IUPB::Application.configure do
 
 end
 require 'newrelic_rpm'
-def pp
+def pp(*args)
   true
 end
 
-
+ENV["ios_webapp_notice"] = "false"

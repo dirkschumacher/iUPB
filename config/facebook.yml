@@ -1,5 +1,5 @@
 development:
-  app_id: YOUR APP ID
+  app_id: 122799641194524
   secret_key: YOUR SECRET
   token: User token
 test:

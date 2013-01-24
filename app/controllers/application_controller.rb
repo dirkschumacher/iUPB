@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       { :locale => I18n.locale}
     end
   end
-
+  
   def canvas?
     return false if params[:canvas] == "false"
     params[:canvas] == "true" || session[:canvas]
@@ -23,7 +23,19 @@ class ApplicationController < ActionController::Base
   end
   helper_method :is_device?
 
+  def is_mobile?
+    mobile_browsers.each do |mb|
+      return true if is_device?(mb)
+    end
+    return false
+  end
+  helper_method :is_mobile?
+
   protected
+
+  def mobile_browsers
+    ["android", "ipod", "ipad", "iphone", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
+  end
   
   # caches content for 1 hour via varnish. 
   # use in as method or as a filter

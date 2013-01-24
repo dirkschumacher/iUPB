@@ -1,0 +1,14 @@
+de:
+  mongoid:
+    models:
+      ad: "Kleinanzeige"
+    attributes:
+      ad:
+        title: "Überschrift"
+        name: "Dein Name"
+        text: "Beschreibung/Text"
+        photo: "Foto"
+        ad_category: "Kategorie"
+        publish_email: "E-Mail öffentlich zeigen"
+        email: "E-Mail-Adresse"
+        price: "Preis"

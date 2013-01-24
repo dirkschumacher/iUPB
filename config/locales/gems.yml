@@ -1,0 +1,24 @@
+en:
+  recaptcha:
+    input:
+      enter_above: "Enter the words above"
+    errors:
+      incorrect-captcha-sol: 'Invalid Captcha code'  
+  will_paginate:
+    previous_label: Previous
+    next_label: Next
+  
+
+  
+
+de:
+  recaptcha:
+    input:
+      enter_above: "Gib die dargestellten Wörter ein"
+    errors:
+      incorrect-captcha-sol: 'Ungültiger Captcha-Code'
+  will_paginate:
+    previous_label: "Zurück"
+    next_label: Weiter
+    
+  

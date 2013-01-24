@@ -1,0 +1,82 @@
+<% title @ad.title + " (" + t("layouts.application.ads") + ")" %>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<% content_for :header do %>
+<div class="page-header">
+	<h1><%= link_to '<i class="icon-arrow-left"></i>'.html_safe, ads_path, id: "back-button"  %> <%= @ad.title %> &nbsp;&nbsp;&nbsp; <small><i class="icon-user"></i>&nbsp;<%= truncate(@ad.name) %></small></h1>
+</div>
+<% end %>
+<% if @ad.photo? %>
+	<%= image_tag @ad.photo.url(:medium), class: "polaroid" %>
+<% end %>
+
+<div class="well">
+  <%= convert_links(simple_format(h(@ad.text))).html_safe %>
+</div>
+<% unless @youtube_videos.blank? || @youtube_videos.empty? %>
+    <h4><%= t(".video_detected", count: @youtube_videos.length) %></h4>
+	<% @youtube_videos.each do |video| %>
+	<p><%= video.html.html_safe %></p>
+	<% end %>
+<% end %>
+
+<% if @ad.price? %>
+   	<p><%= t ".price" %> <%= @ad.price %></p>
+<% end %>
+<div class="row">
+  <div class="span6">
+	<p><small>
+		<%= t(".viewed_count", count: @ad.views) %>.
+	</small>
+	</p>
+  </div>
+  <div class="span6">
+	<p><small><span class="post_time_to_timeago" style="display:none"><%= @ad.created_at %></span> <%= t(".created") %> <%= t("by") %> <strong><%= @ad.name %>  </strong> 
+	<% if @ad.publish_email %>
+		 (<%= mail_to @ad.email, @ad.email, encode: :javascript, subject: "#{@ad.title.truncate(30)} auf iUPB" %>)
+	<% end %>
+	<% unless @ad.updated_at.blank? %>
+		| <%= t ".last_edit_at" %> <span class="post_time_to_timeago" style="display:none"><%= @ad.updated_at %></span>
+	<% end %>
+	</small></p>
+  </div>
+</div>
+<div class="row">
+  <div class="span6">
+	<div class="fb-like" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-font="arial"></div>
+  </div>
+  <div class="span6">
+	<p>
+		<%= link_to "<i class='icon-exclamation-sign'></i> ".html_safe + t(".report"), report_ad_path(@ad), confirm: t(".report_sure") %>
+	</p>
+  </div>
+</div>
+<br>
+<div class="fb-comments" data-href="<%= request.protocol+request.host_with_port+request.fullpath %>" data-width="470" data-num-posts="10"></div>
+
+
+<% content_for :javascript do %>
+<script>
+$(document).ready(function() {
+	$(".post_time_to_timeago").each(function() {
+		$this = $(this)
+        $this.text($.timeago($this.text()))
+		$this.show()
+	});
+	$("iframe").each(function() { $(this).width("100%").css("max-width", "470px")});
+});
+</script>
+<% end %>
+
+<% content_for :head do %>
+    <meta property="og:type" content="article">
+	<% if @ad.square_photo_url %>
+	    <meta property="og:image" content="<%= @ad.square_photo_url %>">
+	  <% end %>
+<% end %>

@@ -1,0 +1,76 @@
+<% title t(".ads_headline", default: "Ads") %>
+	<%= content_for "page-attributes" do %>id="adsPage"<% end %>
+<% content_for :header do %>
+	<h1><%= t(".ads_headline") %>
+	</h1>
+	
+	<% if @category %>
+		<ul id="posts_breadcrumb" class="breadcrumb">
+			<li><%= link_to t(".ads_headline"), ads_path %> <span class="divider">/</span></li>
+			<% @category.parents.each do |cat| %>
+				<% if cat == @category %>
+					<li><%= cat.name %></li>
+				<% else %>
+					<li><%= link_to cat.name, ads_path(category: cat.id) %> <span class="divider">/</span></li>
+				<% end %>
+			<% end %>
+		</ul>
+	<% else %>
+		<p><%= t ".introtext" %></p>
+	<% end %>	
+	
+<% end %>
+<hr>
+<div class="row">
+	<div class="span6">
+		<%= render "search_field" %>
+	</div>
+	<div class="span6">
+		<%= link_to ('<button class="btn btn-success btn-primary pull-right hidden-phone">' + t(".create") + '</button>').html_safe, new_ad_path %>
+			<%= link_to ('<button class="btn btn-success btn-primary visible-phone">' + t(".create") + '</button>').html_safe, new_ad_path %>
+	</div>
+</div>
+<ul id="posts_categories" class="inline">
+	<% @categories.each do |cat| %>
+		<li><%= link_to cat.name, ads_path(category: cat.id) %> (<%= cat.all_ads.count %>)</li>
+	<% end %>
+</ul>
+<% if @ads.count == 0 %>
+	<p class="well center"><%= t ".no_entries" %></p>
+<% end %>
+<div id="results">
+	<div id="posts">
+	</div>
+</div>
+
+<div style="display:none;" id="post_list">
+<%= render @ads %>
+</div>
+
+<%= will_paginate(@ads) %>
+
+
+<% content_for :head, auto_discovery_link_tag(:atom, params.merge({format: :atom, locale: nil}), {title: "iUPB Kleinanzeigen #{@category ? "("+@category.name+")" : "Feed"}"}) %>
+
+<% content_for :javascript do %>
+<script>
+	$(".post_time_to_timeago").each(function() {
+		$this = $(this);
+	    $this.text($.timeago($this.text()));
+		$this.removeClass("post_time_to_timeago");
+	});
+	$("#posts").append(window.iUPB.Ads.generateGrid($(".single_post")));
+	$(".expandable").expander({
+		expandText: '<%= t "forty_years.index.read_more" %>',
+		userCollapseText: '<%= t "forty_years.index.read_less" %>',
+		expandPrefix: '&hellip; ',
+		expandEffect: 'fadeIn',
+		expandSpeed: 250,
+		collapseEffect: 'fadeOut',
+		collapseSpeed: 200
+	});
+</script>
+<% end %>
+
+<% #pageless(@ads.total_pages, ads_path, "#post_list") 
+%>

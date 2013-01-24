@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -12,7 +12,7 @@ gem 'mongoid'
 #gem "bing_translator", "~> 0.0.2"
 gem 'rack-contrib', :require => 'rack/contrib'
 gem 'i18n-js'
-gem 'devise'
+gem 'devise', '>= 2.1.2'
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
 gem 'rabl'
@@ -20,10 +20,17 @@ gem 'yajl-ruby', :require => "yajl"
 gem "koala"
 gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
 gem "haml"
+gem "recaptcha", :require => "recaptcha/rails"
 gem "ri_cal"
 
-gem "js-routes" # https://github.com/railsware/js-routes
+gem "ruby-oembed", "~> 0.8.8" 
+gem 'mongoid_slug', :git => "git://github.com/digitalplaywright/mongoid-slug.git", ref: "7f99b27b26d460a5e12bba9accccd1dd215073c8" # Mongoid2 /  https://github.com/digitalplaywright/mongoid-slug/issues/100#issuecomment-10030053
 
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem "tire"
+
+gem "js-routes" # https://github.com/railsware/js-routes
+gem 'contact_us', '~> 0.4.0.beta' # https://github.com/jdutil/contact_us
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,22 +45,24 @@ end
 
 group :development do
 	gem "rails_admin"
-
 	gem 'pry-rails'   # a nicer 'rails console'
 	gem 'quiet_assets'
 end
 
 group :production do
 	gem "thin"
-	gem 'newrelic_rpm'
+	gem 'newrelic_rpm', '>= 3.5.3.25'
 	gem 'dalli'
 	gem 'kgio'
+	gem "sourceninja", "~> 0.9.0"
+	gem "aws-sdk"
 end
 group :staging do
-	gem "thin"
-	gem 'newrelic_rpm'
+	gem "unicorn"
+	gem 'newrelic_rpm', '>= 3.5.3.25'
 	gem 'dalli'
 	gem 'kgio'
+	gem "aws-sdk"
 end
 
 
@@ -61,6 +70,8 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 
 gem "high_voltage"
+gem "will_paginate_mongoid"
+gem 'bootstrap-will_paginate'
 
 gem "nokogiri"
 

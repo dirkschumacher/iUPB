@@ -39,6 +39,14 @@ IUPB::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
   config.time_zone = 'Berlin'
+  
+  config.action_mailer.default_url_options = { :host => 'localhost', :port => 3000 }
+  config.action_mailer.perform_deliveries = false
+  
 end
 require 'pp'
 
+ENV["ios_webapp_notice"] = "true"
+
+ENV["RECAPTCHA_PUBLIC_KEY"] = "6LeVjdsSAAAAAD0_78kykevDifYnnraGUpXKZks7"
+ENV["RECAPTCHA_PRIVATE_KEY"] = "6LeVjdsSAAAAAFpHw7lXSTKrUOKHTBkG5UaZN5mf"

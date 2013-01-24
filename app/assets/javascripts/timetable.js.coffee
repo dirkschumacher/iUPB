@@ -68,32 +68,33 @@
 				#update the list as well
 				$li = $('<li  id="' + id + '" class="well single_event"></li>')
 				$li.append($('<h6>' + long_title + '</h6>'))
-				$optionsContainer = $ '<div class="pull-right dropdown">'
-				$optionsButton = $('<a id="dropdown-' + id + '" data-toggle="dropdown" role="button"  href="#">')
-				$optionsButton.addClass "btn"
-				$optionsButton.addClass "btn-primary"
-				$optionsButton.addClass "btn-dropdown-toggle"
-				$optionsButton.html('<span class="caret"></span>')
-				if window.iUPB.vars.canvas
-	        course_route = Routes.course_path(courseId, {locale: I18n.locale, canvas: window.iUPB.vars.canvas})
-				else
-	        course_route = Routes.course_path(courseId, {locale: I18n.locale})
-				$optionsDropDown = $('
-	        <ul role="menu" aria-labelledby="dropdown-' + id + '" class="dropdown-menu">
-            <li><a id="link-view-details-' + id + '" href="' + course_route + '"><i class="icon-eye-open"></i>' + I18n.t("timetable.index.view_course_details") + '</a></li>
-            <li><a id="link-deleteone-' + id + '" href="#"><i class="icon-remove"></i>' + I18n.t("timetable.index.delete_one") + '</a></li>
-            <li><a id="link-deleteall-' + id + '" href="#"><i class="icon-trash"></i>' + I18n.t("timetable.index.delete_all") + '</a></li>
-          </ul>
-        ')
-				$optionsContainer.append $optionsButton
-				$optionsContainer.append $optionsDropDown
-				$li.append $optionsContainer
+				if courseId
+					$optionsContainer = $ '<div class="pull-right dropdown">'
+					$optionsButton = $('<a id="dropdown-' + id + '" data-toggle="dropdown" role="button"  href="#">')
+					$optionsButton.addClass "btn"
+					$optionsButton.addClass "btn-primary"
+					$optionsButton.addClass "btn-dropdown-toggle"
+					$optionsButton.html('<span class="caret"></span>')
+					if window.iUPB.vars.canvas
+		        course_route = Routes.course_path(courseId, {locale: I18n.locale, canvas: window.iUPB.vars.canvas})
+					else
+		        course_route = Routes.course_path(courseId, {locale: I18n.locale})
+					$optionsDropDown = $('
+		        <ul role="menu" aria-labelledby="dropdown-' + id + '" class="dropdown-menu">
+	            <li><a id="link-view-details-' + id + '" href="' + course_route + '"><i class="icon-eye-open"></i>' + I18n.t("timetable.index.view_course_details") + '</a></li>
+	            <li><a id="link-deleteone-' + id + '" href="#"><i class="icon-remove"></i>' + I18n.t("timetable.index.delete_one") + '</a></li>
+	            <li><a id="link-deleteall-' + id + '" href="#"><i class="icon-trash"></i>' + I18n.t("timetable.index.delete_all") + '</a></li>
+	          </ul>
+	        ')
+					$optionsContainer.append $optionsButton
+					$optionsContainer.append $optionsDropDown
+					$li.append $optionsContainer
 				$timeBlock = $("<p>")
 				$descriptionBlock = $('<p class="expandeble">')
 				$linkBlock = $ "<p>"
 				$timeBlock.text I18n.l("date.formats.weekday_date", start_date) + " " + I18n.l("time.formats.very_short", start_date) + if end_date? and start_date < end_date then " - " + I18n.l("time.formats.very_short", end_date) else ""
 				$timeBlock.text $timeBlock.text() + " / " + location
-				$descriptionBlock.text this.description
+				$descriptionBlock.text (this.description || "")
 				$linkBlock.append($('<a href="' + this.link + '">&raquo; ' + I18n.t("timetable.index.details") + '</a>'))
 				$li.append $timeBlock
 				$li.append $descriptionBlock

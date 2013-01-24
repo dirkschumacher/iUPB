@@ -70,11 +70,22 @@ IUPB::Application.configure do
   config.middleware.insert_after(
    "Rack::Cache", "Middleware::CompressedStaticAssets",
    paths["public"].first, config.assets.prefix, config.static_cache_control)
+  
+  # https://devcenter.heroku.com/articles/paperclip-s3
+  config.paperclip_defaults = {
+     :storage => :s3,
+     :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 10.years.from_now.httpdate },
+     :s3_credentials => {
+       :bucket => ENV['AWS_BUCKET'],
+       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+     }
+   }
 
 end
 require 'newrelic_rpm'
-def pp
+def pp(*args)
   true
 end
 
-
+ENV["ios_webapp_notice"] = "true"

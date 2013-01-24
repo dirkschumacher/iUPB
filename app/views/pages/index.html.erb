@@ -20,25 +20,30 @@
   	<div>
 	  <%= link_to '<i class="icons-asta round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.asta"), asta_path %> 
   	</div>
-<div>
-	  	  <%= link_to '<i class="icons-fortyyears round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.40years"), fortyyears_path %> 
+  	<div>
+	  	  <%= link_to '<i class="icons-timetable round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.timetable"), timetable_path %> 
 	</div>
 	<div>
-	  	  <%= link_to '<i class="icons-timetable round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.timetable"), timetable_path %> 
+	  	  <%= link_to '<i class="icons-ads round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.ads"), ads_path %> 
+	</div>
+	<div>
+	  	  <%= link_to '<i class="icons-pingo round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.pingo"), page_path(id: "pingo") %> 
 	</div>
 	
 </div>
-<% content_for :javascript do %>
-<script>
-if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 
-	if (window.navigator.standalone == false) {
-		var addToHomeConfig = {
-			returningVisitor: true
-		};
-		// load dynamically only for iPhones to reduce requests
-		window.iUPB.loadjscssfile("/stylesheets/add2home.css", "css");
-		window.iUPB.loadjscssfile("/scripts/add2home.js", "js");
+<% if ENV["ios_webapp_notice"] == "true" %>
+	<% content_for :javascript do %>
+	<script>
+	if (window.navigator.userAgent.indexOf('iPhone') != -1 || window.navigator.userAgent.indexOf('iPad') != -1) { 
+		if (window.navigator.standalone == false) {
+			var addToHomeConfig = {
+				returningVisitor: true
+			};
+			// load dynamically only for iPhones to reduce requests
+			window.iUPB.loadjscssfile("/stylesheets/add2home.css", "css");
+			window.iUPB.loadjscssfile("/scripts/add2home.js", "js");
+		}
 	}
-}
-</script>
+	</script>
+	<% end %>
 <% end %>

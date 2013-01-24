@@ -11,9 +11,11 @@
   <meta name="description" content="iUPB ist die WebApp mit allen wichtigen Infos rund um die Uni Paderborn, wie Mensaplan, Busverbindungen uvm. Für Studenten und Mitarbeiter!">
 
   <meta property="og:title" content="<%= content_for?(:title) ? content_for(:title) + " — " : "" %>iUPB">
-  <meta property="og:url" content="<%= request.fullpath %>">
+  <meta property="og:url" content="<%= "http://www.i-upb.de#{request.fullpath}" %>">
   <meta property="og:site_name" content="iUPB">
   <meta property="fb:app_id" content="<%= ENV["FB_ID"] %>">
+
+  <%= content_for(:head) %>
 
   <% unless Rails.env.production? %>
     <meta name="robots" content="noindex,nofollow">
@@ -22,8 +24,46 @@
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <%= stylesheet_link_tag    "application", :media => "all" %>
+
+  <% unless Rails.env.production? %>
+    <style type="text/css">
+      .translation_missing {
+        border-bottom: 1px dashed #F5A9A9;
+        background-color: #F4DCDC;
+      }
+    </style>
+  <% end %>
   
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1">
+
+  <meta name="application-name" content="iUPB">
+  <meta name="msapplication-starturl" content="/">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="msapplication-task"
+      content="name=Speiseplan;
+      action-uri=/de/restaurants;
+      icon-uri=http://www.yippie.io/non-free/iupb/restaurants.ico">
+  <meta name="msapplication-task" 
+      content="name=Wetter;
+      action-uri=/de/weather;
+      icon-uri=http://www.yippie.io/non-free/iupb/weather.ico">
+  <meta name="msapplication-task" 
+      content="name=Busse;
+      action-uri=/de/transportation;
+      icon-uri=http://www.yippie.io/non-free/iupb/bus.ico">
+  <meta name="msapplication-task" 
+      content="name=Stundenplan;
+      action-uri=/de/timetable;
+      icon-uri=http://www.yippie.io/non-free/iupb/timetable.ico">
+  <meta name="msapplication-task" 
+      content="name=Parties;
+      action-uri=/de/events;
+      icon-uri=http://www.yippie.io/non-free/iupb/parties.ico">
+
+  <% if Rails.env.production? %>
+  <!-- iOS Smart Banner -->
+    <meta name="apple-itunes-app" content="app-id=369168211">
+  <% end %>
 
   <!-- iOS Device Startup Images -->
  	<!-- iPhone/iPod Touch Portrait – 320 x 460 (standard resolution) -->
@@ -98,8 +138,11 @@
     <%= yield %>
 	
     <footer class="footer">
+	  <% if params[:controller] == "ads" %>
+		<u><%= t("user_generated_content") %></u><br><br>
+	  <% end %>
       Powered by <%= link_to "yippie.io", "http://www.yippie.io" %> and made with <i class="icon-love icon-heart"></i><br>
-	  <%= link_to t("imprint"), "http://www.yippie.io/imprint" %>
+	  <%= link_to t("contact"), contact_us_path %> | <%= link_to t("imprint"), "http://www.yippie.io/imprint" %>
     </footer>
     <!--/footer-->
   </div> <!--! end of #container -->
@@ -110,16 +153,8 @@
       I18n.locale = "<%= I18n.locale %>";
       $(document).ready(function() {
           window.iUPB.enableLoadingIndicator();
-          <% unless canvas? %>
-            window.iUPB.FortyYears.displayRandomFact();
-          <% end %>
           window.iUPB.vars.canvas = <%= canvas? ? "true" : "false" %>;
-          /* $(document).fontChecker(window.iUPB.fallbackIcons.replace, {
-            fontAwesome: true, //set to true if using Font Awesome (default is false)
-            onLoad: 'fontLoading', //call this class(es) when the font is loading (!important tag may be needed)
-            onFail: 'fontFail' //call this class(es) when the font has failed to load (!important tag may be needed)
-          });
-          */
+          window.iUPB.fallbackIcons.replace(window.iUPB.fontsAvailable());
       });
   </script>
   <%= yield(:javascript) -%>

@@ -1,6 +1,8 @@
 en:
   source: "Source"
   imprint: "imprint"
+  user_generated_content: "The content shown above is user-generated and not created by iUPB/yippie.io."
+  contact: "Write us"
   logout: "Logout"
   login: "Login"
   email: "E-Mail"
@@ -12,6 +14,51 @@ en:
   here_you_can_sign_up: "Here you can sign up for a new account"
   forgot_your_password: "Forgot your password"
   or: or
+  by: "by"
+  loading: "Loading"
+  ad_updated: "Post was modified"
+  notice_saved: "Saved!"
+  notice_deleted: "Removed!"
+  success: "Hurray!"
+  ads:
+    index:
+      ads_headline: "Pinboard"
+      ad_list_heading: "Overview:"
+      create: "Post something!"
+      no_entries: "Nothing so far. Post one!"
+    ad:
+      price: "Price:"
+    remove:
+      button_delete: "I would really like to delete this"
+      title: "Delete"
+      ad_notfound: "Ad not found"
+    edit:
+      title: "Edit"
+      ad_not_found: "Ad not found"
+    new:
+      title: "Pinboard"
+      introtext: ""
+      you_ll_get_an_email: "After submiting your post, you will get an email with instructions on how to delete or edit your post."
+    form:
+      new_entry: "Post something"
+      save_button: "Post for 7 days"
+      text: "Text"
+      enter_entry: "Post something new"
+      dont_forget_contact: "Always post contact details"
+      dont_forget_allpublic: "Keep in mind that the description is publicly available"
+      publish_email: "check if you want to publish your mail address"
+    show:
+      video_detected:
+          one: "Video detected"
+          other: "Videos detected"
+      report: "Report ad"
+      price: "Price:"
+      report_sure: "Do you really want to report this ad to iUPB-Support?"
+      viewed_count:
+          one: viewed only once 
+          other: "viewed %{count} times"
+      created: "created"
+      last_edit_at: "Last edit at: "
   marketing:
     login_with_iupb: Use iUPB login
     login_message: "Log in now with your Facebook or Google account to start building your own timetable - easy, flexible and integrated with your phone."
@@ -72,6 +119,12 @@ en:
     twitter:
       UPB_on_twitter: "UPB on Twitter"
       by: "by"
+    pingo:
+      pingo_button: "Go to PINGO"
+      pingo_button_text: "Please open PINGO using the button."
+      pingo_nophone: "If you access this page with a compatible phone, you will immediately be able to rock the vote!"
+      what_is_pingo_button: "What is PINGO?"
+      what_is_pingo: "PINGO is a classroom response system: during lectures you can quickly answer your lecturer's questions/problems and give her instant feedback. Your lecturer will inform you when she uses PINGO in class."
   asta:
     index:
       read_more: "more"
@@ -89,6 +142,8 @@ en:
       current_data: "Current data"
       today: "today"
       current_temperature: "Current temperature"
+      min: "min"
+      max: "max"
   please_wait: "Please wait..."
   courses:
     next_class: "Next: %{date}, %{time_from} until %{time_to} in %{place}"
@@ -154,6 +209,7 @@ en:
           content: "You can easily add course to your timetable using the PAUL search"
   layouts:
     application:
+      ads: "Local ads"
       menu: "Menu"
       weather: "Weather"
       buses: "Buses"
@@ -163,6 +219,7 @@ en:
       twitter: "Twitter"
       timetable: "Timetable"
       40years: "40 years UPB"
+      pingo: "PINGO"
   time:
     formats:
       very_short: ! '%H:%M'

@@ -1,0 +1,14 @@
+en:
+  mongoid:
+    models:
+      ad: "Local ad"
+    attributes:
+      ad:
+        title: "Title"
+        name: "Your name"
+        text: "Description"
+        photo: "Photo"
+        ad_category: "Category"
+        publish_email: "Show e-mail to others"
+        email: "E-Mail"
+        price: "Price"
