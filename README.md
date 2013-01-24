@@ -7,11 +7,11 @@ We also created two apps for [iOS](https://github.com/yippie-io/iUPB-iOS-App) an
 
 ## Setup
 - Install Ruby 1.9 and Bundler
-- Install Mongodb <brew install mongodb>
+- Install Mongodb `brew install mongodb`
 - Start mongodb 
-- install our dependencies with <bundle install>
-- startup iUPB with <rails s>
-- Navigate to <http://localhost:3000>
+- install our dependencies with `bundle install`
+- startup iUPB with `rails s`
+- Navigate to `http://localhost:3000`
 
 ## Contribute
 Fork our repository, change and test and then make a pull-request. Ideally, you would also add some tests.
