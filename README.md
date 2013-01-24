@@ -20,7 +20,7 @@ Fork our repository, change and test and then make a pull-request. Ideally, you 
 - Got a price from the university
 - Was started by @dirkschumacher in 2010 and has been completly redesigned together with @MichaelWhi in early 2012
 - Has more than 2,000 active Android installations and more than 5,000 iOS downloads.
-- We haven't spend a single euro on infrastructure so far. We serve 30,000 users per month by just using free plans of popular Heroku services (thanks @heroku!)
+- We haven't spent a single euro on infrastructure so far. We serve 30,000 users per month by just using free plans of popular Heroku services (thanks @heroku!)
 
 # Find out more
 
