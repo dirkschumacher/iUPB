@@ -17,7 +17,7 @@ We also created two apps for [iOS](https://github.com/yippie-io/iUPB-iOS-App) an
 Fork our repository, change, test and then make a pull-request. 
 
 ## Stats
-- Got a price from the university
+- Got an award from the university in late 2012 for the best student app
 - Was started by @dirkschumacher in 2010 and has been completly redesigned together with @MichaelWhi in early 2012
 - Has more than 2,000 active Android installations and more than 5,000 iOS downloads
 - We haven't spent a single euro on infrastructure so far. We serve 30,000 users per month by just using free plans of popular Heroku services (thanks @heroku!)
