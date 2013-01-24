@@ -1,7 +1,7 @@
 # iUPB
 iUPB is a rich, open-source rails3 web-application for the University of Paderborn.
 The app uses bootstrap and is accessible from all major browsers and operating systems.
-We also created two apps for iOS and Android. Check them out as well!
+We also created two apps for [iOS](https://github.com/yippie-io/iUPB-iOS-App) and [Android](https://github.com/yippie-io/iUPB-Android). Check them out as well!
 
 ## Setup
 - Install rails
