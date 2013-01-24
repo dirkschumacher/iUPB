@@ -18,7 +18,7 @@ Fork our repository, change, test and then make a pull-request.
 
 ## Stats
 - Got an award from the university in late 2012 for the best student app
-- Was started by [@dirkschumacher](https://github.com/dirkschumacher) in 2010 and has been completly redesigned together with [@MichaelWhi](https://github.com/MichaelWhi) in early 2012
+- Was started by [@dirkschumacher](https://github.com/dirkschumacher) in 2010 and has been completely redesigned together with [@MichaelWhi](https://github.com/MichaelWhi) in early 2012
 - Has more than 2,000 active Android installations and more than 5,000 iOS downloads
 - We haven't spent a single euro on infrastructure so far. We serve 30,000 users per month by just using free plans of popular Heroku services (thanks [@heroku](https://github.com/heroku)!)
 
