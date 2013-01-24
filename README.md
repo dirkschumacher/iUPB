@@ -2,7 +2,7 @@
 iUPB is an extensible, open-source rails3 web-application for the University of Paderborn: www.i-upb.de.
 Students and staff use it to get current information about restaurants, busses, weather, they manage their courses and post ads to a pinboard.
 
-The app uses Bootstrap and is accessible with all major browsers and operating systems.
+The app uses Bootstrap and is accessible by all major browsers and operating systems.
 We also created two apps for [iOS](https://github.com/yippie-io/iUPB-iOS-App) and [Android](https://github.com/yippie-io/iUPB-Android). Check them out as well!
 
 ## Setup
