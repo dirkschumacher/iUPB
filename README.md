@@ -9,6 +9,7 @@ We also created two apps for [iOS](https://github.com/yippie-io/iUPB-iOS-App) an
 - Install Ruby 1.9 and Bundler
 - Install Mongodb `brew install mongodb`
 - Start mongodb 
+- Optional: install and start elasticsearch `brew install elasticsearch`
 - install our dependencies with `bundle install`
 - startup iUPB with `rails s`
 - Navigate to `http://localhost:3000`
@@ -23,6 +24,5 @@ Fork our repository, change, test and then make a pull-request.
 - We haven't spent a single euro on infrastructure so far. We serve 30,000 users per month by just using free plans of popular Heroku services (thanks [@heroku](https://github.com/heroku)!)
 
 ## Find out more
-
 - www.yippie.io
 - https://twitter.com/yippieio/
