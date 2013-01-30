@@ -8,7 +8,7 @@
 <head>
   <title><%= content_for?(:title) ? content_for(:title) + " — " : "" %>iUPB <%= Rails.env.staging? ? "beta" : "" %></title>
   <meta charset="utf-8">
-  <meta name="description" content="iUPB ist die WebApp mit allen wichtigen Infos rund um die Uni Paderborn, wie Mensaplan, Busverbindungen uvm. Für Studenten und Mitarbeiter!">
+  <meta name="description" content="<%= content_for?(:description) ? content_for(:description) : "iUPB ist die WebApp mit allen wichtigen Infos rund um die Uni Paderborn, wie Mensaplan, Busverbindungen uvm. Für Studenten und Mitarbeiter!" %>">
 
   <meta property="og:title" content="<%= content_for?(:title) ? content_for(:title) + " — " : "" %>iUPB">
   <meta property="og:url" content="<%= "http://www.i-upb.de#{request.fullpath}" %>">
