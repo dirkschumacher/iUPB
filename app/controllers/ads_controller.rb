@@ -5,7 +5,7 @@ class AdsController < ApplicationController
       @category = AdCategory.find(params[:category])
     end
 
-    if params[:q] && !params[:q].empty? # we have a search
+    if params[:q] && !params[:q].blank? # we have a search
       qry = ->(query) do
         query.string params[:q]
       end
@@ -22,6 +22,7 @@ class AdsController < ApplicationController
         end
       end
       
+      @ads = @ads.to_a
       # pp @ads #DEBUG
     else # nope, no search, normal index
       if @category
@@ -34,7 +35,7 @@ class AdsController < ApplicationController
     
     respond_to do |format|
       format.html { 
-        @ads = @ads.paginate(:per_page => 16, :page => params[:page]) unless params[:q]
+        @ads = @ads.paginate(:per_page => 16, :page => params[:page])
         if request.xhr?
           render partial: @ads
         else 

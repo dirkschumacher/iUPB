@@ -37,7 +37,7 @@
 </ul>
 <% if @ads.count == 0 %>
 	<p class="well center"><%= t ".no_entries" %></p>
-<% end %>
+<% else %>
 <div id="results">
 	<div id="posts">
 	</div>
@@ -50,7 +50,6 @@
 <%= will_paginate(@ads) %>
 
 
-<% content_for :head, auto_discovery_link_tag(:atom, params.merge({format: :atom, locale: nil}), {title: "iUPB Kleinanzeigen #{@category ? "("+@category.name+")" : "Feed"}"}) %>
 
 <% content_for :javascript do %>
 <script>
@@ -74,3 +73,7 @@
 
 <% #pageless(@ads.total_pages, ads_path, "#post_list") 
 %>
+
+<% end %>
+
+<% content_for :head, auto_discovery_link_tag(:atom, params.merge({format: :atom, locale: nil}), {title: "iUPB Kleinanzeigen #{@category ? "("+@category.name+")" : "Feed"}"}) %>
