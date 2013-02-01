@@ -19,7 +19,7 @@ de:
   loading: "Lade"
   notice_saved: "Gespeichert!"
   notice_deleted: "Gelöscht!"
-  success: "Hurray!"
+  success: "OK! - hat geklappt! :)"
   ads:
     index:
       ads_headline: "Pinnwand"

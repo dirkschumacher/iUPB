@@ -58,7 +58,7 @@
   </div>
   <div class="span6">
 	<p>
-		<%= link_to "<i class='icon-exclamation-sign'></i> ".html_safe + t(".report"), report_ad_path(@ad), confirm: t(".report_sure") %>
+		<%= link_to "<i class='icon-exclamation-sign'></i> ".html_safe + t(".report"), report_ad_path(@ad), method: :post, confirm: t(".report_sure") %>
 	</p>
   </div>
 </div>

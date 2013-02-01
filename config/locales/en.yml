@@ -19,7 +19,7 @@ en:
   ad_updated: "Post was modified"
   notice_saved: "Saved!"
   notice_deleted: "Removed!"
-  success: "Hurray!"
+  success: "OK, it worked :)!"
   ads:
     index:
       ads_headline: "Pinboard"
