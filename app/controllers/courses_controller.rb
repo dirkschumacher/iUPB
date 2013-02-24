@@ -49,8 +49,8 @@ class CoursesController < ApplicationController
       next_class = data['date'].to_date
       #TODO: this will cause problems with multiple timezones
       #TODO: this is more a hotfix. It should normally work out of the box
-      time_from = Time.new(next_class.year, next_class.mon, next_class.day, data['time_from'].hour, data['time_from'].min, 0, data['time_from'].utc_offset)
-      time_to = Time.new(next_class.year, next_class.mon, next_class.day, data['time_to'].hour, data['time_to'].min, 0, data['time_to'].utc_offset)
+      time_from = Time.new(next_class.year, next_class.mon, next_class.day, data['time_from'].hour, data['time_from'].min, 0, data['time_from'].utc_offset).in_time_zone(Time.zone)
+      time_to = Time.new(next_class.year, next_class.mon, next_class.day, data['time_to'].hour, data['time_to'].min, 0, data['time_to'].utc_offset).in_time_zone(Time.zone)
       data['time_from'] = time_from
       data['time_to'] = time_to
       interval = time_to - Time.now
