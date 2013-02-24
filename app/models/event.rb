@@ -72,7 +72,7 @@ class Event
   end
   
   def short_title 
-      return self.course.course_short_desc if !self.custom and self.course and self.course.course_short_desc.length > 0 
+      return self.course.course_short_desc if !self.custom and self.course and !self.course.course_short_desc.blank? 
       self.name
   end
   
