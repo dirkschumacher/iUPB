@@ -18,7 +18,7 @@
           <% @course.get_dates.each do |data| %>
           <li>
             <h4 style="white-space: normal;">
-              <%= t('.time_place', {date: l(data[0].to_date, format: :short), time_from: l(data[0] + offset.hours, format: :very_short), time_to: l(data[1] + offset.hours, format: :very_short), place: data[2] })%>
+              <%= t('.time_place', {date: l(data[0].to_date, format: :short), time_from: l(data[0], format: :very_short), time_to: l(data[1], format: :very_short), place: data[2] })%>
             </h4>
             <p><%= data[3] %></p>
           </li>

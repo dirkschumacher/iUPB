@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
         @groups = Course.where(paul_id: @course.paul_id).where(course_type: 'group').excludes(id: @course.id).order_by([[:title_downcase, :asc]]).entries
         update_courses @groups
       end
-    rescue ::Mongoid::Errors::DocumentNotFound => e
+    rescue ::Mongoid::Errors::DocumentNotFound
       render 'gone', :status => :gone
     end
     # If the request is stale according to the given timestamp and etag value
@@ -46,11 +46,8 @@ class CoursesController < ApplicationController
   def update_course(course)
     min_interval = 100.days
     course.course_data.each do |data|
-      next_class = data['date'].to_date
-      #TODO: this will cause problems with multiple timezones
-      #TODO: this is more a hotfix. It should normally work out of the box
-      time_from = Time.new(next_class.year, next_class.mon, next_class.day, data['time_from'].hour, data['time_from'].min, 0, data['time_from'].utc_offset).in_time_zone(Time.zone)
-      time_to = Time.new(next_class.year, next_class.mon, next_class.day, data['time_to'].hour, data['time_to'].min, 0, data['time_to'].utc_offset).in_time_zone(Time.zone)
+      time_from = Time.new(data["date"].year, data["date"].month, data["date"].day, data["time_from"].to_time.hour, data["time_from"].to_time.min).utc
+      time_to = Time.new(data["date"].year, data["date"].month, data["date"].day, data["time_to"].to_time.hour, data["time_to"].to_time.min).utc
       data['time_from'] = time_from
       data['time_to'] = time_to
       interval = time_to - Time.now

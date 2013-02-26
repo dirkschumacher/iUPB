@@ -54,7 +54,6 @@ group :production do
 	gem 'newrelic_rpm', '>= 3.5.3.25'
 	gem 'dalli'
 	gem 'kgio'
-	gem "sourceninja", "~> 0.9.0"
 	gem "aws-sdk"
 end
 group :staging do

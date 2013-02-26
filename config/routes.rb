@@ -27,7 +27,7 @@ IUPB::Application.routes.draw do
     resources :ads, :path => "posts" do
       member do
         get 'remove'
-        get 'report'
+        post 'report'
       end
     end
     

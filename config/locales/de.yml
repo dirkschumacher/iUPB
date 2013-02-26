@@ -19,7 +19,7 @@ de:
   loading: "Lade"
   notice_saved: "Gespeichert!"
   notice_deleted: "Gelöscht!"
-  success: "Hurray!"
+  success: "OK! - hat geklappt! :)"
   ads:
     index:
       ads_headline: "Pinnwand"
@@ -211,7 +211,7 @@ de:
       ads: "Pinnwand"
       menu: "Speisepläne"
       weather: "Wetter"
-      buses: "Bus-Zeiten"
+      buses: "Busse"
       home: "Startseite"
       paul: "PAUL"
       party: "Parties"

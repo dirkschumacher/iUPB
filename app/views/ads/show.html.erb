@@ -1,4 +1,8 @@
 <% title @ad.title + " (" + t("layouts.application.ads") + ")" %>
+
+<% content_for(:description, truncate(h(@ad.text), length: 100)) %>
+
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -12,6 +16,7 @@
 	<h1><%= link_to '<i class="icon-arrow-left"></i>'.html_safe, ads_path, id: "back-button"  %> <%= @ad.title %> &nbsp;&nbsp;&nbsp; <small><i class="icon-user"></i>&nbsp;<%= truncate(@ad.name) %></small></h1>
 </div>
 <% end %>
+
 <% if @ad.photo? %>
 	<%= image_tag @ad.photo.url(:medium), class: "polaroid" %>
 <% end %>
@@ -53,7 +58,7 @@
   </div>
   <div class="span6">
 	<p>
-		<%= link_to "<i class='icon-exclamation-sign'></i> ".html_safe + t(".report"), report_ad_path(@ad), confirm: t(".report_sure") %>
+		<%= link_to "<i class='icon-exclamation-sign'></i> ".html_safe + t(".report"), report_ad_path(@ad), method: :post, confirm: t(".report_sure") %>
 	</p>
   </div>
 </div>
