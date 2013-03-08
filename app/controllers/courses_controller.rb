@@ -15,7 +15,10 @@ class CoursesController < ApplicationController
         format.json
       end
     rescue ::Mongoid::Errors::DocumentNotFound
-      render 'gone', :status => :gone
+      respond_to do |format|
+        format.html { render 'gone', :status => :gone }
+        format.json { head :not_found }
+      end
     end
   end
  
