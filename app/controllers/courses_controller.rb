@@ -1,6 +1,4 @@
 class CoursesController < ApplicationController
-  # before_filter :set_cache_header, :except => :search
-
   def index
   end
   
@@ -12,21 +10,22 @@ class CoursesController < ApplicationController
         @groups = Course.where(paul_id: @course.paul_id).where(course_type: 'group').excludes(id: @course.id).order_by([[:title_downcase, :asc]]).entries
         update_courses @groups
       end
+      respond_to do |format|
+        format.html
+        format.json
+      end
     rescue ::Mongoid::Errors::DocumentNotFound
-      render 'gone', :status => :gone
+      respond_to do |format|
+        format.html { render 'gone', :status => :gone }
+        format.json { head :not_found }
+      end
     end
-    # If the request is stale according to the given timestamp and etag value
-    # (i.e. it needs to be processed again) then execute this block
-    #if stale?(:last_modified => Time.now - 7.days, :etag => @course)
-    #  expires_in 7.days, :public => true, 'max-stale' => 0
-    #end
   end
  
   def search
     query = params[:query].downcase
     @courses = []
     if query.length > 2
-      #title_downcase: /.*#{query}.*/, 
       db_query = Course.where(course_type: 'course')
       search_condition = []
       query.split(" ").each do |word| 

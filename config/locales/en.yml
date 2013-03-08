@@ -119,6 +119,8 @@ en:
     twitter:
       UPB_on_twitter: "UPB on Twitter"
       by: "by"
+    api_docs:
+      title: "API Documentation"
     pingo:
       pingo_button: "Go to PINGO"
       pingo_button_text: "Please open PINGO using the button."
@@ -220,6 +222,7 @@ en:
       timetable: "Timetable"
       40years: "40 years UPB"
       pingo: "PINGO"
+      api_docs: "API Documentation"
   time:
     formats:
       very_short: ! '%H:%M'
