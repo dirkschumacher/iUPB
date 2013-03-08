@@ -17,7 +17,10 @@ class CoursesController < ApplicationController
         format.json { render json: @course }
       end
     rescue ::Mongoid::Errors::DocumentNotFound
-      render 'gone', :status => :gone
+      respond_to do |format|
+        format.html { render 'gone', :status => :gone }
+        format.json { head :not_found }
+      end
     end
     # If the request is stale according to the given timestamp and etag value
     # (i.e. it needs to be processed again) then execute this block
