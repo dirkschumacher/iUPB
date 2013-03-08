@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
       end
       respond_to do |format|
         format.html
-        format.json { render json: @course }
+        format.json
       end
     rescue ::Mongoid::Errors::DocumentNotFound
       render 'gone', :status => :gone
