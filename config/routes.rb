@@ -5,8 +5,8 @@ IUPB::Application.routes.draw do
     scope "v1" do
       match "restaurants(.:format)" => "restaurants#restaurants", :defaults => {:format => "json"}
       match "menus/:restaurant(.:format)" => "restaurants#index", :defaults => {:format => "json", :restaurant => "Mensa"}
-      match "courses/:id(.:format)" => "courses#show", :defaults => {:format => "json"}
       match "courses/search(.:format)" => "courses#search", :defaults => {:format => "json"}
+      match "course/:id(.:format)" => "courses#show", :defaults => {:format => "json"}
     end
   end
 
