@@ -10,6 +10,10 @@ class CoursesController < ApplicationController
         @groups = Course.where(paul_id: @course.paul_id).where(course_type: 'group').excludes(id: @course.id).order_by([[:title_downcase, :asc]]).entries
         update_courses @groups
       end
+      respond_to do |format|
+        format.html
+        format.json { render json: @course }
+      end
     rescue ::Mongoid::Errors::DocumentNotFound
       render 'gone', :status => :gone
     end
