@@ -1,17 +1,20 @@
 IUPB::Application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' if Rails.env.development?
-
-  get '/mu-3a3f1ed3-7eba3187-8180d5c5-3951e1a6' => 'stuff#blitz' if Rails.env.staging?
-
+  # API 
   scope "api" do
     scope "v1" do
       match "restaurants(.:format)" => "restaurants#restaurants", :defaults => {:format => "json"}
       match "menus/:restaurant(.:format)" => "restaurants#index", :defaults => {:format => "json", :restaurant => "Mensa"}
+      match "courses/search(.:format)" => "courses#search", :defaults => {:format => "json"}
+      match "course/:id(.:format)" => "courses#show", :defaults => {:format => "json"}
+      match "/" => 'pages#show', :id => 'api_docs', :as => :api_docs
     end
   end
 
+  # Website
   scope "(:locale)", :locale => /de|en/ do
+    root :to => 'pages#show', :id => 'index'
+    
     devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
     match "events" => 'events#index', :as => :events
@@ -64,19 +67,17 @@ IUPB::Application.routes.draw do
     #  network "http://*.newrelic.com/*"
     #end
     #match "/application.manifest" => offline, :as => :cache_manifest
+    
     match "courses/search" => "courses#search", :as => :course_search
     match "courses/:id" => "courses#show", :as => :course
     
-#    devise_scope :user do
-#      get 'sign_in', :to => 'users/sessions#new', :as => :new_user_session
-#      get 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
-#    end
-    #resource :courses
-    #match 'twitter' => 'high_voltage/pages#show', :id => 'twitter'
-    
     match "/pages/*id" => 'pages#show', :as => :page, :format => false
-    root :to => 'pages#show', :id => 'index'
   end
+  
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin' if Rails.env.development?
+
+  get '/mu-3a3f1ed3-7eba3187-8180d5c5-3951e1a6' => 'stuff#blitz' if Rails.env.staging?
+  
 
   
   # The priority is based upon order of creation:

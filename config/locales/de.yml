@@ -123,6 +123,8 @@ de:
     twitter:
       UPB_on_twitter: "UPB auf Twitter"
       by: "von"
+    api_docs:
+      title: "API Dokumentation"
     pingo:
       pingo_button: "PINGO öffnen"
       pingo_button_text: "Bitte öffne PINGO mit dem Button."
@@ -220,6 +222,7 @@ de:
       timetable: "Stundenplan"
       40years: "40 Jahre UPB"
       pingo: "PINGO"
+      api_docs: "API Dokumentation"
   activerecord:
     models:
       user: Benutzer
