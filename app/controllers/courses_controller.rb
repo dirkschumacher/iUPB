@@ -5,11 +5,8 @@ class CoursesController < ApplicationController
   def show
     begin
       @course = Course.find(params[:id])
-      update_course @course
-      if @course.course_type == 'course'
-        @groups = Course.where(paul_id: @course.paul_id).where(course_type: 'group').excludes(id: @course.id).order_by([[:title_downcase, :asc]]).entries
-        update_courses @groups
-      end
+      @course.update_next_class_information!
+      @groups = load_groups @course
       respond_to do |format|
         format.html
         format.json
@@ -38,32 +35,30 @@ class CoursesController < ApplicationController
         ]}
       end
       @courses = db_query.where('$and' => search_condition).limit(10).entries
-      update_courses @courses
+      update_next_class_information @courses
     end
     set_cache_header(60*60) # only cache 1 hour
   end
-  def update_course(course)
-    min_interval = 100.days
-    course.course_data.each do |data|
-      time_from = Time.new(data["date"].year, data["date"].month, data["date"].day, data["time_from"].to_time.hour, data["time_from"].to_time.min).utc
-      time_to = Time.new(data["date"].year, data["date"].month, data["date"].day, data["time_to"].to_time.hour, data["time_to"].to_time.min).utc
-      data['time_from'] = time_from
-      data['time_to'] = time_to
-      interval = time_to - Time.now
-      if time_to >= Time.now and interval < min_interval
-        course.next_class = {
-          room: data['room'].length == 0 ? t('courses.room_na') : data['room'],
-          time_from: time_from,
-          time_to: time_to
-          #instructor: data['instructor']
-        }
-        min_interval = interval
-      end
+  
+  private
+  
+  def update_next_class_information(courses)
+    courses.each do |course|
+      course.update_next_class_information!
     end
   end
-  def update_courses(courses)
-    courses.each do |course|
-      update_course course
+  
+  def load_groups(course) 
+    if @course.course_type == 'course'
+      groups = Course.where(paul_id: @course.paul_id)
+                      .where(course_type: 'group')
+                      .excludes(id: @course.id)
+                      .order_by([[:title_downcase, :asc]])
+                      .entries
+      update_next_class_information groups
+      groups
+    else
+      []
     end
   end
 end

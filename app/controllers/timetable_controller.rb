@@ -138,7 +138,7 @@ class TimetableController < ApplicationController
   
   def get_time_range(year, week)
       if year and week
-        start_date = Date.commercial(params[:year].to_i, params[:week].to_i).to_time
+        start_date = Date.commercial(year.to_i, week.to_i).to_time
         end_date = start_date
       else
         if Time.now > Time.now.end_of_week - 2.days # weekend
