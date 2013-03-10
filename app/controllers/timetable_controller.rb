@@ -55,18 +55,9 @@ class TimetableController < ApplicationController
   end
 
   def index
-    if params[:year] and params[:week]
-      @start_time = Date.commercial(params[:year].to_i, params[:week].to_i).to_time.beginning_of_week
-      @end_time = @start_time.end_of_week - 2.days
-    else
-      if Time.now > Time.now.end_of_week - 2.days # weekend
-        @start_time = (Time.now.end_of_week + 1.days).beginning_of_week
-        @end_time = @start_time.end_of_week - 2.days
-      else
-        @start_time = Time.now.beginning_of_week
-        @end_time = Time.now.end_of_week - 2.days
-      end
-    end  
+    date_range = get_time_range(params[:year], params[:week])
+    @start_time = date_range.start_time
+    @end_time = date_range.end_time
     @events = current_user.events.where(start_time: @start_time..@end_time).asc(:start_time)
     @userHasNoCourses = current_user.events.empty?
     respond_to do |format|
@@ -130,6 +121,9 @@ class TimetableController < ApplicationController
     rescue ; end
     courses
   end
+  
+  private
+  
   def get_timeslots
     [
       ["7:00", "9:00"],
@@ -141,4 +135,21 @@ class TimetableController < ApplicationController
       ["18:00", "20:00"]
     ]
   end
+  
+  def get_time_range(year, week)
+      if year and week
+        start_date = Date.commercial(params[:year].to_i, params[:week].to_i).to_time
+        end_date = start_date
+      else
+        if Time.now > Time.now.end_of_week - 2.days # weekend
+          start_date = (Time.now.end_of_week + 1.days)
+          end_date = start_date
+        else
+          start_date = Time.now.beginning_of_week
+          end_date = Time.now
+        end
+      end
+      TimeRange.new(start_date.beginning_of_week, end_date.end_of_week - 2.days)
+  end
+  
 end
