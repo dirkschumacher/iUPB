@@ -27,8 +27,8 @@ class Course
       time_to = c["time_to"].to_time
       instructor = c["instructor"]
       room = c["room"]
-      start_time = Time.new(date.year, date.month, date.day, time_from.hour, time_from.min)
-      end_time = Time.new(date.year, date.month, date.day, time_to.hour, time_to.min)
+      start_time = combine date, time_from
+      end_time = combine date, time_to
       unless future and start_time < Time.now
         dates << [start_time, end_time, room, instructor] 
       end
@@ -39,11 +39,14 @@ class Course
   def update_next_class_information!()
     min_interval = 100.days
     self.course_data.each do |data|
-      time_from = Time.new(data["date"].year, data["date"].month, data["date"].day, data["time_from"].to_time.hour, data["time_from"].to_time.min).utc
-      time_to = Time.new(data["date"].year, data["date"].month, data["date"].day, data["time_to"].to_time.hour, data["time_to"].to_time.min).utc
-      data['time_from'] = time_from
-      data['time_to'] = time_to
+      date = data["date"]
+      time_from_key = "time_from"
+      time_to_key = "time_from"
+      time_from = combine date, data[time_from_key].to_time
+      time_to = combine date, data[time_to_key].to_time
       interval = time_to - Time.now
+      data[time_from_key] = time_from
+      data[time_to_key] = time_to
       if time_to >= Time.now and interval < min_interval
         self.next_class = {
           room: data['room'].length == 0 ? t('courses.room_na') : data['room'],
@@ -54,5 +57,11 @@ class Course
         min_interval = interval
       end
     end
+  end
+  
+  private
+  
+  def combine(date, time) 
+    Time.new(date.year, date.month, date.day, time.hour, time.min)
   end
 end
