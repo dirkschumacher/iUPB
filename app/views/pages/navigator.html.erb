@@ -1,0 +1,38 @@
+<% title t("layouts.application.navigator") %>
+<%= content_for "page-attributes" do %>id="navigatorPage"<% end %>
+<% content_for :header do %>
+<h1><%= t "layouts.application.navigator" %></h1>
+<% end %>
+
+<p id="choose_faculty">
+	<h4 id="wait-message"><%= t 'please_wait' %></h4>
+</p>
+<% content_for :javascript do %>
+<script>
+$(document).ready(function() {
+  	$.getJSON('http://navigator.api.i-upb.de/faculties.jsonp?callback=?', function(data) {
+	  var items = [];
+
+	  $.each(data, function(index, faculty) {
+		console.log(faculty);
+	    items.push('<li id="' + faculty.id + '">' + faculty.name + '</li>');
+	  });
+
+	  $('<ul/>', {
+	    'class': 'my-new-list',
+	    html: items.join('')
+	  }).appendTo('#choose_faculty');
+	
+	$('#wait-message').hide();
+	});
+});
+</script>
+<% end %>
+
+
+
+
+<p class="source-info">
+	<%= t "source" %>: <a target="_blank" href="http://zsb.uni-paderborn.de">ZSB (Uni Paderborn)</a>.
+</p>
+
