@@ -3,28 +3,14 @@
 <% content_for :header do %>
 <h1><%= t "layouts.application.navigator" %></h1>
 <% end %>
-
+<p class="huge gray" style="margin-top: 20px; margin-bottom: 30px;">&#9312; <%= t ".choose_study" %></p>
 <p id="choose_faculty">
 	<h4 id="wait-message"><%= t 'please_wait' %></h4>
 </p>
 <% content_for :javascript do %>
 <script>
 $(document).ready(function() {
-  	$.getJSON('http://navigator.api.i-upb.de/faculties.jsonp?callback=?', function(data) {
-	  var items = [];
-
-	  $.each(data, function(index, faculty) {
-		console.log(faculty);
-	    items.push('<li id="' + faculty.id + '">' + faculty.name + '</li>');
-	  });
-
-	  $('<ul/>', {
-	    'class': 'my-new-list',
-	    html: items.join('')
-	  }).appendTo('#choose_faculty');
-	
-	$('#wait-message').hide();
-	});
+  	window.iUPB.Navigator.setupFacultyChooser("#choose_faculty");
 });
 </script>
 <% end %>

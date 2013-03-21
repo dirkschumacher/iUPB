@@ -13,3 +13,20 @@
 .dashboard-row {
   margin-bottom:5px;
 }
+.bold {
+	font-weight: bold;
+}
+.huge {
+	font-size: 40pt;
+}
+@media screen and (max-width: 480px) {
+	.huge {
+		font-size: 20pt;
+	}
+}
+.gray {
+	color: gray;
+}
+.hand { 
+	cursor: hand; cursor: pointer; 
+}

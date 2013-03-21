@@ -66,6 +66,7 @@ end
 
 
 gem 'jquery-rails'
+gem 'jquery-cookie-rails'
 gem 'twitter-bootstrap-rails', '2.0.9'
 
 gem "high_voltage"
