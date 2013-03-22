@@ -17,11 +17,17 @@
 	font-weight: bold;
 }
 .huge {
-	font-size: 40pt;
+	font-size: 50px;
+}
+.huge-line {
+	line-height: 60px;
 }
 @media screen and (max-width: 480px) {
 	.huge {
-		font-size: 20pt;
+		font-size: 25px;
+	}
+	.huge-line {
+		line-height:30px;
 	}
 }
 .gray {

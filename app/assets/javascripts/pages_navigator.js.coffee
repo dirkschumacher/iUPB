@@ -38,8 +38,8 @@
 	jQuery.getJSON window.iUPB.Navigator.infosURL(faculty_id, id), (data) ->
 		items = jQuery.map data, (info) ->
 			'<div class=" bold well" id="info_' + info.id + '"><h4>' + 
-				info.role_text + '</h4><p><a href="' + info.mail + '">' + info.name + '</a> <a href="#"><i class="icon-arrow-right"></i></a>' + 
-				(if info.link then ('<br><a href="' + info.link + '">' + 'WWW</a>') else '') + '</p></div>'
+				info.role_text + '</h4><p>' + 	(if info.mail then ('<a href="' + info.mail + '">' + info.name +  '</a>') else info.name) + '<a href="#" class="huge pull-right"><i class="icon-arrow-right"></i></a>' + 
+				(if info.link then ('<br><em><a class="external-confirm" href="' + info.link + '">' + 'WWW</a></em>') else '') + '</p></div>'
 		jQuery(div).html jQuery('<div/>', { html: items.join('') })
 		jQuery("#chooser_header").html window.iUPB.Navigator.vars.back_icon + " " + window.iUPB.Navigator.getStudy(faculty_id, id).name
 
