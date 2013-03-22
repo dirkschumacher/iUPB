@@ -1,6 +1,7 @@
 jQuery.cookie.json = true
 jQuery ->
   $("a[rel=popover]").popover()
+  $(document).on("click", "a.prevent-default", (e) -> e.preventDefault())
   $(".tooltip").tooltip()
   $("a[rel=tooltip]").tooltip()
   $(".datepicker").datepicker()
