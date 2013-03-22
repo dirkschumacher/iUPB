@@ -17,7 +17,7 @@
 @iUPB.Navigator.getStudy = (faculty_id, study_id) ->
 	result = {}
 	jQuery.each window.iUPB.Navigator.getStudiesForFaculty(faculty_id), (index, study) ->
-		if study?.id?.toString() == study_id?.toString()
+		if study?.id?.toString() == study_id.toString()
 			result = study
 	result
 
@@ -43,8 +43,7 @@
 				(if info.full_text then ('<br>' + info.full_text.trim().replace(/\n/g,"<br>")) else '') + '</div></div></div>'
 		jQuery(div).html jQuery('<div/>', { html: items.join('') })
 		jQuery("#chooser_header").html window.iUPB.Navigator.vars.back_icon + " " + window.iUPB.Navigator.getStudy(faculty_id, id).name
-		jQuery(document).on "click", "a[data-full-text]", () ->
-    	alert jQuery(this).attr("data-full-text")
+		jQuery('#wait-message').hide()
         
 
 @iUPB.Navigator.setupStudyChooser = (div) ->
