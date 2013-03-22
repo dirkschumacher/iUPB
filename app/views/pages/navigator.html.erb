@@ -12,7 +12,7 @@
 window.iUPB.Navigator.vars.back_icon = "<a class='setup-fac-chooser' class='hand'><i class='icon-arrow-left'></i></a>";
 window.iUPB.Navigator.vars.second_header = window.iUPB.Navigator.vars.back_icon + " &#9313; <%= t(".choose_study", default: "Choose study") %>";
 $(document).ready(function() {
-	if($.cookie('iupb_study') !== undefined){
+	if($.cookie('iupb_study')){
 		window.iUPB.Navigator.loadStudyData(function() {
 			window.iUPB.Navigator.selectStudy("#choose_faculty", $.cookie('iupb_study').study_id, $.cookie('iupb_study').faculty_id);
 		});
