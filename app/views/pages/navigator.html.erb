@@ -9,7 +9,7 @@
 </p>
 <% content_for :javascript do %>
 <script>
-window.iUPB.Navigator.vars.back_icon = "<a class='setup-fac-chooser' class='hand'><i class='icon-arrow-left'></i></a>";
+window.iUPB.Navigator.vars.back_icon = "<a class='setup-fac-chooser hand'><i class='icon-arrow-left'></i></a>";
 window.iUPB.Navigator.vars.second_header = window.iUPB.Navigator.vars.back_icon + " &#9313; <%= t(".choose_study", default: "Choose study") %>";
 $(document).ready(function() {
   	window.iUPB.Navigator.setupFacultyChooser("#choose_faculty");
