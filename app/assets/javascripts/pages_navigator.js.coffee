@@ -17,7 +17,7 @@
 @iUPB.Navigator.getStudy = (faculty_id, study_id) ->
 	result = {}
 	jQuery.each window.iUPB.Navigator.getStudiesForFaculty(faculty_id), (index, study) ->
-		if study.id.toString() == study_id.toString()
+		if study?.id?.toString() == study_id?.toString()
 			result = study
 	result
 
@@ -37,11 +37,15 @@
 @iUPB.Navigator.selectStudy = (div, id, faculty_id) ->
 	jQuery.getJSON window.iUPB.Navigator.infosURL(faculty_id, id), (data) ->
 		items = jQuery.map data, (info) ->
-			'<div class=" bold well" id="info_' + info.id + '"><h4>' + 
-				info.role_text + '</h4><p><a href="' + info.mail + '">' + info.name + '</a> <a href="#"><i class="icon-arrow-right"></i></a>' + 
-				(if info.link then ('<br><a href="' + info.link + '">' + 'WWW</a>') else '') + '</p></div>'
+			'<div class=" lead well" id="info_' + info.id + '"><h4>' + 
+				info.role_text + '</h4><div class="row-fluid"><div class="span6"><a target="_blank" class="huge-name" href="' + info.link + '">' + info.name + ' <i class="icon-arrow-right"></i></a> ' + 
+				(if info.link then ('<br><a href="' + info.mail + '">' + 'Mail</a>') else '') + '</div><div class="span6">' +  
+				(if info.full_text then ('<br>' + info.full_text.trim().replace(/\n/g,"<br>")) else '') + '</div></div></div>'
 		jQuery(div).html jQuery('<div/>', { html: items.join('') })
 		jQuery("#chooser_header").html window.iUPB.Navigator.vars.back_icon + " " + window.iUPB.Navigator.getStudy(faculty_id, id).name
+		jQuery(document).on "click", "a[data-full-text]", () ->
+    	alert jQuery(this).attr("data-full-text")
+        
 
 @iUPB.Navigator.setupStudyChooser = (div) ->
 	jQuery(document).on "click", "a[data-choose-faculty]", () ->
