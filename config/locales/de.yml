@@ -222,6 +222,7 @@ de:
       timetable: "Stundenplan"
       40years: "40 Jahre UPB"
       pingo: "PINGO"
+      navigator: "Navigator"
       api_docs: "API Dokumentation"
   activerecord:
     models:

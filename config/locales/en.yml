@@ -222,6 +222,7 @@ en:
       timetable: "Timetable"
       40years: "40 years UPB"
       pingo: "PINGO"
+      navigator: "Guide"
       api_docs: "API Documentation"
   time:
     formats:
