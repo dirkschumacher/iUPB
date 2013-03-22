@@ -30,7 +30,7 @@
 
 @iUPB.Navigator.selectFaculty = (div, id) ->
 	items = jQuery.map window.iUPB.Navigator.getStudiesForFaculty(id), (study) ->
-		'<p class="well bold very-well-indeed" id="study_' + study.id + '"><a class="hand" data-faculty-id= "' + id + '" data-choose-study="' + study.id + '">' + study.name + '</a></p>'
+		'<p class="well bold very-well-indeed" id="study_' + study.id + '"><a href="#" data-faculty-id="' + id + '" data-choose-study="' + study.id + '">' + study.name + '</a></p>'
 	jQuery(div).html jQuery('<div/>', { html: items.join('') })
 	jQuery("#chooser_header").html window.iUPB.Navigator.vars.second_header
 
@@ -56,7 +56,7 @@
 @iUPB.Navigator.setupFacultyChooser = (div) ->
 		if window.iUPB.Navigator.vars.studies
 			items = jQuery.map window.iUPB.Navigator.vars.studies, (faculty) ->
-				'<p class="well bold very-well-indeed" id="faculty_' + faculty.id + '"><a class="hand" data-choose-faculty="' + faculty.id + '">' + faculty.name + '</a></p>'
+				'<p class="well bold very-well-indeed" id="faculty_' + faculty.id + '"><a href="#" data-choose-faculty="' + faculty.id + '">' + faculty.name + '</a></p>'
 			jQuery(div).html jQuery('<div/>', { html: items.join('') })
 			iUPB.Navigator.setupStudyChooser(div)
 			jQuery('#wait-message').hide()
