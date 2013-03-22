@@ -288,7 +288,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.0.9)
+    twitter-bootstrap-rails (2.0.8)
       actionpack (>= 3.1)
       less-rails (~> 2.2.2)
       railties (>= 3.1)
@@ -352,7 +352,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   thin
   tire
-  twitter-bootstrap-rails (= 2.0.9)
+  twitter-bootstrap-rails (= 2.0.8)
   uglifier (>= 1.0.3)
   unicorn
   will_paginate_mongoid
