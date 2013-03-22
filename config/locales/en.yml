@@ -121,6 +121,10 @@ en:
       by: "by"
     api_docs:
       title: "API Documentation"
+    navigator:
+      choose_faculty: "Choose your faculty"
+      choose_study: "Choose your major"
+      intro_text: "Find your contact person after choosing your major."
     pingo:
       pingo_button: "Go to PINGO"
       pingo_button_text: "Please open PINGO using the button."

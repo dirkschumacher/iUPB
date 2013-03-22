@@ -125,6 +125,10 @@ de:
       by: "von"
     api_docs:
       title: "API Dokumentation"
+    navigator:
+      choose_faculty: "Wähle deine Fakultät"
+      choose_study: "Wähle deinen Studiengang"
+      intro_text: "Finde hier nach Auswahl deines Studiengangs die für dich passenden Ansprechpartner."
     pingo:
       pingo_button: "PINGO öffnen"
       pingo_button_text: "Bitte öffne PINGO mit dem Button."

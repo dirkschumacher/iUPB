@@ -41,6 +41,7 @@
 			'<div class=" bold well" id="info_' + info.id + '"><h4>' + 
 				info.role_text + '</h4><p>' + 	(if info.link then ('<a class="external-confirm" href="' + info.link + '">' + info.name +  '</a>') else info.name) + '<a href="#" class="huge pull-right"><i class="icon-arrow-right"></i></a>' + 
 				(if info.link then ('<br><em><a href="' + info.mail + '">' + '<i class="icon-envelope"></i> Mail</a></em>') else '') + '</p></div>'
+		jQuery("#intro_text").hide()
 		jQuery(div).html jQuery('<div/>', { html: items.join('') })
 		jQuery("#chooser_header").html window.iUPB.Navigator.vars.back_icon + " " + window.iUPB.Navigator.getStudy(faculty_id, id).name
 
