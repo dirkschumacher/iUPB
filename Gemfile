@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '1.9.2'
 
 gem 'rails', '3.2.11'
 
@@ -42,6 +43,7 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-cookie-rails'
 end
 
 group :development do
@@ -67,8 +69,7 @@ end
 
 
 gem 'jquery-rails'
-gem 'jquery-cookie-rails'
-gem 'twitter-bootstrap-rails', '2.0.9'
+gem 'twitter-bootstrap-rails', '2.0.8'
 
 gem "high_voltage"
 gem "will_paginate_mongoid"

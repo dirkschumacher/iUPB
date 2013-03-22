@@ -20,9 +20,15 @@
 	font-size: 40pt;
 	line-height:100%;
 }
+.huge-line {
+	line-height: 60px;
+}
 @media screen and (max-width: 480px) {
 	.huge {
-		font-size: 20pt;
+		font-size: 25px;
+	}
+	.huge-line {
+		line-height:30px;
 	}
 }
 .gray {
