@@ -40,10 +40,11 @@
 			'<div class=" lead well" id="info_' + info.id + '"><h4>' + 
 				info.role_text + '</h4><div class="row-fluid"><div class="span6"><a target="_blank" class="huge-name" href="' + info.link + '">' + info.name + ' <i class="icon-arrow-right"></i></a> ' + 
 				(if info.link then ('<br><a href="' + info.mail + '">' + 'Mail</a>') else '') + '</div><div class="span6">' +  
-				(if info.full_text then ('<br>' + info.full_text.trim().replace(/\n/g,"<br>")) else '') + '</div></div></div>'
+				(if info.full_text then ('<br>' + info.full_text.trim().replace(/\n/g,"<br>").replace(info.name, "")) else '') + '</div></div></div>'
 		jQuery(div).html jQuery('<div/>', { html: items.join('') })
 		jQuery("#chooser_header").html window.iUPB.Navigator.vars.back_icon + " " + window.iUPB.Navigator.getStudy(faculty_id, id).name
 		jQuery('#wait-message').hide()
+		jQuery('#chooser_header').get(0).scrollIntoView(true)
         
 
 @iUPB.Navigator.setupStudyChooser = (div) ->
