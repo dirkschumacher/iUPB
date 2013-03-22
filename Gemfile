@@ -22,7 +22,6 @@ gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
 gem "haml"
 gem "recaptcha", :require => "recaptcha/rails"
 gem "ri_cal"
-
 gem "ruby-oembed", "~> 0.8.8" 
 gem 'mongoid_slug', :git => "git://github.com/digitalplaywright/mongoid-slug.git", ref: "7f99b27b26d460a5e12bba9accccd1dd215073c8" # Mongoid2 /  https://github.com/digitalplaywright/mongoid-slug/issues/100#issuecomment-10030053
 
@@ -31,6 +30,8 @@ gem "tire"
 
 gem "js-routes" # https://github.com/railsware/js-routes
 gem 'contact_us', '~> 0.4.0.beta' # https://github.com/jdutil/contact_us
+
+# gem "historyjs-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.

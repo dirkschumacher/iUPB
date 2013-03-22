@@ -1,0 +1,10 @@
+.very-well-indeed {
+	font-size: 20pt;
+	line-height:100%;
+}
+@media screen and (max-width: 480px) {
+	.very-well-indeed {
+		font-size: 13pt;
+		line-height:100%;
+	}
+}
