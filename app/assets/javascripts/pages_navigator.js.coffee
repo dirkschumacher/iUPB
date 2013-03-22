@@ -35,6 +35,7 @@
 	jQuery("#chooser_header").html window.iUPB.Navigator.vars.second_header
 
 @iUPB.Navigator.selectStudy = (div, id, faculty_id) ->
+	jQuery.cookie 'iupb_study', {"study_id": id, "faculty_id": faculty_id}, { expires: 182, path: '/' }
 	jQuery.getJSON window.iUPB.Navigator.infosURL(faculty_id, id), (data) ->
 		items = jQuery.map data, (info) ->
 			'<div class=" bold well" id="info_' + info.id + '"><h4>' + 

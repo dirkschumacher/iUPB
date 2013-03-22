@@ -1,3 +1,4 @@
+jQuery.cookie.json = true
 jQuery ->
   $("a[rel=popover]").popover()
   $(".tooltip").tooltip()
