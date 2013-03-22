@@ -121,6 +121,8 @@ en:
       by: "by"
     api_docs:
       title: "API Documentation"
+    navigator:
+      choose_faculty: "Choose Faculty"
     pingo:
       pingo_button: "Go to PINGO"
       pingo_button_text: "Please open PINGO using the button."
