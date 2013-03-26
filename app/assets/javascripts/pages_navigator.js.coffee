@@ -37,9 +37,9 @@
 @iUPB.Navigator.selectStudy = (div, id, faculty_id) ->
 	jQuery.getJSON window.iUPB.Navigator.infosURL(faculty_id, id), (data) ->
 		items = jQuery.map data, (info) ->
-			'<div class=" lead well" id="info_' + info.id + '"><h4>' + 
-				info.role_text + '</h4><div class="row-fluid"><div class="span6"><a target="_blank" class="huge-name" href="' + info.link + '">' + info.name + ' <i class="icon-arrow-right"></i></a> ' + 
-				(if info.link then ('<br><a href="' + info.mail + '">' + 'Mail</a>') else '') + '</div><div class="span6">' +  
+			'<div class=" lead well" id="info_' + info.id + '"><p class="huge-name">' + 
+				info.role_text + '</p><div class="row-fluid"><div class="span6"><strong>' + (if info.link then '<a target="_blank" href="' + info.link + '">' + info.name + ' <i class="icon-arrow-right"></i></a>' else info.name ) + '</strong> ' + 
+				(if info.mail then ('<br><a href="' + info.mail + '">' + 'Mail</a>') else '') + '</div><div class="span6">' +  
 				(if info.full_text then ('<br>' + info.full_text.trim().replace(/\n/g,"<br>").replace(info.name, "")) else '') + '</div></div></div>'
 		jQuery(div).html jQuery('<div/>', { html: items.join('') })
 		jQuery("#chooser_header").html window.iUPB.Navigator.vars.back_icon + " " + window.iUPB.Navigator.getStudy(faculty_id, id).name
