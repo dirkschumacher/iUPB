@@ -10,7 +10,7 @@
 </p>
 <% content_for :javascript do %>
 <script>
-window.iUPB.Navigator.vars.back_icon = "<a href='#' class='prevent-default setup-fac-chooser'><i class='icon-arrow-left'></i></a>";
+window.iUPB.Navigator.vars.back_icon = "<a href='#' onclick='return false;'  class='prevent-default setup-fac-chooser'><i class='icon-arrow-left'></i></a>";
 window.iUPB.Navigator.vars.second_header = window.iUPB.Navigator.vars.back_icon + " &#9313; <%= t(".choose_study", default: "Choose study") %>";
 $(document).ready(function() {
 	if($.cookie('iupb_study')){
