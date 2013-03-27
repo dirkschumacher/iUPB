@@ -13,15 +13,21 @@
 @media screen and (max-width: 480px) {
 	.very-well-indeed {
 		font-size: 13pt;
-		line-height:100%;
 	}
     .explain-text {
 		font-size: 12pt;
-		line-height:100%;
 	}
     .huge-name {
 	    font-size: 16pt;
-	    line-height:100%;
+			-ms-word-break: break-all;
+			     word-break: break-all;
+
+			// Non standard for webkit
+			word-break: break-word;
+
+			-webkit-hyphens: auto;
+			   -moz-hyphens: auto;
+			        hyphens: auto;
 	}
 	.navigator-contact-info {
 		font-size: 14pt;

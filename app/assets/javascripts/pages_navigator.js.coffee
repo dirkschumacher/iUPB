@@ -45,7 +45,7 @@
 	
 	jQuery.getJSON window.iUPB.Navigator.infosURL(faculty_id, id), (data) ->
 		items = jQuery.map data, (info) ->
-			'<div class=" lead well" id="info_' + info.id + '"><p class="huge-name"><strong style="font-weight: 400;">' + 
+			'<div class=" lead well" id="info_' + info.id + '"><p class="huge-name"><strong>' + 
 				info.role_text + '</strong>' +  (if info.role_description then explain(info.role_description) else '') + '</p><div class="row-fluid"><div class="span7"><strong>' + (if info.link then '<a target="_blank" href="' + info.link + '">' + info.name + ' <i class="icon-arrow-right"></i></a>' else info.name ) + '</strong> ' + 
 				(if info.mail then ('<br><a href="' + info.mail + '">' + 'Mail</a>') else '') + '</div><div class="navigator-contact-info span5">' +  
 				(if info.full_text then ('<br>' + info.full_text.trim().replace(/\n/g,"<br>").replace(info.name, "")) else '') + '</div></div></div>'
