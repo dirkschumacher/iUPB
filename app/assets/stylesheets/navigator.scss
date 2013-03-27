@@ -3,16 +3,24 @@
 	line-height:100%;
 }
 .huge-name {
-    font-size: 30pt;
+    font-size: 26pt;
     line-height:100%;
+}
+.explain-text {
+	font-size: 14pt;
+	line-height:100%;
 }
 @media screen and (max-width: 480px) {
 	.very-well-indeed {
 		font-size: 13pt;
 		line-height:100%;
 	}
+    .explain-text {
+		font-size: 12pt;
+		line-height:100%;
+	}
     .huge-name {
-	    font-size: 20pt;
+	    font-size: 17pt;
 	    line-height:100%;
 	}
 }

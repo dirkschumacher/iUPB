@@ -41,7 +41,7 @@
 		' <a class="role_explain_link" href="#explain_' + uid + '" data-toggle="collapse" data-target="#explain_' + uid + '" onclick="return false;">
 		  <i class="icon-question-sign"></i>
 		</a>
-		</p><p class="collapse" id="explain_' + uid + '">' + text.trim()
+		</p><p class="collapse explain-text" id="explain_' + uid + '">' + text.trim()
 	
 	jQuery.getJSON window.iUPB.Navigator.infosURL(faculty_id, id), (data) ->
 		items = jQuery.map data, (info) ->
