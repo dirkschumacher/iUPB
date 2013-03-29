@@ -11,7 +11,7 @@
 	note we use js detection instead of css3 here because PINGO does so and otherwise would render another bootstrap menu in the iframe 
 */
 
-(function(a){jQuery.browser.mobile=/android.+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)})(navigator.userAgent||navigator.vendor||window.opera);
+(function(a){window.mobile=/android.+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)})(navigator.userAgent||navigator.vendor||window.opera);
 
 var pingo_iframe = '<iframe src="http://pingo.upb.de/" style="height:90%;min-height:90%; width:100%;" frameborder="0"></iframe>';
 var pingo_link = '<p>&nbsp;<br><a href="http://pingo.upb.de/" target="_blank" class="btn btn-primary btn-large"><%= t ".pingo_button" %></a></p><p>&nbsp;<br><%= t ".pingo_button_text" %> <br><em>(<%= t ".pingo_nophone" %>)</em></p>';
@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
 	$("#what_is_link").click(function(e){
 		e.preventDefault();
 	});
-	if(jQuery.browser.mobile){
+	if(window.mobile){
 		$("#pingoContent").html(pingo_iframe);
 		// $("#pingoHeadline").hide();
 	} else {

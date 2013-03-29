@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '1.9.2'
 
 gem 'rails', '3.2.11'
 
@@ -22,7 +23,6 @@ gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
 gem "haml"
 gem "recaptcha", :require => "recaptcha/rails"
 gem "ri_cal"
-
 gem "ruby-oembed", "~> 0.8.8" 
 gem 'mongoid_slug', :git => "git://github.com/digitalplaywright/mongoid-slug.git", ref: "7f99b27b26d460a5e12bba9accccd1dd215073c8" # Mongoid2 /  https://github.com/digitalplaywright/mongoid-slug/issues/100#issuecomment-10030053
 
@@ -31,6 +31,8 @@ gem "tire"
 
 gem "js-routes" # https://github.com/railsware/js-routes
 gem 'contact_us', '~> 0.4.0.beta' # https://github.com/jdutil/contact_us
+
+# gem "historyjs-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,6 +43,7 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-cookie-rails'
 end
 
 group :development do
@@ -66,7 +69,7 @@ end
 
 
 gem 'jquery-rails'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '2.0.8'
 
 gem "high_voltage"
 gem "will_paginate_mongoid"
@@ -79,12 +82,6 @@ gem "nokogiri"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

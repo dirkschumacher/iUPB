@@ -1,0 +1,37 @@
+<% title t("layouts.application.navigator") %>
+<%= content_for "page-attributes" do %>id="navigatorPage"<% end %>
+<% content_for :header do %>
+<h1><%= t "layouts.application.navigator" %></h1>
+<% end %>
+<p id="intro_text"><%= t ".intro_text" %></p>
+<p id="chooser_header" class="huge huge-line gray">&#9312; <%= t ".choose_faculty" %></p>
+<p id="choose_faculty">
+	<h4 id="wait-message"><%= t 'please_wait' %></h4>
+</p>
+<% content_for :javascript do %>
+<script>
+window.iUPB.Navigator.vars.back_icon = "<a href='#' onclick='return false;'  class='prevent-default setup-fac-chooser'><i class='icon-arrow-left'></i></a>";
+window.iUPB.Navigator.vars.second_header = window.iUPB.Navigator.vars.back_icon + " &#9313; <%= t(".choose_study", default: "Choose study") %>";
+$(document).ready(function() {
+	if($.cookie('iupb_study')){
+		window.iUPB.Navigator.loadStudyData(function() {
+			window.iUPB.Navigator.selectStudy("#choose_faculty", $.cookie('iupb_study').study_id, $.cookie('iupb_study').faculty_id);
+		});
+	} else {
+		window.iUPB.Navigator.setupFacultyChooser("#choose_faculty");
+	}
+	$(document).on('click', '.setup-fac-chooser', function() {
+		window.iUPB.Navigator.setupFacultyChooser("#choose_faculty");
+		$("#chooser_header").html("&#9312; <%= t(".choose_faculty", default: "Choose faculty") %>");
+	});
+});
+</script>
+<% end %>
+
+
+
+
+<p class="source-info">
+	<%= t "source" %>: <a target="_blank" href="http://zsb.uni-paderborn.de">ZSB (Uni Paderborn)</a>.
+</p>
+
