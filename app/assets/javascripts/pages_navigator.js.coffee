@@ -51,6 +51,7 @@
 				(if info.full_text then ('<br>' + info.full_text.trim().replace(/\n/g,"<br>").replace(info.name, "")) else '') + '</div></div></div>'
 		jQuery(div).html jQuery('<div/>', { html: items.join('') })
 		jQuery("#chooser_header").html window.iUPB.Navigator.vars.back_icon + " " + window.iUPB.Navigator.getStudy(faculty_id, id).name
+		jQuery('#intro_text').hide()
 		jQuery('#wait-message').hide()
 		jQuery('#chooser_header').get(0).scrollIntoView(true)
 		
