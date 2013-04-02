@@ -41,7 +41,7 @@ class Course
     self.course_data.each do |data|
       date = data["date"]
       time_from_key = "time_from"
-      time_to_key = "time_from"
+      time_to_key = "time_to"
       time_from = combine date, data[time_from_key].to_time
       time_to = combine date, data[time_to_key].to_time
       interval = time_to - Time.now
