@@ -36,7 +36,7 @@ class Course
     dates
   end
   
-  def update_next_class_information!()
+  def update_next_class_information!
     min_interval = 100.days
     self.course_data.each do |data|
       date = data["date"]
@@ -49,7 +49,7 @@ class Course
       data[time_to_key] = time_to
       if time_to >= Time.now and interval < min_interval
         self.next_class = {
-          room: data['room'].length == 0 ? t('courses.room_na') : data['room'],
+          room: data['room'].length == 0 ? I18n.t('courses.room_na') : data['room'],
           time_from: time_from,
           time_to: time_to
           #instructor: data['instructor']
