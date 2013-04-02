@@ -79,7 +79,7 @@
 		        course_route = Routes.course_path(courseId, {locale: I18n.locale, canvas: window.iUPB.vars.canvas})
 					else
 		        course_route = Routes.course_path(courseId, {locale: I18n.locale})
-					$optionsDropDown = $('
+					$optionsDropDown = $.parseHTML('
 		        <ul role="menu" aria-labelledby="dropdown-' + id + '" class="dropdown-menu">
 	            <li><a id="link-view-details-' + id + '" href="' + course_route + '"><i class="icon-eye-open"></i>' + I18n.t("timetable.index.view_course_details") + '</a></li>
 	            <li><a id="link-deleteone-' + id + '" href="#"><i class="icon-remove"></i>' + I18n.t("timetable.index.delete_one") + '</a></li>
