@@ -8,7 +8,7 @@ We also created two apps for [iOS](https://github.com/yippie-io/iUPB-iOS-App) an
 [![Code Climate](https://codeclimate.com/github/yippie-io/iUPB.png)](https://codeclimate.com/github/yippie-io/iUPB)
 
 ## Setup
-- Install Ruby 1.9 and Bundler
+- Install Ruby 1.9 and Bundler (we run 1.9.2 live)
 - Install Mongodb `brew install mongodb`
 - Start mongodb 
 - Optional: install and start elasticsearch `brew install elasticsearch`
