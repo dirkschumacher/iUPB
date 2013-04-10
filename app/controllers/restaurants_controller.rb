@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_filter :set_cache_header
+  @@mutex = Mutex.new
 
   def restaurants
     @restaurants = Restaurant.all(sort: [[ :name, :asc ]])
@@ -19,7 +20,12 @@ class RestaurantsController < ApplicationController
     end
     
     unless @restaurant.menus.where(:date.gt => @today).first
-      RestaurantHelper::update_database
+      if @@mutex.try_lock # am I the first to request new data?
+        RestaurantHelper::update_database # then download and parse
+        @@mutex.unlock # and finish locking
+      else # if already somebody else is loading new data
+        @@mutex.lock; @@mutex.unlock # just wait until it's done
+      end
       @restaurant.reload
     end
 
