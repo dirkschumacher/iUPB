@@ -1,7 +1,7 @@
 <% title t("layouts.application.paul") %>
 <%= content_for "page-attributes" do %>id="paulPage"<% end %>
 <% content_for :header do %>
-<h1 id="paul_heading"><%= t ".Paul"%></h1>
+<h1 id="paul_heading"><%= t ".title" %></h1>
 <% end %>
 <span id="paul_search_label" style="display:none;font-weight:bold;"><%= t ".search"%>: </span><input type="search" name="search" autocomplete="off" id="paul_search_field" placeholder="<%= t '.search' %>..." value="" />
 <% content_for :javascript do %>
@@ -123,7 +123,11 @@ $(document).ready(function(event) {
 </script>
 <% end %>
 <ul id="courses_result_list" class="no-bullets no-left-margin">
-  <li><h3><%= t '.type_and_find' %></h3><p>&nbsp;</p>
+  <li><h3><%= t '.type_and_find' %></h3><p>
+	<% if user_signed_in? %>
+		<small><%= link_to "+ " + t(".create_custom_event"), timetable_new_path %></small><br>
+	<% end %>
+	&nbsp;</p>
     <div class="hero-unit" style="padding: 20px !important;">
       <h2><%= t("marketing.timetable") %></h2>
       <p><%= t("marketing.timetable_text") %></p>

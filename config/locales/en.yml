@@ -20,6 +20,10 @@ en:
   notice_saved: "Saved!"
   notice_deleted: "Removed!"
   success: "OK, it worked :)!"
+  why: Why
+  2_weekly: every other week
+  weekly: weekly
+  daily: daily
   ads:
     index:
       ads_headline: "Pinboard"
@@ -173,6 +177,7 @@ en:
       no_results: "No courses found. Try again :)"
       data: "Data"
       saved_in_timetable: "Successfully saved in timetable!"
+      create_custom_event: "add own (non-PAUL) event"
   restaurants:
       index:
           prev_day: "prev. day"
@@ -194,6 +199,16 @@ en:
         party_headline: "Party calendar"
         view_on_facebook: "open on facebook"
   timetable:
+      new:
+        new_entry: New timetable entry
+        start_time: start time
+        end_time: end time
+        location: location
+        corresponding_course: corresponding course
+        course_explanation: "setting the course here will enable you to automatically delete this custom entry together with the course."
+        recurring: recurring event
+        recurring_style: recurring style
+        recurring_end: ends
       index:
         prev_week: "previous week"
         next_week: "next week"
