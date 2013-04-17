@@ -12,6 +12,10 @@ en:
   
 
 de:
+  devise:
+    failure:
+      user:
+        not_found_in_database: "Benutzer nicht gefunden. (Bitte gib auf dieser Seite NICHT deine IMT-Kennung ein.)"
   recaptcha:
     input:
       enter_above: "Gib die dargestellten Wörter ein"
