@@ -20,6 +20,10 @@ de:
   notice_saved: "Gespeichert!"
   notice_deleted: "Gelöscht!"
   success: "OK! - hat geklappt! :)"
+  why: Warum
+  2_weekly: zwei-wöchentlich
+  weekly: wöchentlich
+  daily: täglich
   ads:
     index:
       ads_headline: "Pinnwand"
@@ -165,12 +169,13 @@ de:
       course_details: 'Kursansicht'
     room_na: 'N.N.'
     index:
-      title: "Paul"
+      title: "PAUL"
       search: "Suche"
       type_and_find: "Suche nach Kursnamen, Raum, Dozenten, etc."
       no_results: "Keine Kurse gefunden. Probier\\'s noch einmal :)"
       data: "Daten"
       saved_in_timetable: "Im Stundenplan gespeichert!"
+      create_custom_event: "eigenen (nicht-PAUL) Termin erstellen"
   restaurants:
       index:
           prev_day: "vorheriger Tag"
@@ -184,6 +189,16 @@ de:
       party_headline: "Party-Termine"
       view_on_facebook: "in Facebook öffnen"
   timetable:
+    new:
+      new_entry: Neuer Stundenplaneintrag
+      start_time: Startzeit
+      end_time: Endzeit
+      location: Ort
+      corresponding_course: zugehöriger Kurs
+      course_explanation: "Wenn du hier einen Kurs zuordnest, kannst du beim Entfernen der gesamten Veranstalung diesen manuellen Eintrag mitlöschen lassen."
+      recurring: Termin wiederholt sich
+      recurring_style: Wiederholungsturnus
+      recurring_end: Kurs endet
     index:
       prev_week: "vorherige Woche"
       next_week: "nächste Woche"

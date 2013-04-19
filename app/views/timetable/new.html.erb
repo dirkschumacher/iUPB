@@ -1,6 +1,6 @@
 <%  title t("layouts.application.timetable") + ": " +  t(".new_entry") %>
 
-<h1><%= t ".new_entry" %></h1>
+<h1><%= t ".new_entry" %>  <sup><span class="label label-inverse">beta</span></sup></h1>
 <% if @event.errors.any? %>
   <div id="error_explanation">
     <h5>Oops:</h5>
@@ -38,7 +38,7 @@
 <% content_for :javascript do %>
   <script>
     $('#event_recurring').change(function(){
-    	if($(this).attr('checked')){
+    	if($('#event_recurring').prop("checked")){
     		$("#event_recurring_style_container").slideDown();
     	} else {
     		$("#event_recurring_style_container").slideUp();
