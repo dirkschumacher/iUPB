@@ -35,37 +35,26 @@ body { padding-top: 60px; }
 // http://twitter.github.io/bootstrap/customize.html#variables
 @bodyBackground: #E9E9E9;
 
+// zurb mobile-* in twitter boostrap from http://stackoverflow.com/questions/14419513/twitter-bootstrap-how-to-not-scale-columns-to-single-row-under-767px/14430807#14430807
+.row-fluid .mobile-one {
+  width: 31.491712707182323%;
+  *width: 31.43852121782062%;
+}
 
-// **************************** OLD LESS (can be removed iff no conflict) *******************
-//@import "twitter/bootstrap/bootstrap";
-//body { padding-top: 60px; }
+.row-fluid .mobile-three {
+  width: 65.74585635359117%;
+  *width: 65.69266486422946%;
+}
 
-//@import "twitter/bootstrap/responsive";
+.row-fluid .mobile-two {
+  width: 48.61878453038674%;
+  *width: 48.56559304102504%;
+}
 
-// Set the correct sprite paths
-//@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
-//@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
-
-// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not
-//       have the proper paths. So for now we use the absolute path.  	
-//@fontAwesomeEotPath: "/assets/fontawesome-webfont.eot";	  	
-//@fontAwesomeWoffPath: "/assets/fontawesome-webfont.woff";	  	
-//@fontAwesomeTtfPath: "/assets/fontawesome-webfont.ttf";  	
-//@fontAwesomeSvgPath: "/assets/fontawesome-webfont.svg";
-//@fontAwesomeSvgzPath: "/assets/fontawesome-webfont.svgz";
-
-// Font Awesome
-//@import "fontawesome";
-
-
-// Your custom LESS stylesheets goes here
-//
-// Since bootstrap was imported above you have access to its mixins which
-// you may use and inherit here
-//
-// If you'd like to override bootstrap's own variables, you can do so here as well
-// See http://twitter.github.com/bootstrap/less.html for their names and documentation
-//
-// Example:
-// @linkColor: #ff0000;
+.row-fluid .mobile-one,
+.row-fluid .mobile-two,
+.row-fluid .mobile-three {
+  float:left;
+  margin-left: 2.7624309392265194%;
+  *margin-left: 2.709239449864817%;
+}

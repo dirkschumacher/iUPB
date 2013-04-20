@@ -1,0 +1,38 @@
+$green: darken(rgb(91, 183, 91), 10%);
+.tile {
+    background-color:#0091c9;
+    height:136px;
+    margin-top:1em;
+    text-align:center;
+    i {
+        width:45px;
+        height:45px;
+        display:inline-block;
+    }
+}
+.tile h3 a{
+    color:#FFFFFF;
+}
+.tile h3{
+    font-weight:200;
+}
+.tile.white {
+    background-color:white;
+    h3 a {
+        color: $green;
+    }
+}
+.tile.green {
+    background-color:$green;
+}
+.span12 .tile {
+    text-align:left;
+    h3 {
+        margin-left:0.5em;
+    }
+}
+@media (min-width: 768px) { 
+    .tile {
+        height:7em;
+    }
+}

@@ -1,39 +1,84 @@
 <% content_for "page-attributes" do %>id="homePage"<% end %>
-<div class="two-column dashboard-list">
-	<div >
-	<%= link_to '<i class="icons-restaurant round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.menu"), restaurants_path %>
-	</div>
-  	<div>
-  	  	<%= link_to '<i class="icons-transportation round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.buses"), transportation_path %>
-  	</div>
-	<div>
-	  <%= link_to '<i class="icons-paul round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.paul"), courses_path %>
-	</div>
-	<div>
-	  <%= link_to '<i class="icons-party round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.party"), events_path %> 
-  	</div>
-	<div><%= link_to '<i class="icons-weather round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.weather"), weather_path %> 
-	</div>
-	<div>
-	  <%= link_to '<i class="icons-twitter round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.twitter"), twitter_path %> 
-	</div>
-  	<div>
-	  <%= link_to '<i class="icons-asta round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.asta"), asta_path %> 
-  	</div>
-  	<div>
-	  	  <%= link_to '<i class="icons-timetable round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.timetable"), timetable_path %> 
-	</div>
-	<div>
-	  	  <%= link_to '<i class="icons-ads round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.ads"), ads_path %> 
-	</div>
-	<div>
-	  	  <%= link_to '<i class="icons-navigator round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.navigator"), page_path(id: "navigator") %> 
-	</div>
-	<div>
-	  	  <%= link_to '<i class="icons-pingo round-corners dashboard-link "></i>'.html_safe + ' ' +  t("layouts.application.pingo"), page_path(id: "pingo") %> 
-	</div>
-	
+<div class="row-fluid">
+    <div class="span6">
+        <div class="row-fluid">
+            <div class="span6 mobile-two">
+              	<div class="tile">
+              	    <h3><%= link_to t("layouts.application.buses"), transportation_path %></h3>
+              	    <i class="icons-transportation"></i>
+              	</div>
+            </div>
+            <div class="span6 mobile-two">
+              	<div class="tile green">
+              	  	<h3><%= link_to t("layouts.application.navigator"), page_path(id: "navigator") %></h3>
+              	    <i class="icons-navigator"></i>
+              	</div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="tile white">
+                    <h3><%= link_to t("layouts.application.menu"), restaurants_path %></h3>
+                </div>
+            </div>    
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="tile">
+                    <h3><%= link_to t("layouts.application.ads"), ads_path %></h3>
+                </div>
+            </div>    
+        </div>
+    </div>    
+    <div class="span6">
+        <div class="row-fluid">
+            <div class="span6 mobile-two">
+              	<div class="tile">
+              	  	<h3><%= link_to t("layouts.application.asta"), asta_path %></h3>
+              	</div>
+            </div>    
+            <div class="span6 mobile-two">
+              	<div class="tile">
+              	  	<h3><%= link_to t("layouts.application.weather"), weather_path %></h3>
+              	</div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6 mobile-two">
+              	<div class="tile">
+              	  	<h3><%= link_to t("layouts.application.paul"), courses_path %></h3>
+              	</div>
+            </div>    
+            <div class="span6 mobile-two">
+              	<div class="tile green">
+              	  	<h3><%= link_to t("layouts.application.timetable"), timetable_path %></h3>
+              	</div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6 mobile-two">
+              	<div class="tile">
+              	  	<h3><%= link_to t("layouts.application.party"), events_path %></h3>
+              	</div>
+            </div>    
+            <div class="span6 mobile-two">
+              	<div class="tile">
+              	  	<h3><%= link_to t("layouts.application.pingo"), page_path(id: "pingo") %></h3>
+              	</div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6 mobile-two">
+              	<div class="tile">
+              	  	<h3><%= link_to t("layouts.application.twitter"), twitter_path %></h3>
+              	</div>
+            </div>    
+            <div class="span6 mobile-two">
+            </div>
+        </div>
+    </div>
 </div>
+
 <% if ENV["ios_webapp_notice"] == "true" %>
 	<% content_for :javascript do %>
 	<script>
