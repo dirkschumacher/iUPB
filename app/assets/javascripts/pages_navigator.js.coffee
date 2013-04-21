@@ -34,9 +34,10 @@
 	jQuery(div).html jQuery('<div/>', { html: items.join('') })
 	jQuery("#chooser_header").html window.iUPB.Navigator.vars.second_header
 
-@iUPB.Navigator.selectStudy = (div, id, faculty_id) ->
+@iUPB.Navigator.selectStudy = (div, id, faculty_id, fallback = (a) -> false) ->
 	jQuery.cookie 'iupb_study', {"study_id": id, "faculty_id": faculty_id}, { expires: 182, path: '/' }
 	idCounter = 0
+	req_success = false
 	explain = (text) ->
 		uid = '' + ++idCounter	
 		' <a class="role_explain_link" href="#explain_' + uid + '" data-toggle="collapse" data-target="#explain_' + uid + '" onclick="return false;">
@@ -45,6 +46,7 @@
 		</p><p class="collapse explain-text" id="explain_' + uid + '">' + text.trim()
 	
 	jQuery.getJSON window.iUPB.Navigator.infosURL(faculty_id, id), (data) ->
+		req_success = true
 		items = jQuery.map data, (info) ->
 			'<div class=" lead well" id="info_' + info.id + '"><p class="huge-name"><strong>' + 
 				info.role_text + '</strong>' +  (if info.role_description then explain(info.role_description) else '') + '</p><div class="row-fluid"><div class="span7"><strong>' + (if info.link then '<a target="_blank" href="' + info.link + '">' + info.name + ' <i class="icon-arrow-right"></i></a>' else info.name ) + '</strong> ' + 
@@ -55,6 +57,12 @@
 		jQuery('#intro_text').hide()
 		jQuery('#wait-message').hide()
 		jQuery('#chooser_header').get(0).scrollIntoView(true)
+		return
+	window.setTimeout(() ->
+	  if not req_success
+		  jQuery.cookie 'iupb_study', null
+		  fallback div
+	, 2*1000)
 		
         
 
