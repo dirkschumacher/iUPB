@@ -87,6 +87,7 @@ class TimetableController < ApplicationController
           cal.add_x_property 'X-WR-CALNAME', 'iUPB' 
           events.each do |event|
             cal.event do |cal_event|
+              cal_event.uid         = event._id.to_s + "@i-upb.de"
               cal_event.summary     = event._name
               cal_event.description = event.description||""
               cal_event.dtstart     = event.start_time.utc
