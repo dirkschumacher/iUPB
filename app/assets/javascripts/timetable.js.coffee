@@ -68,13 +68,16 @@
 				#update the list as well
 				$li = $('<li  id="' + id + '" class="well single_event"></li>')
 				$li.append($('<h6>' + long_title + '</h6>'))
-				if courseId
-					$optionsContainer = $ '<div class="pull-right dropdown">'
+				optionsContainer = (id) ->
+					$oc = $ '<div class="pull-right dropdown">'
 					$optionsButton = $('<a id="dropdown-' + id + '" data-toggle="dropdown" role="button"  href="#">')
 					$optionsButton.addClass "btn"
 					$optionsButton.addClass "btn-primary"
 					$optionsButton.addClass "btn-dropdown-toggle"
 					$optionsButton.html('<span class="caret"></span>')
+					$oc.append $optionsButton
+				if courseId
+					$optionsContainer = optionsContainer(id)
 					if window.iUPB.vars.canvas
 		        course_route = Routes.course_path(courseId, {locale: I18n.locale, canvas: window.iUPB.vars.canvas})
 					else
@@ -86,7 +89,16 @@
 	            <li><a id="link-deleteall-' + id + '" href="#"><i class="icon-trash"></i>' + I18n.t("timetable.index.delete_all") + '</a></li>
 	          </ul>
 	        ')
-					$optionsContainer.append $optionsButton
+					$optionsContainer.append $optionsDropDown
+					$li.append $optionsContainer
+				else if this.custom is true
+					$optionsContainer = optionsContainer(id)
+					$optionsDropDown = $.parseHTML('
+		        <ul role="menu" aria-labelledby="dropdown-' + id + '" class="dropdown-menu">
+	            <li><a id="link-deleteone-' + id + '" href="#"><i class="icon-remove"></i>' + I18n.t("timetable.index.delete_one") + '</a></li>' +
+	              if this.recurring is true or this.parent_event_id? then '<li><a id="link-deleteallcustom-' + id + '" href="#"><i class="icon-trash"></i>' + I18n.t("timetable.index.delete_all") + '</a></li>' else '' +
+	            '</ul>
+	        ')
 					$optionsContainer.append $optionsDropDown
 					$li.append $optionsContainer
 				$timeBlock = $("<p>")
@@ -101,6 +113,7 @@
 				$li.append $linkBlock if this.link?
 				$eventsList.append($li)
 				
+				# TODO refactor to a a.class with a data-id and attach event once to the document
 			  #add some logic
 				$('#link-deleteone-' + id + '').click (e)->
 			    if confirm I18n.t("timetable.index.deleteoneconfirm")
@@ -111,6 +124,12 @@
 				$('#link-deleteall-' + id + '').click (e)->
   			  if confirm I18n.t("timetable.index.deleteallconfirm")
 			      $.ajax("/timetable/destroy_course", {type: "delete", data: "id=" + id}).success( ->
+			          window.iUPB.Timetable.populateTimetable(container, year, week)
+			        )
+			    e.preventDefault()
+				$('#link-deleteallcustom-' + id + '').click (e)->
+  			  if confirm I18n.t("timetable.index.deleteallconfirm")
+			      $.ajax("/timetable/destroy_all_custom", {type: "delete", data: "id=" + id}).success( ->
 			          window.iUPB.Timetable.populateTimetable(container, year, week)
 			        )
 			    e.preventDefault()

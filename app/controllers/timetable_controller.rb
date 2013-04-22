@@ -43,14 +43,29 @@ class TimetableController < ApplicationController
 
   def destroy
     event = current_user.events.find(params[:id])
-    event.delete
+    event.destroy
+    head :ok
+  end
+
+  def destroy_all_custom
+    event = current_user.events.find(params[:id])
+    if event.custom
+      parent_event = event._parent_event
+      if parent_event.try(:recurring)
+        parent_event.children_events.delete_all
+        parent_event.destroy
+      elsif event.recurring
+        event.children_events.delete_all
+        event.destroy
+      end
+    end
     head :ok
   end
 
   def destroy_course
     event = current_user.events.find(params[:id])
     current_user.events.where(course_id: event.course_id).delete
-    event.delete
+    event.destroy
     head :ok
   end
 

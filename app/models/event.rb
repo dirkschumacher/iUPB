@@ -93,6 +93,10 @@ class Event
   def course=(course)
     self.course_id = "#{course.id}"
   end
+  
+  def _parent_event
+    self.user.events.find(parent_event_id) if parent_event_id
+  end
 
   protected
   def end_time_greater_than_start_time

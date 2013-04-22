@@ -45,6 +45,7 @@ IUPB::Application.routes.draw do
     post "timetable/add_course"
     delete "timetable/destroy"
     delete "timetable/destroy_course"
+    delete "timetable/destroy_all_custom"
     get "timetable/show"
     put "timetable/update"
     
