@@ -1,3 +1,4 @@
+require 'net/http'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale, :set_custom_params
@@ -64,6 +65,27 @@ class ApplicationController < ActionController::Base
       Facebook::APP_ID.to_s, 
       Facebook::SECRET.to_s, 
       url))
+  end
+  
+  def track_ga_event(category, action)
+    if Rails.env.production?
+      begin
+        data = {
+          v: 1,
+          tid: IUPB::GOOGLE_ANALYTICS_ACCOUNT,
+          cid: SecureRandom.uuid,
+          t: "event",
+          ec: category,
+          ea: action
+        }
+        uri = URI("http://www.google-analytics.com/collect")
+        res = Net::HTTP.post_form(uri, data)
+      rescue
+        ;
+      end
+    else 
+      puts "debug: would have tracked a google analytics event"
+    end
   end
   
 end

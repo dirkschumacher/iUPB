@@ -113,6 +113,7 @@ class TimetableController < ApplicationController
           end
         end
         render text: @cal.to_s
+        track_ga_event("Integration", "iCal Download")
       end
     end
   end
