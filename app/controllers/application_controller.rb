@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
         data = {
           v: 1,
           tid: IUPB::GOOGLE_ANALYTICS_ACCOUNT,
-          cid: SecureRandom.uuid,
+          cid: "71d8f486-33f5-49d1-a332-50c89b1b52c7",
           t: "event",
           ec: category,
           ea: action
