@@ -5,9 +5,31 @@ $green: darken(rgb(91, 183, 91), 10%);
     margin-top:1em;
     text-align:center;
     i {
-        width:45px;
-        height:45px;
         display:inline-block;
+    }
+    i.icons-transportation {
+        width:100px;
+        height:47px;
+    }
+    i.icons-navigator {
+        width:98px;
+        height:62px;
+    }
+    i.icons-ads {
+        width:62px;
+        height:100px;
+    }
+    i.icons-paul {
+        width:99px;
+        height:75px;
+    }
+    i.icons-weather {
+        width:98px;
+        height:73px;
+    }
+    i.icons-pingo {
+        width:100px;
+        height:104px;
     }
 }
 .tile h3 a{
