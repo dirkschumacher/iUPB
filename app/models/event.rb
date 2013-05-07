@@ -80,7 +80,7 @@ class Event
     self.start_time.utc
   end
   def end_time_utc
-    self.end_time.utc
+    self.end_time.try(:utc) || start_time_utc
   end
   def course
     if self.course_id
