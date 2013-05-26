@@ -20,16 +20,23 @@
 		$.each(json, ->
 			got_any = true
 			menu = $(this)[0].menu
+			isDelimiter = /-{5,}/.test(menu.description)
 			item = $("<li class='well'>")
-			item.append($("<h4>").text(menu.description))
-			if(menu.name)
-				item.append($("<h6>").text(menu.name))
-			if(menu.type)
-				item.append($("<p>").html("<i>" + menu.type + "</i>"))
+			if not isDelimiter  # i. e. a normal menu
+  			item.append($("<h4>").text(menu.description))
+  			if menu.name
+  				item.append($("<h6>").text(menu.name))
+  			if menu.type
+  				item.append($("<p>").html("<i>" + menu.type + "</i>"))
+			else
+  			$menu.append($("<hr noshade>"))
+  			if menu.name
+  			  item.append($("<h3>").text(menu.name))
 			sd = $('<p id="side_dishes">')
 			if(menu.side_dishes)
 				$.each(menu.side_dishes, (index, value) ->
-					sd.html(sd.html() + "&#8226; " + value +  "<br/>")
+					if value?.length
+					  sd.html(sd.html() + (if isDelimiter then "" else "&#8226; ") + value +  "<br/>")
 					return
 				)
 
