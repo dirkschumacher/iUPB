@@ -3,7 +3,7 @@ class WeatherController < ApplicationController
     set_cache_header 60*20
     #@weatherData = get_weather_data
     forecast = get_forecast
-    if forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]
+    if forecast && forecast['city'] && forecast['city']['forecast'] && forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]
       @forecast_temp = forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['tx']
       @forecast_text = forecast['city']['forecast'][Time.now.strftime("%Y-%m-%d")]['w_txt']
     else

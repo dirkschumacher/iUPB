@@ -80,7 +80,7 @@ class Event
     self.start_time.utc
   end
   def end_time_utc
-    self.end_time.utc
+    self.end_time.try(:utc) || start_time_utc
   end
   def course
     if self.course_id
@@ -92,6 +92,10 @@ class Event
   
   def course=(course)
     self.course_id = "#{course.id}"
+  end
+  
+  def _parent_event
+    self.user.events.find(parent_event_id) if parent_event_id
   end
 
   protected
