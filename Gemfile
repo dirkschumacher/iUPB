@@ -28,7 +28,7 @@ gem 'mongoid_slug', :git => "git://github.com/digitalplaywright/mongoid-slug.git
 
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "tire"
-
+gem "twitter"
 gem "js-routes" # https://github.com/railsware/js-routes
 gem 'contact_us', '~> 0.4.0.beta' # https://github.com/jdutil/contact_us
 

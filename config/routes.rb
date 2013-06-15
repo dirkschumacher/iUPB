@@ -7,6 +7,7 @@ IUPB::Application.routes.draw do
       match "menus/:restaurant(.:format)" => "restaurants#index", :defaults => {:format => "json", :restaurant => "Mensa"}
       match "courses/search(.:format)" => "courses#search", :defaults => {:format => "json"}
       match "course/:id(.:format)" => "courses#show", :defaults => {:format => "json"}
+      match "twitter" => "twitter#feed", :defaults => {:format => "json"}
       match "/" => 'pages#show', :id => 'api_docs', :as => :api_docs
     end
   end

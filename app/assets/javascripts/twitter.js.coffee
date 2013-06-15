@@ -15,8 +15,10 @@ class @Twitter
     'https://twitter.com/#!/' + userid
       
   displayFeed: (post_event) =>
+      
+      
       $.ajax({ 
-        url: "https://search.twitter.com/search.json?q=%23upb+OR+%23unipb+OR+%23unipaderborn+OR+%23iupb&lang=de&callback=?",
+        url: "/api/v1/twitter?callback=?",
         dataType: "jsonp",
         type: "GET",
         jsonp: true,
@@ -24,11 +26,11 @@ class @Twitter
         jsonpCallback: "success", 
         success: (data) =>
           @element.empty()
-          tweets = data.results
+          tweets = data
           for tweet in tweets
             item = $ '<li>'
             avatar = $ '<a class="twitter_avatar">'
-            avatar.attr('href', @profileLink tweet.from_user)
+            avatar.attr('href', @profileLink tweet["twitter::user"].id)
             user_image = $ '<img>'
             user_image.attr('src', tweet.profile_image_url_https)
             user_image.addClass 'box_round'
@@ -37,7 +39,7 @@ class @Twitter
             detailsWrap = $ '<h6>'
             textWrap.html @parseUsername(@parseHashtag(@parseURL(tweet.text)))
             date = Date.parse tweet.created_at
-            detailsWrap.html $.timeago(tweet.created_at) + ' ' + I18n.t('pages.twitter.by') + ' <a rel="nofollow" href="' +  @profileLink tweet.from_user + '" target="_blank">' + tweet.from_user + '</a>'
+            detailsWrap.html $.timeago(tweet.created_at) + ' ' + I18n.t('pages.twitter.by') + ' <a rel="nofollow" href="' +  @profileLink tweet["twitter::user"].id + '" target="_blank">' + tweet["twitter::user"].name + '</a>'
             messageContainer = $ '<div class="twitter_message well">'
             item.append avatar
             messageContainer.append textWrap
