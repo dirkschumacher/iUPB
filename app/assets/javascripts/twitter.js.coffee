@@ -28,6 +28,7 @@ class @Twitter
           @element.empty()
           tweets = data
           for tweet in tweets
+            tweet = tweet["twitter::tweet"]  
             item = $ '<li>'
             avatar = $ '<a class="twitter_avatar">'
             avatar.attr('href', @profileLink tweet["twitter::user"].id)
