@@ -184,7 +184,7 @@ en:
           next_day: "next day"
           additives: "additives"
           hours: "hours"
-          allergic_text: "Please ask the chefs at the kitchen about contained allergens."
+          allergic_text: "Please ask the staff at the restaurants about contained allergens and additives."
           allergic_text2: "The information provided here might be outdated or meals might change."
           allergic_headline: "Allergen information"
   transportation:

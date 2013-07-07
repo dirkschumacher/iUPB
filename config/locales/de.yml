@@ -182,7 +182,7 @@ de:
           next_day: "nächster Tag"
           additives: "Zusatzstoffe"
           hours: "Öffnungszeiten"
-          allergic_text: "Bitte informiere dich am Ausgabeschalter vor Ort bezüglich enthaltener Allergene!"
+          allergic_text: "Bitte informiere dich am Ausgabeschalter vor Ort bezüglich enthaltener Allergene und Zusatzstoffe!"
           allergic_text2: "Die angegebenen Kennzeichnungen sind ohne Gewähr, außerdem können die zubereiteten Speisen vom Menüplan abweichen."
           allergic_headline: "Hinweis für Allergiker"
   events:
