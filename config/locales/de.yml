@@ -167,6 +167,7 @@ de:
       add_to_time_table: 'in den Stundenplan'
       in_time_table: "Dieser Kurs ist in deinem Stundenplan gespeichert."
       course_details: 'Kursansicht'
+      description: "Beschreibung"
     room_na: 'N.N.'
     index:
       title: "PAUL"

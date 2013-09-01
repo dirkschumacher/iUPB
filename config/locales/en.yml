@@ -170,6 +170,7 @@ en:
       add_to_time_table: 'Add to timetable'
       in_time_table: "This couse is saved in your timetable."
       course_details: 'Course details'
+      description: "Description/Syllabus"
     room_na: 'N.A.'
     index:
       search: "Search"

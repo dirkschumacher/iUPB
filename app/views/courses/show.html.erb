@@ -53,8 +53,25 @@
     </div>
   </div>
   <% end %>
+
+  <% unless @course.description.blank? %>
+    <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+        <h3><%= t '.description' %> <sup><i class="label label-info">beta</i></sup></h3>
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= @course.description.html_safe %>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>
 <% end %>
+
+
 <% if user_signed_in? %>
 <p class="center">
   <% unless current_user.has_course?(@course) %>
@@ -66,7 +83,7 @@
 <% end %>
 
 <p class="center">
-<a class="btn btn-info" href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t '.view_in_paul' %></a>
+<a class="btn" href="<%= @course.paul_url %>" data-role="button" target="_blank"><%= t '.view_in_paul' %></a>
 </p>
 <% content_for :javascript do %>
 <script>
