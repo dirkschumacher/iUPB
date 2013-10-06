@@ -35,13 +35,13 @@
    	<p><%= t ".price" %> <%= @ad.price %></p>
 <% end %>
 <div class="row">
-  <div class="span6">
+  <div class="col-md-6">
 	<p><small>
 		<%= t(".viewed_count", count: @ad.views) %>.
 	</small>
 	</p>
   </div>
-  <div class="span6">
+  <div class="col-md-6">
 	<p><small><span class="post_time_to_timeago" style="display:none"><%= @ad.created_at %></span> <%= t(".created") %> <%= t("by") %> <strong><%= @ad.name %>  </strong> 
 	<% if @ad.publish_email %>
 		 (<%= mail_to @ad.email, @ad.email, encode: :javascript, subject: "#{@ad.title.truncate(30)} auf iUPB" %>)
@@ -53,10 +53,10 @@
   </div>
 </div>
 <div class="row">
-  <div class="span6">
+  <div class="col-md-6">
 	<div class="fb-like" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-font="arial"></div>
   </div>
-  <div class="span6">
+  <div class="col-md-6">
 	<p>
 		<%= link_to "<i class='icon-exclamation-sign'></i> ".html_safe + t(".report"), report_ad_path(@ad), method: :post, confirm: t(".report_sure") %>
 	</p>

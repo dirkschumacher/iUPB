@@ -3,7 +3,7 @@
 <%= form_for @contact, :url => contacts_path, :html => {:class => 'formtastic'} do |f| %>
 <div class="controls">
   <% if ContactUs.require_name %>
-    <div class='<%= "error" if f.object.errors[:name].present? %> control-group string required' id='contact_us_contact_name_input'>
+    <div class='<%= "error" if f.object.errors[:name].present? %> form-group string required' id='contact_us_contact_name_input'>
       <%= f.label :name, (t('.name') + content_tag(:abbr, '*', :class => 'required textfield')).html_safe %>
       <%= f.text_field :name %>
       <% if f.object.errors[:name].present? %>
@@ -11,7 +11,7 @@
       <% end %>
     </div>
   <% end %>
-  <div class='<%= "error" if f.object.errors[:email].present? %> control-group string required' id='contact_us_contact_email_input'>
+  <div class='<%= "error" if f.object.errors[:email].present? %> form-group string required' id='contact_us_contact_email_input'>
     <%= f.label :email, (t('.email') + content_tag(:abbr, '*', :class => 'required textfield')).html_safe %>
     <%= f.email_field :email %>
     <% if f.object.errors[:email].present? %>
@@ -19,7 +19,7 @@
     <% end %>
   </div>
   <% if ContactUs.require_subject %>
-    <div class='<%= "error" if f.object.errors[:subject].present? %> control-group string required' id='contact_us_contact_subject_input'>
+    <div class='<%= "error" if f.object.errors[:subject].present? %> form-group string required' id='contact_us_contact_subject_input'>
       <%= f.label :subject, (t('.subject') + content_tag(:abbr, '*', :class => 'required')).html_safe %>
       <%= f.text_field :subject %>
       <% if f.object.errors[:subject].present? %>
@@ -27,14 +27,14 @@
       <% end %>
     </div>
   <% end %>
-  <div class='<%= "error" if f.object.errors[:message].present? %> control-group text required' id='contact_us_contact_message_input'>
+  <div class='<%= "error" if f.object.errors[:message].present? %> form-group text required' id='contact_us_contact_message_input'>
     <%= f.label :message, (t('.message') + content_tag(:abbr, '*', :class => 'required textarea')).html_safe %>
-    <%= f.text_area :message, :size => "30x10", :class => "span8" %>
+    <%= f.text_area :message, :size => "30x10", :class => "col-md-8" %>
     <% if f.object.errors[:message].present? %>
       <p class='help-inline'><%= f.object.errors[:message].join(' + ') %></p>
     <% end %>
   </div>
-  <div class='control-group commit'>
+  <div class='form-group commit'>
     <%= f.submit t('.submit'), :alt => t('.submit'), :class => 'btn btn-primary submit create', :label => t('.submit'), :title => t('.submit') %>
   </div>
 </div>

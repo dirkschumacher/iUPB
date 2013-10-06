@@ -3,7 +3,7 @@
 <% content_for :header do %>
   <ul class="nav nav-pills" id="restaurantSelector">
 	<li class="dropdown active pull-right">
-		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-list"></i><span class="long-text"><%= @restaurant.name %></span><b class="caret"></b></a>
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-list"></i><span class="long-text"><%= @restaurant.name %></span> <span class="caret"></span></a>
 		<ul class="dropdown-menu" id="restaurantList">
 			<% @restaurants.each do |restaurant| %>
 			<li>
@@ -28,7 +28,7 @@
 </ul>
 <div id="restaurants-all" class="row-fluid">
   <% @restaurants.each do |restaurant| %>
-  <div class="span4">
+  <div class="col-md-4">
   <h3><%= restaurant.name %></h3>
     <ul data-restaurant="<%= restaurant.name %>" class="menu-list no-bullets no-left-margin">
       <li class="well">
@@ -38,11 +38,15 @@
   </div>
 	<% end %>
 </div>
+
+<div class="clearfix hidden-xs"></div>
+
 <p class="center text-warning"><%= t ".allergic_text" %></p>
 <p class="center">
 	<a data-toggle="modal" title="<%= t ".hours" %> / <%= t ".additives" %>" class="btn btn-info" href="#infoText" style="font-style:italic;">Info</a>
 </p>
 <div class="modal" style="display: none;" id="infoText">
+  <div class="modal-dialog">
 	<div class="modal-header">
 		<button class="close" data-dismiss="modal">
 			×
@@ -111,6 +115,7 @@
 			</li>
 		</ul>
 	</div>
+  </div><!-- /.modal-dialog -->
 </div>
 
 <p class="source-info">

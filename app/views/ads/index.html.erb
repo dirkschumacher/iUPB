@@ -22,12 +22,12 @@
 <% end %>
 <hr>
 <div class="row">
-	<div class="span6">
+	<div class="col-md-6">
 		<%= render "search_field" %>
 	</div>
-	<div class="span6">
-		<%= link_to ('<button class="btn btn-success btn-primary pull-right hidden-phone">' + t(".create") + '</button>').html_safe, new_ad_path %>
-			<%= link_to ('<button class="btn btn-success btn-primary visible-phone">' + t(".create") + '</button>').html_safe, new_ad_path %>
+	<div class="col-md-6">
+		<%= link_to ('<button class="btn btn-success btn-primary pull-right hidden-xs">' + t(".create") + '</button>').html_safe, new_ad_path %>
+			<%= link_to ('<button class="btn btn-success btn-primary visible-xs">' + t(".create") + '</button>').html_safe, new_ad_path %>
 	</div>
 </div>
 <ul id="posts_categories" class="inline">

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!-- Conditional comment for mobile ie7 blogs.msdn.com/b/iemobile/ -->
 <!--[if IEMobile 7 ]>    <html class="no-js iem7" lang="en"> <![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" lang="<%= I18n.locale || "en" %>" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
@@ -63,6 +63,10 @@
   <% if Rails.env.production? %>
   <!-- iOS Smart Banner -->
     <meta name="apple-itunes-app" content="app-id=369168211">
+
+  <!-- Windows 8 Smart Banner -->
+    <meta name="msApplication-ID"content="microsoft.build.App">
+	<meta name="msApplication-PackageFamilyName"content="42035DirkSchumacher.iUPB">
   <% end %>
 
   <!-- iOS Device Startup Images -->
@@ -108,23 +112,7 @@
 </head>
 <body>
   <% unless canvas? %>
-  <header class="navbar navbar-fixed-top">
-    <span id="spinner"></span>
-    <nav class="navbar-inner">
-      <div id="header-container" class="container">
-        <span id="forty-year-fact-container" class="badge badge-info pull-right"></span>
-        <a id="menu_collapse_link" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <%= link_to "iUPB" + (Rails.env.staging? ? " beta" : ""), root_path, :class => 'brand', :id => 'home-button', :title => t(".home") %>
-        <div class="nav-collapse">
-          <%= render 'layouts/navigation' %>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-  </header>
+     <%= render 'layouts/navigation' %>
   <% end %>
   <div class="container" <%= yield("page-attributes") %>>
     <div>

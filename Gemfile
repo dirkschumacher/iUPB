@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -19,7 +19,7 @@ gem "omniauth-google-oauth2"
 gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"
 gem "koala"
-gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
+# gem "rack-offline", :git => "git://github.com/wycats/rack-offline.git"
 gem "haml"
 gem "recaptcha", :require => "recaptcha/rails"
 gem "ri_cal"
@@ -30,7 +30,7 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "tire"
 gem "twitter"
 gem "js-routes" # https://github.com/railsware/js-routes
-gem 'contact_us', '~> 0.4.0.beta' # https://github.com/jdutil/contact_us
+gem 'contact_us', '~> 0.4.0' # https://github.com/jdutil/contact_us
 
 # gem "historyjs-rails"
 
@@ -69,8 +69,9 @@ end
 
 
 gem 'jquery-rails'
-gem 'twitter-bootstrap-rails', '2.0.8'
-
+gem 'therubyracer' # for less
+gem "less-rails"
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
 gem "high_voltage"
 gem "will_paginate_mongoid"
 gem 'bootstrap-will_paginate'

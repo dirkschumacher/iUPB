@@ -4,7 +4,7 @@
 @iUPB.Ads = {}
 
 @iUPB.Ads.generateGrid = (elements, options = {}) ->
-	default_options = {"columns": 4, "column_class": "span3", "row_class": "row", "end_class": ""}
+	default_options = {"columns": 4, "column_class": "col-md-3", "row_class": "row", "end_class": ""}
 	options = jQuery.extend(default_options, options)
 	column_count = 1
 	grid = $('<div class="generic-grid"></div>');

@@ -1,18 +1,36 @@
-<ul class="nav">
-  <li><%= link_to t("layouts.application.menu"), restaurants_path %></li>
-  <li><%= link_to t("layouts.application.buses"), transportation_path %></li>
-  <li><%= link_to t("layouts.application.paul"), courses_path, id: "paul-link"  %></li>
-  <li><%= link_to t("layouts.application.party"), events_path  %></li>
-  <li><%= link_to t("layouts.application.weather"), weather_path  %></li>
-  <li><%= link_to t("layouts.application.twitter"), twitter_path  %></li>
-  <li><%= link_to "AStA", asta_path  %></li>
-  <li><%= link_to t("layouts.application.timetable"), timetable_path%> </li>
-  <li><%= link_to t("layouts.application.ads"), ads_path %></li>
-  <li><%= link_to t("layouts.application.navigator"), page_path(id: "navigator") %></li> 
-</ul>
-<% if user_signed_in? %>
-<ul class="nav pull-right">
-  <li class="divider-vertical"></li>
-  <li> <%= link_to( '<i class="icon-off"></i> '.html_safe + t("logout"), destroy_user_session_path, method: :delete) %></li>
-</ul>
-<% end %>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+	<span id="spinner"></span>
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">MENU</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to "iUPB" + (Rails.env.staging? ? " beta" : ""), root_path, :class => 'navbar-brand', :id => 'home-button', :title => t("layouts.application.home") %>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+		  <li><%= link_to t("layouts.application.menu"), restaurants_path %></li>
+		  <li><%= link_to t("layouts.application.buses"), transportation_path %></li>
+		  <li><%= link_to t("layouts.application.paul"), courses_path, id: "paul-link"  %></li>
+		  <li><%= link_to t("layouts.application.party"), events_path  %></li>
+		  <li><%= link_to t("layouts.application.weather"), weather_path  %></li>
+		  <li><%= link_to t("layouts.application.twitter"), twitter_path  %></li>
+		  <li><%= link_to "AStA", asta_path  %></li>
+		  <li><%= link_to t("layouts.application.timetable"), timetable_path%> </li>
+		  <li><%= link_to t("layouts.application.ads"), ads_path %></li>
+		  <li><%= link_to t("layouts.application.navigator"), page_path(id: "navigator") %></li> 
+    </ul>
+
+	<% if user_signed_in? %>
+	<ul class="nav navbar-nav pull-right">
+	  <li class="divider-vertical"></li>
+	  <li> <%= link_to( '<i class="icon-off"></i> '.html_safe + t("logout"), destroy_user_session_path, method: :delete) %></li>
+	</ul>
+	<% end %>
+  </div><!-- /.navbar-collapse -->
+</nav>

@@ -55,13 +55,13 @@
 		<a class="btn btn-small btn-info" href="<%= timetable_export_path(format: "ics", only_path: false, host: "i-upb.de", auth_token: current_user.authentication_token) %>">
 			<i class="icon-download-alt icon-white"></i> <%= t ".download_ical" %>
 		</a>
-		<span class="hidden-phone"> <%= t "or" %> <a class="btn btn-small" href="<%= timetable_export_path(format: "ics", only_path: false, protocol: "webcal", host: "i-upb.de", auth_token: current_user.authentication_token) %>"><%= t ".subscribe_ical" %></a>
+		<span class="hidden-xs"><br><%= t "or" %> <a class="btn btn-small" href="<%= timetable_export_path(format: "ics", only_path: false, protocol: "webcal", host: "i-upb.de", auth_token: current_user.authentication_token) %>"><%= t ".subscribe_ical" %></a>
 		</span>
 	  <% else %>
-		<a class="btn btn-small btn-info" href="<%= timetable_export_path(format: "ics") %>">
+		<a class="btn btn-sm btn-info" href="<%= timetable_export_path(format: "ics") %>">
 			<i class="icon-download-alt icon-white"></i> <%= t ".download_ical" %>
 		</a>
-		<span class="hidden-phone"> <%= t "or" %> <a class="btn btn-small" href="<%= timetable_export_path(format: "ics", only_path: false, protocol: "webcal", auth_token: current_user.authentication_token) %>"><%= t ".subscribe_ical" %></a>
+		<span class="hidden-xs"><br> <%= t "or" %> <a class="btn btn-default btn-sm" href="<%= timetable_export_path(format: "ics", only_path: false, protocol: "webcal", auth_token: current_user.authentication_token) %>"><%= t ".subscribe_ical" %></a>
 		</span>
 	  <% end %>
 	<% end %>

@@ -13,7 +13,7 @@
 
   	<div id="quick_event">
   		<form class="form-horizontal">
-  		<div class="control-group">
+  		<div class="form-group">
   		<label for="quick_event_select" class="control-label"><strong><%= t ".quick_event_select" %>:</strong></label> <%= select_tag "quick_event_select", options_from_collection_for_select([OpenStruct.new({id: "", name_with_date: "Bitte wählen"})] + @events, :id, :name_with_date), {:onchange => "if(this.value !== '') document.getElementById(this.value).scrollIntoView(true);", :class => "controls"} %>
   		</div>
   		</form>
@@ -69,7 +69,7 @@
 
   <div class="tab-pane" id="facts">
 
-  	<div id="factCarousel" class="carousel slide visible-phone" data-interval="false">
+  	<div id="factCarousel" class="carousel slide visible-xs" data-interval="false">
 	  <!-- Carousel items -->
 	  <div class="carousel-inner">
 	  	<% @facts.each do |fact| %>
@@ -90,7 +90,7 @@
 	  <a class="carousel-control right" href="#factCarousel" data-slide="next">&rsaquo;</a>
 	</div>
 	
-	<div id="factList" class="hidden-phone">
+	<div id="factList" class="hidden-xs">
 	  <ul class="no-bullets">
 	  	<% @facts.each do |fact| %>
 	  	 <li class="well">

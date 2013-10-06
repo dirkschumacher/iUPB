@@ -7,7 +7,7 @@
 <div id="asta-news-list">
 <% @news_items.each do |item| %>
 <div class="row-fluid">
-<div class="well span12">
+<div class="well">
   <h4><%= item['title'] %></h4>
   <h6 class="asta-time"><%= time_ago_in_words item['date'] %> <%= t '.old' %></h6>
   <p><span class="asta-text"><%= item['description'] %></span><br>
