@@ -124,6 +124,9 @@ de:
         one: "Vor einem Jahr"
         other: "Vor %{count} Jahren"
   pages:
+    index:
+      ophase_teaser: "Bist du <strong>Studienanfänger</strong> der Uni Paderborn?"
+      ophase_button: "Infos zur Orientierungsphase"
     twitter:
       UPB_on_twitter: "UPB auf Twitter"
       by: "von"
