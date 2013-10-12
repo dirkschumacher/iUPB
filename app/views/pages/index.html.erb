@@ -51,14 +51,3 @@
 	</script>
 	<% end %>
 <% end %>
-
-<% content_for :javascript do %>
-<script>
-  $(document).ready(function() {
-	$("#ophase_button_link").click(function(e) {
-		$("#ophase-study-links, #choose_text").toggle();
-		e.preventDefault();
-	});
-  });
-</script>
-<% end %>
