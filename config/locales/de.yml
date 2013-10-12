@@ -195,6 +195,7 @@ de:
       where: "Ort"
       party_headline: "Party-Termine"
       view_on_facebook: "in Facebook öffnen"
+      view_more: "Partywebsite öffnen"
   timetable:
     new:
       new_entry: Neuer Stundenplaneintrag

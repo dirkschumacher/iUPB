@@ -6,16 +6,21 @@
 
 <div id="events_list" class="row-fluid">
 	
-	<div class="well span4">
-		<h4>WiWi Semester Warm Up</h3>
-		<h6>Donnerstag, 10. Oktober 2013, 23:00</h6>
-		<h5><%= t ".where" %>: <%= link_to "Capitol", "http://maps.google.de/maps?rls=en&oe=UTF-8&gws_rd=cr&um=1&ie=UTF-8&q=Capitol+Musiktheater&fb=1&gl=de&hq=capitol&hnear=0x47ba4c9661611ddb:0x73cc872a58ef22ee,Paderborn&cid=0,0,12532036116435701339&sa=X&ei=IYBRUo7VLaqX5ATl-4CADw&ved=0CIgBEPwSMAk", target: "_blank" %></h5>
-		<h5><%= t ".attendees_on_facebook" %>: <span class="badge badge-info">200+</span></h5>
-		<p style="margin-top: 3px;"><a class="btn btn-small btn-info" href="https://www.facebook.com/events/1447371388821590/" data-role="button" target="_blank"><%= t '.view_on_facebook' %></a></p>
-	</div>
+	<% @parties.each do |event| # custom events in our db %>
+			<div class="well span4">
+				<h4><%= event.name %></h3>
+				<h6><%= l event.start_time %></h6>
+				<h5><%= t ".where" %>: <%= event.location %></h5>
+			  <% if !event.facebook_url.blank? %>
+				<p style="margin-top: 3px;"><a class="btn btn-small btn-info" href="<%= event.facebook_url %>" data-role="button" target="_blank"><%= t '.view_on_facebook' %></a></p>
+			  <% elsif !event.other_url.blank? %>
+				<p style="margin-top: 3px;"><a class="btn btn-small btn-info" href="<%= event.other_url %>" data-role="button" target="_blank"><%= t '.view_more' %></a></p>
+			  <% end %>
+			</div>
+	<% end %>
 	
 	
-<% @events.each do |event| %>
+<% @events.each do |event| #facebook events %>
 	<% if event["attendees"] %>
 		<div class="well span4">
 			<h4><%= event["name"] %></h3>
@@ -29,5 +34,5 @@
 </div>
 
 <p class="source-info">
-	<%= t "source" %>: <a target="_blank" href="https://www.facebook.com/uniparty.pb">Unipartys in Paderborn</a>.
+	<%= t "source" %>: <a target="_blank" href="http://asta.uni-paderborn.de/aktive/unipartys/">AStA UPB: Unipartys</a>, <a target="_blank" href="https://www.facebook.com/uniparty.pb">Unipartys in Paderborn</a>.
 </p>
