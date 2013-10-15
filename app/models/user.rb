@@ -95,7 +95,7 @@ class User
   end
   
   def update_non_custom_courses!
-    courses = self.events.map(:course_id)
+    courses = self.events.map(&:course_id)
     courses.each do |c|
       begin
         course = Course.find(c)
