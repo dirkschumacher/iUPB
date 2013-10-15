@@ -30,7 +30,7 @@ class Course
       start_time = combine date, time_from
       end_time = combine date, time_to
       unless future and start_time < Time.now
-        dates << [start_time, end_time, room, instructor] 
+        dates << [start_time, end_time, room, instructor]  # User model depends on ordering
       end
     end
     dates

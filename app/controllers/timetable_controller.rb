@@ -9,19 +9,7 @@ class TimetableController < ApplicationController
   def add_course
     head :precondition_failed and return unless params[:id]
     course = Course.find(params[:id])
-    dates = course.get_dates(true)
-    unless current_user.has_course?(course)
-      dates.each do |date|
-        event = current_user.events.build
-        event.start_time = date[0]
-        event.end_time = date[1]
-        event.name = course.title
-        event.description = date[3]
-        event.location = date[2]
-        event.course = course
-        event.save!
-      end
-    end
+    current_user.add_course!(course)
     head :ok
   end
 

@@ -77,6 +77,35 @@ class User
   accepts_nested_attributes_for :events
   
   has_many :ads
+  
+  def add_course!(course)
+    dates = course.get_dates(true)
+    unless self.has_course?(course)
+      dates.each do |date|
+        event = self.events.build
+        event.start_time = date[0]
+        event.end_time = date[1]
+        event.name = course.title
+        event.description = date[3]
+        event.location = date[2]
+        event.course = course
+        event.save!
+      end
+    end
+  end
+  
+  def update_non_custom_courses!
+    courses = self.events.map(:course_id)
+    courses.each do |c|
+      begin
+        course = Course.find(c)
+        self.events.where(course_id: c).where(custom: false).delete_all
+        self.add_course!(course)
+      rescue
+        self.events.where(course_id: c).where(custom: false).delete_all
+      end
+    end
+  end
 
   def has_course?(course)
     self.events.each do |event|
@@ -85,8 +114,6 @@ class User
     false
   end
 
-  def has_event?(course)
-    has_course?(course)
-  end
+  alias_method :"has_event?", :"has_course?"
   
 end
