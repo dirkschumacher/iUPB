@@ -58,6 +58,7 @@ group :production do
 	gem 'dalli'
 	gem 'kgio'
 	gem "aws-sdk"
+	gem "rails_12factor"
 end
 group :staging do
 	gem "unicorn"
