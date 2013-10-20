@@ -95,7 +95,7 @@ class User
   end
   
   def update_non_custom_courses!
-    courses = self.events.map(&:course_id)
+    courses = self.events.map(&:course_id).uniq
     courses.each do |c|
       begin
         course = Course.find(c)
@@ -108,10 +108,9 @@ class User
   end
 
   def has_course?(course)
-    self.events.each do |event|
-      return true if event.course_id == course.id
+    self.events.any? do |event|
+      event.custom == false && event.course_id == course.id
     end
-    false
   end
 
   alias_method :"has_event?", :"has_course?"
