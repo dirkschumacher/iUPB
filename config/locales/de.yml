@@ -67,7 +67,7 @@ de:
     tt_functions_wout_login: "Natürlich kannst du auch jederzeit oben Kurse suchen und alle anderen Funktionen nutzen ohne dich anzumelden."
     new: Neu
     timetable: Dein iUPB-Stundenplan
-    timetable_text: "Nach dem Login bei iUPB kannst du schnell und einfach Kurse aus PAUL in deinen persönlichen Stundenplan übernehmen. iUPB zeigt dir dann automatisch deine nächsten Vorlesungen an - immer aktuell. Du hast außerdem die Möglichkeit alle Veranstaltungstermine in deinen Smartphone- oder Computer-Kalender zu laden."
+    timetable_text: "Nach dem Login bei iUPB kannst du schnell und einfach Kurse aus unserer PAUL-Suche in deinen persönlichen Stundenplan übernehmen. iUPB zeigt dir dann automatisch deine nächsten Vorlesungen an - immer aktuell. Du hast außerdem die Möglichkeit alle Veranstaltungstermine in deinen Smartphone- oder Computer-Kalender zu laden."
     register_or_login_now: Jetzt einloggen/registrieren
   forty_years:
     index:
@@ -173,7 +173,7 @@ de:
       description: "Beschreibung"
     room_na: 'N.N.'
     index:
-      title: "PAUL"
+      title: "PAUL-Suche"
       search: "Suche"
       type_and_find: "Suche nach Kursnamen, Raum, Dozenten, etc."
       no_results: "Keine Kurse gefunden. Probier\\'s noch einmal :)"
@@ -226,7 +226,7 @@ de:
       view_course_details: "Zeiten und Übungsgruppen"
       popover:
         title: "Kurse gibt es beim PAUL"
-        content: "Kurse kannst du ganz einfach über die PAUL Suche zu deinem Studenplan hinzufügen"
+        content: "Kurse kannst du ganz einfach über die PAUL-Suche zu deinem Studenplan hinzufügen"
   transportation:
     index:
       trip_at: "%{station} um %{date}"
