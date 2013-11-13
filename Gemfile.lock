@@ -153,6 +153,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     method_source (0.8.1)
     mime-types (1.21)
     mongo (1.8.3)
@@ -342,6 +343,7 @@ DEPENDENCIES
   js-routes
   kgio
   koala
+  memcachier
   mongoid
   mongoid-paperclip
   mongoid_slug!

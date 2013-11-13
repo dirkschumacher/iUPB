@@ -55,6 +55,7 @@ end
 group :production do
 	gem "thin"
 	gem 'newrelic_rpm', '>= 3.5.3.25'
+	gem 'memcachier'
 	gem 'dalli'
 	gem 'kgio'
 	gem "aws-sdk"
