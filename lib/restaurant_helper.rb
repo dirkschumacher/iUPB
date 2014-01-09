@@ -40,14 +40,24 @@ class RestaurantHelper
     menu.xpath("//tag").each do |tag|
       datum = tag.search("datum").first.text
 
+      begin
+        begin # try to parse the date
+          parsed_date = DateTime::strptime(datum, "%d.%m.%Y").to_date
+        rescue
+          parsed_date = DateTime::strptime(datum, "%d.%-m.%Y").to_date
+        end
+      rescue 
+        return []
+      end
+      
       # following line returns empty array so we do not load menus multiple times if we already have the data
-      return [] if restaurant.menus.where(date: DateTime::strptime(datum, "%d.%m.%Y").to_date.to_time.midnight).first
+      return [] if restaurant.menus.where(date: parsed_date.to_time.midnight).first
       
       tag.search("menue").each do |current_menu|
         begin # lets be paranoid with the XML
           data = {}
           data["name"] = current_menu.search("menu").first.text if current_menu.search("menu").first
-          data["date"] = DateTime::strptime(datum, "%d.%m.%Y").to_date
+          data["date"] = parsed_date
           data["type"] = current_menu.search("speisentyp").first.text if current_menu.search("speisentyp").first
           data["description"] = current_menu.search("text").first.text if current_menu.search("text").first
           data["price"] = current_menu.search("preis").first.text if current_menu.search("preis").first
