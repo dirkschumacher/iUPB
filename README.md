@@ -6,7 +6,7 @@ The app uses Bootstrap and is accessible by all major browsers and operating sys
 We also created two apps for [iOS](https://github.com/yippie-io/iUPB-iOS-App) and [Android](https://github.com/yippie-io/iUPB-Android). Check them out as well!
 
 [![Code Climate](https://codeclimate.com/github/yippie-io/iUPB.png)](https://codeclimate.com/github/yippie-io/iUPB)
-[![Gemnasium](https://gemnasium.com/dirkschumacher/iupb.png)](https://gemnasium.com/dirkschumacher/iupb)
+[![Gemnasium](https://gemnasium.com/yippie-io/iupb.png)](https://gemnasium.com/yippie-io/iupb)
 
 ## Setup
 - Install Ruby 1.9 and Bundler (we run 1.9.2 live)
