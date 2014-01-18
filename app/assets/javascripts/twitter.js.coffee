@@ -6,13 +6,13 @@ class @Twitter
   
   parseHashtag: (text) ->
     text.replace /[#]+[A-Za-z0-9-_]+/g, (t) =>
-      t = @createLink('https://search.twitter.com/search?q=' + encodeURIComponent(t), t)
+      t = @createLink('https://twitter.com/search?q=' + encodeURIComponent(t), t)
       
   createLink: (url, text) ->
     '<a target="_blank" rel="nofollow" href="' + url + '">' + text + '</a>'
     
-  profileLink: (userid) ->
-    'https://twitter.com/#!/' + userid
+  profileLink: (screen_name) ->
+    'https://twitter.com/' + screen_name
       
   displayFeed: (post_event) =>
       
@@ -31,7 +31,7 @@ class @Twitter
             tweet = tweet["twitter::tweet"]  
             item = $ '<li>'
             avatar = $ '<a class="twitter_avatar">'
-            avatar.attr('href', @profileLink tweet["twitter::user"].id)
+            avatar.attr('href', @profileLink tweet["twitter::user"].screen_name)
             user_image = $ '<img>'
             user_image.attr('src', tweet.profile_image_url_https)
             user_image.addClass 'box_round'
@@ -40,7 +40,7 @@ class @Twitter
             detailsWrap = $ '<h6>'
             textWrap.html @parseUsername(@parseHashtag(@parseURL(tweet.text)))
             date = Date.parse tweet.created_at
-            detailsWrap.html $.timeago(tweet.created_at) + ' ' + I18n.t('pages.twitter.by') + ' <a rel="nofollow" href="' +  @profileLink tweet["twitter::user"].id + '" target="_blank">' + tweet["twitter::user"].name + '</a>'
+            detailsWrap.html $.timeago(tweet.created_at) + ' ' + I18n.t('pages.twitter.by') + ' <a rel="nofollow" href="' +  @profileLink tweet["twitter::user"].screen_name + '" target="_blank">' + tweet["twitter::user"].name + '</a>'
             messageContainer = $ '<div class="twitter_message well">'
             item.append avatar
             messageContainer.append textWrap
