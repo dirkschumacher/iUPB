@@ -23,11 +23,11 @@ class RestaurantsController < ApplicationController
       @restaurant.reload
     end
 
-    @menus = @restaurant.menus.where(date: @today.to_time.midnight )
+    @menus = @restaurant.menus.where(date: @today.to_time.midnight).where(name: "Mittagessen").to_a + @restaurant.menus.where(date: @today.to_time.midnight).where(name: "Abendessen").to_a
     
     unless @menus.any?
       @today = Date.commercial(Date.today.year, 1+Date.today.cweek, 1)
-      @menus = @restaurant.menus.where(date: @today.to_time.midnight)
+      @menus = @restaurant.menus.where(date: @today.to_time.midnight).where(name: "Mittagessen").to_a + @restaurant.menus.where(date: @today.to_time.midnight).where(name: "Abendessen").to_a
     end
     
     respond_to do |format|

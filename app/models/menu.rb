@@ -13,7 +13,7 @@ class Menu
     result = {}
       if self[:side_dishes].respond_to?(:each)
         self[:side_dishes].each do |key, val|
-        result[key] = JSON.parse(val)
+        result[key] = JSON.parse(val) if val
       end
     end
     if locale
