@@ -62,7 +62,7 @@ class RestaurantHelper
       
       menu_data[restaurant.strip] ||= []
       data = {}
-      data["type"] = art.sub(/\d+,\d\d.*/, "").sub("PUB", "").strip
+      data["type"] = art.sub(/\d+,\d\d.*/, "").sub("PUB", "").sub("Stamm HK", "").sub("Stamm", "").strip
       data["date"] = parsed_date
       data["name"] = (abend ? "Abendessen" : "Mittagessen") # later: button
       data["description"] = german_desc.strip.sub(/\Aund/i, "").strip
