@@ -35,7 +35,13 @@ class RestaurantsController < ApplicationController
         @today_js = @today.to_time.utc.to_i*1000
       }
       format.xml
-      format.json
+      format.json {
+        if params[:api_version] == "v1"
+          render "index_v1"
+        else
+          render "index"
+        end
+      }
     end
   end
 end

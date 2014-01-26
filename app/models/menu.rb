@@ -7,6 +7,7 @@ class Menu
   field :counter, type: String, localize: true
   field :price, type: String
   field :side_dishes, type: Array, localize: true
+  field :badge, type: String, localize: true
   embedded_in :restaurant
   
   def parsed_side_dishes(locale = nil)
