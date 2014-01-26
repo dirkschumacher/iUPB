@@ -38,13 +38,14 @@ class RestaurantHelper
       end
       datum = row[2]
       art = row[3]
-      button = row[4]
+      button = row[4].strip
       abend = (row[5].strip == "a")
       german_desc = row[6]
       english_desc = row[7]
       additives = row[8].split(",").map(&:strip)
       per100g = (row[12].strip == "Tara")
       preisfaktor = (per100g ? 0.1 : 1.0)
+      einheit = (per100g ? "pro 100g: " : "")
       guests_price = row[9].sub(",", ".").to_f * preisfaktor
       stud_price = row[10].sub(",", ".").to_f * preisfaktor
       staff_price = row[11].sub(",", ".").to_f * preisfaktor
@@ -62,13 +63,30 @@ class RestaurantHelper
       
       menu_data[restaurant.strip] ||= []
       data = {}
-      data["type"] = art.sub(/\d+,\d\d.*/, "").sub("PUB", "").sub("Stamm HK", "").sub("Stamm", "").strip
+      data["type"] = art.sub(/\d+,\d\d.*/, "").sub("PUB", "").sub("Stamm HK", "").sub("Stamm", "").strip.sub(/f \z/i, "")
       data["date"] = parsed_date
-      data["name"] = (abend ? "Abendessen" : "Mittagessen") # later: button
+      data["name"] = (abend ? "Abendessen" : "Mittagessen")
       data["description"] = german_desc.strip.sub(/\Aund/i, "").strip
-      data["price"] = "Stud. #{('%.02f' % stud_price).sub(".", ",")} / Bed. #{('%.02f' % staff_price).sub(".", ",")} / Gast #{('%.02f' % guests_price).sub(".", ",")}"
+      data["price"] = "#{einheit}Stud. #{('%.02f' % stud_price).sub(".", ",")} / Bed. #{('%.02f' % staff_price).sub(".", ",")} / Gast #{('%.02f' % guests_price).sub(".", ",")}"
       data["counter"] = nil
       data["side_dishes"] = nil
+      data["badge"] = case button
+        when "1"
+          "kalorienarm"
+        when "2"
+          "fettfrei"
+        when "3"
+          "vegetarisch"
+        when "4"
+          "vegan"
+        when "5"
+          "lactosefrei"
+        when "6"
+          "glutenfrei"
+        else
+          nil
+        end
+          
       menu_data[restaurant.strip] << data
       
     end
