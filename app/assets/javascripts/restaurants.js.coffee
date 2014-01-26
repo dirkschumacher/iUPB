@@ -38,7 +38,7 @@
 			if(menu.side_dishes)
 				$.each(menu.side_dishes, (index, value) ->
 					if value?.length
-					  sd.html(sd.html() + (if isDelimiter then "" else "&#8226; ") + value +  "<br/>")
+					  sd.html(sd.html() + "&#8226; " + value +  "<br/>")
 					return
 				)
 			item.append(sd)
