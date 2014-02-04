@@ -6,7 +6,7 @@ class RestaurantHelper
     self.get_menu_data(ENV["STWPB_CSV_URL"]).each do |restaurant, menus|
       current_restaurant = Restaurant.where(api_name: restaurant).first
       unless current_restaurant
-        puts "skipping #{restaurant}"
+        Rails.logger.debug "skipping #{restaurant}"
         next
       end
       menus.each do |menu|
@@ -29,11 +29,14 @@ class RestaurantHelper
     csv = self.convert_to_utf8(csv)
     
     menu_data = {}
+    counter = 0
     
     rows = CSV.parse(csv, col_sep: ";").drop(1)
+    # "NUMMER_VERBRAUCHSORT";"NAME_VERBRAUCHSORT";"DATUM";"ART_DER_SPEISE";"BUTTON";"ABEND";"TEXT_DEUTSCH";"TEXT_ENGLISCH";"ZUSATZSTOFFE";"GAESTE";"STUDIERENDE";"BEDIENSTETE";"TARA"
     rows.each do |row|
       restaurant = row[1]
       if restaurant.strip == "Mensa Hamm" || (current_restaurant = Restaurant.where(api_name: restaurant.strip).first).nil?
+        Rails.logger.debug "skipping not found restaurant #{restaurant}"
         next
       end
       datum = row[2]
@@ -50,7 +53,10 @@ class RestaurantHelper
       stud_price = row[10].sub(",", ".").to_f * preisfaktor
       staff_price = row[11].sub(",", ".").to_f * preisfaktor
       
-      next if german_desc.blank?
+      if german_desc.blank?
+        Rails.logger.debug "skipping empty German description"
+        next
+      end
       
       begin # try to parse the date
         parsed_date = DateTime::strptime(datum, "%d.%m.%Y").to_date
@@ -58,8 +64,8 @@ class RestaurantHelper
         parsed_date = DateTime::strptime(datum, "%d.%-m.%Y").to_date
       end
       
-      # following line returns empty array so we do not load menus multiple times if we already have the data
-      return {} if current_restaurant.menus.where(date: parsed_date.to_time.midnight).first
+      ## following line returns empty array so we do not load menus multiple times if we already have the data
+      # return {} if current_restaurant.menus.where(date: parsed_date.to_time.midnight).first
       
       menu_data[restaurant.strip] ||= []
       data = {}
@@ -88,10 +94,11 @@ class RestaurantHelper
         end
           
       menu_data[restaurant.strip] << data
-      
+      counter += 1
     end
     
     I18n.locale = old_locale
+    Rails.logger.debug "returning #{counter} menus"
     menu_data
   end
   
