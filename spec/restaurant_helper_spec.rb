@@ -2,10 +2,6 @@ require "spec_helper"
 
 describe RestaurantHelper, "#get_menu_data" do
 
-  before(:each) do
-	Rails.cache.clear
-  end
-
   it "ignores mensa hamm" do
 	file_name = "./spec/fixtures/example_stwb_input.csv"
     restaurant = double("restaurant")
