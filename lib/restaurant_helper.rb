@@ -41,7 +41,7 @@ class RestaurantHelper
       end
       datum = row[2]
       art = row[3]
-      button = row[4].strip
+      buttons = row[4].strip.split(",")
       abend = (row[5].strip == "a")
       german_desc = row[6]
       english_desc = row[7]
@@ -76,21 +76,23 @@ class RestaurantHelper
       data["price"] = "#{einheit}Stud. #{('%.02f' % stud_price).sub(".", ",")} / Bed. #{('%.02f' % staff_price).sub(".", ",")} / Gast #{('%.02f' % guests_price).sub(".", ",")}"
       data["counter"] = nil
       data["side_dishes"] = nil
-      data["badge"] = case button
-        when "1"
-          "kalorienarm"
-        when "2"
-          "fettfrei"
-        when "3"
-          "vegetarisch"
-        when "4"
-          "vegan"
-        when "5"
-          "lactosefrei"
-        when "6"
-          "glutenfrei"
-        else
-          nil
+      data["badges"] = buttons.map do |button|
+        case button.try(:strip)
+          when "1"
+            "kalorienarm"
+          when "2"
+            "fettfrei"
+          when "3"
+            "vegetarisch"
+          when "4"
+            "vegan"
+          when "5"
+            "lactosefrei"
+          when "6"
+            "glutenfrei"
+          else
+            nil
+          end
         end
           
       menu_data[restaurant.strip] << data

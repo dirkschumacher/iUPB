@@ -27,23 +27,19 @@
 			if menu.name
 				$name.text(menu.name)
 				append_name = true
-			if menu.badge
-				$name.append($.parseHTML(' <span class="label label-info">' + menu.badge + '</span>'))
-				append_name = true
+			if menu.badges
+				$.each(menu.badges, (index, value) ->
+					if value?.length
+						$name.append($.parseHTML(' <span class="label label-info">' + value + '</span>'))
+						append_name = true
+						return
+				)
 			if append_name
 				item.append($name)
 			if menu.type
 				item.append($("<p>").html("<i>" + menu.type + "</i>"))
-			sd = $('<p id="side_dishes">')
-			if(menu.side_dishes)
-				$.each(menu.side_dishes, (index, value) ->
-					if value?.length
-					  sd.html(sd.html() + "&#8226; " + value +  "<br/>")
-					return
-				)
-			item.append(sd)
 			if(menu.price)
-				item.append($("<p>").text(menu.price))
+				item.append($("<p>").append($("<small>").text(menu.price)))
 			if(menu.counter)
 				item.append($("<p>").text(menu.counter))
 
