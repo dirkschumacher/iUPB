@@ -22,6 +22,9 @@ describe RestaurantHelper, "#get_menu_data" do
     	menus.length.should eq 1
     	menus.first["name"].should eq "Mittagessen"
     	menus.first["description"].should eq "Mousse au chocolat"
+    	menus.first["badges"].include?("fettfrei").should eq true
+    	menus.first["badges"].include?("kalorienarm").should eq true
+    	menus.first["badges"].length.should eq 2
     end
   end
 end
