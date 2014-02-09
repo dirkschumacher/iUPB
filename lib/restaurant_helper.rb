@@ -41,7 +41,7 @@ class RestaurantHelper
       end
       datum = row[2]
       art = row[3]
-      buttons = row[4].strip.split(",")
+      buttons = row[4].strip.split(",").map(&:strip).reject(&:blank?)
       abend = (row[5].strip == "a")
       german_desc = row[6]
       english_desc = row[7]
