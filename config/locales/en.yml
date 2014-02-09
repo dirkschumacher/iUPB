@@ -138,6 +138,9 @@ en:
       pingo_nophone: "If you access this page with a compatible phone, you will immediately be able to rock the vote!"
       what_is_pingo_button: "What is PINGO?"
       what_is_pingo: "PINGO is a classroom response system: during lectures you can quickly answer your lecturer's questions/problems and give her instant feedback. Your lecturer will inform you when she uses PINGO in class."
+    lunico:
+      intro: "The campus radio station of the University of Paderborn. Tune in live here via the stream or on your radio at FM 89,4 (in Paderborn area)."
+      open_in_player: "L'UniCo in deinem Player öffnen"
   asta:
     index:
       read_more: "more"

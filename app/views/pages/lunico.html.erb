@@ -1,0 +1,38 @@
+<% title "L'UniCo" %>
+
+<% content_for :javascript do %>
+  <script src="/scripts/mediaelement-and-player.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/mediaelement/mediaelementplayer.min.css">
+<% end %>
+
+<h2>L'UniCo - Dein Campus, Dein Radio!</h2>
+
+<p><%= t ".intro" %></p>
+
+<p style="margin-top: 30px; margin-bottom: 20px;">
+<audio controls="controls">
+  <source src="http://lunico-stream.upb.de:8001/lunico_low_aacplus" type="audio/x-aac">
+  <source src="http://lunico-stream.upb.de:8001/lunico_high_mp3" type="audio/mpeg">
+</audio>
+</p>
+
+<p>
+<%= link_to "<i class=\"icon-music\"></i> #{t ".open_in_player"}".html_safe, "http://lunico-stream.upb.de:8001/lunico_high_mp3.m3u", class: "btn btn-small" %>
+</p>
+
+<p class="source-info">
+	<%= t "source" %>: <a target="_blank" href="http://www.l-unico.de">l-unico.de</a>.
+</p>
+
+
+
+<% content_for :javascript do %>
+<script>
+$(document).ready(function(){
+  $('audio').mediaelementplayer({
+    audioWidth: 200,
+    features: ['playpause','volume']
+  });
+});
+</script>
+<% end %>
