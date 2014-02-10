@@ -254,6 +254,7 @@ de:
       pingo: "PINGO"
       navigator: "Navigator"
       api_docs: "API Dokumentation"
+      lunico: "L'UniCo"
   activerecord:
     models:
       user: Benutzer

@@ -255,6 +255,7 @@ en:
       pingo: "PINGO"
       navigator: "Guide"
       api_docs: "API Documentation"
+      lunico: "L'UniCo"
   time:
     formats:
       very_short: ! '%H:%M'
