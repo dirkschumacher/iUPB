@@ -2,7 +2,7 @@ IUPB::Application.routes.draw do
 
   # API 
   scope "api" do
-    scope "v1" do
+    scope "(:api_version)", :api_version => /v1|v2/ do
       match "restaurants(.:format)" => "restaurants#restaurants", :defaults => {:format => "json"}
       match "menus/:restaurant(.:format)" => "restaurants#index", :defaults => {:format => "json", :restaurant => "Mensa"}
       match "courses/search(.:format)" => "courses#search", :defaults => {:format => "json"}

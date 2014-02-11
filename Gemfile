@@ -31,7 +31,6 @@ gem "tire"
 gem "twitter"
 gem "js-routes" # https://github.com/railsware/js-routes
 gem 'contact_us', '~> 0.4.0.beta' # https://github.com/jdutil/contact_us
-
 # gem "historyjs-rails"
 
 # Gems used only for assets and not required
@@ -50,6 +49,7 @@ group :development do
 	gem "rails_admin"
 	gem 'pry-rails'   # a nicer 'rails console'
 	gem 'quiet_assets'
+	gem "rspec-rails"
 end
 
 group :production do
