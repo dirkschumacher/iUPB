@@ -142,6 +142,9 @@ de:
       pingo_nophone: "Wenn du diese Seite mit einem kompatiblen Smartphone öffnest, kannst du direkt an Umfragen teilnehmen."
       what_is_pingo_button: "Was ist PINGO?"
       what_is_pingo: "PINGO ist ein Class-Room-Response-System, d. h. du kannst mit PINGO in der Vorlesung Fragen/Aufgaben vom Dozenten beantworten und dieser bekommt direktes Feedback. Dein Dozent wird dich auf die Nutzung von PINGO hinweisen."
+    lunico:
+      intro: "Das Campus-Radio der Uni Paderborn. Jetzt hier live streamen oder im Radio auf 89,4MHz (in Paderborn)."
+      open_in_player: "L'UniCo in deinem Player öffnen"
   weather:
     index:
       temperature: "Temperatur"
@@ -251,6 +254,7 @@ de:
       pingo: "PINGO"
       navigator: "Navigator"
       api_docs: "API Dokumentation"
+      lunico: "L'UniCo"
   activerecord:
     models:
       user: Benutzer
