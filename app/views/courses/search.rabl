@@ -1,3 +1,3 @@
 collection @courses
 attributes :title, :next_class
-attribute :_id => :id
+node(:id) { |o| o.id.to_s }

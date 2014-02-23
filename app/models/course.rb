@@ -6,7 +6,6 @@ class Course
   field :title, type: String
   field :title_downcase, type: String, index: true
   field :paul_id, type: String
-  field :internal_course_id, type: String
   field :course_data, type: Array
   field :course_type, type: String, index: true
   field :paul_url, type: String
@@ -17,7 +16,6 @@ class Course
   #comma sperated list of lectures
   field :meta_lecturer_names, type: String, index: true
   field :meta_rooms, type: String , index: true
-  key :internal_course_id
   
   def get_dates(future=true)
     dates = []
