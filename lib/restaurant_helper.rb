@@ -31,7 +31,7 @@ class RestaurantHelper
     menu_data = {}
     counter = 0
     
-    rows = CSV.parse(csv, col_sep: ";").drop(1)
+    rows = CSV.parse(csv, col_sep: ";", skip_blanks: true).drop(1)
     # "NUMMER_VERBRAUCHSORT";"NAME_VERBRAUCHSORT";"DATUM";"ART_DER_SPEISE";"BUTTON";"ABEND";"TEXT_DEUTSCH";"TEXT_ENGLISCH";"ZUSATZSTOFFE";"GAESTE";"STUDIERENDE";"BEDIENSTETE";"TARA"
     rows.each do |row|
       restaurant = row[1]
