@@ -35,6 +35,7 @@ class RestaurantHelper
     # "NUMMER_VERBRAUCHSORT";"NAME_VERBRAUCHSORT";"DATUM";"ART_DER_SPEISE";"BUTTON";"ABEND";"TEXT_DEUTSCH";"TEXT_ENGLISCH";"ZUSATZSTOFFE";"GAESTE";"STUDIERENDE";"BEDIENSTETE";"TARA"
     rows.each do |row|
       restaurant = row[1]
+      Rails.logger.debug "skipping nil restaurant #{row[0]}" and next if restaurant.nil?
       if restaurant.strip == "Mensa Hamm" || (current_restaurant = Restaurant.where(api_name: restaurant.strip).first).nil?
         Rails.logger.debug "skipping not found restaurant #{restaurant}"
         next
@@ -69,7 +70,7 @@ class RestaurantHelper
       
       menu_data[restaurant.strip] ||= []
       data = {}
-      data["type"] = art.sub(/\d+,\d\d.*/, "").sub("PUB", "").sub("Stamm HK", "").sub("Stamm", "").strip.sub(/f \z/i, "")
+      data["type"] = art.sub(/\d+,\d\d.*/, "").sub("PUB", "").sub("Stamm HK", "").sub("Stamm", "").strip.sub(/ f\z/i, "")
       data["date"] = parsed_date
       data["name"] = (abend ? "Abendessen" : "Mittagessen")
       data["description"] = german_desc.strip.sub(/\Aund/i, "").strip
