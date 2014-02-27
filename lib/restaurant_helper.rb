@@ -72,29 +72,32 @@ class RestaurantHelper
       data = {}
       data["type"] = art.sub(/\d+,\d\d.*/, "").sub("PUB", "").sub("Stamm HK", "").sub("Stamm", "").strip.sub(/ f\z/i, "")
       data["date"] = parsed_date
-      data["name"] = (abend ? "Abendessen" : "Mittagessen")
-      data["description"] = german_desc.strip.sub(/\Aund/i, "").strip
+      data["name_translations"] = (abend ? {"de" => "Abendessen", "en" => "Dinner"} : {"de" => "Mittagessen", "en" => "Lunch"})
+      data["description_translations"] = {"de" => german_desc.strip.sub(/\Aund/i, "").strip, "en" => english_desc.strip}
       data["price"] = "#{einheit}Stud. #{('%.02f' % stud_price).sub(".", ",")} / Bed. #{('%.02f' % staff_price).sub(".", ",")} / Gast #{('%.02f' % guests_price).sub(".", ",")}"
       data["counter"] = nil
       data["side_dishes"] = nil
+      data["order_info"] = oi if (oi = self.order_info(art))
       data["badges"] = buttons.map do |button|
         case button.try(:strip)
           when "1"
-            "kalorienarm"
+            {"de" => "kalorienarm", "en" => "low-calorie"}
           when "2"
-            "fettfrei"
+            {"de" => "fettfrei", "en" => "fat-free"}
           when "3"
-            "vegetarisch"
+            {"de" => "vegetarisch", "en" => "vegetarian"}
           when "4"
-            "vegan"
+            {"de" => "vegan", "en" => "vegan"}
           when "5"
-            "lactosefrei"
+            {"de" => "laktosefrei", "en" => "lactose-free"}
           when "6"
-            "glutenfrei"
+            {"de" => "glutenfrei", "en" => "gluten free"}
           else
             nil
           end
         end
+      
+      data["allergens"] = additives
           
       menu_data[restaurant.strip] << data
       counter += 1
@@ -103,6 +106,32 @@ class RestaurantHelper
     I18n.locale = old_locale
     Rails.logger.debug "returning #{counter} menus"
     menu_data
+  end
+  
+  def self.order_info(art) # Menu.constants(false).select do |c| c.to_s.match(/\ASORT_/) end
+    if art.match(/Beilage Waage/i) or art.match(/Beilage klein/i) or art.match(/Beilagensalat/i) or art.match(/Gemüsebeil. 1 0,50/i) or art.match(/Sättigungsbeil/i)
+      Menu::SORT_SALAD
+    elsif art.match(/Aktionsdessert/i)
+      Menu::SORT_DESSERT_EXPENSIVE
+    elsif art.match(/Dessert/i)
+      Menu::SORT_DESSERT
+    elsif art.match(/Aktionsessen/i)
+      Menu::SORT_DISH_EXPENSIVE
+    elsif art.match(/Grill Fisch/i)
+      Menu::SORT_GRILL
+    elsif art.match(/Pasta/i)
+      Menu::SORT_BUFFET
+    elsif art.match(/Fladenbrot/i) or art.match(/Mittags-Angebot/i)
+      Menu::SORT_MAIN_DISHES
+    elsif art.match(/Stamm HK/i) or art.match(/Hauptkompononte/i)
+      Menu::SORT_HK
+    elsif art.match(/Stamm Waage/i) or art.match(/WOK-Buffet/i)
+      Menu::SORT_BUFFET
+    elsif art.match(/Eintopf/i)
+      Menu::SORT_SOUP
+    elsif art.match(/Tagessuppe/i)
+      Menu::SORT_SMALL_SOUP
+    end
   end
   
   def self.convert_to_utf8(new_value)

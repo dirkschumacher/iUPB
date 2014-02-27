@@ -39,6 +39,7 @@ class RestaurantsController < ApplicationController
         if params[:api_version] == "v1"
           render "index_v1"
         else
+          @locale = (params[:locale] || I18n.locale.to_s)
           render "index"
         end
       }
