@@ -10,6 +10,7 @@ class Menu
   field :badges, type: Array
   field :allergens, type: Array
   field :order_info, type: Integer, default: 1
+  field :dinner, type: Boolean
   embedded_in :restaurant
   
   def bagde # :legacy:
@@ -17,11 +18,15 @@ class Menu
   end
   
   def parsed_allergens(locale = nil)
-    parsed_field :allergens, locale
+    self.allergens.map do |_allergen|
+      _allergen[locale.try(:to_s) || 'de']
+    end
   end
   
   def parsed_badges(locale = nil)
-    parsed_field :badges, locale
+    self.badges.map do |_badge|
+      _badge[locale.try(:to_s) || 'de']
+    end
   end
   
   def parsed_side_dishes(locale = nil) # :legacy:
@@ -40,8 +45,9 @@ class Menu
           end
       end
     end
+    puts result
     if locale
-      result[locale]||result["de"]
+      result[locale.to_s]||result["de"]
     else
       result
     end
