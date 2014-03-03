@@ -44,6 +44,9 @@ class RestaurantHelper
       end
       datum = row[2]
       art = row[3]
+      
+      next if art.strip == "AUSSENSTELLE" || art.strip == "Sonderveranstaltung"
+      
       buttons = row[4].strip.split(",").map(&:strip).reject(&:blank?)
       abend = (row[5].strip == "a")
       german_desc = row[6]
