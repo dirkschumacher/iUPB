@@ -9,7 +9,7 @@
   return
 
 @iUPB.Restaurant.updateMenus = ($menu, date, restaurant)->
-	url = "/restaurants/"+restaurant+".json"
+	url = "/" + (I18n?.locale || "de") + "/restaurants/" + restaurant + ".json"
 	if date
 		url += "?date="+date.format("dd-mm-yyyy")
 	  

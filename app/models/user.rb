@@ -109,7 +109,7 @@ class User
 
   def has_course?(course)
     self.events.any? do |event|
-      event.custom == false && event.course_id == course.id
+      event.custom == false && event.course_id == course.id.to_s
     end
   end
 

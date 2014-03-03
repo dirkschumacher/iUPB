@@ -23,11 +23,11 @@ class RestaurantsController < ApplicationController
       @restaurant.reload
     end
 
-    @menus = @restaurant.menus.where(date: @today.to_time.midnight).where(name: "Mittagessen").to_a + @restaurant.menus.where(date: @today.to_time.midnight).where(name: "Abendessen").to_a
+    @menus = @restaurant.menus.where(date: @today.to_time.midnight).where(dinner: false).asc(:order_info).to_a + @restaurant.menus.where(date: @today.to_time.midnight).where(dinner: true).asc(:order_info).to_a
     
     unless @menus.any?
       @today = Date.commercial(Date.today.year, 1+Date.today.cweek, 1)
-      @menus = @restaurant.menus.where(date: @today.to_time.midnight).where(name: "Mittagessen").to_a + @restaurant.menus.where(date: @today.to_time.midnight).where(name: "Abendessen").to_a
+      @menus = @restaurant.menus.where(date: @today.to_time.midnight).where(dinner: false).asc(:order_info).to_a + @restaurant.menus.where(date: @today.to_time.midnight).where(dinner: true).asc(:order_info).to_a
     end
     
     respond_to do |format|
@@ -39,6 +39,7 @@ class RestaurantsController < ApplicationController
         if params[:api_version] == "v1"
           render "index_v1"
         else
+          @locale = (params[:locale] || I18n.locale.to_s)
           render "index"
         end
       }
