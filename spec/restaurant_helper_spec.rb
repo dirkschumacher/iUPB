@@ -20,10 +20,11 @@ describe RestaurantHelper, "#get_menu_data" do
     parsed_data.keys.length.should equal 1
     parsed_data.each do |restaurant, menus|
     	menus.length.should eq 1
-    	menus.first["name"].should eq "Mittagessen"
-    	menus.first["description"].should eq "Mousse au chocolat"
-    	menus.first["badges"].include?("fettfrei").should eq true
-    	menus.first["badges"].include?("kalorienarm").should eq true
+    	menus.first["name_translations"]["de"].should eq "Mittagessen"
+    	menus.first["description_translations"]["de"].should eq "Mousse au chocolat"
+      badges = menus.first["badges"].map { |t| t["de"] }
+      badges.include?("fettfrei").should eq true
+      badges.include?("kalorienarm").should eq true
     	menus.first["badges"].length.should eq 2
     end
   end
