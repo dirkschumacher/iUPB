@@ -3,12 +3,15 @@ class Menu
   field :date, type: Date
   field :name, type: String, localize: true
   field :type, type: String, localize: true
-  field :description, type: String, localize: true
+  field :category, type: String
   field :counter, type: String, localize: true
   field :price, type: String
+  field :prices, type: Hash
   field :side_dishes, type: Array, localize: true # :legacy:
   field :badges, type: Array
   field :allergens, type: Array
+  field :allergens_raw, type: Array
+  field :badges_raw, type: Array
   field :order_info, type: Integer, default: 1
   field :dinner, type: Boolean
   embedded_in :restaurant

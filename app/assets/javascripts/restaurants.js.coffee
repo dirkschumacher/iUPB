@@ -21,21 +21,21 @@
 			got_any = true
 			menu = $(this)[0].menu
 			item = $("<li class='well'>")
-			item.append($("<h4>").text(menu.description))
-			$name = $("<h6>")
-			append_name = false
-			if menu.name
-				$name.text(menu.name)
-				append_name = true
+			item.append($("<h4>").text(menu.name))
+			$category = $("<h6>")
+			append_cat = false
+			if menu.category
+				$category.text(menu.category)
+				append_cat = true
 			if menu.badges
 				$.each(menu.badges, (index, value) ->
 					if value?.length
-						$name.append($.parseHTML(' <span class="label label-info">' + value + '</span>'))
-						append_name = true
+						$category .append($.parseHTML(' <span class="label label-info">' + value + '</span>'))
+						append_cat = true
 						return
 				)
-			if append_name
-				item.append($name)
+			if append_cat
+				item.append($category)
 			if menu.type
 				item.append($("<p>").html("<i>" + menu.type + "</i>"))
 			if(menu.price)

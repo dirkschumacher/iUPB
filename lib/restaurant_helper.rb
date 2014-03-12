@@ -13,7 +13,7 @@ class RestaurantHelper
         next
       end
       menus.each do |menu|
-        unless current_restaurant.menus.where(date: menu["date"].to_time.midnight).where(description: menu["description_translations"]["de"]).any?
+        unless current_restaurant.menus.where(date: menu["date"].to_time.midnight).where(name: menu["description_translations"]["de"]).any?
           current_restaurant.menus.create!(menu)
         end
       end
@@ -76,12 +76,19 @@ class RestaurantHelper
       
       menu_data[restaurant.strip] ||= []
       data = {}
-      data["type"] = art.sub(/\d+,\d\d.*/, "").sub("PUB", "").sub("Stamm HK", "").sub("Stamm", "").strip.sub(/ f\z/i, "").sub(/ \d\z/i, "").sub(/ Mensa\z/i, "")
+      data["category"] = art.sub(/\d+,\d\d.*/, "").sub("PUB", "").sub("Stamm HK", "").sub("Stamm", "").strip.sub(/ f\z/i, "").sub(/ \d\z/i, "").sub(/ Mensa\z/i, "")
       data["date"] = parsed_date
-      data["name_translations"] = (abend ? {"de" => "Abendessen", "en" => "Dinner"} : {"de" => "Mittagessen", "en" => "Lunch"})
+      data["type_translations"] = (abend ? {"de" => "Abendessen", "en" => "Dinner"} : {"de" => "Mittagessen", "en" => "Lunch"})
       data["dinner"] = abend
-      data["description_translations"] = {"de" => german_desc.strip.sub(/\Aund/i, "").strip, "en" => english_desc.strip}
+      data["name_translations"] = {"de" => german_desc.strip.sub(/\Aund/i, "").strip, "en" => english_desc.strip}
       data["price"] = "#{einheit}Stud. #{('%.02f' % stud_price).sub(".", ",")} / Bed. #{('%.02f' % staff_price).sub(".", ",")} / Gast #{('%.02f' % guests_price).sub(".", ",")}"
+      data["prices"] = {
+        "per_100g" => per100g,
+        "students" => '%.02f' % stud_price,
+        "staff" => '%.02f' % staff_price,
+        "guests" => '%.02f' % guests_price,
+        "currency" => "€"
+      }
       data["counter"] = nil
       data["side_dishes"] = nil
       data["order_info"] = order_info unless order_info.nil?
@@ -102,9 +109,70 @@ class RestaurantHelper
           else
             nil
           end
-        end
+      end
       
-      data["allergens"] = additives
+      data["allergens"] = additives.map do |additive|
+        case additive.try(:strip)
+          when "1"
+            {"de" => "Farbstoff", "en" => "artificial coloring"}
+          when "2"
+            {"de" => "konserviert", "en" => "preserved"}
+          when "3"
+            {"de" => "Antioxidationsmittel", "en" => "antioxidant"}
+          when "4"
+            {"de" => "Geschmacksverstärker", "en" => "flavour enhancer"}
+          when "5"
+            {"de" => "Phosphat", "en" => "phosphate"}
+          when "6"
+            {"de" => "geschwefelt", "en" => "sulphurised"}
+          when "7"
+            {"de" => "gewachst", "en" => "waxed"}
+          when "8"
+            {"de" => "geschwärzt", "en" => "blackened"}
+          when "9"
+            {"de" => "Süßungsmittel", "en" => "sweeteners"}
+          when "10"
+            {"de" => "enthält eine Phenylalaninquelle", "en" => "contains a source of phenylalanine"}
+          when "11"
+            {"de" => "Taurin", "en" => "taurine"}
+          when "12"
+            {"de" => "Nitratpökelsalz", "en" => "nitrate curing salt"}
+          when "13"
+            {"de" => "koffeinhaltig", "en" => "with caffeine"}
+          when "14"
+            {"de" => "chininhaltig", "en" => "with quinine"}
+          when "15"
+            {"de" => "Milcheiweiß", "en" => "lactoprotein"}
+          when "A2"
+            {"de" => "Krebstiere und Krebstiererzeugnisse", "en" => "crustaceans and crustacean products"}
+          when "A3"
+            {"de" => "Eier und Eiererzeugnisse", "en" => "eggs and egg products"}
+          when "A4"
+            {"de" => "Fisch", "en" => "fish"}
+          when "A6"
+            {"de" => "Soja und Sojaerzeugnisse", "en" => "Soybeans and soy products"}
+          when "A7"
+            {"de" => "Milch und Milcherzeugnisse(einschließlich Laktose)", "en" => "milk and milk products (including lactose)"}
+          when "A8"
+            {"de" => "Schalenfrüchte sowie daraus hergestellte Erzeugnisse", "en" => "dried fruit and derived products"}
+          when "A9"
+            {"de" => "Sellerie und Sellerieerzeugnisse", "en" => "celery and celery products"}
+          when "A10"
+            {"de" => "Senf und Senferzeugnisse", "en" => "mustard and mustard products"}
+          when "A11"
+            {"de" => "Sesamsamen und Sesamsamenerzeugnisse", "en" => "sesame seeds and sesame seeds products"}
+          when "A12"
+            {"de" => "Schwefeldioxid und Sulfite", "en" => "sulphur dioxide and sulphites"}
+          when "A13"
+            {"de" => "Lupinen und Lupinenerzeugnisse", "en" => "lupins and Lupin products"}
+          when "A14"
+            {"de" => "Weichtiere und Weichtiererzeugnisse", "en" => "molluscs and molluscs products"}
+          else
+            nil
+          end
+      end
+      data["allergens_raw"] = additives(&:strip).compact
+      data["badges_raw"] = buttons.map(&:strip).compact
           
       menu_data[restaurant.strip] << data
       counter += 1
