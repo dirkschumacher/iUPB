@@ -1,3 +1,4 @@
+# encoding: utf-8
 class RestaurantHelper
   def self.update_database
     old_locale = I18n.locale
