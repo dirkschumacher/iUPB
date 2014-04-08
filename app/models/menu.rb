@@ -22,8 +22,8 @@ class Menu
   
   def parsed_allergens(locale = nil)
     self.allergens.map do |_allergen|
-      _allergen[locale.try(:to_s) || 'de']
-    end
+      _allergen[locale.try(:to_s) || 'de'] if _allergen
+    end.compact
   end
   
   def parsed_badges(locale = nil)
