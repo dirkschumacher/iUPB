@@ -172,7 +172,7 @@ class RestaurantHelper
             nil
           end
       end
-      data["allergens_raw"] = additives(&:strip).compact
+      data["allergens_raw"] = additives.map(&:strip).compact
       data["badges_raw"] = buttons.map(&:strip).compact
           
       menu_data[restaurant.strip] << data
