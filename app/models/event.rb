@@ -84,7 +84,11 @@ class Event
   end
   def course
     if self.course_id
-      Course.find(self.course_id)
+      begin
+        Course.find(self.course_id)
+      rescue
+        nil
+      end
     else
       nil
     end
