@@ -14,7 +14,7 @@ class RestaurantHelper
         next
       end
       menus.each do |menu|
-        unless current_restaurant.menus.where(date: menu["date"].to_time.midnight).where(name: menu["description_translations"]["de"]).any?
+        unless current_restaurant.menus.where(date: menu["date"].to_time.midnight).where(name: menu["name_translations"]["de"]).any?
           current_restaurant.menus.create!(menu)
         end
       end
