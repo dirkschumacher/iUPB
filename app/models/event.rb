@@ -24,7 +24,8 @@ class Event
     event.validates :name, presence: true
   end
   
-  validate :start_time_greater_than_today, :end_time_greater_than_start_time, :recurring_end_greater_than_start_time
+  validate :start_time_greater_than_today, on: :create
+  validate :end_time_greater_than_start_time, :recurring_end_greater_than_start_time
 
   def children_events
     self.user.events.where(parent_event_id: self.id)
