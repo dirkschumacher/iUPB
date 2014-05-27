@@ -34,7 +34,7 @@ $(document).ready(function(event) {
       $.retrieveJSON('/courses/search?query=' + encodeURIComponent(search_field.val()), function(data)
       {
         <% if Rails.env.production? %>
-            if(_gaq) _gaq.push(['_trackEvent', 'Paul', 'Search', search_field.val()]);
+            if(ga) ga('send', 'event', 'Paul', 'Search', search_field.val());
   		  <% end %>
         result_list.empty();
         if(data.length == 0)
@@ -61,7 +61,7 @@ $(document).ready(function(event) {
               current_link.html('<b style="font-size:22px;">' + iUPB.fallbackIcons.mapping["icon-ok"] + '</b>');
             }
              <% if Rails.env.production? %>
-                if(_gaq) _gaq.push(['_trackEvent', 'Timetable', 'Course Added', 'Search Result List']);
+                if(ga) ga('send', 'event', 'Timetable', 'Course Added', 'Search Result List');
              <% end %>
 			     });
            current_link.unbind("click");

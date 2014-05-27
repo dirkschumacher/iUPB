@@ -100,7 +100,7 @@
         e.preventDefault();
       });
       <% if Rails.env.production? %>
-      if(_gaq) _gaq.push(['_trackEvent', 'Timetable', 'Course Added', 'Detail view']);
+        if(ga) ga('send', 'event', 'Timetable', 'Course Added', 'Detail view');
       <% end %>
     });
   });
