@@ -124,7 +124,7 @@ de:
         one: "Vor einem Jahr"
         other: "Vor %{count} Jahren"
   pages:
-    index:
+    ophase:
       ophase_teaser: "Bist du <strong>Studienanfänger</strong>?"
       ophase_button: "Infos zur Orientierungsphase"
     twitter:

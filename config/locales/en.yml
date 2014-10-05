@@ -120,7 +120,7 @@ en:
         one: "One year ago"
         other: "%{count} years ago"
   pages:
-    index:
+    ophase:
       ophase_teaser: "Are you <strong>new in Paderborn</strong>?"
       ophase_button: "Infos about your orientation phase"
     twitter:
