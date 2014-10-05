@@ -17,7 +17,7 @@ class @TransportationManager
         @buckets[bus.station].push bus
   load_buses: =>
   	jQuery.ajax({ 
-  		url: "https://upbapi.cloudcontrolled.com/busplan.php?callback=?",
+  		url: "http://transportation.api.i-upb.de/busplan.php?callback=?",
   		dataType: "jsonp",
   		type: "GET",
   		jsonp: true,
